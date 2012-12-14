@@ -1,0 +1,2 @@
+1,JAAS Authentication Based
+2,UrlRewrite Integrated

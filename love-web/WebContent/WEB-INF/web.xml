@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="3.0"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	
+	<display-name>Love Website</display-name>
+
+	<welcome-file-list>
+	    <welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.faces</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Security Definition -->
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Member Content</web-resource-name>
+			<url-pattern>/pages2/home/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>MemberRole</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	<security-role>
+		<description>Represent Normal User</description>
+		<role-name>MemberRole</role-name>
+	</security-role>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/pages/common/login.faces</form-login-page>
+			<form-error-page>/pages/common/exception_401.faces</form-error-page>
+		</form-login-config>
+	</login-config>
+
+	<!-- Context Setting for JSF -->
+	<context-param>
+		<!-- default value is 'Production', all are 'Development', 'UnitTest', 'SystemTest', 'Production' -->
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Development</param-value>
+	</context-param>
+	<context-param>
+		<!-- treat EMPTY string as NULL, for the bean validation(@NotNull will work as intend) -->
+		<param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.CONFIG_FILES</param-name>
+		<param-value>
+		    /faces-config/faces-config.xml,
+		    /faces-config/login-faces-config.xml
+		</param-value>
+	</context-param>
+	<context-param>
+	    <!-- Save status on client or server -->
+	    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+	    <param-value>server</param-value>
+	</context-param>
+
+	<!-- Filter -->
+
+	<filter>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+    	<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+ 
+	<!-- Exception Handler -->
+	<error-page>
+		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
+		<location>/pages/common/login.faces</location>
+	</error-page>
+	<error-page>
+		<error-code>401</error-code>
+		<location>/pages/common/exception_401.faces</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/pages/common/exception_401.faces</location>
+	</error-page>
+	<error-page>
+		<error-code>405</error-code>
+		<location>/pages/common/exception_404.faces</location>
+	</error-page>
+</web-app>

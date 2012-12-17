@@ -7,9 +7,8 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:body>
 	Home Page<br />
-	<h:outputLink value="/love-web/pages/home/home2.faces">click to link to home2</h:outputLink>
 	<h:form>
-		<h:commandLink action="#{login.doForward}" value="Forward to Home2" />
+		<h:commandLink action="#{executor.doExecute}" value="Go To Next Page" />
 	</h:form>
 </h:body>
 </html>

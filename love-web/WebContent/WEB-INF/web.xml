@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	
 	<display-name>Love Website</display-name>
-
+	
 	<welcome-file-list>
 	    <welcome-file>index.html</welcome-file>
 	</welcome-file-list>
@@ -22,7 +22,8 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Member Content</web-resource-name>
-			<url-pattern>/pages2/home/*</url-pattern>
+			<url-pattern>/welcome</url-pattern>
+			<url-pattern>/pages/home/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>MemberRole</role-name>
@@ -76,14 +77,12 @@
 	<filter-mapping>
 		<filter-name>UrlRewriteFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-		<dispatcher>REQUEST</dispatcher>
-    	<dispatcher>FORWARD</dispatcher>
 	</filter-mapping>
  
 	<!-- Exception Handler -->
 	<error-page>
 		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
-		<location>/pages/common/login.faces</location>
+		<location>/pages/home/home.faces</location>
 	</error-page>
 	<error-page>
 		<error-code>401</error-code>

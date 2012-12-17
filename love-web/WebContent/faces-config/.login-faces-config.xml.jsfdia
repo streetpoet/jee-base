@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
- <PROCESS-ITEM NAME="rules:#pages#common#index.xhtml"
-  PATH="/pages/common/index.xhtml" SHAPE="32,273,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#pages#common#index.xhtml:0" NAME="item"
-   PATH="/pages/common/index.xhtml" model-entity="JSFProcessItem">
+ <PROCESS-ITEM NAME="rules:#pages#home#home.xhtml"
+  PATH="/pages/home/home.xhtml" SHAPE="256,401,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#common#exception_401.xhtml"
+  PATH="/pages/common/exception_401.xhtml" SHAPE="32,353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#common#exception_401.xhtml:0"
+   NAME="item" PATH="/pages/common/exception_401.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="SUCCESS::#pages#home#home.xhtml"
     NAME="output" PATH="/pages/home/home.xhtml"
     TARGET="rules:#pages#home#home.xhtml" TITLE="SUCCESS" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="FAILURE::#pages#common#index.xhtml"
-    NAME="output1" PATH="/pages/common/index.xhtml"
-    TARGET="rules:#pages#common#index.xhtml" TITLE="FAILURE" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#pages#home#home.xhtml"
-  PATH="/pages/home/home.xhtml" SHAPE="256,401,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#home#home2.xhtml"
+  PATH="/pages/home/home2.xhtml" model-entity="JSFProcessGroup"/>
 </PROCESS>

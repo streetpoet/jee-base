@@ -4,15 +4,15 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javax.sql.DataSource;
+import com.spstudio.love.web.system.LoveDaemon;
 
 public class DatabaseHelper {
 	
-	public void doQuery(DataSource ds, String sql){
+	public void doQuery(String sql){
 		Connection conn = null;
         Statement stmt = null;
         try {
-            conn = ds.getConnection();
+            conn = LoveDaemon.getDataSource().getConnection();
             stmt = conn.createStatement();
             stmt.execute(sql);
         }catch (SQLException e){

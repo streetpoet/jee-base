@@ -4,16 +4,17 @@
 	<application-policy xmlns="urn:jboss:security-beans:1.0" name="love-web">
 		<authentication>
 		    
-			<login-module code="org.jboss.security.auth.spi.UsersRolesLoginModule" flag="required">
+			<!-- <login-module code="org.jboss.security.auth.spi.UsersRolesLoginModule" flag="required">
 				<module-option name="usersProperties">u.properties</module-option>
 				<module-option name="rolesProperties">r.properties</module-option>
+			</login-module> -->
+			
+			<login-module code="org.jboss.security.auth.spi.DatabaseServerLoginModule" flag="required">
+				<module-option name="dsJndiName">java:/LoveWebDB</module-option>
+				<module-option name="principalsQuery">SELECT Password FROM Principals WHERE  PrincipalID=?</module-option>
+				<module-option name="rolesQuery">SELECT Role,RoleGroup FROM Roles WHERE PrincipalID=?</module-option>
 			</login-module>
-			<!-- 
-			<login-module code="org.jboss.security.auth.spi.IdentityLoginModule" flag="required">
-				<module-option name="principal">streetpoet</module-option>
-				<module-option name="roles">MemberRole</module-option>
-			</login-module>
-			 -->
+
 		</authentication>
 		
 	</application-policy>

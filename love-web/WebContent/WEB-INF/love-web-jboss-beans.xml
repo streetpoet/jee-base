@@ -11,7 +11,7 @@
 			
 			<login-module code="org.jboss.security.auth.spi.DatabaseServerLoginModule" flag="required">
 				<module-option name="dsJndiName">java:/LoveWebDB</module-option>
-				<module-option name="principalsQuery">SELECT Password FROM Principals WHERE  PrincipalID=?</module-option>
+				<module-option name="principalsQuery">SELECT passwd FROM Users where username = ?</module-option>
 				<module-option name="rolesQuery">SELECT Role,RoleGroup FROM Roles WHERE PrincipalID=?</module-option>
 			</login-module>
 

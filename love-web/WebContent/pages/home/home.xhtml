@@ -6,7 +6,10 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:body>
-	Home Page<br />
+	#{userInfo.nickName}<br />
+	#{userInfo.familyName}<br />
+	#{userInfo.description}<br />
+	#{userInfo.userId}<br />
 	<h:form>
 		<h:commandLink action="#{executor.doExecute}" value="Go To Next Page" />
 	</h:form>

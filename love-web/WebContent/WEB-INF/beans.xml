@@ -1,0 +1,3 @@
+<interceptors>
+    <class>com.spstudio.love.web.interceptor.LoadFamilyInteceptor</class>
+</interceptors>

@@ -6,19 +6,22 @@ import javax.enterprise.inject.Produces;
 import javax.faces.context.FacesContext;
 
 import com.spstudio.love.web.common.DatabaseHelper;
+import com.spstudio.love.web.qualifiers.LoveLogged;
 import com.spstudio.love.web.qualifiers.QueryUserInfoQualifier;
 
 public class QueryUserInfoProducer {
 
 	private final String Query_User_Family_Info = 
-		" select users.nickName, family.familyName, family.description "
+		"select users.nickName, family.familyName, family.description "
 		+ " from users, family, userFamilyRef "
 		+ " where users.id = userFamilyRef.userId and userFamilyRef.familyId = family.id and users.username = ?";
 	
 	@SuppressWarnings("unused")
 	@Produces
 	@QueryUserInfoQualifier
+	@LoveLogged
 	private UserInfo produceUserInfo(){
+		System.out.println("produceUserInfo");
 		UserInfo userInfo = new UserInfo();
 		String userId = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
 		userInfo.setUserId(userId);

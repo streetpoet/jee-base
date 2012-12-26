@@ -14,6 +14,6 @@ import javax.interceptor.InterceptorBinding;
 @InterceptorBinding
 @Retention(RUNTIME)
 @Target({METHOD, TYPE})
-public @interface LoadFamilyInterceptor {
+public @interface LoveLogged {
 	
 }

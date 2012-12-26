@@ -1,46 +1,67 @@
 package com.spstudio.love.web.modules.main;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+
+import java.io.Serializable;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.spstudio.love.web.qualifiers.QueryUserInfoQualifier;
 
 @SessionScoped
-@ManagedBean
 @Named
-public class UserInfo {
+public class UserInfo implements Serializable{
 	
-	@Inject
-	@QueryUserInfoQualifier
-	private UserInfo userInfo;
+	private static final long serialVersionUID = -5386449236793012236L;
 	
 	private String userId;
 	private String nickName;
 	private String familyName;
 	private String description;
 	
+	public UserInfo(){}
+	
+	@Inject
+	public UserInfo(@QueryUserInfoQualifier UserInfo uInfo){
+		userId = uInfo.getUserId();
+		nickName = uInfo.getNickName();
+		familyName = uInfo.getFamilyName();
+		description = uInfo.getDescription();
+	}
+	
+	@PostConstruct
+	public void postConstruct(){
+		System.out.println("@PostConstruct");
+	}
+	
+	@PreDestroy
+	public void preDestroy(){
+		System.out.println("@PreDestroy");
+	}
+	
 	public String getUserId() {
-		return userInfo.userId;
-	}
-	public String getNickName() {
-		return userInfo.nickName;
-	}
-	public String getFamilyName() {
-		return userInfo.familyName;
-	}
-	public String getDescription() {
-		return userInfo.description;
+		return userId;
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	public String getNickName() {
+		return nickName;
+	}
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
+	public String getFamilyName() {
+		return familyName;
+	}
 	public void setFamilyName(String familyName) {
 		this.familyName = familyName;
+	}
+	public String getDescription() {
+		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;

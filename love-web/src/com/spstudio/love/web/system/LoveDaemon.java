@@ -1,20 +1,26 @@
 package com.spstudio.love.web.system;
 
+import java.io.Serializable;
+
 import javax.annotation.Resource;
 import javax.annotation.Resource.AuthenticationType;
-import javax.faces.application.Application;
+import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.ProjectStage;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import javax.sql.DataSource;
 
 import org.jboss.logging.Logger;
 
 @ApplicationScoped
+@javax.faces.bean.ApplicationScoped
 @ManagedBean(eager = true)
-public class LoveDaemon {
+@Named
+public class LoveDaemon implements Serializable{
 	
+	private static final long serialVersionUID = 432101143011064475L;
+
 	private Logger log = Logger.getLogger(LoveDaemon.class);
 	
 	@Resource(name = "LoveWebDB",
@@ -24,6 +30,7 @@ public class LoveDaemon {
 			description = "datasource of connection pool")
 	private static javax.sql.DataSource DATASOURCE = null;
 	
+	private int totalUserCount = 0;
 	
 	public LoveDaemon(){
 		log.info("LoveDaemon started.");
@@ -31,7 +38,7 @@ public class LoveDaemon {
 		/*
 		 * check project status
 		 */
-		Application application = FacesContext.getCurrentInstance().getApplication();
+		javax.faces.application.Application application = FacesContext.getCurrentInstance().getApplication();
 		if (application.getProjectStage() == ProjectStage.Development){
 			log.warn("Project is in development stage.");
 		}
@@ -39,5 +46,10 @@ public class LoveDaemon {
 	
 	public static DataSource getDataSource(){
 		return DATASOURCE;
+	}
+	
+	public void printUserCount(){
+		totalUserCount ++;
+		System.out.println("Count = " + totalUserCount);
 	}
 }

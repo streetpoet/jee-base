@@ -6,6 +6,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:body>
-	result.xhtml<br />
+	#{userInfo.nickName}<br />
+	#{userInfo.familyName}<br />
+	#{userInfo.description}<br />
+	#{userInfo.userId}<br />
+	<h:form>
+	<h:commandButton value="Logout" action="#{executor.logout}" />
+	</h:form>
 </h:body>
 </html>

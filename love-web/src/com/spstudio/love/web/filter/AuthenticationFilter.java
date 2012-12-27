@@ -9,12 +9,9 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.jboss.logging.Logger;
-
-import com.spstudio.love.web.common.GlobalConstant;
 
 public class AuthenticationFilter implements Filter {
 
@@ -30,11 +27,6 @@ public class AuthenticationFilter implements Filter {
 			FilterChain fc) throws IOException, ServletException {
 		log.info("AuthenticationFilter#doFilter has been invoked.");
 		HttpSession session = ((HttpServletRequest)request).getSession();
-		if (session.getAttribute(GlobalConstant.USER_SUBJECT) == null){
-//			HttpServletResponse rp = (HttpServletResponse)response;
-//			rp.sendError(401);
-//			rp.setStatus(200);
-		}
 		fc.doFilter(request, response);
 	}
 

@@ -7,15 +7,24 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.spstudio.love.web.system.LoveDaemon;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.sql.DataSource;
 
+import com.spstudio.love.web.qualifiers.LoveDataSource;
+
+@RequestScoped
 public class DatabaseHelper {
+	
+	@Inject
+	@LoveDataSource
+	private DataSource ds;
 
 	public List<Object[]> doQuery(String sql, Object[] params) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try {
-			conn = LoveDaemon.getDataSource().getConnection();
+			conn = ds.getConnection();
 			stmt = conn.prepareStatement(sql);
 			for (int i = 0; i < params.length; i++) {
 				if (params[i] instanceof String) {

@@ -1,15 +1,22 @@
-package com.spstudio.love.web.modules.main;
+package com.spstudio.love.web.producer;
 
 import java.util.List;
 
 import javax.enterprise.inject.Produces;
-import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 import com.spstudio.love.web.common.DatabaseHelper;
+import com.spstudio.love.web.modules.main.UserInfo;
 import com.spstudio.love.web.qualifiers.LoveLogged;
-import com.spstudio.love.web.qualifiers.QueryUserInfoQualifier;
+import com.spstudio.love.web.qualifiers.UserInfoQualifier;
 
-public class QueryUserInfoProducer {
+public class UserInfoProducer {
+	
+	@Inject
+	private DatabaseHelper dbHelper;
+	
+	@Inject
+	private java.security.Principal principal;
 
 	private final String Query_User_Family_Info = 
 		"select users.nickName, family.familyName, family.description "
@@ -18,14 +25,12 @@ public class QueryUserInfoProducer {
 	
 	@SuppressWarnings("unused")
 	@Produces
-	@QueryUserInfoQualifier
+	@UserInfoQualifier
 	@LoveLogged
 	private UserInfo produceUserInfo(){
-		System.out.println("produceUserInfo");
 		UserInfo userInfo = new UserInfo();
-		String userId = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
-		userInfo.setUserId(userId);
-		List<Object[]> list = new DatabaseHelper().doQuery(Query_User_Family_Info, new Object[]{userId});
+		userInfo.setUserId(principal.getName());
+		List<Object[]> list = dbHelper.doQuery(Query_User_Family_Info, new Object[]{principal.getName()});
 		if (list != null && list.size() != 0){
 			Object[] data = list.get(0);
 			userInfo.setNickName((String)data[0]);

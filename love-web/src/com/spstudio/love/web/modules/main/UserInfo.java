@@ -3,13 +3,11 @@ package com.spstudio.love.web.modules.main;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.spstudio.love.web.qualifiers.QueryUserInfoQualifier;
+import com.spstudio.love.web.qualifiers.UserInfoQualifier;
 
 @SessionScoped
 @Named
@@ -25,21 +23,11 @@ public class UserInfo implements Serializable{
 	public UserInfo(){}
 	
 	@Inject
-	public UserInfo(@QueryUserInfoQualifier UserInfo uInfo){
+	public UserInfo(@UserInfoQualifier UserInfo uInfo){
 		userId = uInfo.getUserId();
 		nickName = uInfo.getNickName();
 		familyName = uInfo.getFamilyName();
 		description = uInfo.getDescription();
-	}
-	
-	@PostConstruct
-	public void postConstruct(){
-		System.out.println("@PostConstruct");
-	}
-	
-	@PreDestroy
-	public void preDestroy(){
-		System.out.println("@PreDestroy");
 	}
 	
 	public String getUserId() {

@@ -57,7 +57,7 @@
 		<connection-property name="characterSetResults">UTF-8</connection-property>
 		<connection-property name="loadBalanceConnectionGroup">web-group</connection-property>
 		<connection-property name="loadBalanceEnableJMX">true</connection-property> 
-		<connection-property name="exceptionInterceptors">com.spstudio.love.web.common.MySQLExceptionInterceptor</connection-property>
+		<connection-property name="exceptionInterceptors">com.spstudio.love.web.system.MySQLExceptionInterceptor</connection-property>
 		
 		<!-- ********************************** -->
 		<!-- Development Purpose, Debug Purpose -->

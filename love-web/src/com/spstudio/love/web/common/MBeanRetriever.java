@@ -16,7 +16,7 @@ public class MBeanRetriever {
 		try{
 			MBeanServer server = ManagementFactory.getPlatformMBeanServer();
 			ObjectName jaasMgr = new ObjectName("jboss.security:service=JaasSecurityManager");
-			Object[] params = {"love-web", new SimplePrincipal("streetpoet"), "111111"};
+			Object[] params = {"love-domain", new SimplePrincipal("streetpoet"), "111111"};
 			String[] signature = {"java.lang.String", "java.security.Principal", "java.lang.Object"};
 			MBeanInfo info = server.getMBeanInfo(jaasMgr);
 			MBeanOperationInfo[] infos = info.getOperations();

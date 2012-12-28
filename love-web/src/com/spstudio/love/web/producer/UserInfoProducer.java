@@ -2,7 +2,6 @@ package com.spstudio.love.web.producer;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 
@@ -16,7 +15,7 @@ public class UserInfoProducer {
 	@Inject
 	private DatabaseHelper dbHelper;
 	
-	@Resource
+	@Inject
 	private java.security.Principal principal;
 
 	private final String Query_User_Family_Info = 

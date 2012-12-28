@@ -2,10 +2,9 @@ package com.spstudio.love.web.login;
 
 import interfaces.IProducts;
 
-import javax.ejb.EJB;
+import javax.annotation.Resource;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.naming.InitialContext;
 
 import com.spstudio.love.web.common.StandardNavigation;
 import com.spstudio.love.web.qualifiers.LoveLogged;
@@ -14,8 +13,8 @@ import com.spstudio.love.web.qualifiers.LoveLogged;
 @Named
 public class Executor {
 	
-//	@Resource(mappedName = "java:global/love-ejb/ProductsBean")
-	@EJB(mappedName="java:global/love-ejb/ProductsBean/remote")
+	@Resource(mappedName = "java:global/love-ejb/ProductsBean")
+//	@EJB(mappedName="ProductsBean/remote")
 	private IProducts productsBean;
 	
 	public Object doExecute(){

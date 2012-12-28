@@ -8,6 +8,7 @@
 	        <ejb-name>ProductsBean</ejb-name>
 	        <security-role-ref>
 	            <role-name>admin</role-name>
+	            <role-link>admin</role-link>
 	        </security-role-ref>
 	        <security-identity>
 	            <use-caller-identity/>
@@ -18,5 +19,12 @@
 	    <security-role>
 	        <role-name>admin</role-name>
 	    </security-role>
+	    <method-permission>
+	        <role-name>admin</role-name>
+	        <method>
+	            <ejb-name>ProductsBean</ejb-name>
+	            <method-name>*</method-name>
+	        </method>
+	    </method-permission>
 	</assembly-descriptor>
 </ejb-jar>

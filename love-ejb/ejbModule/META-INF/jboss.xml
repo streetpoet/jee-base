@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 
 <jboss>
-	<security-domain>love-domain2</security-domain>
+	<security-domain>love-domain</security-domain>
 </jboss>

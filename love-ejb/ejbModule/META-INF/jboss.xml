@@ -1,8 +1,5 @@
-<!DOCTYPE jboss PUBLIC
-      "-//JBoss//DTD JBOSS 6.0//EN"
-      "http://www.jboss.org/j2ee/dtd/jboss_6_0.dtd">
-      
+<?xml version="1.0"?>
+
 <jboss>
-    <security-domain>love-domain</security-domain>
-    <unauthenticated-principal>unsecure user</unauthenticated-principal>
+	<security-domain>love-domain2</security-domain>
 </jboss>

@@ -12,7 +12,4 @@ public class ProductsBean implements IProducts {
 		System.out.println("print nothing");
 	}
 
-	public void test(){
-		
-	}
 }

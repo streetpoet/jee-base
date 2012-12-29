@@ -17,6 +17,7 @@
 	    </session>
 	</enterprise-beans>
 	<assembly-descriptor>
+	    
 	    <!-- 
 	    However, the specification of security-role elements 
 	    is still a recommended practice to ensure portability across application servers 
@@ -28,9 +29,6 @@
 	    <security-role>
 	        <role-name>MemberRole</role-name>
 	    </security-role>
-	    <security-role>
-	        <role-name>abc</role-name>
-	    </security-role>
 	    
 	    <!-- Permission Definition -->
 	    
@@ -41,6 +39,7 @@
 	            <method-name>*</method-name>
 	        </method>
 	    </method-permission>
+	    
 	</assembly-descriptor>
 	
 </ejb-jar>

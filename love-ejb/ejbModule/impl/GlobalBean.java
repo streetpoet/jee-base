@@ -4,6 +4,8 @@ import interfaces.IGlobal;
 
 import java.util.concurrent.TimeUnit;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.ejb.AccessTimeout;
 import javax.ejb.ConcurrencyManagement;
 import javax.ejb.ConcurrencyManagementType;
@@ -19,7 +21,17 @@ import javax.ejb.Startup;
 @AccessTimeout(unit = TimeUnit.SECONDS, value = 10)
 @Remote
 public class GlobalBean implements IGlobal {
-
+	
+	@PostConstruct
+	public void postConstruct(){
+		System.out.println("GlobalBean#postConstruct");
+	}
+	
+	@PreDestroy
+	public void preDestroy(){
+		System.out.println("GlobalBean#postConstruct");
+	}
+	
 	@Override
 	@Lock(LockType.READ)
 	public String getSysInfo() {

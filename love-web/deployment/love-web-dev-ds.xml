@@ -5,7 +5,7 @@
 	    <!-- JBoss Settings -->
 	    <!-- ************** -->
 	    
-		<jndi-name>LoveWebDB</jndi-name>
+		<jndi-name>LoveDB</jndi-name>
 		<use-java-context>true</use-java-context>
 		<connection-url>jdbc:mysql:loadbalance://127.0.0.1:3306/lovedb</connection-url>
 		<driver-class>com.mysql.jdbc.Driver</driver-class>

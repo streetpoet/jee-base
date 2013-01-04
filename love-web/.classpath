@@ -9,6 +9,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.jboss.ide.eclipse.as.core.server.runtime.runtimeTarget/JBoss 6.x Runtime"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/love-ejb-interfaces.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

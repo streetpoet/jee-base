@@ -5,7 +5,7 @@ import java.util.List;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 
-import com.spstudio.love.web.common.DatabaseHelper;
+import com.spstudio.love.web.helper.DatabaseHelper;
 import com.spstudio.love.web.modules.main.UserInfo;
 import com.spstudio.love.web.qualifiers.LoveLogged;
 import com.spstudio.love.web.qualifiers.UserInfoQualifier;

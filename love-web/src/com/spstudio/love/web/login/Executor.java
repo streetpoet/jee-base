@@ -1,29 +1,27 @@
 package com.spstudio.love.web.login;
 
-import interfaces.IProducts;
+import interfaces.IProductSingleton;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.spstudio.love.web.common.StandardNavigation;
 import com.spstudio.love.web.qualifiers.LoveLogged;
-import com.spstudio.love.web.qualifiers.ProductsEJB;
+import com.spstudio.love.web.qualifiers.ProductSingletonEJB;
 
 @RequestScoped
 @Named
-@ManagedBean
 public class Executor {
 		
 	@Inject
-	@ProductsEJB
-	private IProducts products;
+	@ProductSingletonEJB
+	private IProductSingleton productSingleton;
 	
 	public Object doExecute(){
 		try{
-			products.queryProducts(-1, -1);
+			System.out.println(productSingleton.retrieveProductClassify());
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -35,6 +33,4 @@ public class Executor {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	}
 
-	
-	
 }

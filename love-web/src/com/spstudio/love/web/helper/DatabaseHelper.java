@@ -1,4 +1,4 @@
-package com.spstudio.love.web.common;
+package com.spstudio.love.web.helper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -2,27 +2,28 @@ package com.spstudio.love.web.login;
 
 import interfaces.IProducts;
 
-import javax.annotation.Resource;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.spstudio.love.web.common.StandardNavigation;
 import com.spstudio.love.web.qualifiers.LoveLogged;
+import com.spstudio.love.web.qualifiers.ProductsEJB;
 
-@javax.enterprise.context.RequestScoped
+@RequestScoped
 @Named
+@ManagedBean
 public class Executor {
-	
-	@Resource(mappedName = "java:global/love-ejb/ProductsBean")
-//	@EJB(mappedName="ProductsBean/remote")
-	private IProducts productsBean;
+		
+	@Inject
+	@ProductsEJB
+	private IProducts products;
 	
 	public Object doExecute(){
 		try{
-			productsBean.queryProducts(-1, -1);
-//			InitialContext ic = new InitialContext();
-//			IProducts example = (IProducts)ic.lookup("ProductsBean/remote");
-//			example.queryProducts(-1, -1);
+			products.queryProducts(-1, -1);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -33,4 +34,7 @@ public class Executor {
 	public void logout(){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	}
+
+	
+	
 }

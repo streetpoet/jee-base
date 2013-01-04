@@ -29,7 +29,7 @@
 		<!-- ********************* -->
 		
 		<!-- Connection/Authentication -->
-		<connection-property name="user">root</connection-property>
+		<connection-property name="user">sp</connection-property>
 		<connection-property name="password">213231</connection-property>
 		<connection-property name="localSocketAddress">127.0.0.1</connection-property>
 		<connection-property name="useCompression">false</connection-property>

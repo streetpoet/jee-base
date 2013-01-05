@@ -1,10 +1,8 @@
 package com.spstudio.love.web.modules.product;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import javax.enterprise.inject.Model;
 
-@RequestScoped
-@Named
+@Model
 public class Product {
 	private int classifyId;
 	private int productName;

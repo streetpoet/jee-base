@@ -5,16 +5,14 @@ import interfaces.IProductSingleton;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.event.Event;
+import javax.enterprise.inject.Model;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.spstudio.love.web.qualifiers.ProductSingletonEJB;
 
-@RequestScoped
-@Named
+@Model
 public class AddProductAction {
 	
 	@Inject

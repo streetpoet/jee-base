@@ -56,7 +56,10 @@ public class ProductSingletonBean implements IProductSingleton {
 		List<Object[]> result = helper.doQuery("select id, kindName from f1_classify", null);
 		if (result != null && result.size() != 0){
 			for (Object[] data: result){
-				classify.add(new String[]{String.valueOf(data[0]), (String)data[1]});
+				String[] row = new String[2];
+				row[INDEX_CLASSIFY_ID] = String.valueOf(data[0]);
+				row[INDEX_CLASSIFY_NAME] = (String)data[1];
+				classify.add(row);
 			}
 		}
 		productClassify = classify;

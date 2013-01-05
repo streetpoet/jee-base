@@ -8,14 +8,4 @@ public class AddProductEvent implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -530870361147034377L;
-
-	private int classifyId;
-
-	public int getClassifyId() {
-		return classifyId;
-	}
-
-	public void setClassifyId(int classifyId) {
-		this.classifyId = classifyId;
-	}
 }

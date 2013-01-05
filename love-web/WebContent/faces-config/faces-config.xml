@@ -3,22 +3,26 @@
 	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 	<application>
-	    
+
 		<locale-config>
 			<!-- refer to http://ftp.ics.uci.edu/pub/ietf/http/related/iso639.txt -->
 			<default-locale>en</default-locale>
 			<supported-locale>zh</supported-locale>
 			<supported-locale>ja</supported-locale>
 		</locale-config>
-		
+
 		<!-- Resource Bundles -->
 		<resource-bundle>
-	        <base-name>messages.system.Message</base-name>
-	        <var>sysBundle</var>
-	    </resource-bundle>
-	    <resource-bundle>
-	        <base-name>messages.plan.Message</base-name>
-	        <var>planModuleBundle</var>
-	    </resource-bundle>
+			<base-name>messages.system.Message</base-name>
+			<var>sysBundle</var>
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>messages.plan.Message</base-name>
+			<var>planModuleBundle</var>
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>messages.product.Message</base-name>
+			<var>productModuleBundle</var>
+		</resource-bundle>
 	</application>
 </faces-config>

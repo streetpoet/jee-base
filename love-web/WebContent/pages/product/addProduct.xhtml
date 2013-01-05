@@ -6,6 +6,10 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:body>
-	
+	<h:form>
+		<h:selectOneMenu id="product_classify" required="true" value="#{addProductBean.classifyId}">
+			<f:selectItems value="#{addProductBean.classifyItems}"/>
+		</h:selectOneMenu>
+	</h:form>
 </h:body>
 </html>

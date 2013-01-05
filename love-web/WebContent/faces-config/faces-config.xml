@@ -17,12 +17,13 @@
 			<var>sysBundle</var>
 		</resource-bundle>
 		<resource-bundle>
-			<base-name>messages.plan.Message</base-name>
-			<var>planBundle</var>
-		</resource-bundle>
-		<resource-bundle>
 			<base-name>messages.product.Message</base-name>
 			<var>productBundle</var>
 		</resource-bundle>
+		<resource-bundle>
+			<base-name>messages.plan.Message</base-name>
+			<var>planBundle</var>
+		</resource-bundle>
+
 	</application>
 </faces-config>

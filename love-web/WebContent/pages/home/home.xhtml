@@ -6,12 +6,22 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:body>
-	#{userInfo.nickName}<br />
-	#{userInfo.familyName}<br />
-	#{userInfo.description}<br />
-	#{userInfo.userId}<br />
+	<table>
+		<h:column>#{userInfo.userId}</h:column>
+		<h:column>#{userInfo.nickName}</h:column>
+		<h:column>#{userInfo.familyName}</h:column>
+		<h:column>#{userInfo.description}</h:column>
+	</table>
+
+	<dir>
+		<h:outputLink value="../product/home.faces">#{sysBundle['module.name.productmgmt']}</h:outputLink>
+	</dir>
+	<dir>
+		<h:outputLink value="../plan/home.faces">#{sysBundle['module.name.planmgmt']}</h:outputLink>
+	</dir>
 	<h:form id="formId">
-		<h:commandLink id="justForward" action="#{executor.doExecute}" value="Go To Next Page" />
+		<h:commandLink id="justForward" action="#{executor.doExecute}"
+			value="Go To Next Page" />
 	</h:form>
 </h:body>
 </html>

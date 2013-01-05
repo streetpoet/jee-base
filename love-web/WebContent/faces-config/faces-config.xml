@@ -18,11 +18,11 @@
 		</resource-bundle>
 		<resource-bundle>
 			<base-name>messages.plan.Message</base-name>
-			<var>planModuleBundle</var>
+			<var>planBundle</var>
 		</resource-bundle>
 		<resource-bundle>
 			<base-name>messages.product.Message</base-name>
-			<var>productModuleBundle</var>
+			<var>productBundle</var>
 		</resource-bundle>
 	</application>
 </faces-config>

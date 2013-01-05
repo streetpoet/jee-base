@@ -7,9 +7,10 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:body>
 	<h:form>
-		<h:selectOneMenu id="product_classify" required="true" value="#{addProductBean.classifyId}">
-			<f:selectItems value="#{addProductBean.classifyItems}"/>
+		<h:selectOneMenu id="product_classify" required="true" value="#{product.classifyId}">
+			<f:selectItems value="#{addProductAction.classifyItems}"/>
 		</h:selectOneMenu>
+		<h:commandButton action="#{addProductAction.addProduct}" value="Add Product" />
 	</h:form>
 </h:body>
 </html>

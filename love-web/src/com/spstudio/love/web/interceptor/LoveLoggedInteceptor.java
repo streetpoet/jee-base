@@ -11,11 +11,11 @@ import com.spstudio.love.web.qualifiers.LoveLogged;
 @LoveLogged
 public class LoveLoggedInteceptor {
 	
-	private Logger log = Logger.getLogger(LoveLoggedInteceptor.class);
+	private Logger log = Logger.getLogger(LoveLoggedInteceptor.class.getSimpleName());
 	
 	@AroundInvoke
 	public java.lang.Object invoke(javax.interceptor.InvocationContext context) throws Exception{
-		log.info(context.getClass().getName() + "#" + context.getMethod() + "#" + context.getTarget());
+		log.info("Entering method: " + context.getMethod().getDeclaringClass().getSimpleName() + "#" + context.getMethod().getName());
 		return context.proceed();
 	}
 	

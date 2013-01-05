@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.event.Event;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -14,21 +15,15 @@ import com.spstudio.love.web.qualifiers.ProductSingletonEJB;
 
 @RequestScoped
 @Named
-public class AddProductBean {
-	
-	private int classifyId;
+public class AddProductAction {
 	
 	@Inject
 	@ProductSingletonEJB
 	private IProductSingleton productSingleton;
-
-	public int getClassifyId() {
-		return classifyId;
-	}
-
-	public void setClassifyId(int classifyId) {
-		this.classifyId = classifyId;
-	}
+	
+	@Inject
+	@AddProductQualifier
+	private Event<AddProductEvent> addProductEvent;
 	
 	public List<SelectItem> getClassifyItems(){
 		List<String[]> list = productSingleton.retrieveProductClassify();
@@ -39,5 +34,9 @@ public class AddProductBean {
 			}
 		}
 		return selectItems;
+	}
+	
+	public void addProduct(){
+		addProductEvent.fire(new AddProductEvent());
 	}
 }

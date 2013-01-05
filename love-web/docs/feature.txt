@@ -1,2 +1,3 @@
-1,JAAS Authentication Based
-2,UrlRewrite Integrated
+1, JAAS Authentication Based
+2, UrlRewrite Integrated
+3, CDI Feature Support

@@ -2,7 +2,7 @@ package com.spstudio.love.web.modules.product;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.Dependent;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
@@ -11,7 +11,7 @@ import org.jboss.logging.Logger;
 import com.spstudio.love.web.qualifiers.LoveLogged;
 import com.spstudio.love.web.qualifiers.LoveTrace;
 
-@RequestScoped
+@Dependent
 public class AddProductHandler implements Serializable {
 
 	/**

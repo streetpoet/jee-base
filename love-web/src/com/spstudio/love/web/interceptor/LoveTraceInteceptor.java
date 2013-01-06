@@ -1,5 +1,6 @@
 package com.spstudio.love.web.interceptor;
 
+import java.io.Serializable;
 import java.lang.reflect.Method;
 
 import javax.interceptor.AroundInvoke;
@@ -11,7 +12,12 @@ import com.spstudio.love.web.qualifiers.LoveTrace;
 
 @Interceptor
 @LoveTrace
-public class LoveTraceInteceptor {
+public class LoveTraceInteceptor implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7061648997621546160L;
 	
 	Logger log = Logger.getLogger(LoveTraceInteceptor.class);
 	

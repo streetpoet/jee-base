@@ -11,6 +11,9 @@
 			<f:selectItems value="#{addProductAction.classifyItems}"/>
 		</h:selectOneMenu>
 		<h:commandButton action="#{addProductAction.addProduct}" value="Add Product" />
+		<h:commandButton action="#{testBean.begin()}" value="begin" />
+		<h:commandButton action="#{testBean.end()}" value="end" />
+		<h:commandButton action="#{testBean.print()}" value="print" />
 	</h:form>
 </h:body>
 </html>

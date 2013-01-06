@@ -26,4 +26,7 @@
 		</resource-bundle>
 
 	</application>
+	<factory>
+	    <exception-handler-factory>ViewExpiredExceptionExceptionHandlerFactory</exception-handler-factory>
+	</factory>
 </faces-config>

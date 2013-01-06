@@ -14,10 +14,6 @@ import qualifiers.LoveDataSource;
 
 public class DatabaseHelper {
 	
-	public DatabaseHelper(){
-		
-	}
-	
 	@Inject
 	@LoveDataSource
 	private DataSource ds;

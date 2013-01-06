@@ -6,7 +6,7 @@ import javax.enterprise.inject.Produces;
 import javax.naming.Context;
 import javax.naming.NamingException;
 
-import com.spstudio.love.web.qualifiers.LoveLogged;
+import com.spstudio.love.web.qualifiers.LoveTrace;
 import com.spstudio.love.web.qualifiers.ProductSingletonEJB;
 import com.spstudio.love.web.system.LoveDaemon;
 
@@ -15,7 +15,7 @@ public class ProductSingletonEJBProducer {
 	@SuppressWarnings("unused")
 	@Produces
 	@ProductSingletonEJB
-	@LoveLogged
+	@LoveTrace
 	private IProductSingleton produce(){
 		IProductSingleton products = null;
  		try {

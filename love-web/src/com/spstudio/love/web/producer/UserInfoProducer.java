@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 import com.spstudio.love.web.helper.DatabaseHelper;
 import com.spstudio.love.web.modules.main.UserInfo;
-import com.spstudio.love.web.qualifiers.LoveLogged;
+import com.spstudio.love.web.qualifiers.LoveTrace;
 import com.spstudio.love.web.qualifiers.UserInfoQualifier;
 
 public class UserInfoProducer {
@@ -26,7 +26,7 @@ public class UserInfoProducer {
 	@SuppressWarnings("unused")
 	@Produces
 	@UserInfoQualifier
-	@LoveLogged
+	@LoveTrace
 	private UserInfo produceUserInfo(){
 		UserInfo userInfo = new UserInfo();
 		userInfo.setUserId(principal.getName());

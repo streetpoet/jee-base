@@ -8,7 +8,7 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
-import com.spstudio.love.web.qualifiers.LoveLogged;
+import com.spstudio.love.web.qualifiers.LoveTrace;
 
 @RequestScoped
 public class AddProductHandler implements Serializable {
@@ -21,7 +21,7 @@ public class AddProductHandler implements Serializable {
 	@Inject
 	private Product product;
 
-	@LoveLogged
+	@LoveTrace
 	public void addProduct(@Observes @AddProductQualifier AddProductEvent event){
 		// call a specific add product handler class
 		Logger.getLogger(AddProductHandler.class).info("product.classifyId = " + product.getClassifyId());

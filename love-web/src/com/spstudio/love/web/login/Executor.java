@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.spstudio.love.web.common.StandardNavigation;
-import com.spstudio.love.web.qualifiers.LoveLogged;
+import com.spstudio.love.web.qualifiers.LoveTrace;
 import com.spstudio.love.web.qualifiers.ProductSingletonEJB;
 
 @RequestScoped
@@ -28,7 +28,7 @@ public class Executor {
 		return StandardNavigation.SUCCESS;
 	}
 	
-	@LoveLogged
+	@LoveTrace
 	public void logout(){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	}

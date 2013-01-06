@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
+import com.spstudio.love.web.qualifiers.LoveLogged;
 import com.spstudio.love.web.qualifiers.LoveTrace;
 
 @RequestScoped
@@ -19,11 +20,15 @@ public class AddProductHandler implements Serializable {
 	private static final long serialVersionUID = -988405636819038144L;
 	
 	@Inject
-	private Product product;
+	@LoveLogged
+	private Logger log;
+	
+	@Inject
+	Product product;
 
 	@LoveTrace
 	public void addProduct(@Observes @AddProductQualifier AddProductEvent event){
 		// call a specific add product handler class
-		Logger.getLogger(AddProductHandler.class).info("product.classifyId = " + product.getClassifyId());
+		log.info("product.classifyId = " + product.getClassifyId());
 	}
 }

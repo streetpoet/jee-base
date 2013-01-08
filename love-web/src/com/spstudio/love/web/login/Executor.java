@@ -9,14 +9,14 @@ import javax.inject.Named;
 
 import com.spstudio.love.web.common.StandardNavigation;
 import com.spstudio.love.web.qualifiers.LoveTrace;
-import com.spstudio.love.web.qualifiers.ProductSingletonEJB;
+import com.spstudio.love.web.qualifiers.ProductSingleRemoteBean;
 
 @RequestScoped
 @Named
 public class Executor {
 		
 	@Inject
-	@ProductSingletonEJB
+	@ProductSingleRemoteBean
 	private IProductSingleton productSingleton;
 	
 	public Object doExecute(){

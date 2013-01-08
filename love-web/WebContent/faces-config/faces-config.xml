@@ -27,6 +27,6 @@
 
 	</application>
 	<factory>
-	    <exception-handler-factory>ViewExpiredExceptionExceptionHandlerFactory</exception-handler-factory>
+	    <exception-handler-factory>com.spstudio.love.web.exception.ViewExpiredExceptionExceptionHandlerFactory</exception-handler-factory>
 	</factory>
 </faces-config>

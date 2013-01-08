@@ -15,7 +15,8 @@ public class UserInfo implements Serializable{
 	
 	private static final long serialVersionUID = -5386449236793012236L;
 	
-	private String userId;
+	private int userId;
+	private int familyId;
 	private String nickName;
 	private String familyName;
 	private String description;
@@ -25,17 +26,28 @@ public class UserInfo implements Serializable{
 	@Inject
 	public UserInfo(@UserInfoQualifier UserInfo uInfo){
 		userId = uInfo.getUserId();
+		familyId = uInfo.getFamilyId();
 		nickName = uInfo.getNickName();
 		familyName = uInfo.getFamilyName();
 		description = uInfo.getDescription();
 	}
 	
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+
+	public int getFamilyId() {
+		return familyId;
+	}
+
+	public void setFamilyId(int familyId) {
+		this.familyId = familyId;
+	}
+
 	public String getNickName() {
 		return nickName;
 	}

@@ -14,6 +14,6 @@ import javax.inject.Qualifier;
 @Qualifier
 @Retention(RUNTIME)
 @Target({TYPE, METHOD, FIELD, PARAMETER})
-public @interface ProductSingletonEJB{
+public @interface ProductSingleRemoteBean{
 
 }

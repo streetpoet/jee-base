@@ -10,25 +10,37 @@ import javax.enterprise.inject.Model;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
-import com.spstudio.love.web.qualifiers.ProductSingletonEJB;
+import org.jboss.logging.Logger;
+
+import com.spstudio.love.web.modules.main.UserInfo;
+import com.spstudio.love.web.qualifiers.FamilyMembers;
+import com.spstudio.love.web.qualifiers.LoveLogged;
+import com.spstudio.love.web.qualifiers.ProductSingleRemoteBean;
 
 @Model
 public class AddProductAction {
 	
-	@Inject
-	@ProductSingletonEJB
-	private IProductSingleton productSingleton;
+	@Inject @ProductSingleRemoteBean IProductSingleton productSingleton;
+	@Inject @AddProductQualifier Event<AddProductEvent> addProductEvent;
+	@Inject @FamilyMembers List<UserInfo> members;
+	@Inject @LoveLogged Logger log;
 	
-	@Inject
-	@AddProductQualifier
-	private Event<AddProductEvent> addProductEvent;
-	
-	public List<SelectItem> getClassifyItems(){
+	public List<SelectItem> getClassifyItems() {
 		List<String[]> list = productSingleton.retrieveProductClassify();
 		List<SelectItem> selectItems = new ArrayList<SelectItem>();
 		if (list != null && list.size() != 0){
 			for (String[] data: list){
 				selectItems.add(new SelectItem(data[IProductSingleton.INDEX_CLASSIFY_ID], data[IProductSingleton.INDEX_CLASSIFY_NAME]));
+			}
+		}
+		return selectItems;
+	}
+	
+	public List<SelectItem> getFamilyMembers() {
+		List<SelectItem> selectItems = new ArrayList<SelectItem>();
+		if (members != null && members.size() != 0){
+			for (UserInfo user: members){
+				selectItems.add(new SelectItem(user.getUserId(), user.getNickName()));
 			}
 		}
 		return selectItems;

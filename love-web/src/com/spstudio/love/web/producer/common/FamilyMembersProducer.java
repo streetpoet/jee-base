@@ -1,4 +1,4 @@
-package com.spstudio.love.web.producer;
+package com.spstudio.love.web.producer.common;
 
 import java.util.ArrayList;
 import java.util.List;

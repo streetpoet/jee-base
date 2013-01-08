@@ -1,4 +1,4 @@
-package com.spstudio.love.web.producer;
+package com.spstudio.love.web.producer.common;
 
 import javax.annotation.Resource;
 import javax.annotation.Resource.AuthenticationType;

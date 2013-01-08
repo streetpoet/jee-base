@@ -1,4 +1,4 @@
-package com.spstudio.love.web.producer;
+package com.spstudio.love.web.producer.common;
 
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;

@@ -1,4 +1,4 @@
-package com.spstudio.love.web.producer;
+package com.spstudio.love.web.producer.common;
 
 import java.util.List;
 
@@ -12,11 +12,8 @@ import com.spstudio.love.web.qualifiers.UserInfoQualifier;
 
 public class UserInfoProducer {
 	
-	@Inject
-	private DatabaseHelper dbHelper;
-	
-	@Inject
-	private java.security.Principal principal;
+	@Inject DatabaseHelper dbHelper;
+	@Inject java.security.Principal principal;
 
 	private final String Query_User_Family_Info = 
 		"select users.nickName, family.familyName, family.description, users.id, family.id "

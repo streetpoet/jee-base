@@ -4,7 +4,7 @@ import javax.annotation.Resource;
 import javax.annotation.Resource.AuthenticationType;
 import javax.enterprise.inject.Produces;
 
-import com.spstudio.love.web.qualifiers.LoveDataSource;
+import com.spstudio.love.web.qualifiers.system.LoveDataSource;
 
 public class DataSourceProducer {
 	

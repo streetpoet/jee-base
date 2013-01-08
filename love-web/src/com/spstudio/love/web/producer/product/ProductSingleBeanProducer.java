@@ -5,8 +5,8 @@ import interfaces.IProductSingleton;
 import javax.enterprise.inject.Produces;
 import javax.naming.NamingException;
 
-import com.spstudio.love.web.qualifiers.LoveTrace;
-import com.spstudio.love.web.qualifiers.ProductSingleRemoteBean;
+import com.spstudio.love.web.qualifiers.product.ProductSingleRemoteBean;
+import com.spstudio.love.web.qualifiers.system.LoveTrace;
 import com.spstudio.love.web.system.LoveDaemon;
 
 public class ProductSingleBeanProducer {

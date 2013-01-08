@@ -1,4 +1,4 @@
-package com.spstudio.love.web.qualifiers;
+package com.spstudio.love.web.qualifiers.system;
 
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.TYPE;

@@ -13,8 +13,8 @@ import javax.sql.DataSource;
 
 import org.jboss.logging.Logger;
 
-import com.spstudio.love.web.qualifiers.LoveDataSource;
-import com.spstudio.love.web.qualifiers.LoveLogged;
+import com.spstudio.love.web.qualifiers.system.LoveDataSource;
+import com.spstudio.love.web.qualifiers.system.LoveLogged;
 
 @Dependent
 public class DatabaseHelper {

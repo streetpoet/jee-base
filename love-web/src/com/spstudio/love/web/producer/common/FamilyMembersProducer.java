@@ -8,7 +8,7 @@ import javax.inject.Inject;
 
 import com.spstudio.love.web.helper.DatabaseHelper;
 import com.spstudio.love.web.modules.main.UserInfo;
-import com.spstudio.love.web.qualifiers.FamilyMembers;
+import com.spstudio.love.web.qualifiers.system.FamilyMembers;
 
 public class FamilyMembersProducer {
 	

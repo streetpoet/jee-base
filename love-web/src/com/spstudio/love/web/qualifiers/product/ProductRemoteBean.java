@@ -1,4 +1,4 @@
-package com.spstudio.love.web.qualifiers;
+package com.spstudio.love.web.qualifiers.product;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
@@ -14,6 +14,6 @@ import javax.inject.Qualifier;
 @Qualifier
 @Retention(RUNTIME)
 @Target({TYPE, METHOD, FIELD, PARAMETER})
-public @interface LoveDataSource {
-	
+public @interface ProductRemoteBean{
+
 }

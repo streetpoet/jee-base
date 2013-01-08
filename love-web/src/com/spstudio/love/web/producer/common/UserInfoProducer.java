@@ -7,8 +7,8 @@ import javax.inject.Inject;
 
 import com.spstudio.love.web.helper.DatabaseHelper;
 import com.spstudio.love.web.modules.main.UserInfo;
-import com.spstudio.love.web.qualifiers.LoveTrace;
-import com.spstudio.love.web.qualifiers.UserInfoQualifier;
+import com.spstudio.love.web.qualifiers.system.LoveTrace;
+import com.spstudio.love.web.qualifiers.system.UserInfoQualifier;
 
 public class UserInfoProducer {
 	

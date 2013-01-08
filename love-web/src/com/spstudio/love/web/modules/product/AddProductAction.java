@@ -13,9 +13,9 @@ import javax.inject.Inject;
 import org.jboss.logging.Logger;
 
 import com.spstudio.love.web.modules.main.UserInfo;
-import com.spstudio.love.web.qualifiers.FamilyMembers;
-import com.spstudio.love.web.qualifiers.LoveLogged;
-import com.spstudio.love.web.qualifiers.ProductSingleRemoteBean;
+import com.spstudio.love.web.qualifiers.product.ProductSingleRemoteBean;
+import com.spstudio.love.web.qualifiers.system.FamilyMembers;
+import com.spstudio.love.web.qualifiers.system.LoveLogged;
 
 @Model
 public class AddProductAction {

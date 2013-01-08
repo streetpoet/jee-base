@@ -8,7 +8,7 @@ import javax.interceptor.Interceptor;
 
 import org.jboss.logging.Logger;
 
-import com.spstudio.love.web.qualifiers.LoveTrace;
+import com.spstudio.love.web.qualifiers.system.LoveTrace;
 
 @Interceptor
 @LoveTrace

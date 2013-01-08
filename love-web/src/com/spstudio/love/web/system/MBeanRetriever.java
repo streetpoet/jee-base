@@ -1,4 +1,4 @@
-package com.spstudio.love.web.common;
+package com.spstudio.love.web.system;
 
 import java.lang.management.ManagementFactory;
 

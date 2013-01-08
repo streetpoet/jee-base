@@ -5,7 +5,7 @@ import javax.enterprise.inject.spi.InjectionPoint;
 
 import org.jboss.logging.Logger;
 
-import com.spstudio.love.web.qualifiers.LoveLogged;
+import com.spstudio.love.web.qualifiers.system.LoveLogged;
 
 public class LoveLoggedProducer {
 	

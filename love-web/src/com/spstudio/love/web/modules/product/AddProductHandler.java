@@ -15,9 +15,9 @@ import org.jboss.logging.Logger;
 import com.spstudio.love.web.entity.product.Product;
 import com.spstudio.love.web.helper.DatabaseHelper;
 import com.spstudio.love.web.modules.main.UserInfo;
-import com.spstudio.love.web.qualifiers.LoveLogged;
-import com.spstudio.love.web.qualifiers.LoveTrace;
-import com.spstudio.love.web.qualifiers.ProductRemoteBean;
+import com.spstudio.love.web.qualifiers.product.ProductRemoteBean;
+import com.spstudio.love.web.qualifiers.system.LoveLogged;
+import com.spstudio.love.web.qualifiers.system.LoveTrace;
 
 @Dependent
 public class AddProductHandler implements Serializable {

@@ -11,8 +11,8 @@ import javax.inject.Named;
 
 import org.jboss.logging.Logger;
 
-import com.spstudio.love.web.qualifiers.LoveLogged;
-import com.spstudio.love.web.qualifiers.LoveTrace;
+import com.spstudio.love.web.qualifiers.system.LoveLogged;
+import com.spstudio.love.web.qualifiers.system.LoveTrace;
 
 @ConversationScoped
 @Named

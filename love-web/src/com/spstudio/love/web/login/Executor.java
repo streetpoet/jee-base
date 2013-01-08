@@ -7,9 +7,9 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.spstudio.love.web.common.StandardNavigation;
-import com.spstudio.love.web.qualifiers.LoveTrace;
-import com.spstudio.love.web.qualifiers.ProductSingleRemoteBean;
+import com.spstudio.love.web.qualifiers.product.ProductSingleRemoteBean;
+import com.spstudio.love.web.qualifiers.system.LoveTrace;
+import com.spstudio.love.web.system.StandardNavigation;
 
 @RequestScoped
 @Named

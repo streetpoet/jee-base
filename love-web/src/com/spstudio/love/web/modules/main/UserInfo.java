@@ -7,7 +7,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.spstudio.love.web.qualifiers.UserInfoQualifier;
+import com.spstudio.love.web.qualifiers.system.UserInfoQualifier;
 
 @SessionScoped
 @Named

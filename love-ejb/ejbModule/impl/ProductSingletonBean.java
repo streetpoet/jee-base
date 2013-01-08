@@ -1,6 +1,5 @@
 package impl;
 
-import helper.DatabaseHelper;
 import interfaces.IProductSingleton;
 
 import java.util.ArrayList;
@@ -20,6 +19,8 @@ import javax.ejb.Startup;
 import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
+
+import com.spstudio.love.web.helper.DatabaseHelper;
 
 @Singleton
 @Startup

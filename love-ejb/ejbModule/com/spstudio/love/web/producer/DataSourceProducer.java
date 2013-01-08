@@ -1,10 +1,10 @@
-package producer;
+package com.spstudio.love.web.producer;
 
 import javax.annotation.Resource;
 import javax.annotation.Resource.AuthenticationType;
 import javax.enterprise.inject.Produces;
 
-import qualifiers.LoveDataSource;
+import com.spstudio.love.web.qualifiers.LoveDataSource;
 
 public class DataSourceProducer {
 	

@@ -51,19 +51,27 @@ public class ProductSingletonBean implements IProductSingleton {
 		return productClassify;
 	}
 	
-	@Schedule(second = "*/30", minute = "*", hour = "*", persistent = false)
+	boolean b = true;
+	
+	@Schedule(second = "*/5", minute = "*", hour = "*", persistent = false)
 	public void queryProductClassify(){
-		List<String[]> classify = new ArrayList<String[]>();
-		List<Object[]> result = helper.doQuery("select id, kindName from f1_classify", null);
-		if (result != null && result.size() != 0){
-			for (Object[] data: result){
-				String[] row = new String[2];
-				row[INDEX_CLASSIFY_ID] = String.valueOf(data[0]);
-				row[INDEX_CLASSIFY_NAME] = (String)data[1];
-				classify.add(row);
-			}
+		if (b){
+			System.out.println("b = " + b);
+			b = false;
+			helper.doQuery("select * from users", null);
+			
 		}
-		productClassify = classify;
+//		List<String[]> classify = new ArrayList<String[]>();
+//		List<Object[]> result = helper.doQuery("select id, kindName from f1_classify", null);
+//		if (result != null && result.size() != 0){
+//			for (Object[] data: result){
+//				String[] row = new String[2];
+//				row[INDEX_CLASSIFY_ID] = String.valueOf(data[0]);
+//				row[INDEX_CLASSIFY_NAME] = (String)data[1];
+//				classify.add(row);
+//			}
+//		}
+//		productClassify = classify;
 	}
 
 }

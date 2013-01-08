@@ -26,15 +26,17 @@ public class DatabaseHelper {
 		try {
 			conn = ds.getConnection();
 			stmt = conn.prepareStatement(sql);
-			for (int i = 0; i < params.length; i++) {
-				if (params[i] instanceof String) {
-					stmt.setString(i + 1, (String) params[i]);
-				} else if (params[i] instanceof Integer) {
-					stmt.setInt(i + 1, (Integer) params[i]);
-				} else if (params[i] instanceof java.util.Date){
-					stmt.setDate(i + 1, new java.sql.Date(((java.util.Date) params[i]).getTime()));
-				} else {
-					stmt.setObject(i + 1, params[i]);
+			if (params != null){
+				for (int i = 0; i < params.length; i++) {
+					if (params[i] instanceof String) {
+						stmt.setString(i + 1, (String) params[i]);
+					} else if (params[i] instanceof Integer) {
+						stmt.setInt(i + 1, (Integer) params[i]);
+					} else if (params[i] instanceof java.util.Date){
+						stmt.setDate(i + 1, new java.sql.Date(((java.util.Date) params[i]).getTime()));
+					} else {
+						stmt.setObject(i + 1, params[i]);
+					}
 				}
 			}
 			int effectRow = stmt.executeUpdate();
@@ -67,15 +69,17 @@ public class DatabaseHelper {
 		try {
 			conn = ds.getConnection();
 			stmt = conn.prepareStatement(sql);
-			for (int i = 0; i < params.length; i++) {
-				if (params[i] instanceof String) {
-					stmt.setString(i + 1, (String) params[i]);
-				} else if (params[i] instanceof Integer) {
-					stmt.setInt(i + 1, (Integer) params[i]);
-				} else if (params[i] instanceof java.util.Date){
-					stmt.setDate(i + 1, new java.sql.Date(((java.util.Date) params[i]).getTime()));
-				} else {
-					stmt.setObject(i + 1, params[i]);
+			if (params != null){
+				for (int i = 0; i < params.length; i++) {
+					if (params[i] instanceof String) {
+						stmt.setString(i + 1, (String) params[i]);
+					} else if (params[i] instanceof Integer) {
+						stmt.setInt(i + 1, (Integer) params[i]);
+					} else if (params[i] instanceof java.util.Date){
+						stmt.setDate(i + 1, new java.sql.Date(((java.util.Date) params[i]).getTime()));
+					} else {
+						stmt.setObject(i + 1, params[i]);
+					}
 				}
 			}
 			ResultSet rs = stmt.executeQuery();

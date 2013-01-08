@@ -21,6 +21,7 @@ import javax.inject.Inject;
 import org.jboss.logging.Logger;
 
 import com.spstudio.love.web.helper.DatabaseHelper;
+import com.spstudio.love.web.qualifiers.LoveLogged;
 
 @Singleton
 @Startup
@@ -28,22 +29,10 @@ import com.spstudio.love.web.helper.DatabaseHelper;
 @AccessTimeout(unit = TimeUnit.SECONDS, value = 5)
 public class ProductSingletonBean implements IProductSingleton {
 	
-	private Logger log = Logger.getLogger(ProductSingletonBean.class);
-	private List<String[]> productClassify;
+	@Inject @LoveLogged Logger log;
+	@Inject DatabaseHelper helper;
 	
-	@Inject
-	private DatabaseHelper helper;
-	
-	@PostConstruct
-	public void postConstruct(){
-		log.info(ProductSingletonBean.class.getName() + "#postConstruct");
-		productClassify = new ArrayList<String[]>();
-	}
-	
-	@PreDestroy
-	public void preDestroy(){
-		log.info(ProductSingletonBean.class.getName() + "#preDestroy");
-	}
+	private List<String[]> productClassify = null;
 
 	@Override
 	@Lock(LockType.READ)
@@ -51,27 +40,30 @@ public class ProductSingletonBean implements IProductSingleton {
 		return productClassify;
 	}
 	
-	boolean b = true;
-	
-	@Schedule(second = "*/5", minute = "*", hour = "*", persistent = false)
+	@Schedule(second = "*/10", minute = "*", hour = "*", persistent = false)
 	public void queryProductClassify(){
-		if (b){
-			System.out.println("b = " + b);
-			b = false;
-			helper.doQuery("select * from users", null);
-			
+		List<String[]> classify = new ArrayList<String[]>();
+		List<Object[]> result = helper.doQuery("select id, kindName from f1_classify", null);
+		if (result != null && result.size() != 0){
+			for (Object[] data: result){
+				String[] row = new String[2];
+				row[INDEX_CLASSIFY_ID] = String.valueOf(data[0]);
+				row[INDEX_CLASSIFY_NAME] = (String)data[1];
+				classify.add(row);
+			}
 		}
-//		List<String[]> classify = new ArrayList<String[]>();
-//		List<Object[]> result = helper.doQuery("select id, kindName from f1_classify", null);
-//		if (result != null && result.size() != 0){
-//			for (Object[] data: result){
-//				String[] row = new String[2];
-//				row[INDEX_CLASSIFY_ID] = String.valueOf(data[0]);
-//				row[INDEX_CLASSIFY_NAME] = (String)data[1];
-//				classify.add(row);
-//			}
-//		}
-//		productClassify = classify;
+		productClassify = classify;
+	}
+	
+	@PostConstruct
+	public void postConstruct(){
+		log.info("[[ ProductSingletonBean start. ]]");
+		queryProductClassify();
+	}
+	
+	@PreDestroy
+	public void preDestroy(){
+		log.info("[[ ProductSingletonBean end. ]]");
 	}
 
 }

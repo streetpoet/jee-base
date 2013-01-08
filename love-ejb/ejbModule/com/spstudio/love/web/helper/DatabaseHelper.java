@@ -11,16 +11,19 @@ import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
+import org.jboss.logging.Logger;
+
 import com.spstudio.love.web.qualifiers.LoveDataSource;
+import com.spstudio.love.web.qualifiers.LoveLogged;
 
 @Dependent
 public class DatabaseHelper {
 	
-	@Inject
-	@LoveDataSource
-	private DataSource ds;
+	@Inject @LoveDataSource DataSource ds;
+	@Inject @LoveLogged Logger log;
 
 	public boolean doDMLOperation(String sql, Object[] params) {
+		log.trace("invoke doDMLOperation.");
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try {
@@ -64,6 +67,7 @@ public class DatabaseHelper {
 	}
 	
 	public List<Object[]> doQuery(String sql, Object[] params) {
+		log.trace("invoke doQuery.");
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try {

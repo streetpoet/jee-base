@@ -11,7 +11,7 @@
 		
 			<h:outputLabel value="#{productBundle['product.classify']}" for="classify" />
 			<h:selectOneMenu id="classify" required="true" value="#{product.classifyId}">
-				<f:selectItems value="#{addProductAction.classifyItems}" />
+				<f:selectItems value="#{productAction.classifyItems}" />
 			</h:selectOneMenu>
 			
 			<h:outputLabel value="#{productBundle['product.name']}" for="product_name" />
@@ -23,7 +23,7 @@
 			<h:outputLabel value="#{productBundle['product.forUserId']}" for="main_user" />
 			<h:selectOneMenu id="main_user" required="true" value="#{product.forUserId}">
 				<f:selectItem itemValue="-1" itemLabel="all"/>
-				<f:selectItems value="#{addProductAction.familyMembers}" />
+				<f:selectItems value="#{productAction.familyMembers}" />
 			</h:selectOneMenu>
 			
 			<h:outputLabel value="#{productBundle['product.price']}" for="price" />

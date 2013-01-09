@@ -4,6 +4,9 @@ import interfaces.IProductSingleton;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseEvent;
+import javax.faces.event.PhaseId;
+import javax.faces.event.PhaseListener;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -32,6 +35,29 @@ public class Executor {
 	@LoveTrace
 	public void logout(){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		FacesContext.getCurrentInstance().getViewRoot().addPhaseListener(new PhaseListener() {
+			
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -7854016344535037345L;
+
+			@Override
+			public PhaseId getPhaseId() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public void beforePhase(PhaseEvent event) {
+				
+			}
+			
+			@Override
+			public void afterPhase(PhaseEvent arg0) {
+				
+			}
+		});
 	}
 
 }

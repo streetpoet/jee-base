@@ -6,6 +6,53 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:body>
-	
+	<h:form>
+		<h:panelGrid columns="2">
+		
+			<h:outputLabel value="#{productBundle['product.classify']}" for="classify" />
+			<h:selectOneMenu id="classify" required="true" value="#{product.classifyId}">
+				<f:selectItems value="#{addProductAction.classifyItems}" />
+			</h:selectOneMenu>
+			
+			<h:outputLabel value="#{productBundle['product.name']}" for="product_name" />
+			<h:inputText id="product_name" value="#{product.productName}" immediate="true" maxlength="100">
+				<f:validateRequired />
+				<f:validateLength minimum="1" maximum="100" />
+			</h:inputText>
+			
+			<h:outputLabel value="#{productBundle['product.forUserId']}" for="main_user" />
+			<h:selectOneMenu id="main_user" required="true" value="#{product.forUserId}">
+				<f:selectItem itemValue="-1" itemLabel="all"/>
+				<f:selectItems value="#{addProductAction.familyMembers}" />
+			</h:selectOneMenu>
+			
+			<h:outputLabel value="#{productBundle['product.price']}" for="price" />
+			<h:inputText id="price" value="#{product.price}" immediate="true" maxlength="7">
+				<f:validateRequired />
+				<f:convertNumber minIntegerDigits="0" maxIntegerDigits="9999999"/>
+			</h:inputText>
+			
+			<h:outputLabel value="#{productBundle['product.buydate']}" for="product_buy_date" />
+			<h:inputText id="product_buy_date" value="#{product.buyDate}">
+				<f:convertDateTime pattern="yyyy/MM/dd"/>
+				<f:convertDateTime pattern="yyyy-MM-dd"/>
+				<f:convertDateTime pattern="yyyyMMdd"/>
+			</h:inputText>
+			
+			<h:outputLabel value="#{productBundle['product.warrantyEndDate']}" for="warranty_end_date" />
+			<h:inputText id="warranty_end_date" value="#{product.warrantyEndDate}">
+				<f:convertDateTime pattern="yyyy/MM/dd"/>
+				<f:convertDateTime pattern="yyyy-MM-dd"/>
+				<f:convertDateTime pattern="yyyyMMdd"/>
+			</h:inputText>
+			
+			<h:outputLabel value="#{productBundle['product.description']}" for="desc" />
+			<h:inputTextarea id="desc" value="#{product.description}" maxlength="500">
+				<f:validateLength minimum="0" maximum="500"></f:validateLength>
+			</h:inputTextarea>
+			
+			<h:commandButton action="#{addProductAction.addProduct}" value="Query" />
+		</h:panelGrid>
+	</h:form>
 </h:body>
 </html>

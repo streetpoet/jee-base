@@ -10,20 +10,21 @@ import javax.enterprise.inject.Model;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
-import org.jboss.logging.Logger;
-
+import com.spstudio.love.web.event.product.AddProductEvent;
+import com.spstudio.love.web.event.product.AddProductEventQualifier;
+import com.spstudio.love.web.event.product.QueryProductEvent;
+import com.spstudio.love.web.event.product.QueryProductEventQualifier;
 import com.spstudio.love.web.modules.main.UserInfo;
 import com.spstudio.love.web.qualifiers.product.ProductSingleRemoteBean;
 import com.spstudio.love.web.qualifiers.system.FamilyMembers;
-import com.spstudio.love.web.qualifiers.system.LoveLogged;
 
 @Model
-public class AddProductAction {
+public class ProductAction {
 	
 	@Inject @ProductSingleRemoteBean IProductSingleton productSingleton;
-	@Inject @AddProductQualifier Event<AddProductEvent> addProductEvent;
+	@Inject @AddProductEventQualifier Event<AddProductEvent> addProductEvent;
+	@Inject @QueryProductEventQualifier Event<QueryProductEvent> queryProductEvent;
 	@Inject @FamilyMembers List<UserInfo> members;
-	@Inject @LoveLogged Logger log;
 	
 	public List<SelectItem> getClassifyItems() {
 		List<String[]> list = productSingleton.retrieveProductClassify();
@@ -46,8 +47,12 @@ public class AddProductAction {
 		return selectItems;
 	}
 	
-	public void addProduct(){
+	public void addProduct() {
 		addProductEvent.fire(new AddProductEvent());
+	}
+	
+	public void queryProduct() {
+		queryProductEvent.fire(new QueryProductEvent());
 	}
 	
 }

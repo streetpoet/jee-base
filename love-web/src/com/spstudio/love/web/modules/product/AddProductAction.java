@@ -49,4 +49,5 @@ public class AddProductAction {
 	public void addProduct(){
 		addProductEvent.fire(new AddProductEvent());
 	}
+	
 }

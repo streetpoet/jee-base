@@ -25,6 +25,7 @@ public class Executor {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		FacesContext.getCurrentInstance().responseComplete();
 		return StandardNavigation.SUCCESS;
 	}
 	

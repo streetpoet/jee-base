@@ -1,11 +1,14 @@
 package impl;
 
 import interfaces.IProduct;
+import interfaces.IQueryResult;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import com.spstudio.love.web.entity.product.Product;
+import com.spstudio.love.web.entity.product.ProductCondition;
+import com.spstudio.love.web.entity.system.PageObject;
 import com.spstudio.love.web.helper.DatabaseHelper;
 
 @Stateless
@@ -19,18 +22,27 @@ public class ProductBean implements IProduct {
 	
 	
 	@Override
-	public boolean addProduct(Product p) {
+	public boolean addProduct(Product product) {
 		Object[] params = new Object[]{
-			p.getClassifyId(),
-			p.getFamilyId(),
-			p.getForUserId(),
-			p.getProductName(),
-			p.getPrice(),
-			p.getBuyDate(),
-			p.getWarrantyEndDate(),
-			p.getDescription()
+			product.getClassifyId(),
+			product.getFamilyId(),
+			product.getForUserId(),
+			product.getProductName(),
+			product.getPrice(),
+			product.getBuyDate(),
+			product.getWarrantyEndDate(),
+			product.getDescription()
 		};
 		return helper.doDMLOperation(ADD_PRODUCT_SQL, params);
 	}
+
+
+	@Override
+	public IQueryResult<Product> queryProducts(ProductCondition condition,
+			PageObject pageObject) {
+		
+		return null;
+	}
+
 
 }

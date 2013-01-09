@@ -21,7 +21,7 @@ import javax.inject.Inject;
 import org.jboss.logging.Logger;
 
 import com.spstudio.love.web.helper.DatabaseHelper;
-import com.spstudio.love.web.qualifiers.LoveLogged;
+import com.spstudio.love.web.qualifiers.system.LoveLogged;
 
 @Singleton
 @Startup

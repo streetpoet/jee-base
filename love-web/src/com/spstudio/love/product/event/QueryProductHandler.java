@@ -12,12 +12,12 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
-import com.spstudio.love.product.entity.IQueryResult;
 import com.spstudio.love.product.entity.Product;
 import com.spstudio.love.product.entity.ProductCondition;
 import com.spstudio.love.product.qualifier.ProductRemoteBean;
-import com.spstudio.love.system.entity.PageObject;
+import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.entity.UserInfo;
+import com.spstudio.love.system.interfaces.IQueryResult;
 import com.spstudio.love.system.qualifier.LoveLogged;
 import com.spstudio.love.system.qualifier.LoveTrace;
 

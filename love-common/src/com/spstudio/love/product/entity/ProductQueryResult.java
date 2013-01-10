@@ -3,7 +3,8 @@ package com.spstudio.love.product.entity;
 import java.io.Serializable;
 import java.util.List;
 
-import com.spstudio.love.system.entity.PageObject;
+import com.spstudio.love.system.bean.PageObject;
+import com.spstudio.love.system.interfaces.IQueryResult;
 
 public class ProductQueryResult implements IQueryResult<Product>, Serializable {
 

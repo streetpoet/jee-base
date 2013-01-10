@@ -9,10 +9,10 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import com.spstudio.love.web.entity.product.Product;
-import com.spstudio.love.web.entity.product.ProductCondition;
-import com.spstudio.love.web.entity.system.PageObject;
-import com.spstudio.love.web.helper.DatabaseHelper;
+import com.spstudio.love.product.entity.Product;
+import com.spstudio.love.product.entity.ProductCondition;
+import com.spstudio.love.system.entity.PageObject;
+import com.spstudio.love.system.helper.DatabaseHelper;
 
 @Stateless
 public class ProductBean implements IProduct {

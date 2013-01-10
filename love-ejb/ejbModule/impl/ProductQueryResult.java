@@ -4,8 +4,8 @@ import interfaces.IQueryResult;
 
 import java.util.List;
 
-import com.spstudio.love.web.entity.product.Product;
-import com.spstudio.love.web.entity.system.PageObject;
+import com.spstudio.love.product.entity.Product;
+import com.spstudio.love.system.entity.PageObject;
 
 public class ProductQueryResult implements IQueryResult<Product> {
 

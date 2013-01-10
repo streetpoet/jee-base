@@ -20,8 +20,8 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
-import com.spstudio.love.web.helper.DatabaseHelper;
-import com.spstudio.love.web.qualifiers.system.LoveLogged;
+import com.spstudio.love.system.helper.DatabaseHelper;
+import com.spstudio.love.system.qualifier.LoveLogged;
 
 @Singleton
 @Startup

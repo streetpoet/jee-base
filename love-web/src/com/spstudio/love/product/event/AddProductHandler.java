@@ -23,9 +23,9 @@ public class AddProductHandler implements Serializable {
 	 */
 	private static final long serialVersionUID = -988405636819038144L;
 	
-	@Inject Product product;
-	@Inject UserInfo userInfo;
+	@Inject @com.spstudio.love.product.qualifier.Product Product product;
 	@Inject @ProductRemoteBean IProduct productRemoteBean;
+	@Inject UserInfo userInfo;
 
 	@LoveTrace
 	public void addProduct(@Observes @AddProductEventQualifier AddProductEvent event){

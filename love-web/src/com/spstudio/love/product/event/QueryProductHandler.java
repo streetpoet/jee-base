@@ -1,7 +1,8 @@
 package com.spstudio.love.product.event;
 
+
+
 import interfaces.IProduct;
-import interfaces.IQueryResult;
 
 import java.io.Serializable;
 
@@ -11,9 +12,11 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
+import com.spstudio.love.product.entity.IQueryResult;
 import com.spstudio.love.product.entity.Product;
 import com.spstudio.love.product.entity.ProductCondition;
 import com.spstudio.love.product.qualifier.ProductRemoteBean;
+import com.spstudio.love.system.entity.PageObject;
 import com.spstudio.love.system.entity.UserInfo;
 import com.spstudio.love.system.qualifier.LoveLogged;
 import com.spstudio.love.system.qualifier.LoveTrace;
@@ -32,11 +35,14 @@ public class QueryProductHandler implements Serializable {
 	@Inject @LoveLogged Logger log;
 
 	@LoveTrace
-	public void queryProduct(@Observes @AddProductEventQualifier QueryProductEvent event){
+	public void queryProduct(@Observes @QueryProductEventQualifier QueryProductEvent event){
 		
 		condition.setFamilyId(userInfo.getFamilyId());
 		ProductCondition c = condition.clone();
-		IQueryResult<Product> result = productRemoteBean.queryProducts(c, null);
+		PageObject pageObject = new PageObject();
+		pageObject.setOffset(0);
+		pageObject.setRecordCountPerFetch(6);
+		IQueryResult<Product> result = (IQueryResult<Product>)productRemoteBean.queryProducts(condition, pageObject);
 		log.info("result count: " + result.getResultData().size());
 		condition.clear();
 	}

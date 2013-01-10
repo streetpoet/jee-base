@@ -1,4 +1,4 @@
-package interfaces;
+package com.spstudio.love.product.entity;
 
 import java.util.List;
 

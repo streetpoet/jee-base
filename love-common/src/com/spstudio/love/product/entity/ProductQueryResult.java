@@ -1,14 +1,17 @@
-package impl;
+package com.spstudio.love.product.entity;
 
-import interfaces.IQueryResult;
-
+import java.io.Serializable;
 import java.util.List;
 
-import com.spstudio.love.product.entity.Product;
 import com.spstudio.love.system.entity.PageObject;
 
-public class ProductQueryResult implements IQueryResult<Product> {
+public class ProductQueryResult implements IQueryResult<Product>, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4999126268651424923L;
+	
 	private List<Product> listProduct;
 	private PageObject pageObject;
 	

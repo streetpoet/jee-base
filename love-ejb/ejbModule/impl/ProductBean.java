@@ -1,7 +1,6 @@
 package impl;
 
 import interfaces.IProduct;
-import interfaces.IQueryResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +8,10 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import com.spstudio.love.product.entity.IQueryResult;
 import com.spstudio.love.product.entity.Product;
 import com.spstudio.love.product.entity.ProductCondition;
+import com.spstudio.love.product.entity.ProductQueryResult;
 import com.spstudio.love.system.entity.PageObject;
 import com.spstudio.love.system.helper.DatabaseHelper;
 
@@ -41,25 +42,20 @@ public class ProductBean implements IProduct {
 		return helper.doDMLOperation(ADD_PRODUCT_SQL, params);
 	}
 
-
 	@Override
 	public IQueryResult<Product> queryProducts(ProductCondition condition,
 			PageObject pageObject) {
-		ProductQueryResult returnResult = new ProductQueryResult();
+		IQueryResult<Product> returnResult = new ProductQueryResult();
 		Object[] params = new Object[] {
 			pageObject.getOffset(),
-			pageObject.getMaxRowNumber()
+			pageObject.getRecordCountPerFetch()
 		};
 		List<Object[]> result = helper.doQuery(QUERY_PRODUCTS_SQL_SUB_2 + QUERY_PRODUCTS_SQL_SUB_FROM, params);
 		List<Product> listProduct = new ArrayList<Product>();
-		if (result != null && result.size() != 0){
-			for (Object[] row: result){
-				Product p = new Product();
-				
-			}
-		}
-		returnResult.setListProduct(listProduct);
-		return null;
+		pageObject.setTotalRecordsNumber((Long)result.get(0)[0]);
+		((ProductQueryResult)returnResult).setListProduct(listProduct);
+		((ProductQueryResult)returnResult).setPageObject(pageObject);
+		return returnResult;
 	}
 
 

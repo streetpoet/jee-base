@@ -1,4 +1,4 @@
-package com.spstudio.love.web.modules.product;
+package com.spstudio.love.product.action;
 
 import interfaces.IProductSingleton;
 
@@ -10,13 +10,13 @@ import javax.enterprise.inject.Model;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
-import com.spstudio.love.web.event.product.AddProductEvent;
-import com.spstudio.love.web.event.product.AddProductEventQualifier;
-import com.spstudio.love.web.event.product.QueryProductEvent;
-import com.spstudio.love.web.event.product.QueryProductEventQualifier;
-import com.spstudio.love.web.modules.main.UserInfo;
-import com.spstudio.love.web.qualifiers.product.ProductSingleRemoteBean;
-import com.spstudio.love.web.qualifiers.system.FamilyMembers;
+import com.spstudio.love.product.event.AddProductEvent;
+import com.spstudio.love.product.event.AddProductEventQualifier;
+import com.spstudio.love.product.event.QueryProductEvent;
+import com.spstudio.love.product.event.QueryProductEventQualifier;
+import com.spstudio.love.product.qualifier.ProductSingleRemoteBean;
+import com.spstudio.love.system.entity.UserInfo;
+import com.spstudio.love.system.qualifier.FamilyMembers;
 
 @Model
 public class ProductAction {

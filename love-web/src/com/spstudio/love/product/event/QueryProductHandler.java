@@ -1,4 +1,4 @@
-package com.spstudio.love.web.event.product;
+package com.spstudio.love.product.event;
 
 import interfaces.IProduct;
 
@@ -8,10 +8,10 @@ import javax.enterprise.context.Dependent;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import com.spstudio.love.web.entity.product.Product;
-import com.spstudio.love.web.modules.main.UserInfo;
-import com.spstudio.love.web.qualifiers.product.ProductRemoteBean;
-import com.spstudio.love.web.qualifiers.system.LoveTrace;
+import com.spstudio.love.product.entity.Product;
+import com.spstudio.love.product.qualifier.ProductRemoteBean;
+import com.spstudio.love.system.entity.UserInfo;
+import com.spstudio.love.system.qualifier.LoveTrace;
 
 @Dependent
 public class QueryProductHandler implements Serializable {
@@ -28,9 +28,9 @@ public class QueryProductHandler implements Serializable {
 	@LoveTrace
 	public void queryProduct(@Observes @AddProductEventQualifier QueryProductEvent event){
 		
-//		product.setFamilyId(userInfo.getFamilyId());
-//		Product p = product.clone();
-//		boolean result = productRemoteBean.addProduct(p);
+		product.setFamilyId(userInfo.getFamilyId());
+		Product p = product.clone();
+//		boolean result = productRemoteBean.
 //		FacesContext.getCurrentInstance().addMessage(
 //				FacesMessage.FACES_MESSAGES, 
 //				new FacesMessage(FacesMessage.SEVERITY_INFO, result ? "success" : "fail", ""));

@@ -1,4 +1,4 @@
-package com.spstudio.love.web.modules.product.test;
+package com.spstudio.love.product.action;
 
 import java.io.Serializable;
 
@@ -11,8 +11,8 @@ import javax.inject.Named;
 
 import org.jboss.logging.Logger;
 
-import com.spstudio.love.web.qualifiers.system.LoveLogged;
-import com.spstudio.love.web.qualifiers.system.LoveTrace;
+import com.spstudio.love.system.qualifier.LoveLogged;
+import com.spstudio.love.system.qualifier.LoveTrace;
 
 @ConversationScoped
 @Named

@@ -1,4 +1,4 @@
-package com.spstudio.love.web.event.product;
+package com.spstudio.love.product.event;
 
 import interfaces.IProduct;
 
@@ -10,10 +10,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-import com.spstudio.love.web.entity.product.Product;
-import com.spstudio.love.web.modules.main.UserInfo;
-import com.spstudio.love.web.qualifiers.product.ProductRemoteBean;
-import com.spstudio.love.web.qualifiers.system.LoveTrace;
+import com.spstudio.love.product.entity.Product;
+import com.spstudio.love.product.qualifier.ProductRemoteBean;
+import com.spstudio.love.system.entity.UserInfo;
+import com.spstudio.love.system.qualifier.LoveTrace;
 
 @Dependent
 public class AddProductHandler implements Serializable {

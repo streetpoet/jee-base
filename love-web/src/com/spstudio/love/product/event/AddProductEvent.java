@@ -1,4 +1,4 @@
-package com.spstudio.love.web.event.product;
+package com.spstudio.love.product.event;
 
 import java.io.Serializable;
 

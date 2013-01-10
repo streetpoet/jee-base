@@ -1,0 +1,42 @@
+package com.spstudio.love.product.entity;
+
+import java.util.Date;
+
+public class ProductCondition extends Product {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -832712246031293176L;
+	
+	private Date buyDateFrom;
+	private Date buyDateTo;
+	private Date warrantyEndDateFrom;
+	private Date warrantyEndDateTo;
+	
+	public Date getBuyDateFrom() {
+		return buyDateFrom;
+	}
+	public void setBuyDateFrom(Date buyDateFrom) {
+		this.buyDateFrom = buyDateFrom;
+	}
+	public Date getBuyDateTo() {
+		return buyDateTo;
+	}
+	public void setBuyDateTo(Date buyDateTo) {
+		this.buyDateTo = buyDateTo;
+	}
+	public Date getWarrantyEndDateFrom() {
+		return warrantyEndDateFrom;
+	}
+	public void setWarrantyEndDateFrom(Date warrantyEndDateFrom) {
+		this.warrantyEndDateFrom = warrantyEndDateFrom;
+	}
+	public Date getWarrantyEndDateTo() {
+		return warrantyEndDateTo;
+	}
+	public void setWarrantyEndDateTo(Date warrantyEndDateTo) {
+		this.warrantyEndDateTo = warrantyEndDateTo;
+	}
+	
+}

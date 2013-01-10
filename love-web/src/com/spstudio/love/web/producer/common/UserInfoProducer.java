@@ -5,9 +5,9 @@ import java.util.List;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 
-import com.spstudio.love.web.helper.DatabaseHelper;
+import com.spstudio.love.system.helper.DatabaseHelper;
+import com.spstudio.love.system.qualifier.LoveTrace;
 import com.spstudio.love.web.modules.main.UserInfo;
-import com.spstudio.love.web.qualifiers.system.LoveTrace;
 import com.spstudio.love.web.qualifiers.system.UserInfoQualifier;
 
 public class UserInfoProducer {

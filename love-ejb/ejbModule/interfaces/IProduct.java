@@ -2,9 +2,9 @@ package interfaces;
 
 import javax.ejb.Remote;
 
-import com.spstudio.love.web.entity.product.Product;
-import com.spstudio.love.web.entity.product.ProductCondition;
-import com.spstudio.love.web.entity.system.PageObject;
+import com.spstudio.love.product.entity.Product;
+import com.spstudio.love.product.entity.ProductCondition;
+import com.spstudio.love.system.entity.PageObject;
 
 @Remote
 public interface IProduct {

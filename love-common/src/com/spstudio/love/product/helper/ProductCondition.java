@@ -1,8 +1,10 @@
-package com.spstudio.love.product.entity;
+package com.spstudio.love.product.helper;
 
 import java.util.Date;
 
 import javax.enterprise.inject.Model;
+
+import com.spstudio.love.product.entity.Product;
 
 @Model
 @com.spstudio.love.product.qualifier.ProductCondition

@@ -1,8 +1,9 @@
-package com.spstudio.love.product.entity;
+package com.spstudio.love.product.helper;
 
 import java.io.Serializable;
 import java.util.List;
 
+import com.spstudio.love.product.entity.Product;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.interfaces.IQueryResult;
 

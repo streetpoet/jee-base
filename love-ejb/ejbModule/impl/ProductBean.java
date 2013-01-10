@@ -9,8 +9,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import com.spstudio.love.product.entity.Product;
-import com.spstudio.love.product.entity.ProductCondition;
-import com.spstudio.love.product.entity.ProductQueryResult;
+import com.spstudio.love.product.helper.ProductCondition;
+import com.spstudio.love.product.helper.ProductQueryResult;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.helper.DatabaseHelper;
 import com.spstudio.love.system.interfaces.IQueryResult;

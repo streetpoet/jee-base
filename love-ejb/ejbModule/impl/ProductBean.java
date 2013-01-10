@@ -8,12 +8,12 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import com.spstudio.love.product.entity.IQueryResult;
 import com.spstudio.love.product.entity.Product;
 import com.spstudio.love.product.entity.ProductCondition;
 import com.spstudio.love.product.entity.ProductQueryResult;
-import com.spstudio.love.system.entity.PageObject;
+import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.helper.DatabaseHelper;
+import com.spstudio.love.system.interfaces.IQueryResult;
 
 @Stateless
 public class ProductBean implements IProduct {

@@ -2,7 +2,11 @@ package com.spstudio.love.product.entity;
 
 import java.util.Date;
 
-public class ProductCondition extends Product {
+import javax.enterprise.inject.Model;
+
+@Model
+@com.spstudio.love.product.qualifier.ProductCondition
+public class ProductCondition extends Product implements Cloneable{
 
 	/**
 	 * 
@@ -13,6 +17,10 @@ public class ProductCondition extends Product {
 	private Date buyDateTo;
 	private Date warrantyEndDateFrom;
 	private Date warrantyEndDateTo;
+	
+	public ProductCondition clone(){
+		return (ProductCondition)super.clone();
+	}
 	
 	public Date getBuyDateFrom() {
 		return buyDateFrom;

@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.enterprise.inject.Model;
 
 @Model
+@com.spstudio.love.product.qualifier.Product
 public class Product implements Cloneable, Serializable{
 	
 	/**

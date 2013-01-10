@@ -42,8 +42,8 @@ public class QueryProductHandler implements Serializable {
 		PageObject pageObject = new PageObject();
 		pageObject.setOffset(0);
 		pageObject.setRecordCountPerFetch(6);
-		IQueryResult<Product> result = (IQueryResult<Product>)productRemoteBean.queryProducts(condition, pageObject);
-		log.info("result count: " + result.getResultData().size());
+		IQueryResult<Product> result = productRemoteBean.queryProducts(c, pageObject);
+		log.info("result count: " + result.getPageObject().getTotalRecordsNumber());
 		condition.clear();
 	}
 }

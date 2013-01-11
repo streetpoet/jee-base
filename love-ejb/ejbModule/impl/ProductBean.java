@@ -59,7 +59,7 @@ public class ProductBean implements IProduct {
 		// query paging product data
 		Object[] params = new Object[] {
 				pageObject.getOffset(),
-				pageObject.getRecordCountPerFetch()
+				pageObject.getNumberPerPage()
 			};
 		result = helper.doQuery(QUERY_PRODUCTS_SQL_SUB_1 + QUERY_PRODUCTS_SQL_SUB_3 + QUERY_PRODUCTS_SQL_SUB_4, params);
 		List<Product> listProduct = new ArrayList<Product>();

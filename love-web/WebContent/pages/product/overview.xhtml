@@ -50,8 +50,26 @@
 				<f:validateLength minimum="0" maximum="500"></f:validateLength>
 			</h:inputTextarea>
 			
+			<h:inputHidden value="#{pageObject.offset}" />
+			
 			<h:commandButton action="#{productAction.queryProduct}" value="Query" />
 		</h:panelGrid>
+	</h:form>
+	
+	<hr />
+	<h:dataTable border="1" value="#{productAction.products}" var="p" width="600px">
+		<h:column><h:outputText value="#{p.productName}" /></h:column>
+		<h:column><h:outputText value="#{p.classifyName}" /></h:column>
+	</h:dataTable>
+	<hr />
+	
+	<h:form>
+		<h:commandButton value="Pre" action="#{productAction.loadPrePage}" />
+		<h:outputFormat value="Current Page {0}, Total {1}">
+			<f:param value="#{pageObject.currentPageNo}"/>
+			<f:param value="#{pageObject.totalRecordsNumber / pageObject.numberPerPage}"/>
+		</h:outputFormat>
+		<h:commandButton value="Next" action="#{productAction.loadNextPage()}" />
 	</h:form>
 </h:body>
 </html>

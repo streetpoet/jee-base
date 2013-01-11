@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
+import com.spstudio.love.product.action.ProductAction;
 import com.spstudio.love.product.entity.Product;
 import com.spstudio.love.product.helper.ProductCondition;
 import com.spstudio.love.product.qualifier.ProductRemoteBean;
@@ -33,15 +34,14 @@ public class QueryProductHandler implements Serializable {
 	@Inject @ProductRemoteBean IProduct productRemoteBean;
 	@Inject UserInfo userInfo;
 	@Inject @LoveLogged Logger log;
+	@Inject ProductAction productAction;
+	@Inject PageObject pageObject;
 
 	@LoveTrace
 	public void queryProduct(@Observes @QueryProductEventQualifier QueryProductEvent event){
 		
 		condition.setFamilyId(userInfo.getFamilyId());
 		ProductCondition c = condition.clone();
-		PageObject pageObject = new PageObject();
-		pageObject.setOffset(0);
-		pageObject.setRecordCountPerFetch(6);
 		IQueryResult<Product> result = productRemoteBean.queryProducts(c, pageObject);
 		log.info("result count: " + result.getPageObject().getTotalRecordsNumber());
 		log.info("product count: " + result.getResultData().size());

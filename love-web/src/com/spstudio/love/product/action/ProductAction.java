@@ -10,6 +10,7 @@ import javax.enterprise.inject.Model;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
+import com.spstudio.love.product.entity.Product;
 import com.spstudio.love.product.event.AddProductEvent;
 import com.spstudio.love.product.event.AddProductEventQualifier;
 import com.spstudio.love.product.event.QueryProductEvent;
@@ -25,6 +26,7 @@ public class ProductAction {
 	@Inject @AddProductEventQualifier Event<AddProductEvent> addProductEvent;
 	@Inject @QueryProductEventQualifier Event<QueryProductEvent> queryProductEvent;
 	@Inject @FamilyMembers List<UserInfo> members;
+	private List<Product> products;
 	
 	public List<SelectItem> getClassifyItems() {
 		List<String[]> list = productSingleton.retrieveProductClassify();
@@ -54,5 +56,24 @@ public class ProductAction {
 	public void queryProduct() {
 		queryProductEvent.fire(new QueryProductEvent());
 	}
+
+	public void loadPrePage(){
+		
+	}
 	
+	public void loadNextPage(){
+		
+	}
+	
+	/*
+	 * Getter/Setter
+	 */
+	
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
 }

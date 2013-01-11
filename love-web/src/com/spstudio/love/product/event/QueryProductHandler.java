@@ -1,7 +1,5 @@
 package com.spstudio.love.product.event;
 
-
-
 import interfaces.IProduct;
 
 import java.io.Serializable;
@@ -36,15 +34,21 @@ public class QueryProductHandler implements Serializable {
 	@Inject @LoveLogged Logger log;
 	@Inject ProductAction productAction;
 	@Inject PageObject pageObject;
+	
 
 	@LoveTrace
 	public void queryProduct(@Observes @QueryProductEventQualifier QueryProductEvent event){
 		
 		condition.setFamilyId(userInfo.getFamilyId());
 		ProductCondition c = condition.clone();
-		IQueryResult<Product> result = productRemoteBean.queryProducts(c, pageObject);
-		log.info("result count: " + result.getPageObject().getTotalRecordsNumber());
-		log.info("product count: " + result.getResultData().size());
+		IQueryResult<Product> result = productRemoteBean.queryProducts(c, pageObject == null ? new PageObject() : pageObject);
+		productAction.setProducts(result.getResultData());
+		
+		// set paging object
+		pageObject.setTotalRecordsNumber(result.getPageObject().getTotalRecordsNumber());
+		pageObject.setCurrentPageNumber(pageObject.getOffset() / (int)pageObject.getTotalRecordsNumber() + 1);
+		pageObject.setMaxPageNumber((int)pageObject.getTotalRecordsNumber() / pageObject.getMaxRecordsPerPage());
+		
 		condition.clear();
 	}
 }

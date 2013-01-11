@@ -2,9 +2,9 @@ package com.spstudio.love.system.bean;
 
 import java.io.Serializable;
 
-import javax.inject.Named;
+import javax.enterprise.inject.Model;
 
-@Named
+@Model
 public class PageObject implements Serializable, Cloneable{
 	
 	/**
@@ -12,10 +12,11 @@ public class PageObject implements Serializable, Cloneable{
 	 */
 	private static final long serialVersionUID = 5681846021601088862L;
 	
-	private int currentPageNo;
+	private int currentPageNumber;
+	private int maxPageNumber;
 	private long totalRecordsNumber;
 	private int offset;
-	private int numberPerPage = 6;
+	private int maxRecordsPerPage = 6;
 
 	public PageObject clone(){
 		PageObject p = null;
@@ -25,6 +26,22 @@ public class PageObject implements Serializable, Cloneable{
 			e.printStackTrace();
 		}
 		return p;
+	}
+
+	public int getCurrentPageNumber() {
+		return currentPageNumber;
+	}
+
+	public void setCurrentPageNumber(int currentPageNumber) {
+		this.currentPageNumber = currentPageNumber;
+	}
+
+	public int getMaxPageNumber() {
+		return maxPageNumber;
+	}
+
+	public void setMaxPageNumber(int maxPageNumber) {
+		this.maxPageNumber = maxPageNumber;
 	}
 
 	public long getTotalRecordsNumber() {
@@ -43,20 +60,12 @@ public class PageObject implements Serializable, Cloneable{
 		this.offset = offset;
 	}
 
-	public int getCurrentPageNo() {
-		return currentPageNo;
+	public int getMaxRecordsPerPage() {
+		return maxRecordsPerPage;
 	}
 
-	public void setCurrentPageNo(int currentPageNo) {
-		this.currentPageNo = currentPageNo;
-	}
-
-	public int getNumberPerPage() {
-		return numberPerPage;
-	}
-
-	public void setNumberPerPage(int numberPerPage) {
-		this.numberPerPage = numberPerPage;
+	public void setMaxRecordsPerPage(int maxRecordsPerPage) {
+		this.maxRecordsPerPage = maxRecordsPerPage;
 	}
 
 }

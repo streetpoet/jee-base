@@ -5,6 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
+	<ui:debug rendered="true"></ui:debug>
 <h:body>
 	<h:form>
 		<h:panelGrid columns="2">
@@ -50,26 +51,31 @@
 				<f:validateLength minimum="0" maximum="500"></f:validateLength>
 			</h:inputTextarea>
 			
-			<h:inputHidden value="#{pageObject.offset}" />
-			
-			<h:commandButton action="#{productAction.queryProduct}" value="Query" />
+			<h:commandButton action="#{productAction.queryProduct}" value="Power Query" />
 		</h:panelGrid>
+		
+		<h:panelGroup layout="block" rendered="#{not empty productAction.products}">
+			<hr />
+			<h:commandButton value="Pre" action="#{productAction.loadPrePage}" />
+			<h:outputFormat value="Current Page {0}, Total {1}">
+				<f:param value="#{pageObject.currentPageNumber}"/>
+				<f:param value="#{pageObject.maxPageNumber}"/>
+			</h:outputFormat>
+			<h:commandButton value="Next" action="#{productAction.loadNextPage()}" />
+			<h:inputHidden value="#{pageObject.currentPageNumber}" />
+			<h:inputHidden value="#{pageObject.maxPageNumber}" />
+			<h:inputHidden value="#{pageObject.totalRecordsNumber}" />
+			<h:inputHidden value="#{pageObject.offset}" />
+			<h:inputHidden value="#{pageObject.maxRecordsPerPage}" />
+			<hr />
+		</h:panelGroup>
+
 	</h:form>
 	
-	<hr />
-	<h:dataTable border="1" value="#{productAction.products}" var="p" width="600px">
+	<h:dataTable border="1" value="#{productAction.products}" var="p" width="600px" rendered="#{not empty productAction.products}">
 		<h:column><h:outputText value="#{p.productName}" /></h:column>
 		<h:column><h:outputText value="#{p.classifyName}" /></h:column>
 	</h:dataTable>
-	<hr />
-	
-	<h:form>
-		<h:commandButton value="Pre" action="#{productAction.loadPrePage}" />
-		<h:outputFormat value="Current Page {0}, Total {1}">
-			<f:param value="#{pageObject.currentPageNo}"/>
-			<f:param value="#{pageObject.totalRecordsNumber / pageObject.numberPerPage}"/>
-		</h:outputFormat>
-		<h:commandButton value="Next" action="#{productAction.loadNextPage()}" />
-	</h:form>
+
 </h:body>
 </html>

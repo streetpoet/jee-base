@@ -26,7 +26,8 @@ public class ProductBean implements IProduct {
 			"values(?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String QUERY_PRODUCTS_SQL_SUB_1 = "select p.id, c.kindName, u.nickname, productName, price, buyDate, warrantyEndDate, description";
 	private static final String QUERY_PRODUCTS_SQL_SUB_2 = "select count(0) as count";
-	private static final String QUERY_PRODUCTS_SQL_SUB_3 = " FROM lovedb.f1_products p, f1_classify c, users u where p.classifyId = c.id and p.forUserId = u.id order by buyDate desc limit ?, ?";
+	private static final String QUERY_PRODUCTS_SQL_SUB_3 = " FROM lovedb.f1_products p, f1_classify c, users u where p.classifyId = c.id and p.forUserId = u.id order by buyDate desc";
+	private static final String QUERY_PRODUCTS_SQL_SUB_4 = " limit ?, ?";
 	
 	@Override
 	public boolean addProduct(Product product) {
@@ -48,17 +49,19 @@ public class ProductBean implements IProduct {
 			PageObject pageObject) {
 		IQueryResult<Product> returnResult = new ProductQueryResult();
 		
-		Object[] params = new Object[] {
-			pageObject.getOffset(),
-			pageObject.getRecordCountPerFetch()
-		};
-		List<Object[]> result = helper.doQuery(QUERY_PRODUCTS_SQL_SUB_2 + QUERY_PRODUCTS_SQL_SUB_3, params);
+		// query total number
+		List<Object[]> result = helper.doQuery(QUERY_PRODUCTS_SQL_SUB_2 + QUERY_PRODUCTS_SQL_SUB_3, null);
 		if (result != null && result.size() != 0){
 			pageObject.setTotalRecordsNumber((Long)result.get(0)[0]);
 		}
 		((ProductQueryResult)returnResult).setPageObject(pageObject);
 		
-		result = helper.doQuery(QUERY_PRODUCTS_SQL_SUB_1 + QUERY_PRODUCTS_SQL_SUB_3, params);
+		// query paging product data
+		Object[] params = new Object[] {
+				pageObject.getOffset(),
+				pageObject.getRecordCountPerFetch()
+			};
+		result = helper.doQuery(QUERY_PRODUCTS_SQL_SUB_1 + QUERY_PRODUCTS_SQL_SUB_3 + QUERY_PRODUCTS_SQL_SUB_4, params);
 		List<Product> listProduct = new ArrayList<Product>();
 		if (result != null && result.size() != 0){
 			Product p = new Product();

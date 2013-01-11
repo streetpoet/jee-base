@@ -16,7 +16,6 @@ import com.spstudio.love.product.event.AddProductEventQualifier;
 import com.spstudio.love.product.event.QueryProductEvent;
 import com.spstudio.love.product.event.QueryProductEventQualifier;
 import com.spstudio.love.product.qualifier.ProductSingleRemoteBean;
-import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.entity.UserInfo;
 import com.spstudio.love.system.qualifier.FamilyMembers;
 
@@ -27,7 +26,6 @@ public class ProductAction {
 	@Inject @AddProductEventQualifier Event<AddProductEvent> addProductEvent;
 	@Inject @QueryProductEventQualifier Event<QueryProductEvent> queryProductEvent;
 	@Inject @FamilyMembers List<UserInfo> members;
-	@Inject PageObject pageObject;
 	private List<Product> products;
 	
 	public List<SelectItem> getClassifyItems() {
@@ -79,7 +77,4 @@ public class ProductAction {
 		this.products = products;
 	}
 	
-	public PageObject getPageObject(){
-		return pageObject;
-	}
 }

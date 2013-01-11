@@ -68,4 +68,6 @@ public class PageObject implements Serializable, Cloneable{
 		this.maxRecordsPerPage = maxRecordsPerPage;
 	}
 
+	
+
 }

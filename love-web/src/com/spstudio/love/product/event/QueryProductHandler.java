@@ -41,7 +41,7 @@ public class QueryProductHandler implements Serializable {
 		
 		condition.setFamilyId(userInfo.getFamilyId());
 		ProductCondition c = condition.clone();
-		IQueryResult<Product> result = productRemoteBean.queryProducts(c, pageObject == null ? new PageObject() : pageObject);
+		IQueryResult<Product> result = productRemoteBean.queryProducts(c, pageObject);
 		productAction.setProducts(result.getResultData());
 		
 		// set paging object

@@ -67,10 +67,14 @@ public class ProductBean implements IProduct {
 			Product p = new Product();
 			for(Object[] row: result){
 				Product product = p.clone();
-				product.setProductName((String)row[1]);
-				product.setBuyDate((Date)row[5]);
+				product.setId((Integer)row[0]);
+				product.setClassifyName((String)row[1]);
+				product.setForUserName((String)row[2]);
+				product.setProductName((String)row[3]);
 				product.setPrice((Integer)row[4]);
+				product.setBuyDate((Date)row[5]);
 				product.setWarrantyEndDate((Date)row[6]);
+				product.setDescription((String)row[7]);
 				listProduct.add(product);
 			}
 		}

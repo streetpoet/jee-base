@@ -14,9 +14,12 @@ public class Product implements Cloneable, Serializable{
 	 */
 	private static final long serialVersionUID = -1555058712810093401L;
 	
+	private int id;
 	private int classifyId;
+	private String classifyName;
 	private int familyId;
 	private int forUserId;
+	private String forUserName;
 	private int price;
 	private String productName;
 	private Date buyDate;
@@ -24,9 +27,12 @@ public class Product implements Cloneable, Serializable{
 	private String description;
 	
 	public void clear(){
+		id = 0;
 		classifyId = -1;
+		classifyName = "";
 		familyId = -1;
 		forUserId = -1;
+		forUserName = "";
 		price = 0;
 		productName = "";
 		buyDate = null;
@@ -91,6 +97,30 @@ public class Product implements Cloneable, Serializable{
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getClassifyName() {
+		return classifyName;
+	}
+
+	public void setClassifyName(String classifyName) {
+		this.classifyName = classifyName;
+	}
+
+	public String getForUserName() {
+		return forUserName;
+	}
+
+	public void setForUserName(String forUserName) {
+		this.forUserName = forUserName;
 	}
 	
 }

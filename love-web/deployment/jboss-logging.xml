@@ -668,7 +668,7 @@
    </logger>
    
    <!-- Love-Web Customer -->
-   <logger category="com.spstudio.love.web">
+   <logger category="com.spstudio.love">
        <level name="TRACE" />
    </logger>
 

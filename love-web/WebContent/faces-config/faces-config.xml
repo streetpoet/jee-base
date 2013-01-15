@@ -2,6 +2,7 @@
 <faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+
 	<application>
 
 		<locale-config>
@@ -29,7 +30,9 @@
 	<factory>
 	    <exception-handler-factory>com.spstudio.love.system.exception.ViewExpiredExceptionExceptionHandlerFactory</exception-handler-factory>
 	</factory>
+
 	<lifecycle>
 		<phase-listener>com.spstudio.love.system.LoveLifeCycleListener</phase-listener>
 	</lifecycle>
+	
 </faces-config>

@@ -41,13 +41,13 @@ public class QueryProductHandler implements Serializable {
 		
 		condition.setFamilyId(userInfo.getFamilyId());
 		ProductCondition c = condition.clone();
-		IQueryResult<Product> result = productRemoteBean.queryProducts(c, pageObject);
+		IQueryResult<Product> result = productRemoteBean.queryProducts(c, pageObject.clone());
 		productAction.setProducts(result.getResultData());
 		
 		// set paging object
 		pageObject.setTotalRecordsNumber(result.getPageObject().getTotalRecordsNumber());
-		pageObject.setCurrentPageNumber(pageObject.getOffset() / (int)pageObject.getTotalRecordsNumber() + 1);
-		pageObject.setMaxPageNumber((int)pageObject.getTotalRecordsNumber() / pageObject.getMaxRecordsPerPage());
+		pageObject.setCurrentPageNumber(pageObject.getOffset() / (int)pageObject.getMaxRecordsPerPage() + 1);
+		pageObject.setMaxPageNumber((int)pageObject.getTotalRecordsNumber() / pageObject.getMaxRecordsPerPage() + ((int)pageObject.getTotalRecordsNumber() % pageObject.getMaxRecordsPerPage() == 0 ? 0 : 1));
 		
 		condition.clear();
 	}

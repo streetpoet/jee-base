@@ -7,6 +7,11 @@ import java.util.List;
 
 import javax.enterprise.event.Event;
 import javax.enterprise.inject.Model;
+import javax.faces.context.FacesContext;
+import javax.faces.event.AbortProcessingException;
+import javax.faces.event.PostAddToViewEvent;
+import javax.faces.event.SystemEvent;
+import javax.faces.event.SystemEventListener;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
@@ -16,8 +21,10 @@ import com.spstudio.love.product.event.AddProductEventQualifier;
 import com.spstudio.love.product.event.QueryProductEvent;
 import com.spstudio.love.product.event.QueryProductEventQualifier;
 import com.spstudio.love.product.qualifier.ProductSingleRemoteBean;
+import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.entity.UserInfo;
 import com.spstudio.love.system.qualifier.FamilyMembers;
+import com.spstudio.love.system.qualifier.LoveLogged;
 
 @Model
 public class ProductAction {
@@ -26,6 +33,7 @@ public class ProductAction {
 	@Inject @AddProductEventQualifier Event<AddProductEvent> addProductEvent;
 	@Inject @QueryProductEventQualifier Event<QueryProductEvent> queryProductEvent;
 	@Inject @FamilyMembers List<UserInfo> members;
+	@Inject PageObject pageObject;
 	private List<Product> products;
 	
 	public List<SelectItem> getClassifyItems() {
@@ -53,16 +61,26 @@ public class ProductAction {
 		addProductEvent.fire(new AddProductEvent());
 	}
 	
+	@LoveLogged
 	public void queryProduct() {
 		queryProductEvent.fire(new QueryProductEvent());
 	}
 
 	public void loadPrePage(){
-		
+		if (pageObject.getCurrentPageNumber() > 1){
+			int offset = pageObject.getOffset() - pageObject.getMaxRecordsPerPage();
+			pageObject.setOffset(offset < 0 ? 0 : offset);
+			pageObject.setCurrentPageNumber(pageObject.getCurrentPageNumber() - 1);
+		}
+		queryProduct();
 	}
 	
 	public void loadNextPage(){
-		
+		if (pageObject.getCurrentPageNumber() < pageObject.getMaxPageNumber()){
+			pageObject.setOffset(pageObject.getOffset() + pageObject.getMaxRecordsPerPage());
+			pageObject.setCurrentPageNumber(pageObject.getCurrentPageNumber() + 1);
+		}
+		queryProduct();
 	}
 	
 	/*

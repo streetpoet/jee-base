@@ -6,8 +6,8 @@ import javax.enterprise.inject.Model;
 
 import com.spstudio.love.product.entity.Product;
 
-@Model
 @com.spstudio.love.product.qualifier.ProductCondition
+@Model
 public class ProductCondition extends Product implements Cloneable{
 
 	/**
@@ -19,6 +19,8 @@ public class ProductCondition extends Product implements Cloneable{
 	private Date buyDateTo;
 	private Date warrantyEndDateFrom;
 	private Date warrantyEndDateTo;
+	private int priceFrom;
+	private int priceTo;
 	
 	public ProductCondition clone(){
 		return (ProductCondition)super.clone();
@@ -47,6 +49,18 @@ public class ProductCondition extends Product implements Cloneable{
 	}
 	public void setWarrantyEndDateTo(Date warrantyEndDateTo) {
 		this.warrantyEndDateTo = warrantyEndDateTo;
+	}
+	public int getPriceFrom() {
+		return priceFrom;
+	}
+	public void setPriceFrom(int priceFrom) {
+		this.priceFrom = priceFrom;
+	}
+	public int getPriceTo() {
+		return priceTo;
+	}
+	public void setPriceTo(int priceTo) {
+		this.priceTo = priceTo;
 	}
 	
 }

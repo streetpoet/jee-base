@@ -7,11 +7,6 @@ import java.util.List;
 
 import javax.enterprise.event.Event;
 import javax.enterprise.inject.Model;
-import javax.faces.context.FacesContext;
-import javax.faces.event.AbortProcessingException;
-import javax.faces.event.PostAddToViewEvent;
-import javax.faces.event.SystemEvent;
-import javax.faces.event.SystemEventListener;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
@@ -25,6 +20,7 @@ import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.entity.UserInfo;
 import com.spstudio.love.system.qualifier.FamilyMembers;
 import com.spstudio.love.system.qualifier.LoveLogged;
+import com.spstudio.love.system.qualifier.LoveTrace;
 
 @Model
 public class ProductAction {
@@ -80,6 +76,11 @@ public class ProductAction {
 			pageObject.setOffset(pageObject.getOffset() + pageObject.getMaxRecordsPerPage());
 			pageObject.setCurrentPageNumber(pageObject.getCurrentPageNumber() + 1);
 		}
+		queryProduct();
+	}
+	
+	@LoveTrace
+	public void beforePhase(javax.faces.event.PhaseEvent event){
 		queryProduct();
 	}
 	

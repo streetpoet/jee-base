@@ -5,7 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
-<ui:debug rendered="true"></ui:debug>
+<f:view beforePhase="#{productAction.beforePhase}">
 <h:body>
 	<h:form>
 		<h:panelGrid columns="2">
@@ -60,7 +60,7 @@
 				<f:param value="#{pageObject.currentPageNumber}"/>
 				<f:param value="#{pageObject.maxPageNumber}"/>
 			</h:outputFormat>
-			<h:commandButton value="Next" action="#{productAction.queryProduct}" rendered="#{not empty productAction.products}" immediate="true" />
+			<h:commandButton value="Next" action="#{productAction.queryProduct}" rendered="true" />
 			<h:inputHidden value="#{pageObject.currentPageNumber}" />
 			<h:inputHidden value="#{pageObject.maxPageNumber}" />
 			<h:inputHidden value="#{pageObject.totalRecordsNumber}" />
@@ -77,4 +77,5 @@
 	</h:form>
 
 </h:body>
+</f:view>
 </html>

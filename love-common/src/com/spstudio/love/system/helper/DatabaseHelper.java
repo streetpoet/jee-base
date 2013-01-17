@@ -23,7 +23,6 @@ public class DatabaseHelper {
 	@Inject @LoveLogged Logger log;
 
 	public boolean doDMLOperation(String sql, Object[] params) {
-		log.trace("invoke doDMLOperation.");
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try {
@@ -67,7 +66,6 @@ public class DatabaseHelper {
 	}
 	
 	public List<Object[]> doQuery(String sql, Object[] params) {
-		log.trace("invoke doQuery." + sql);
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try {

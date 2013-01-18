@@ -30,18 +30,17 @@ public class QueryProductHandler implements Serializable {
 	private static final long serialVersionUID = -988405636819038144L;
 	
 	@Inject QueryCondition queryCondition;
-	@Inject @ProductRemoteBean IProduct productRemoteBean;
 	@Inject UserInfo userInfo;
-	@Inject @LoveLogged Logger log;
 	@Inject ProductAction productAction;
-	@Inject PageObject pageObject;
+	@Inject @ProductRemoteBean IProduct productRemoteBean;
+	@Inject @LoveLogged Logger log;
 
 	@LoveTrace
 	public void queryProduct(@Observes @QueryProductEventQualifier QueryProductEvent event){
 		ProductCondition pc = queryCondition.getProductCondition();
-		log.info("classify id = " + pc.getClassifyId());
 		pc.setFamilyId(userInfo.getFamilyId());
 		ProductCondition c = pc.clone();
+		PageObject pageObject = queryCondition.getPageObject();
 		IQueryResult<Product> result = productRemoteBean.queryProducts(c, pageObject.clone());
 		productAction.setProducts(result.getResultData());
 		

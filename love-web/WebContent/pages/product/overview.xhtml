@@ -67,7 +67,7 @@
 			</h:panelGroup>
 			
 			<h:outputLabel value="#{productBundle['product.description']}" for="desc" />
-			<h:inputTextarea id="desc" value="#{product.description}" maxlength="500">
+			<h:inputTextarea id="desc" value="#{queryCondition.productCondition.description}" maxlength="500">
 				<f:validateLength minimum="0" maximum="500"></f:validateLength>
 			</h:inputTextarea>
 			
@@ -87,10 +87,10 @@
 		<h:panelGroup>
 			<h:commandButton value="Pre" action="#{productAction.loadPrePage}" />
 			<h:outputFormat value="Current Page {0}, Total {1}">
-				<f:param value="#{pageObject.currentPageNumber}"/>
-				<f:param value="#{pageObject.maxPageNumber}"/>
+				<f:param value="#{queryCondition.pageObject.currentPageNumber}"/>
+				<f:param value="#{queryCondition.pageObject.maxPageNumber}"/>
 			</h:outputFormat>
-			<h:commandButton value="Next" action="#{productAction.loadNextPage()}" />
+			<h:commandButton value="Next" action="#{productAction.loadNextPage}" />
 		</h:panelGroup>
 	</h:form>
 

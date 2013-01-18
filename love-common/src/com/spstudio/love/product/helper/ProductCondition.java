@@ -2,12 +2,8 @@ package com.spstudio.love.product.helper;
 
 import java.util.Date;
 
-import javax.enterprise.inject.Model;
-
 import com.spstudio.love.product.entity.Product;
 
-@com.spstudio.love.product.qualifier.ProductCondition
-@Model
 public class ProductCondition extends Product implements Cloneable{
 
 	/**

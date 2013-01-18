@@ -77,9 +77,14 @@
 	</f:view>
 	
 	<h:form>
-	<h:dataTable border="1" value="#{productAction.products}" var="p" width="600px" rendered="#{not empty productAction.products}">
+	<h:dataTable border="1" value="#{productAction.products}" var="p" rendered="#{not empty productAction.products}">
 		<h:column><h:outputText value="#{p.productName}" /></h:column>
 		<h:column><h:outputText value="#{p.classifyName}" /></h:column>
+		<h:column><h:outputText value="#{p.forUserName}" /></h:column>
+		<h:column><h:outputText value="#{p.price}" /></h:column>
+		<h:column><h:outputText value="#{p.buyDate}" /></h:column>
+		<h:column><h:outputText value="#{p.warrantyEndDate}" /></h:column>
+		<h:column><h:outputText value="#{p.description}" /></h:column>
 	</h:dataTable>
 	</h:form>
 	

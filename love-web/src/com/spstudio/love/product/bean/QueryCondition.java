@@ -28,6 +28,7 @@ public class QueryCondition implements Serializable {
 	@PostConstruct
 	public void postConstruct(){
 		productCondition = new ProductCondition();
+		pageObject = new PageObject();
 	}
 
 	public void begin(){

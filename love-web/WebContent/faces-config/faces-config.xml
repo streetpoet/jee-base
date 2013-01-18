@@ -4,7 +4,12 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 
 	<application>
-
+	
+		<system-event-listener>
+			<system-event-listener-class>com.spstudio.love.system.LoveSysEventListener</system-event-listener-class>
+			<system-event-class>javax.faces.event.PostConstructApplicationEvent</system-event-class>
+		</system-event-listener>
+		
 		<locale-config>
 			<!-- refer to http://ftp.ics.uci.edu/pub/ietf/http/related/iso639.txt -->
 			<default-locale>en</default-locale>
@@ -28,11 +33,13 @@
 
 	</application>
 	<factory>
-	    <exception-handler-factory>com.spstudio.love.system.exception.ViewExpiredExceptionExceptionHandlerFactory</exception-handler-factory>
+	    <exception-handler-factory>com.spstudio.love.system.exception.LoveExceptionHandlerFactory</exception-handler-factory>
 	</factory>
 
+<!-- 
 	<lifecycle>
 		<phase-listener>com.spstudio.love.system.LoveLifeCycleListener</phase-listener>
 	</lifecycle>
-	
+ -->
+ 
 </faces-config>

@@ -7,9 +7,12 @@ import java.util.List;
 
 import javax.enterprise.event.Event;
 import javax.enterprise.inject.Model;
+import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseId;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
+import com.spstudio.love.product.bean.QueryCondition;
 import com.spstudio.love.product.entity.Product;
 import com.spstudio.love.product.event.AddProductEvent;
 import com.spstudio.love.product.event.AddProductEventQualifier;
@@ -20,7 +23,6 @@ import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.entity.UserInfo;
 import com.spstudio.love.system.qualifier.FamilyMembers;
 import com.spstudio.love.system.qualifier.LoveLogged;
-import com.spstudio.love.system.qualifier.LoveTrace;
 
 @Model
 public class ProductAction {
@@ -30,6 +32,8 @@ public class ProductAction {
 	@Inject @QueryProductEventQualifier Event<QueryProductEvent> queryProductEvent;
 	@Inject @FamilyMembers List<UserInfo> members;
 	@Inject PageObject pageObject;
+	@Inject QueryCondition queryCondition;
+	
 	private List<Product> products;
 	
 	public List<SelectItem> getClassifyItems() {
@@ -53,6 +57,9 @@ public class ProductAction {
 		return selectItems;
 	}
 	
+	/**
+	 * Add New Product
+	 */
 	public void addProduct() {
 		addProductEvent.fire(new AddProductEvent());
 	}
@@ -60,6 +67,7 @@ public class ProductAction {
 	@LoveLogged
 	public void queryProduct() {
 		queryProductEvent.fire(new QueryProductEvent());
+		queryCondition.begin();
 	}
 
 	public void loadPrePage(){
@@ -77,11 +85,16 @@ public class ProductAction {
 			pageObject.setCurrentPageNumber(pageObject.getCurrentPageNumber() + 1);
 		}
 		queryProduct();
+		queryCondition.end();
 	}
 	
-	@LoveTrace
 	public void beforePhase(javax.faces.event.PhaseEvent event){
-		queryProduct();
+		if (event.getPhaseId().equals(PhaseId.RENDER_RESPONSE)){
+			if (!FacesContext.getCurrentInstance().isPostback()){
+				queryCondition.begin();
+				queryProduct();
+			}
+		}
 	}
 	
 	/*

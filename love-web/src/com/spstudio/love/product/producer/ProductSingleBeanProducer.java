@@ -2,6 +2,7 @@ package com.spstudio.love.product.producer;
 
 import interfaces.IProductSingleton;
 
+import javax.ejb.EJB;
 import javax.enterprise.inject.Produces;
 import javax.naming.NamingException;
 
@@ -11,6 +12,9 @@ import com.spstudio.love.system.qualifier.LoveTrace;
 
 public class ProductSingleBeanProducer {
 	
+	@EJB
+	LoveDaemon loveDaemon;
+	
 	@SuppressWarnings("unused")
 	@Produces
 	@ProductSingleRemoteBean
@@ -18,7 +22,7 @@ public class ProductSingleBeanProducer {
 	private IProductSingleton produce(){
 		IProductSingleton products = null;
  		try {
- 			products = (IProductSingleton)LoveDaemon.ic.lookup("ProductSingletonBean/remote");
+ 			products = (IProductSingleton)loveDaemon.getInitialContext().lookup("ProductSingletonBean/remote");
  		} catch (NamingException e) {
 			e.printStackTrace();
 		}

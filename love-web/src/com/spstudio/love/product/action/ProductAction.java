@@ -31,7 +31,6 @@ public class ProductAction {
 	@Inject @AddProductEventQualifier Event<AddProductEvent> addProductEvent;
 	@Inject @QueryProductEventQualifier Event<QueryProductEvent> queryProductEvent;
 	@Inject @FamilyMembers List<UserInfo> members;
-	@Inject PageObject pageObject;
 	@Inject QueryCondition queryCondition;
 	
 	private List<Product> products;
@@ -71,6 +70,7 @@ public class ProductAction {
 	}
 
 	public void loadPrePage(){
+		PageObject pageObject = queryCondition.getPageObject();
 		if (pageObject.getCurrentPageNumber() > 1){
 			int offset = pageObject.getOffset() - pageObject.getMaxRecordsPerPage();
 			pageObject.setOffset(offset < 0 ? 0 : offset);
@@ -80,18 +80,17 @@ public class ProductAction {
 	}
 	
 	public void loadNextPage(){
+		PageObject pageObject = queryCondition.getPageObject();
 		if (pageObject.getCurrentPageNumber() < pageObject.getMaxPageNumber()){
 			pageObject.setOffset(pageObject.getOffset() + pageObject.getMaxRecordsPerPage());
 			pageObject.setCurrentPageNumber(pageObject.getCurrentPageNumber() + 1);
 		}
 		queryProduct();
-		queryCondition.end();
 	}
 	
 	public void beforePhase(javax.faces.event.PhaseEvent event){
 		if (event.getPhaseId().equals(PhaseId.RENDER_RESPONSE)){
 			if (!FacesContext.getCurrentInstance().isPostback()){
-				queryCondition.begin();
 				queryProduct();
 			}
 		}

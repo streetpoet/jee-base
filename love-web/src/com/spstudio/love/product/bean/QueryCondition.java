@@ -3,13 +3,14 @@ package com.spstudio.love.product.bean;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.spstudio.love.product.helper.ProductCondition;
+import com.spstudio.love.system.bean.PageObject;
+import com.spstudio.love.system.constant.Configuration;
 
 @Named
 @ConversationScoped
@@ -22,24 +23,17 @@ public class QueryCondition implements Serializable {
 	
 	@Inject Conversation conversation;
 	ProductCondition productCondition;
+	PageObject pageObject;
 	
 	@PostConstruct
 	public void postConstruct(){
 		productCondition = new ProductCondition();
 	}
-	
-	@PreDestroy
-	public void destroy(){
-		System.out.println("### QueryCondition will destroy.");
-	}
 
 	public void begin(){
 		if (conversation.isTransient()){
-			System.out.println("### isTransient, begin");
 			conversation.begin();
-			conversation.setTimeout(5000L);
-		}else{
-			System.out.println("### not isTransient");
+			conversation.setTimeout(Configuration.CONVERSATION_TIMEOUT);
 		}
 	}
 	
@@ -62,6 +56,13 @@ public class QueryCondition implements Serializable {
 	public void setConversation(Conversation conversation) {
 		this.conversation = conversation;
 	}
-	
+
+	public PageObject getPageObject() {
+		return pageObject;
+	}
+
+	public void setPageObject(PageObject pageObject) {
+		this.pageObject = pageObject;
+	}
 	
 }

@@ -1,4 +1,4 @@
-package com.spstudio.love.system;
+package com.spstudio.love.system.listener;
 
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;

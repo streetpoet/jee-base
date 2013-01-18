@@ -1,4 +1,4 @@
-package com.spstudio.love.system;
+package com.spstudio.love.system.listener;
 
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.SystemEvent;

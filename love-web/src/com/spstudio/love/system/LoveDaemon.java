@@ -4,6 +4,7 @@ package com.spstudio.love.system;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.ejb.AccessTimeout;
 import javax.ejb.ConcurrencyManagement;
 import javax.ejb.ConcurrencyManagementType;
@@ -27,7 +28,12 @@ public class LoveDaemon{
 	
 	@PostConstruct
 	public void postConstruct(){
-		log.info("### LoveDaemon started ###");
+		log.info("### LoveDaemon start. ###");
+	}
+	
+	@PreDestroy
+	public void preDestory(){
+		log.info("### LoveDaemon end. ###");
 	}
 	
 	@Lock(LockType.READ)

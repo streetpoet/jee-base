@@ -6,7 +6,7 @@
 	<application>
 	
 		<system-event-listener>
-			<system-event-listener-class>com.spstudio.love.system.LoveSysEventListener</system-event-listener-class>
+			<system-event-listener-class>com.spstudio.love.system.listener.LoveSysEventListener</system-event-listener-class>
 			<system-event-class>javax.faces.event.PostConstructApplicationEvent</system-event-class>
 		</system-event-listener>
 		
@@ -38,7 +38,7 @@
 
 <!-- 
 	<lifecycle>
-		<phase-listener>com.spstudio.love.system.LoveLifeCycleListener</phase-listener>
+		<phase-listener>com.spstudio.love.system.listener.LoveLifeCycleListener</phase-listener>
 	</lifecycle>
  -->
  

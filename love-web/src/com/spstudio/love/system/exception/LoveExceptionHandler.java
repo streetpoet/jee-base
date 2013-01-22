@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import javax.faces.FacesException;
-import javax.faces.application.ViewExpiredException;
 import javax.faces.context.ExceptionHandler;
 import javax.faces.context.ExceptionHandlerWrapper;
 import javax.faces.context.FacesContext;
@@ -34,19 +33,8 @@ public class LoveExceptionHandler extends
 		for (Iterator<ExceptionQueuedEvent> i = getUnhandledExceptionQueuedEvents().iterator(); i.hasNext();) {
 			ExceptionQueuedEventContext context = (ExceptionQueuedEventContext)i.next().getSource();
 			Throwable t = context.getException();
-			if (t instanceof ViewExpiredException) {
-				FacesContext fc = FacesContext.getCurrentInstance();
-				try {
-					HttpServletResponse response = (HttpServletResponse) fc.getExternalContext().getResponse();
-					String url = fc.getExternalContext().getRequestContextPath() + "/";
-					fc.responseComplete();
-					response.sendRedirect(url);
-				} catch (IOException e) {
-					log.error(e);
-				} finally {
-					i.remove();
-				}
-			}else if (t.getClass().getName().contains("NonexistentConversationException")){
+				
+			if (t.getClass().getName().contains("NonexistentConversationException")){
 				FacesContext fc = FacesContext.getCurrentInstance();
 				try {
 					HttpServletResponse response = (HttpServletResponse) fc.getExternalContext().getResponse();

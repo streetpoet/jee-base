@@ -5,9 +5,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
-
+	
 <h:body>
-	<f:view beforePhase="#{productAction.beforePhase}">
+	
 	<h:form>
 		<h:panelGrid columns="2">
 		
@@ -74,10 +74,9 @@
 			<h:commandButton action="#{productAction.queryProduct}" value="Smart Query" />
 		</h:panelGrid>
 	</h:form>
-	</f:view>
 	
 	<h:form>
-	<h:dataTable border="1" value="#{productAction.products}" var="p" rendered="#{not empty productAction.products}">
+	<h:dataTable border="1" value="#{queryCondition.products}" var="p" rendered="#{not empty queryCondition.products}">
 		<h:column><h:outputText value="#{p.productName}" /></h:column>
 		<h:column><h:outputText value="#{p.classifyName}" /></h:column>
 		<h:column><h:outputText value="#{p.forUserName}" /></h:column>
@@ -85,6 +84,11 @@
 		<h:column><h:outputText value="#{p.buyDate}" /></h:column>
 		<h:column><h:outputText value="#{p.warrantyEndDate}" /></h:column>
 		<h:column><h:outputText value="#{p.description}" /></h:column>
+		<h:column>
+			<h:commandLink action="#{productAction.modify}" value="modify">
+				<f:setPropertyActionListener target="#{queryCondition.product}" value="#{p}"></f:setPropertyActionListener>
+			</h:commandLink>
+		</h:column>
 	</h:dataTable>
 	</h:form>
 	
@@ -98,6 +102,7 @@
 			<h:commandButton value="Next" action="#{productAction.loadNextPage}" />
 		</h:panelGroup>
 	</h:form>
+	
 
 </h:body>
 

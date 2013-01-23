@@ -11,4 +11,5 @@ import com.spstudio.love.system.interfaces.IQueryResult;
 public interface IProduct {
 	public boolean addProduct(Product product);
 	public IQueryResult<Product> queryProducts(ProductCondition condition, PageObject pageObject);
+	public Product loadProduct(int productId);
 }

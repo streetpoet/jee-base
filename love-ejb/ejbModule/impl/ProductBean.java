@@ -29,6 +29,8 @@ public class ProductBean implements IProduct {
 	private static final String QUERY_PRODUCTS_SQL_SUB_3 = " FROM lovedb.f1_products p, f1_classify c, users u where p.classifyId = c.id and p.forUserId = u.id order by buyDate desc";
 	private static final String QUERY_PRODUCTS_SQL_SUB_4 = " limit ?, ?";
 	
+	private static final String LOAD_PRODUCT_SQL = "select id, classifyid, familyId, forUserId, productName, price, buyDate, warrantyEndDate, description from f1_products where id = ?";
+	
 	@Override
 	public boolean addProduct(Product product) {
 		Object[] params = new Object[]{
@@ -81,6 +83,30 @@ public class ProductBean implements IProduct {
 		((ProductQueryResult)returnResult).setListProduct(listProduct);
 		
 		return returnResult;
+	}
+	
+	/**
+	 * Return Product Object, according to product id
+	 */
+	@Override
+	public Product loadProduct(int productId) {
+		Object[] params = new Object[]{productId};
+		List<Object[]> result = helper.doQuery(LOAD_PRODUCT_SQL, params);
+		if (result != null && result.size() != 0){
+			Object[] row = result.get(0);
+			Product p = new Product();
+			p.setId((Integer)row[0]);
+			p.setClassifyId((Integer)row[1]);
+			p.setFamilyId((Integer)row[2]);
+			p.setForUserId((Integer)row[3]);
+			p.setProductName((String)row[4]);
+			p.setPrice((Integer)row[5]);
+			p.setBuyDate((Date)row[6]);
+			p.setWarrantyEndDate((Date)row[7]);
+			p.setDescription((String)row[8]);
+			return p;
+		}
+		return null;
 	}
 
 

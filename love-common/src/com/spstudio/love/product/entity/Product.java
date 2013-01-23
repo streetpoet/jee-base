@@ -40,6 +40,20 @@ public class Product implements Cloneable, Serializable{
 		description = "";
 	}
 	
+	public void setProduct(Product p){
+		id = p.id;
+		classifyId = p.classifyId;
+		classifyName = p.classifyName;
+		familyId = p.familyId;
+		forUserId = p.forUserId;
+		forUserName = p.forUserName;
+		price = p.price;
+		productName = p.productName;
+		buyDate = p.buyDate;
+		warrantyEndDate = p.warrantyEndDate;
+		description = p.description;
+	}
+	
 	public Product clone(){
 		Product p = null;
 		try{

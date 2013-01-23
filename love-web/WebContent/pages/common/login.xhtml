@@ -5,8 +5,38 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
-<h:head>Login Page</h:head>
+<h:head>
+	<style type="text/css">
+		.div_rgba {
+			background-color: rgba(80, 120, 200, 0.8);
+		}
+		
+		.div_transform
+		{
+		-webkit-transform: translate(0px, 0px) rotate(0deg) skew(-7deg, 0deg) scale(1, 1);
+		-moz-transform: translate(0px, 0px) rotate(0deg) skew(-7deg, 0deg) scale(1, 1);
+		-o-transform: translate(0px, 0px) rotate(0deg) skew(-7deg, 0deg) scale(1, 1);
+		-ms-transform: translate(0px, 0px) rotate(0deg) skew(-7deg, 0deg) scale(1, 1);
+		transform: translate(0px, 0px) rotate(0deg) skew(-7deg, 0deg) scale(1, 1);
+		}
+		
+		.div_radius
+		{
+		border-radius: 30px;
+		-webkit-border-radius: 30px;
+		-moz-border-radius: 30px;
+		}
+		
+		.div_shadow
+		{
+		box-shadow: 14px 13px 8px #333333;
+		-webkit-box-shadow: 14px 13px 8px #333333;
+		-moz-box-shadow: 14px 13px 8px #333333;
+		}
+	</style>
+</h:head>
 <h:body>
+	<div class="div_transform div_rgba div_rgba div_radius div_shadow">
 	<form method="post" action="j_security_check">
 		<table columns="2" role="presentation">
 			<tr>
@@ -23,8 +53,7 @@
 			<h:commandButton type="reset" value="Reset" />
 		</p>
 	</form>
-
-	<h:graphicImage value="/resources/#{facesContext.viewRoot.locale}/images/baidu.gif" />
+	</div>
 </h:body>
 
 

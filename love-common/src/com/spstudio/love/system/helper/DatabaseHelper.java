@@ -22,7 +22,7 @@ public class DatabaseHelper {
 	@Inject @LoveDataSource DataSource ds;
 	@Inject @LoveLogged Logger log;
 
-	public boolean doDMLOperation(String sql, Object[] params) {
+	public int doDMLOperation(String sql, Object[] params) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try {
@@ -42,9 +42,9 @@ public class DatabaseHelper {
 				}
 			}
 			int effectRow = stmt.executeUpdate();
-			return effectRow == 1;
+			return effectRow;
 		} catch (SQLException e) {
-			return false;
+			return -1;
 		} finally {
 			if (stmt != null) {
 				try {

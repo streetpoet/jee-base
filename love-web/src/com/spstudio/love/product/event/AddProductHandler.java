@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import com.spstudio.love.product.entity.Product;
+import com.spstudio.love.product.qualifier.ProductQualifier;
 import com.spstudio.love.product.qualifier.ProductRemoteBean;
 import com.spstudio.love.system.entity.UserInfo;
 import com.spstudio.love.system.qualifier.LoveTrace;
@@ -23,7 +24,7 @@ public class AddProductHandler implements Serializable {
 	 */
 	private static final long serialVersionUID = -988405636819038144L;
 	
-	@Inject @com.spstudio.love.product.qualifier.Product Product product;
+	@Inject @ProductQualifier Product product;
 	@Inject @ProductRemoteBean IProduct productRemoteBean;
 	@Inject UserInfo userInfo;
 

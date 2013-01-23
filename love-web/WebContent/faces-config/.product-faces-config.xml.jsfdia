@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#pages#product#overview.xhtml"
+  PATH="/pages/product/overview.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#product#overview.xhtml:0" NAME="item"
+   PATH="/pages/product/overview.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="MODIFY_PRODUCT::#pages#product#product.xhtml" NAME="output"
+    PATH="/pages/product/product.xhtml"
+    TARGET="rules:#pages#product#product.xhtml" TITLE="MODIFY_PRODUCT" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#product#product.xhtml"
+  PATH="/pages/product/product.xhtml" SHAPE="208,40,50,25" model-entity="JSFProcessGroup"/>
+</PROCESS>

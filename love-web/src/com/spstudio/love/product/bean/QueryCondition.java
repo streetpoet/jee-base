@@ -1,13 +1,16 @@
 package com.spstudio.love.product.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.spstudio.love.product.entity.Product;
 import com.spstudio.love.product.helper.ProductCondition;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.constant.Configuration;
@@ -24,22 +27,30 @@ public class QueryCondition implements Serializable {
 	@Inject Conversation conversation;
 	ProductCondition productCondition;
 	PageObject pageObject;
-	
+	private List<Product> products;
+
 	@PostConstruct
 	public void postConstruct(){
 		productCondition = new ProductCondition();
 		pageObject = new PageObject();
 	}
+	
+	@PreDestroy
+	public void preDestroy(){
+		System.out.println("### QueryCondition#preDestroy");
+	}
 
-	public void begin(){
+	public void beginConversation(){
 		if (conversation.isTransient()){
 			conversation.begin();
 			conversation.setTimeout(Configuration.CONVERSATION_TIMEOUT);
 		}
 	}
 	
-	public void end(){
-		conversation.end();
+	public void endConversation(){
+		if (!conversation.isTransient()){
+			conversation.end();
+		}
 	}
 
 	public ProductCondition getProductCondition() {
@@ -64,6 +75,14 @@ public class QueryCondition implements Serializable {
 
 	public void setPageObject(PageObject pageObject) {
 		this.pageObject = pageObject;
+	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 	
 }

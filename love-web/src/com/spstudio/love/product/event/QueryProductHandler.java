@@ -14,6 +14,7 @@ import com.spstudio.love.product.action.ProductAction;
 import com.spstudio.love.product.bean.QueryCondition;
 import com.spstudio.love.product.entity.Product;
 import com.spstudio.love.product.helper.ProductCondition;
+import com.spstudio.love.product.qualifier.ProductQualifier;
 import com.spstudio.love.product.qualifier.ProductRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.entity.UserInfo;
@@ -34,19 +35,40 @@ public class QueryProductHandler implements Serializable {
 	@Inject ProductAction productAction;
 	@Inject @ProductRemoteBean IProduct productRemoteBean;
 	@Inject @LoveLogged Logger log;
+	@Inject @ProductQualifier Product product;
 
 	@LoveTrace
 	public void queryProduct(@Observes @QueryProductEventQualifier QueryProductEvent event){
+		switch (event.getQueryMode()) {
+		case ALL_PRODUCTS:
+			queryAllProducts();
+			break;
+		case ONE_PRODUCT:
+			loadOneProduct();
+			break;
+
+		default:
+			break;
+		}
+	}
+	
+	private void loadOneProduct(){
+		Product product = productRemoteBean.loadProduct(queryCondition.getProductCondition().getId());
+		this.product.setProduct(product);
+	}
+	
+	private void queryAllProducts(){
 		ProductCondition pc = queryCondition.getProductCondition();
 		pc.setFamilyId(userInfo.getFamilyId());
 		ProductCondition c = pc.clone();
 		PageObject pageObject = queryCondition.getPageObject();
 		IQueryResult<Product> result = productRemoteBean.queryProducts(c, pageObject.clone());
-		productAction.setProducts(result.getResultData());
+		queryCondition.setProducts(result.getResultData());
 		
 		// set paging object
 		pageObject.setTotalRecordsNumber(result.getPageObject().getTotalRecordsNumber());
 		pageObject.setCurrentPageNumber(pageObject.getOffset() / (int)pageObject.getMaxRecordsPerPage() + 1);
 		pageObject.setMaxPageNumber((int)pageObject.getTotalRecordsNumber() / pageObject.getMaxRecordsPerPage() + ((int)pageObject.getTotalRecordsNumber() % pageObject.getMaxRecordsPerPage() == 0 ? 0 : 1));
+
 	}
 }

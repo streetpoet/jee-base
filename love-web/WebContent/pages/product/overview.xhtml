@@ -86,7 +86,7 @@
 		<h:column><h:outputText value="#{p.description}" /></h:column>
 		<h:column>
 			<h:commandLink action="#{productAction.modify}" value="modify">
-				<f:setPropertyActionListener target="#{queryCondition.product}" value="#{p}"></f:setPropertyActionListener>
+				<f:setPropertyActionListener target="#{queryCondition.productCondition.id}" value="#{p.id}"></f:setPropertyActionListener>
 			</h:commandLink>
 		</h:column>
 	</h:dataTable>

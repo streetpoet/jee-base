@@ -13,16 +13,17 @@ import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
 import com.spstudio.love.product.bean.QueryCondition;
-import com.spstudio.love.product.entity.Product;
 import com.spstudio.love.product.event.AddProductEvent;
 import com.spstudio.love.product.event.AddProductEventQualifier;
 import com.spstudio.love.product.event.QueryProductEvent;
+import com.spstudio.love.product.event.QueryProductEvent.QueryMode;
 import com.spstudio.love.product.event.QueryProductEventQualifier;
+import com.spstudio.love.product.nav.ProductNav;
 import com.spstudio.love.product.qualifier.ProductSingleRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.entity.UserInfo;
 import com.spstudio.love.system.qualifier.FamilyMembers;
-import com.spstudio.love.system.qualifier.LoveLogged;
+import com.spstudio.love.system.qualifier.LoveTrace;
 
 @Model
 public class ProductAction {
@@ -32,8 +33,6 @@ public class ProductAction {
 	@Inject @QueryProductEventQualifier Event<QueryProductEvent> queryProductEvent;
 	@Inject @FamilyMembers List<UserInfo> members;
 	@Inject QueryCondition queryCondition;
-	
-	private List<Product> products;
 	
 	public List<SelectItem> getClassifyItems() {
 		List<String[]> list = productSingleton.retrieveProductClassify();
@@ -46,6 +45,7 @@ public class ProductAction {
 		return selectItems;
 	}
 	
+	@LoveTrace
 	public List<SelectItem> getFamilyMembers() {
 		List<SelectItem> selectItems = new ArrayList<SelectItem>();
 		if (members != null && members.size() != 0){
@@ -63,10 +63,9 @@ public class ProductAction {
 		addProductEvent.fire(new AddProductEvent());
 	}
 	
-	@LoveLogged
 	public void queryProduct() {
-		queryProductEvent.fire(new QueryProductEvent());
-		queryCondition.begin();
+		queryProductEvent.fire(new QueryProductEvent(QueryMode.ALL_PRODUCTS));
+		queryCondition.beginConversation();
 	}
 
 	public void loadPrePage(){
@@ -96,16 +95,17 @@ public class ProductAction {
 		}
 	}
 	
-	/*
-	 * Getter/Setter
-	 */
+	public void beforePhaseForProduct(javax.faces.event.PhaseEvent event){
+		if (event.getPhaseId().equals(PhaseId.RENDER_RESPONSE)){
+			queryProductEvent.fire(new QueryProductEvent(QueryMode.ONE_PRODUCT));
+			queryCondition.endConversation();
+		}
+	}
 	
-	public List<Product> getProducts() {
-		return products;
+	@LoveTrace
+	public Object modify(){
+		return ProductNav.MODIFY_PRODUCT;
 	}
 
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
 	
 }

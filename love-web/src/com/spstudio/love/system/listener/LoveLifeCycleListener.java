@@ -19,7 +19,7 @@ public class LoveLifeCycleListener implements javax.faces.event.PhaseListener {
 	public void beforePhase(PhaseEvent event) {
 		System.out.println("beforePhase " + event.getPhaseId().toString());
 	}
-
+	
 	@Override
 	public PhaseId getPhaseId() {
 		return PhaseId.ANY_PHASE;

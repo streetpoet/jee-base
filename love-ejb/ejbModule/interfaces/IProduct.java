@@ -12,4 +12,5 @@ public interface IProduct {
 	public boolean addProduct(Product product);
 	public IQueryResult<Product> queryProducts(ProductCondition condition, PageObject pageObject);
 	public Product loadProduct(int productId);
+	public int updateProduct(Product product);
 }

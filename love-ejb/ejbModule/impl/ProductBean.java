@@ -30,6 +30,7 @@ public class ProductBean implements IProduct {
 	private static final String QUERY_PRODUCTS_SQL_SUB_4 = " limit ?, ?";
 	
 	private static final String LOAD_PRODUCT_SQL = "select id, classifyid, familyId, forUserId, productName, price, buyDate, warrantyEndDate, description from f1_products where id = ?";
+	private static final String UPDATE_PRODUCT_SQL = "update f1_products set classifyid = ?, familyId = ?, forUserId = ?, productName = ?, price = ?, buyDate = ?, warrantyEndDate = ?, description = ? where id = ?";
 	
 	@Override
 	public boolean addProduct(Product product) {
@@ -43,7 +44,7 @@ public class ProductBean implements IProduct {
 			product.getWarrantyEndDate(),
 			product.getDescription()
 		};
-		return helper.doDMLOperation(ADD_PRODUCT_SQL, params);
+		return helper.doDMLOperation(ADD_PRODUCT_SQL, params) == 1;
 	}
 
 	@Override
@@ -107,6 +108,21 @@ public class ProductBean implements IProduct {
 			return p;
 		}
 		return null;
+	}
+
+	@Override
+	public int updateProduct(Product product) {
+		Object[] params = new Object[]{
+				product.getClassifyId(), 
+				product.getFamilyId(),
+				product.getForUserId(),
+				product.getProductName(),
+				product.getPrice(),
+				product.getBuyDate(),
+				product.getWarrantyEndDate(),
+				product.getDescription(),
+				product.getId()};
+		return helper.doDMLOperation(UPDATE_PRODUCT_SQL, params);
 	}
 
 

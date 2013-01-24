@@ -16,6 +16,8 @@ import com.spstudio.love.product.bean.QueryCondition;
 import com.spstudio.love.product.event.AddProductEvent;
 import com.spstudio.love.product.event.AddProductEventQualifier;
 import com.spstudio.love.product.event.QueryProductEvent;
+import com.spstudio.love.product.event.UpdateProductEvent;
+import com.spstudio.love.product.event.UpdateProductEventQualifier;
 import com.spstudio.love.product.event.QueryProductEvent.QueryMode;
 import com.spstudio.love.product.event.QueryProductEventQualifier;
 import com.spstudio.love.product.nav.ProductNav;
@@ -31,6 +33,7 @@ public class ProductAction {
 	@Inject @ProductSingleRemoteBean IProductSingleton productSingleton;
 	@Inject @AddProductEventQualifier Event<AddProductEvent> addProductEvent;
 	@Inject @QueryProductEventQualifier Event<QueryProductEvent> queryProductEvent;
+	@Inject @UpdateProductEventQualifier Event<UpdateProductEvent> updateProductEvent;
 	@Inject @FamilyMembers List<UserInfo> members;
 	@Inject QueryCondition queryCondition;
 	
@@ -61,6 +64,10 @@ public class ProductAction {
 	 */
 	public void addProduct() {
 		addProductEvent.fire(new AddProductEvent());
+	}
+	
+	public void updateProduct(){
+		updateProductEvent.fire(new UpdateProductEvent());
 	}
 	
 	public void queryProduct() {
@@ -96,7 +103,8 @@ public class ProductAction {
 	}
 	
 	public void beforePhaseForProduct(javax.faces.event.PhaseEvent event){
-		if (event.getPhaseId().equals(PhaseId.RENDER_RESPONSE)){
+		if (event.getPhaseId().equals(PhaseId.RENDER_RESPONSE)
+				&& !FacesContext.getCurrentInstance().isPostback()){
 			queryProductEvent.fire(new QueryProductEvent(QueryMode.ONE_PRODUCT));
 			queryCondition.endConversation();
 		}

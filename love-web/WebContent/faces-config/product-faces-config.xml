@@ -8,6 +8,7 @@
 	    <navigation-case>
 	        <from-outcome>MODIFY_PRODUCT</from-outcome>
 	        <to-view-id>/pages/product/product.xhtml</to-view-id>
+	        <redirect></redirect>
 	    </navigation-case>
 	</navigation-rule>
 	

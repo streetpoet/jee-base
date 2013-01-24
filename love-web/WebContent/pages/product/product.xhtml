@@ -54,7 +54,9 @@
 				<f:validateLength minimum="0" maximum="500"></f:validateLength>
 			</h:inputTextarea>
 			
-			<h:commandButton action="#{productAction.addProduct}" value="Add Product" />
+			<h:commandButton action="#{productAction.addProduct}" value="Add Product" rendered="#{product.id eq 0}"/>
+			<h:commandButton action="#{productAction.updateProduct}" value="Update Product" rendered="true" />
+			<h:inputHidden value="#{product.id}" />
 		</h:panelGrid>
 	</h:form>
 	<h:messages layout="list" />

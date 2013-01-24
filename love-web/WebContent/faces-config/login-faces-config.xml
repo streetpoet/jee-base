@@ -6,8 +6,8 @@
 	<navigation-rule>
 		<from-view-id>/pages/home/home.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>SUCCESS</from-outcome>
-			<to-view-id>/pages/home/result.xhtml</to-view-id>
+			<from-outcome>LOGOUT</from-outcome>
+			<to-view-id>/pages/home/home.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
 	</navigation-rule>

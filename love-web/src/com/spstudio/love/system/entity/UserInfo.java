@@ -4,10 +4,7 @@ package com.spstudio.love.system.entity;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
-
-import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @SessionScoped
 @Named
@@ -20,17 +17,6 @@ public class UserInfo implements Serializable{
 	private String nickName;
 	private String familyName;
 	private String description;
-	
-	public UserInfo(){}
-	
-	@Inject
-	public UserInfo(@UserInfoQualifier UserInfo uInfo){
-		userId = uInfo.getUserId();
-		familyId = uInfo.getFamilyId();
-		nickName = uInfo.getNickName();
-		familyName = uInfo.getFamilyName();
-		description = uInfo.getDescription();
-	}
 	
 	public int getUserId() {
 		return userId;

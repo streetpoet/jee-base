@@ -1,4 +1,4 @@
-package com.spstudio.love.system.entity;
+package com.spstudio.love.system.bean;
 
 
 import java.io.Serializable;

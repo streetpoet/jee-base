@@ -5,7 +5,7 @@ import java.util.List;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 
-import com.spstudio.love.system.entity.UserInfo;
+import com.spstudio.love.system.bean.UserInfo;
 import com.spstudio.love.system.helper.DatabaseHelper;
 import com.spstudio.love.system.qualifier.LoveTrace;
 import com.spstudio.love.system.qualifier.UserInfoQualifier;

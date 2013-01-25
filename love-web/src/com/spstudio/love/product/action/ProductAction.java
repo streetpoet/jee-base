@@ -23,7 +23,7 @@ import com.spstudio.love.product.event.QueryProductEventQualifier;
 import com.spstudio.love.product.nav.ProductNav;
 import com.spstudio.love.product.qualifier.ProductSingleRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
-import com.spstudio.love.system.entity.UserInfo;
+import com.spstudio.love.system.bean.UserInfo;
 import com.spstudio.love.system.qualifier.FamilyMembers;
 import com.spstudio.love.system.qualifier.LoveTrace;
 
@@ -106,7 +106,7 @@ public class ProductAction {
 		if (event.getPhaseId().equals(PhaseId.RENDER_RESPONSE)
 				&& !FacesContext.getCurrentInstance().isPostback()){
 			queryProductEvent.fire(new QueryProductEvent(QueryMode.ONE_PRODUCT));
-			queryCondition.endConversation();
+//			queryCondition.endConversation();
 		}
 	}
 	

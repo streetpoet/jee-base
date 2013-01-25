@@ -5,6 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
 <style type="text/css">
 <!--
 .fn_block {
@@ -25,25 +26,15 @@
 }
 -->
 </style>
-
+</h:head>
 <h:body>
-	<table>
-		<h:column>#{userInfo.userId}</h:column>
-		<h:column>#{userInfo.nickName}</h:column>
-		<h:column>#{userInfo.familyName}</h:column>
-		<h:column>#{userInfo.description}</h:column>
-	</table>
-
-	<dir>
+	<ui:include src="/pages/common/header.xhtml"></ui:include>
+	 - #{userInfo.nickName} -
+	<dir style="position: absolute;">
 		<h:outputLink value="../product/home.faces">#{sysBundle['module.name.productmgmt']}</h:outputLink>
 	</dir>
 	<dir>
 		<h:outputLink value="../plan/home.faces">#{sysBundle['module.name.planmgmt']}</h:outputLink>
 	</dir>
-	<h:form>
-		<h:commandLink id="justForward" action="#{sysCore.logout}" value="Logout" />
-	</h:form>
 </h:body>
-<div class="fn_block">Content for New Div Tag Goes Here</div>
-<div class="fn_block">Content for New Div Tag Goes Here</div>
 </html>

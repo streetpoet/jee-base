@@ -17,7 +17,7 @@ import com.spstudio.love.product.helper.ProductCondition;
 import com.spstudio.love.product.qualifier.ProductQualifier;
 import com.spstudio.love.product.qualifier.ProductRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
-import com.spstudio.love.system.entity.UserInfo;
+import com.spstudio.love.system.bean.UserInfo;
 import com.spstudio.love.system.interfaces.IQueryResult;
 import com.spstudio.love.system.qualifier.LoveLogged;
 import com.spstudio.love.system.qualifier.LoveTrace;

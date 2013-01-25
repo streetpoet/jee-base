@@ -8,7 +8,6 @@ import javax.naming.NamingException;
 
 import com.spstudio.love.product.qualifier.ProductRemoteBean;
 import com.spstudio.love.system.LoveDaemon;
-import com.spstudio.love.system.qualifier.LoveTrace;
 
 public class ProductRemoteBeanProducer {
 	
@@ -18,7 +17,6 @@ public class ProductRemoteBeanProducer {
 	@SuppressWarnings("unused")
 	@Produces
 	@ProductRemoteBean
-	@LoveTrace
 	private IProduct produce(){
 		IProduct products = null;
  		try {

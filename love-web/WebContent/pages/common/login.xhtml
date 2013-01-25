@@ -92,13 +92,7 @@ text-shadow: 1px 1px 5px #333333;
 </h:head>
 
 <h:body>
-	<div class="header header-logged-out">
-		<div class="container clearfix">
-			<a class="header-logo-wordmark" href="#">
-				<h:graphicImage height="30" value="/resources/#{view.locale}/images/logo.png" />
-			</a>
-		</div>
-	</div>
+	<ui:include src="header.xhtml"></ui:include>
 	<div class="jumbotron">
 		<div class="container clearfix">
 			<div class="home-login">

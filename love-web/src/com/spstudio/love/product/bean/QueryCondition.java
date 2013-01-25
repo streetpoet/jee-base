@@ -33,6 +33,7 @@ public class QueryCondition implements Serializable {
 	public void postConstruct(){
 		productCondition = new ProductCondition();
 		pageObject = new PageObject();
+		System.out.println("### QueryCondition#postConstruct");
 	}
 	
 	@PreDestroy

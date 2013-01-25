@@ -13,7 +13,7 @@ import javax.inject.Inject;
 import com.spstudio.love.product.entity.Product;
 import com.spstudio.love.product.qualifier.ProductQualifier;
 import com.spstudio.love.product.qualifier.ProductRemoteBean;
-import com.spstudio.love.system.entity.UserInfo;
+import com.spstudio.love.system.bean.UserInfo;
 import com.spstudio.love.system.qualifier.LoveTrace;
 
 @Dependent

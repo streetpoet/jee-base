@@ -7,34 +7,55 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 <style type="text/css">
-<!--
-.fn_block {
-	display: block;
-	width: 200px;
-	border-top-style: solid;
-	border-right-style: solid;
-	border-bottom-style: solid;
-	border-left-style: solid;
-	vertical-align: middle;
-	border-top-width: 1px;
-	border-right-width: 1px;
-	border-bottom-width: 1px;
-	border-left-width: 1px;
-	cursor: pointer;
-	height: 200px;
-	position: relative;
+.clearfix {
+    display: block;
 }
--->
+.container {
+    margin: 0 auto;
+    width: 920px;
+    display: block;
+}
+.fn_block{
+	background: -moz-linear-gradient(center top , #A5E879, #006E18) repeat scroll 0 0 #006E18;
+    border: 1px solid #1C7800;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 0 0 2px #FFFFFF inset;
+    color: #105E00;
+    font-size: 25px;
+    height: 120px;
+    padding-top: 50px;
+    position: relative;
+    text-shadow: 1px 1px 0 #66C473;
+    top: 100px;
+    transition: all 0.5s ease 0s;
+    width: 300px;
+    vertical-align : middle;
+	text-align : center;
+	text-decoration : none;
+	cursor: pointer;
+	float: left;
+	margin: 10px;
+	display: block;
+}
+
+.div_shadow
+{
+box-shadow: 6px 9px 10px #333333;
+-webkit-box-shadow: 6px 9px 10px #333333;
+-moz-box-shadow: 6px 9px 10px #333333;
+}
+
 </style>
 </h:head>
 <h:body>
 	<ui:include src="/pages/common/header.xhtml"></ui:include>
-	 - #{userInfo.nickName} -
-	<dir style="position: absolute;">
-		<h:outputLink value="../product/home.faces">#{sysBundle['module.name.productmgmt']}</h:outputLink>
-	</dir>
-	<dir>
-		<h:outputLink value="../plan/home.faces">#{sysBundle['module.name.planmgmt']}</h:outputLink>
-	</dir>
+	<div class="container clearfix">
+		<div class="fn_block div_shadow">
+			<h:outputLink value="../product/home.faces">#{sysBundle['module.name.productmgmt']}</h:outputLink>
+		</div>
+		<div class="fn_block div_shadow">
+			<h:outputLink value="../plan/home.faces">#{sysBundle['module.name.planmgmt']}</h:outputLink>
+		</div>
+	</div>
 </h:body>
 </html>

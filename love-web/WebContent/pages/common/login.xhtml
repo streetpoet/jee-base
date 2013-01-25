@@ -5,35 +5,10 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
+
 <h:head>
-	<style type="text/css">
-.header-logged-out {
-    padding: 10px 0;
-}
-.header {
-    border-bottom: 1px solid #E5E5E5;
-    text-shadow: 0 1px 0 #FFFFFF;
-}
-.header-logo-wordmark {
-    padding-bottom: 9px;
-    padding-top: 9px;
-    position: relative;
-}
-.clearfix {
-    display: block;
-}
-.container {
-    margin: 0 auto;
-    width: 920px;
-}
-.jumbotron {
-    background-color: #FAFAFA;
-    border-bottom: 1px solid #E5E5E5;
-    display: block;
-    margin-bottom: 60px;
-    padding: 50px 0 40px;
-}
-.jumbotron .heading {
+<style>
+.heading {
     background: none repeat scroll 0 0 transparent;
     font-size: 70px;
     font-weight: normal;
@@ -42,69 +17,63 @@
     margin-top: 0;
     padding-top: 20px;
 }
-.jumbotron .heading {
-    font-family: ProximaNovaRgRegular,"Helvetica Neue",Helvetica,sans-serif;
-}
-.home-login {
-    float: right;
-    margin-left: 30px;
+.login-form {
+	float: right;
+    margin-left: 60px;
     width: 290px;
 }
-.home-login input {
-    background-color: #FFFFFF;
+.login-input {
+	margin-right: 5px;
 }
-.home-login input {
-    border-radius: 5px 5px 5px 5px;
-    font-size: 16px;
-    padding: 9px;
-    width: 100%;
-}
-.button.primary {
-    background-color: #60B044;
-    background-image: linear-gradient(#8ADD6D, #60B044);
-    background-repeat: repeat-x;
-    border-color: #5CA941;
-    color: #FFFFFF;
-    width: 100%;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-}
-.button-block {
+
+input[type='text'], input[type='password'] {
     -moz-box-sizing: border-box;
-    display: block;
-    width: 100%;
+    background-position: right center;
+    background-repeat: no-repeat;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset;
+    color: #333333;
+    outline: medium none;
+    vertical-align: middle;
+    margin-bottom: 5px;
 }
-.button {
-	border-style: solid;
-    border-width: 1px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.075);
-    cursor: pointer;
-    font-weight: bold;
-    position: relative;
-    margin-top: 5px;
-    width: 100%;
+input:-moz-read-write, textarea:-moz-read-write {
+    -moz-user-modify: read-write !important;
 }
-
-.div_text_shadow
-{
-text-shadow: 1px 1px 5px #333333;
+input {
+    -moz-appearance: textfield;
+    -moz-user-select: text;
+    cursor: text;
+    letter-spacing: normal;
+    line-height: normal !important;
+    text-align: start;
+    text-indent: 0;
+    text-rendering: optimizelegibility;
+    text-shadow: none;
+    text-transform: none;
+    word-spacing: normal;
 }
-	</style>
+</style>
 </h:head>
-
 <h:body>
-	<ui:include src="header.xhtml"></ui:include>
-	<div class="jumbotron">
-		<div class="container clearfix">
-			<div class="home-login">
-			<form method="post" action="j_security_check" >
-				<h:panelGrid columns="1">
-					<input id="j_username" name="j_username" type="text" size="20" placeholder="Input Username" autocomplete="on" />
-					<input id="j_password" name="j_password" type="password" size="20" placeholder="Input Password" autocomplete="off" />
-					<h:commandButton type="submit" value="Submit" styleClass="button primary button-block" />
-				</h:panelGrid>
+	<h:outputStylesheet library="css/#{view.locale}" name="love.css"  />
+	
+	<div class="header-container">
+		<div class="content-container">
+			<a href="#">
+				<h:graphicImage height="30" value="/resources/#{view.locale}/images/logo.png" />
+			</a>
+			<a href="#" class="button header-actions">Register</a>
+		</div>
+	</div>
+	<div class="body-container">
+		<div class="content-container">
+			<form method="post" action="j_security_check" class="login-form">
+					<input id="j_username" name="j_username" type="text" size="20" placeholder="your username" autocomplete="on" class="login-input" />
+					<input id="j_password" name="j_password" type="password" size="20" placeholder="your password" autocomplete="off" class="login-input" />
+					<h:commandButton type="submit" value="Submit" styleClass="green-button" />
 			</form>
-			</div>
-			<h1 class="heading div_text_shadow">Family System</h1>
+			<h1 class="heading">Family System</h1>
 		</div>
 	</div>
 

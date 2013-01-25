@@ -5,60 +5,157 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
-	
+
+<h:head>
+	<style type="text/css">
+body {
+	font: 13px/1.4 Helvetica,arial,freesans,clean,sans-serif;
+}
+.container {
+    margin: 0 auto;
+    width: 920px;
+    display: block;
+}
+.input-block {
+    margin-bottom: 15px;
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+}
+input[type="text"], textarea, select {
+    -moz-box-sizing: border-box;
+    background-color: #FFFFFF;
+    background-position: right center;
+    background-repeat: no-repeat;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset;
+    color: #333333;
+    outline: medium none;
+    padding: 7px 8px;
+    vertical-align: middle;
+}
+label {
+    font-weight: bold;
+}
+label, input[type="text"], textarea {
+    font-size: 13px;
+}
+option {
+	font-size: 12px;
+	vertical-align: middle;
+}
+input.focus[type="text"], input[type="text"]:focus, textarea.focus, textarea:focus, select:focus {
+    border-color: #51A7E8;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset, 0 0 5px rgba(81, 167, 232, 0.5);
+}
+.firstCol{
+	width: 20%;
+}
+.secondCol{
+	width: 80%;
+}
+
+div{
+	display: block;
+	margin: 0;
+}
+.auth-form-header {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #6C8393;
+    background-image: linear-gradient(#7F95A5, #6C8393);
+    background-repeat: repeat-x;
+    border-color: #6E8290 #6E8290 #586873;
+    border-image: none;
+    border-radius: 4px 4px 0 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 10px 20px;
+    position: relative;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+.auth-form-body {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    -moz-box-sizing: border-box;
+    background-color: #FFFFFF;
+    border-image: none;
+    border-radius: 0 0 4px 4px;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 20px;
+}
+	</style>
+</h:head>
 <f:view beforePhase="#{productAction.beforePhaseForProduct}">
 
 <h:body>
-	<h:form>
-		<h:panelGrid columns="2">
-		
-			<h:outputLabel value="#{productBundle['product.classify']}" for="classify" />
-			<h:selectOneMenu id="classify" required="true" value="#{product.classifyId}">
-				<f:selectItems value="#{productAction.classifyItems}" />
-			</h:selectOneMenu>
-			
-			<h:outputLabel value="#{productBundle['product.name']}" for="product_name" />
-			<h:inputText id="product_name" value="#{product.productName}" immediate="true" maxlength="100">
-				<f:validateRequired />
-				<f:validateLength minimum="1" maximum="100" />
-			</h:inputText>
-			
-			<h:outputLabel value="#{productBundle['product.forUserId']}" for="main_user" />
-			<h:selectOneMenu id="main_user" required="true" value="#{product.forUserId}">
-				<f:selectItem itemValue="-1" itemLabel="all"/>
-				<f:selectItems value="#{productAction.familyMembers}" />
-			</h:selectOneMenu>
-			
-			<h:outputLabel value="#{productBundle['product.price']}" for="price" />
-			<h:inputText id="price" value="#{product.price}" immediate="true" maxlength="7">
-				<f:validateRequired />
-				<f:convertNumber minIntegerDigits="0" maxIntegerDigits="9999999"/>
-			</h:inputText>
-			
-			<h:outputLabel value="#{productBundle['product.buydate']}" for="product_buy_date" />
-			<h:inputText id="product_buy_date" value="#{product.buyDate}">
-				<f:convertDateTime pattern="yyyy/MM/dd"/>
-				<f:convertDateTime pattern="yyyy-MM-dd"/>
-				<f:convertDateTime pattern="yyyyMMdd"/>
-			</h:inputText>
-			
-			<h:outputLabel value="#{productBundle['product.warrantyEndDate']}" for="warranty_end_date" />
-			<h:inputText id="warranty_end_date" value="#{product.warrantyEndDate}">
-				<f:convertDateTime pattern="yyyy/MM/dd"/>
-				<f:convertDateTime pattern="yyyy-MM-dd"/>
-				<f:convertDateTime pattern="yyyyMMdd"/>
-			</h:inputText>
-			
-			<h:outputLabel value="#{productBundle['product.description']}" for="desc" />
-			<h:inputTextarea id="desc" value="#{product.description}" maxlength="500">
-				<f:validateLength minimum="0" maximum="500"></f:validateLength>
-			</h:inputTextarea>
-			
-			<h:commandButton action="#{productAction.addProduct}" value="Add Product" rendered="#{product.id eq 0}"/>
-			<h:commandButton action="#{productAction.updateProduct}" value="Update Product" rendered="true" />
-			<h:inputHidden value="#{product.id}" />
-		</h:panelGrid>
-	</h:form>
+	<div class="container">
+		<div class="auth-form-header">
+			<h1>Add New Product</h1>
+		</div>
+		<div class="auth-form-body">
+			<h:form>
+				<h:panelGrid columns="2" width="100%" columnClasses="firstCol, secondCol">
+				
+					<h:outputLabel value="#{productBundle['product.classify']}" for="classify" />
+					<h:selectOneMenu id="classify" required="true" value="#{product.classifyId}">
+						<f:selectItems value="#{productAction.classifyItems}" />
+					</h:selectOneMenu>
+					
+					<h:outputLabel value="#{productBundle['product.name']}" for="product_name" />
+					<h:inputText id="product_name" value="#{product.productName}" immediate="true" maxlength="100" styleClass="input-block">
+						<f:validateRequired />
+						<f:validateLength minimum="1" maximum="100" />
+					</h:inputText>
+					
+					<h:outputLabel value="#{productBundle['product.forUserId']}" for="main_user" />
+					<h:selectOneMenu id="main_user" required="true" value="#{product.forUserId}">
+						<f:selectItem itemValue="-1" itemLabel="all"/>
+						<f:selectItems value="#{productAction.familyMembers}" />
+					</h:selectOneMenu>
+					
+					<h:outputLabel value="#{productBundle['product.price']}" for="price" />
+					<h:inputText id="price" value="#{product.price}" immediate="true" maxlength="7">
+						<f:validateRequired />
+						<f:convertNumber minIntegerDigits="0" maxIntegerDigits="9999999"/>
+					</h:inputText>
+					
+					<h:outputLabel value="#{productBundle['product.buydate']}" for="product_buy_date" />
+					<h:inputText id="product_buy_date" value="#{product.buyDate}">
+						<f:convertDateTime pattern="yyyy/MM/dd"/>
+						<f:convertDateTime pattern="yyyy-MM-dd"/>
+						<f:convertDateTime pattern="yyyyMMdd"/>
+					</h:inputText>
+					
+					<h:outputLabel value="#{productBundle['product.warrantyEndDate']}" for="warranty_end_date" />
+					<h:inputText id="warranty_end_date" value="#{product.warrantyEndDate}">
+						<f:convertDateTime pattern="yyyy/MM/dd"/>
+						<f:convertDateTime pattern="yyyy-MM-dd"/>
+						<f:convertDateTime pattern="yyyyMMdd"/>
+					</h:inputText>
+					
+					<h:outputLabel value="#{productBundle['product.description']}" for="desc" />
+					<h:inputTextarea id="desc" value="#{product.description}" maxlength="500">
+						<f:validateLength minimum="0" maximum="500"></f:validateLength>
+							</h:inputTextarea>
+							
+							<h:commandButton action="#{productAction.addProduct}" value="Add Product" rendered="#{product.id eq 0}"/>
+							<h:commandButton action="#{productAction.updateProduct}" value="Update Product" rendered="true" />
+							<h:inputHidden value="#{product.id}" />
+						</h:panelGrid>
+			</h:form>
+		</div>
+
+	</div>
 	<h:messages layout="list" />
 </h:body>
 </f:view>

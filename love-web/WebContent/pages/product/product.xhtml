@@ -6,98 +6,11 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head>
-	<style type="text/css">
-body {
-	font: 13px/1.4 Helvetica,arial,freesans,clean,sans-serif;
-}
-.container {
-    margin: 0 auto;
-    width: 920px;
-    display: block;
-}
-.input-block {
-    margin-bottom: 15px;
-    margin-top: 5px;
-    display: block;
-    width: 100%;
-}
-input[type="text"], textarea, select {
-    -moz-box-sizing: border-box;
-    background-color: #FFFFFF;
-    background-position: right center;
-    background-repeat: no-repeat;
-    border: 1px solid #CCCCCC;
-    border-radius: 3px 3px 3px 3px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset;
-    color: #333333;
-    outline: medium none;
-    padding: 7px 8px;
-    vertical-align: middle;
-}
-label {
-    font-weight: bold;
-}
-label, input[type="text"], textarea {
-    font-size: 13px;
-}
-option {
-	font-size: 12px;
-	vertical-align: middle;
-}
-input.focus[type="text"], input[type="text"]:focus, textarea.focus, textarea:focus, select:focus {
-    border-color: #51A7E8;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset, 0 0 5px rgba(81, 167, 232, 0.5);
-}
-.firstCol{
-	width: 20%;
-}
-.secondCol{
-	width: 80%;
-}
-
-div{
-	display: block;
-	margin: 0;
-}
-.auth-form-header {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    background-color: #6C8393;
-    background-image: linear-gradient(#7F95A5, #6C8393);
-    background-repeat: repeat-x;
-    border-color: #6E8290 #6E8290 #586873;
-    border-image: none;
-    border-radius: 4px 4px 0 0;
-    border-style: solid;
-    border-width: 1px;
-    color: #FFFFFF;
-    margin: 0;
-    padding: 10px 20px;
-    position: relative;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
-}
-.auth-form-body {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    -moz-box-sizing: border-box;
-    background-color: #FFFFFF;
-    border-image: none;
-    border-radius: 0 0 4px 4px;
-    border-style: solid;
-    border-width: 1px;
-    font-size: 14px;
-    padding: 20px;
-}
-	</style>
-</h:head>
+<h:head></h:head>
 <f:view beforePhase="#{productAction.beforePhaseForProduct}">
-
 <h:body>
+	<!-- Body Begin -->
+	
 	<div class="container">
 		<div class="auth-form-header">
 			<h1>Add New Product</h1>
@@ -151,12 +64,14 @@ div{
 							<h:commandButton action="#{productAction.addProduct}" value="Add Product" rendered="#{product.id eq 0}"/>
 							<h:commandButton action="#{productAction.updateProduct}" value="Update Product" rendered="true" />
 							<h:inputHidden value="#{product.id}" />
-						</h:panelGrid>
+					</h:panelGrid>
 			</h:form>
 		</div>
-
 	</div>
 	<h:messages layout="list" />
+	
+
+
 </h:body>
 </f:view>
 </html>

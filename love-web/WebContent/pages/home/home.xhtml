@@ -6,29 +6,86 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
+<style>
+.module{
+ -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    -moz-user-select: none;
+    background-color: #EAEAEA;
+    background-image: linear-gradient(#FAFAFA, #EAEAEA);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #DDDDDD #C5C5C5;
+    border-image: none;
+    border-radius: 3px 3px 3px 3px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 #FFFFFF;
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    height: 40px;
+    margin-left: 5px;
+    margin-right: 20px;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 160px;
+    
+	box-shadow: 5px 5px 5px #333333;
+	-webkit-box-shadow: 5px 5px 5px #333333;
+	-moz-box-shadow: 5px 5px 5px #333333;
+}
+.module:hover{
+	background-color: #3072B3;
+    background-image: linear-gradient(#599BCD, #3072B3);
+    background-repeat: repeat-x;
+    border-color: #2A65A0;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.module:active {
+    background-color: #3072B3;
+    background-image: none;
+    border-color: #25588C;
+    box-shadow: 5px 5px 5px #333333;
+	-webkit-box-shadow: 5px 5px 5px #333333;
+	-moz-box-shadow: 5px 5px 5px #333333;
+    
+}
+a:hover {
+	color: #FFF;
+}
+.func_block{
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding-top: 10px;
+}
+</style>
 </h:head>
 <h:body>
 	<h:outputStylesheet library="css/#{view.locale}" name="love.css"  />
 	
 	<!-- Header -->
-	<div class="header-container">
-		<div class="content-container">
-			<a href="#">
-				<h:graphicImage height="30" value="/resources/#{view.locale}/images/logo.png" />
-			</a>
-			<div style="float: right;">
-			<h:form>
-				<h:commandButton value="Logout" action="#{sysCore.logout}" styleClass="button header-actions" />
-			</h:form>
-			</div>
-		</div>
-	</div>
+	<ui:include src="/pages/home/header.xhtml"></ui:include>
 	
 	<!-- Body -->
 	<div class="body-container">
 		<div class="content-container">
-			<h:outputLink value="../product/home.faces">#{sysBundle['module.name.productmgmt']}</h:outputLink>
-			<h:outputLink value="../plan/home.faces">#{sysBundle['module.name.planmgmt']}</h:outputLink>
+			<div class="module">
+				<h:outputLink value="../product/home.faces" styleClass="func_block">#{sysBundle['module.name.productmgmt']}</h:outputLink>
+			</div>
+			<div class="module">
+				<h:outputLink value="../plan/home.faces" styleClass="func_block">#{sysBundle['module.name.planmgmt']}</h:outputLink>
+			</div>
 		</div>
 	</div>
 	

@@ -21,6 +21,7 @@ import com.spstudio.love.system.bean.UserInfo;
 import com.spstudio.love.system.interfaces.IQueryResult;
 import com.spstudio.love.system.qualifier.LoveLogged;
 import com.spstudio.love.system.qualifier.LoveTrace;
+import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @Dependent
 public class QueryProductHandler implements Serializable {
@@ -31,7 +32,7 @@ public class QueryProductHandler implements Serializable {
 	private static final long serialVersionUID = -988405636819038144L;
 	
 	@Inject QueryCondition queryCondition;
-	@Inject UserInfo userInfo;
+	@Inject @UserInfoQualifier UserInfo userInfo;
 	@Inject ProductAction productAction;
 	@Inject @ProductRemoteBean IProduct productRemoteBean;
 	@Inject @LoveLogged Logger log;

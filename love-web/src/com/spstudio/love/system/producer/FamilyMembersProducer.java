@@ -9,11 +9,12 @@ import javax.inject.Inject;
 import com.spstudio.love.system.bean.UserInfo;
 import com.spstudio.love.system.helper.DatabaseHelper;
 import com.spstudio.love.system.qualifier.FamilyMembers;
+import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 public class FamilyMembersProducer {
 	
 	@Inject DatabaseHelper helper;
-	@Inject UserInfo userInfo;
+	@Inject @UserInfoQualifier UserInfo userInfo;
 	
 	private String QUERY_SQL = "select u.id, u.nickName " +
 			"from users u, userFamilyRef r " +

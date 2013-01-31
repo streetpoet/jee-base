@@ -15,6 +15,7 @@ import com.spstudio.love.product.qualifier.ProductQualifier;
 import com.spstudio.love.product.qualifier.ProductRemoteBean;
 import com.spstudio.love.system.bean.UserInfo;
 import com.spstudio.love.system.qualifier.LoveTrace;
+import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @Dependent
 public class AddProductHandler implements Serializable {
@@ -26,7 +27,7 @@ public class AddProductHandler implements Serializable {
 	
 	@Inject @ProductQualifier Product product;
 	@Inject @ProductRemoteBean IProduct productRemoteBean;
-	@Inject UserInfo userInfo;
+	@Inject @UserInfoQualifier UserInfo userInfo;
 
 	@LoveTrace
 	public void addProduct(@Observes @AddProductEventQualifier AddProductEvent event){

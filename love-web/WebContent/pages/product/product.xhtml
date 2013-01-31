@@ -9,8 +9,11 @@
 <h:head></h:head>
 <f:view beforePhase="#{productAction.beforePhaseForProduct}">
 <h:body>
-	<!-- Body Begin -->
+
+	<ui:composition template="/pages/home/template.xhtml">
+	<ui:define name="body_content">
 	
+	<!-- Body Begin -->
 	<div class="container">
 		<div class="auth-form-header">
 			<h1>Add New Product</h1>
@@ -69,7 +72,10 @@
 		</div>
 	</div>
 	<h:messages layout="list" />
+	<!-- Body End -->
 	
+	</ui:define>
+	</ui:composition>
 
 
 </h:body>

@@ -7,80 +7,28 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-<style>
-.heading {
-    background: none repeat scroll 0 0 transparent;
-    font-size: 70px;
-    font-weight: normal;
-    letter-spacing: -1px;
-    line-height: 1;
-    margin-top: 0;
-    padding-top: 20px;
-}
-.login-form {
-	float: right;
-    margin-left: 40px;
-    width: 300px;
-}
-.login-input {
-	margin-right: 5px;
-}
-
-input[type='text'], input[type='password'] {
-    -moz-box-sizing: border-box;
-    background-position: right center;
-    background-repeat: no-repeat;
-    border: 1px solid #CCCCCC;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset;
-    color: #333333;
-    outline: medium none;
-    vertical-align: middle;
-    margin-bottom: 5px;
-}
-input:-moz-read-write, textarea:-moz-read-write {
-    -moz-user-modify: read-write !important;
-}
-input {
-    -moz-appearance: textfield;
-    -moz-user-select: text;
-    cursor: text;
-    letter-spacing: normal;
-    line-height: normal !important;
-    text-align: start;
-    text-indent: 0;
-    text-rendering: optimizelegibility;
-    text-shadow: none;
-    text-transform: none;
-    word-spacing: normal;
-}
-h1{
-	text-shadow: 6px 6px 12px #333333;
-}
-</style>
 </h:head>
 <h:body>
-	<h:outputStylesheet library="css/#{view.locale}" name="love.css"  />
+
+	<ui:composition template="/pages/common/template.xhtml">
 	
-	<div class="header-container">
-		<div class="content-container">
-			<a href="#">
-				<h:graphicImage height="30" value="/resources/#{view.locale}/images/logo.png" />
-			</a>
-			<a href="#" class="button header-actions">Register</a>
-		</div>
-	</div>
-	<div class="body-container">
-		<div class="content-container">
-			<form method="post" action="j_security_check" class="login-form">
-					<input id="j_username" name="j_username" type="text" size="20" placeholder="your username" autocomplete="off" class="login-input" />
-					<input id="j_password" name="j_password" type="password" size="20" placeholder="your password" autocomplete="off" class="login-input" />
-					<h:commandButton type="submit" value="Login" styleClass="green-button" />
-			</form>
-			<h1 class="heading">Family System</h1>
-		</div>
-	</div>
+	<ui:define name="css_content">
+		<h:outputStylesheet library="css/#{view.locale}" name="login.css" />
+	</ui:define>
 	
-	<ui:include src="/pages/common/footer.xhtml"></ui:include>
+	<ui:define name="body_content">	
+		<div class="body-container">
+			<div class="content-container">
+				<form method="post" action="j_security_check" class="login-form">
+						<input id="j_username" name="j_username" type="text" size="20" placeholder="your username" autocomplete="off" class="login-input" />
+						<input id="j_password" name="j_password" type="password" size="20" placeholder="your password" autocomplete="off" class="login-input" />
+						<h:commandButton type="submit" value="Login" styleClass="green-button" />
+				</form>
+				<h1 class="heading">Family System</h1>
+			</div>
+		</div>
+	</ui:define>
+	</ui:composition>
 
 </h:body>
 

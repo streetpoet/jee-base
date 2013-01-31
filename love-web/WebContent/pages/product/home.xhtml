@@ -5,14 +5,22 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+</h:head>
 <h:body>
-	product home page.
-#{userInfo.nickName}
+	<h:outputStylesheet library="css/#{view.locale}" name="love.css"  />
+	
+	<!-- Header -->
+	<ui:include src="/pages/home/header.xhtml"></ui:include>
+	
 	<dir>
 		<h:outputLink value="overview.faces">#{productBundle['func.overview']}</h:outputLink>
 	</dir>
 	<dir>
 		<h:outputLink value="product.faces">#{productBundle['func.addProduct']}</h:outputLink>
 	</dir>
+	
+	<!-- Footer -->
+	<ui:include src="/pages/common/footer.xhtml"></ui:include>
 </h:body>
 </html>

@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+
+.heading {
+    background: none repeat scroll 0 0 transparent;
+    font-size: 70px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-top: 0;
+    padding-top: 20px;
+}
+.login-form {
+	float: right;
+    margin-left: 40px;
+    width: 300px;
+}
+.login-input {
+	margin-right: 5px;
+}
+
+input[type='text'], input[type='password'] {
+    -moz-box-sizing: border-box;
+    background-position: right center;
+    background-repeat: no-repeat;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset;
+    color: #333333;
+    outline: medium none;
+    vertical-align: middle;
+    margin-bottom: 5px;
+}
+input:-moz-read-write, textarea:-moz-read-write {
+    -moz-user-modify: read-write !important;
+}
+input {
+    -moz-appearance: textfield;
+    -moz-user-select: text;
+    cursor: text;
+    letter-spacing: normal;
+    line-height: normal !important;
+    text-align: start;
+    text-indent: 0;
+    text-rendering: optimizelegibility;
+    text-shadow: none;
+    text-transform: none;
+    word-spacing: normal;
+}
+h1{
+	text-shadow: 6px 6px 12px #333333;
+}

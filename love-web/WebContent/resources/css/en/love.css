@@ -188,6 +188,7 @@ border-radius: 20px;
 -moz-border-radius: 20px;
 }
 
+
 /*
 	common definition
 */
@@ -216,14 +217,44 @@ div, h1, form {
 	margin: 0;
 	display: block;
 }
-input {
-	background-color: #FFFFFF;
+input[type='text'], input[type='password'], select, textarea {
+    -moz-box-sizing: border-box;
+    background-position: right center;
+    background-repeat: no-repeat;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset;
+    color: #333333;
+    outline: medium none;
+    vertical-align: middle;
+    margin-bottom: 5px;
+}
+input:-moz-read-write, textarea:-moz-read-write {
+    -moz-user-modify: read-write !important;
+}
+input, select, textarea {
+    -moz-appearance: textfield;
+    -moz-user-select: text;
+    cursor: text;
+    letter-spacing: normal;
+    line-height: normal !important;
+    text-align: start;
+    text-indent: 0;
+    text-rendering: optimizelegibility;
+    text-shadow: none;
+    text-transform: none;
+    word-spacing: normal;
+    background-color: #FFFFFF;
 	border-radius: 5px 5px 5px 5px;
     font-size: 16px;
     padding: 9px 0 9px 9px;
     width: 100%;
 }
-input.focus[type="text"], input[type="text"]:focus, input.focus[type="password"], input[type="password"]:focus, textarea.focus, textarea:focus {
+textarea {
+	width: 100%;
+	height: 100px;
+}
+
+input.focus[type="text"], input[type="text"]:focus, input.focus[type="password"], input[type="password"]:focus, select.focus, select:focus, textarea.focus, textarea:focus {
     border-color: #51A7E8;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset, 0 0 5px rgba(81, 167, 232, 0.5);
 }
@@ -231,6 +262,17 @@ button, input[type="reset"], input[type="button"], input[type="submit"] {
     -moz-appearance: button;
     -moz-binding: none;
     text-align: center;
+}
+h1 {
+	font-size: 18px;
+}
+label {
+    font-weight: bold;
+    color: #4183C4;
+    cursor: pointer;
+}
+label:HOVER {
+	color: #3070C0;
 }
 :-moz-any-link {
     cursor: pointer;

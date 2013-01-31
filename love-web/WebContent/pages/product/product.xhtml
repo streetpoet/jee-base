@@ -7,18 +7,27 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head></h:head>
+
 <f:view beforePhase="#{productAction.beforePhaseForProduct}">
 <h:body>
 
 	<ui:composition template="/pages/home/template.xhtml">
+	<ui:define name="css_content">
+		<h:outputStylesheet library="css/#{view.locale}" name="form.css" />
+	</ui:define>
 	<ui:define name="body_content">
 	
 	<!-- Body Begin -->
-	<div class="container">
-		<div class="auth-form-header">
+	<div style="margin: 20px auto; width: 600px;">
+		<div>
+			<h:messages layout="table" errorClass="info_header" />
+		</div>
+	</div>
+	<div style="margin: 20px auto; width: 600px;">
+		<div class="form-header">
 			<h1>Add New Product</h1>
 		</div>
-		<div class="auth-form-body">
+		<div class="form-body">
 			<h:form>
 				<h:panelGrid columns="2" width="100%" columnClasses="firstCol, secondCol">
 				
@@ -48,8 +57,6 @@
 					<h:outputLabel value="#{productBundle['product.buydate']}" for="product_buy_date" />
 					<h:inputText id="product_buy_date" value="#{product.buyDate}">
 						<f:convertDateTime pattern="yyyy/MM/dd"/>
-						<f:convertDateTime pattern="yyyy-MM-dd"/>
-						<f:convertDateTime pattern="yyyyMMdd"/>
 					</h:inputText>
 					
 					<h:outputLabel value="#{productBundle['product.warrantyEndDate']}" for="warranty_end_date" />
@@ -62,16 +69,12 @@
 					<h:outputLabel value="#{productBundle['product.description']}" for="desc" />
 					<h:inputTextarea id="desc" value="#{product.description}" maxlength="500">
 						<f:validateLength minimum="0" maximum="500"></f:validateLength>
-							</h:inputTextarea>
-							
-							<h:commandButton action="#{productAction.addProduct}" value="Add Product" rendered="#{product.id eq 0}"/>
-							<h:commandButton action="#{productAction.updateProduct}" value="Update Product" rendered="true" />
-							<h:inputHidden value="#{product.id}" />
-					</h:panelGrid>
+					</h:inputTextarea>
+				</h:panelGrid>
+				<h:commandButton action="#{productAction.addProduct}" value="Add Product" styleClass="green-button" style="margin-top: 10px;"/>
 			</h:form>
 		</div>
 	</div>
-	<h:messages layout="list" />
 	<!-- Body End -->
 	
 	</ui:define>

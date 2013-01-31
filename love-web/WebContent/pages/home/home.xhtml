@@ -17,16 +17,14 @@
 	
 	<ui:define name="body_content">
 	
-	<div class="body-container">
-		<div class="content-container">
-			<div class="module">
-				<h:outputLink value="../product/home.faces" styleClass="func_block">#{sysBundle['module.name.productmgmt']}</h:outputLink>
-			</div>
-			<div class="module">
-				<h:outputLink value="../plan/home.faces" styleClass="func_block">#{sysBundle['module.name.planmgmt']}</h:outputLink>
-			</div>
-		</div>
+
+	<div class="module">
+		<h:outputLink value="../product/home.faces" styleClass="func_block">#{sysBundle['module.name.productmgmt']}</h:outputLink>
 	</div>
+	<div class="module">
+		<h:outputLink value="../plan/home.faces" styleClass="func_block">#{sysBundle['module.name.planmgmt']}</h:outputLink>
+	</div>
+
 	
 	</ui:define>
 	</ui:composition>

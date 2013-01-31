@@ -6,56 +6,33 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-<style type="text/css">
-.clearfix {
-    display: block;
-}
-.container {
-    margin: 0 auto;
-    width: 920px;
-    display: block;
-}
-.fn_block{
-	background: -moz-linear-gradient(center top , #A5E879, #006E18) repeat scroll 0 0 #006E18;
-    border: 1px solid #1C7800;
-    border-radius: 15px 15px 15px 15px;
-    box-shadow: 0 0 2px #FFFFFF inset;
-    color: #105E00;
-    font-size: 25px;
-    height: 120px;
-    padding-top: 50px;
-    position: relative;
-    text-shadow: 1px 1px 0 #66C473;
-    top: 100px;
-    transition: all 0.5s ease 0s;
-    width: 300px;
-    vertical-align : middle;
-	text-align : center;
-	text-decoration : none;
-	cursor: pointer;
-	float: left;
-	margin: 10px;
-	display: block;
-}
-
-.div_shadow
-{
-box-shadow: 6px 9px 10px #333333;
--webkit-box-shadow: 6px 9px 10px #333333;
--moz-box-shadow: 6px 9px 10px #333333;
-}
-
-</style>
 </h:head>
 <h:body>
-	<ui:include src="/pages/common/header.xhtml"></ui:include>
-	<div class="container clearfix">
-		<div class="fn_block div_shadow">
-			<h:outputLink value="../product/home.faces">#{sysBundle['module.name.productmgmt']}</h:outputLink>
+	<h:outputStylesheet library="css/#{view.locale}" name="love.css"  />
+	
+	<!-- Header -->
+	<div class="header-container">
+		<div class="content-container">
+			<a href="#">
+				<h:graphicImage height="30" value="/resources/#{view.locale}/images/logo.png" />
+			</a>
+			<div style="float: right;">
+			<h:form>
+				<h:commandButton value="Logout" action="#{sysCore.logout}" styleClass="button header-actions" />
+			</h:form>
+			</div>
 		</div>
-		<div class="fn_block div_shadow">
+	</div>
+	
+	<!-- Body -->
+	<div class="body-container">
+		<div class="content-container">
+			<h:outputLink value="../product/home.faces">#{sysBundle['module.name.productmgmt']}</h:outputLink>
 			<h:outputLink value="../plan/home.faces">#{sysBundle['module.name.planmgmt']}</h:outputLink>
 		</div>
 	</div>
+	
+	<!-- Footer -->
+	<ui:include src="/pages/common/footer.xhtml"></ui:include>
 </h:body>
 </html>

@@ -6,21 +6,32 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
+<style>
+
+</style>
 </h:head>
 <h:body>
-	<h:outputStylesheet library="css/#{view.locale}" name="love.css"  />
 	
-	<!-- Header -->
-	<ui:include src="/pages/home/header.xhtml"></ui:include>
+	<ui:composition template="/pages/home/template.xhtml">
 	
-	<dir>
-		<h:outputLink value="overview.faces">#{productBundle['func.overview']}</h:outputLink>
-	</dir>
-	<dir>
-		<h:outputLink value="product.faces">#{productBundle['func.addProduct']}</h:outputLink>
-	</dir>
+	<ui:define name="css_content">
+		<h:outputStylesheet library="css/#{view.locale}" name="module.css" />
+	</ui:define>
 	
-	<!-- Footer -->
-	<ui:include src="/pages/common/footer.xhtml"></ui:include>
+	<ui:define name="body_content">
+	
+	<div class="body-container">
+		<div class="content-container">
+			<div class="module">
+				<h:outputLink value="overview.faces" styleClass="func_block">#{productBundle['func.overview']}</h:outputLink>
+			</div>
+			<div class="module">
+				<h:outputLink value="product.faces" styleClass="func_block">#{productBundle['func.addProduct']}</h:outputLink>
+			</div>
+		</div>
+	</div>
+	
+	</ui:define>
+	</ui:composition>
 </h:body>
 </html>

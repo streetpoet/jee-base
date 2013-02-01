@@ -22,8 +22,7 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Member Content</web-resource-name>
-			<url-pattern>/welcome</url-pattern>
-			<url-pattern>/pages/home/*</url-pattern>
+			<url-pattern>/pages/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>MemberRole</role-name>
@@ -95,10 +94,6 @@
 	</error-page>
 	<error-page>
 		<error-code>401</error-code>
-		<location>/pages/common/exception_401.faces</location>
-	</error-page>
-	<error-page>
-		<error-code>403</error-code>
 		<location>/pages/common/exception_401.faces</location>
 	</error-page>
 	<error-page>

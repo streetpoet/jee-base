@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+label {
+	white-space: nowrap;
+}
+
+td {
+	padding-right: 10px;
+	white-space: nowrap;
+}
+
+input[type='text'] {
+	width: 120px;
+}
+
+.button.page {
+	width: auto;
+	margin: 5px;
+}
+
+textarea {
+	height: auto;
+}
+
+.green-button {
+	width: 100%;
+}
+
+#data-table {
+	width: 920px;
+	overflow: auto;
+}

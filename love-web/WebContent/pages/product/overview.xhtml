@@ -10,6 +10,7 @@
 	
 	<ui:composition template="/pages/home/template.xhtml">
 	<ui:define name="css_content">
+		<h:outputStylesheet library="css/#{view.locale}" name="form.css" />
 		<h:outputStylesheet library="css/#{view.locale}" name="product-overview.css" />
 	</ui:define>
 
@@ -83,7 +84,7 @@
 		</h:panelGrid>
 	</h:form>
 	
-	<div id = "data-table">
+	<div id="data-table" class="bubble">
 	<h:form>
 	<h:dataTable border="1" value="#{queryCondition.products}" var="p" rendered="#{not empty queryCondition.products}">
 		<h:column><h:outputText value="#{p.productName}" /></h:column>

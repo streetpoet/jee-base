@@ -74,7 +74,7 @@ public class PlanSingletonBean implements IPlanSingleton {
 				types.add(row);
 			}
 		}
-		planTypeList = types;
+		planUnitList = types;
 	}
 	
 	@PostConstruct

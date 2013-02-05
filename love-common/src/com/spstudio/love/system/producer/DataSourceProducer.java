@@ -8,7 +8,6 @@ import com.spstudio.love.system.qualifier.LoveDataSource;
 
 public class DataSourceProducer {
 	
-	@SuppressWarnings("unused")
 	@Produces
 	@LoveDataSource
 	@Resource(name = "LoveDB",
@@ -16,5 +15,5 @@ public class DataSourceProducer {
 			authenticationType = AuthenticationType.CONTAINER, 
 			shareable = false, 
 			description = "datasource of connection pool")
-	private javax.sql.DataSource dataSource = null;
+	javax.sql.DataSource dataSource = null;
 }

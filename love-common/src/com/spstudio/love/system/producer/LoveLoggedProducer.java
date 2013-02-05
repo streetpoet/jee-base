@@ -9,10 +9,9 @@ import com.spstudio.love.system.qualifier.LoveLogged;
 
 public class LoveLoggedProducer {
 	
-	@SuppressWarnings("unused")
 	@Produces
 	@LoveLogged
-	private Logger produceLogger(InjectionPoint injectionPoint){		
+	Logger produceLogger(InjectionPoint injectionPoint){		
  		return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
 	}
 }

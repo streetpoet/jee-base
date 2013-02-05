@@ -54,7 +54,7 @@ public class QueryProductHandler implements Serializable {
 	}
 	
 	private void loadOneProduct(){
-		Product product = productRemoteBean.loadProduct(queryCondition.getProductCondition().getId());
+		Product product = productRemoteBean.loadProduct(this.product.getId());
 		this.product.setProduct(product);
 	}
 	

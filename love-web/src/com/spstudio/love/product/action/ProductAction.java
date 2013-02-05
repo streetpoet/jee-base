@@ -16,10 +16,10 @@ import com.spstudio.love.product.bean.QueryCondition;
 import com.spstudio.love.product.event.AddProductEvent;
 import com.spstudio.love.product.event.AddProductEventQualifier;
 import com.spstudio.love.product.event.QueryProductEvent;
-import com.spstudio.love.product.event.UpdateProductEvent;
-import com.spstudio.love.product.event.UpdateProductEventQualifier;
 import com.spstudio.love.product.event.QueryProductEvent.QueryMode;
 import com.spstudio.love.product.event.QueryProductEventQualifier;
+import com.spstudio.love.product.event.UpdateProductEvent;
+import com.spstudio.love.product.event.UpdateProductEventQualifier;
 import com.spstudio.love.product.nav.ProductNav;
 import com.spstudio.love.product.qualifier.ProductSingleRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
@@ -106,14 +106,12 @@ public class ProductAction {
 		if (event.getPhaseId().equals(PhaseId.RENDER_RESPONSE)
 				&& !FacesContext.getCurrentInstance().isPostback()){
 			queryProductEvent.fire(new QueryProductEvent(QueryMode.ONE_PRODUCT));
-//			queryCondition.endConversation();
+			queryCondition.endConversation();
 		}
 	}
 	
-	@LoveTrace
-	public Object modify(){
-		return ProductNav.MODIFY_PRODUCT;
+	public void modify(){
+		
 	}
-
 	
 }

@@ -85,7 +85,6 @@
 	</h:form>
 	
 	<div id="data-table" class="bubble">
-	<h:form>
 	<h:dataTable border="1" value="#{queryCondition.products}" var="p" rendered="#{not empty queryCondition.products}">
 		<h:column><h:outputText value="#{p.productName}" /></h:column>
 		<h:column><h:outputText value="#{p.classifyName}" /></h:column>
@@ -95,12 +94,11 @@
 		<h:column><h:outputText value="#{p.warrantyEndDate}" /></h:column>
 		<h:column><h:outputText value="#{p.description}" /></h:column>
 		<h:column>
-			<h:commandLink action="#{productAction.modify}" value="modify">
-				<f:setPropertyActionListener target="#{queryCondition.productCondition.id}" value="#{p.id}"></f:setPropertyActionListener>
-			</h:commandLink>
+			<h:link outcome="product_modify" value="Modify" includeViewParams="true">
+				<f:param name="pid" value="#{p.id}"></f:param>
+			</h:link>
 		</h:column>
 	</h:dataTable>
-	</h:form>
 	</div>
 	
 	<h:form>

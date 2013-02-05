@@ -32,29 +32,7 @@ public class PlanSingletonBean implements IPlanSingleton {
 	@Inject @LoveLogged Logger log;
 	@Inject DatabaseHelper helper;
 	
-	private List<String[]> planTypeList = null;
-
-	@Override
-	@Lock(LockType.READ)
-	public List<String[]> retrievePlanTypeList() {
-		return planTypeList;
-	}
-	
-	@Schedule(minute = "*/1", hour = "*", persistent = false)
-	public void queryPlanType(){
-		List<String[]> types = new ArrayList<String[]>();
-		List<Object[]> result = helper.doQuery("select id, typeName from f2_plan_type order by id", null);
-		if (result != null && result.size() != 0){
-			for (Object[] data: result){
-				String[] row = new String[2];
-				row[IPlanSingleton.PlanType.INDEX_PLANTYPE_ID] = String.valueOf(data[0]);
-				row[IPlanSingleton.PlanType.INDEX_PLANTYPE_NAME] = (String)data[1];
-				types.add(row);
-			}
-		}
-		 planTypeList = types;
-	}
-	
+	//TODO: copy begin
 	private List<String[]> unitTypeList = null;
 
 	@Override
@@ -78,12 +56,14 @@ public class PlanSingletonBean implements IPlanSingleton {
 		 unitTypeList = types;
 	}
 	
+	//TODO: copy end
 	
 	@PostConstruct
 	public void postConstruct(){
 		log.info("[[ PlanSingletonBean start. ]]");
-		queryPlanType();
+		//TODO: copy begin
 		queryUnitType();
+		//TODO: copy end
 	}
 	
 	@PreDestroy

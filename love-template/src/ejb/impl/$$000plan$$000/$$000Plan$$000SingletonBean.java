@@ -1,6 +1,6 @@
 package impl.plan;
 
-import interfaces.plan.IPlanSingleton;
+import interfaces.$$999plan$$999.I$$000Plan$$000Singleton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,63 +27,43 @@ import com.spstudio.love.system.qualifier.LoveLogged;
 @Startup
 @ConcurrencyManagement(ConcurrencyManagementType.CONTAINER)
 @AccessTimeout(unit = TimeUnit.SECONDS, value = 5)
-public class PlanSingletonBean implements IPlanSingleton {
+public class $$000Plan$$000SingletonBean implements I$$000Plan$$000Singleton {
 	
 	@Inject @LoveLogged Logger log;
 	@Inject DatabaseHelper helper;
 	
-	private List<String[]> planTypeList = null;
+	//TODO: copy begin
+	private List<String[]> $$003planType$$003List = null;
 
 	@Override
 	@Lock(LockType.READ)
-	public List<String[]> retrievePlanTypeList() {
-		return planTypeList;
+	public List<String[]> retrieve$$001PlanType$$001List() {
+		return $$003planType$$003List;
 	}
 	
 	@Schedule(minute = "*/1", hour = "*", persistent = false)
-	public void queryPlanType(){
+	public void query$$001PlanTypes$$001(){
 		List<String[]> types = new ArrayList<String[]>();
-		List<Object[]> result = helper.doQuery("select id, typeName from f2_plan_type order by id", null);
+		List<Object[]> result = helper.doQuery("$$004sql$$004", null);
 		if (result != null && result.size() != 0){
 			for (Object[] data: result){
 				String[] row = new String[2];
-				row[IPlanSingleton.PlanType.INDEX_PLANTYPE_ID] = String.valueOf(data[0]);
-				row[IPlanSingleton.PlanType.INDEX_PLANTYPE_NAME] = (String)data[1];
+				row[I$$000Plan$$000Singleton.$$001PlanType$$001.INDEX_$$002PlanType$$002_ID] = String.valueOf(data[0]);
+				row[I$$000Plan$$000Singleton.$$001PlanType$$001.INDEX_$$002PlanType$$002_NAME] = (String)data[1];
 				types.add(row);
 			}
 		}
-		 planTypeList = types;
+		 $$003planType$$003List = types;
 	}
 	
-	private List<String[]> unitTypeList = null;
-
-	@Override
-	@Lock(LockType.READ)
-	public List<String[]> retrieveUnitTypeList() {
-		return unitTypeList;
-	}
-	
-	@Schedule(minute = "*/1", hour = "*", persistent = false)
-	public void queryUnitType(){
-		List<String[]> types = new ArrayList<String[]>();
-		List<Object[]> result = helper.doQuery("select id, unitName from f2_plan_unit order by id", null);
-		if (result != null && result.size() != 0){
-			for (Object[] data: result){
-				String[] row = new String[2];
-				row[IPlanSingleton.UnitType.INDEX_UNITTYPE_ID] = String.valueOf(data[0]);
-				row[IPlanSingleton.UnitType.INDEX_UNITTYPE_NAME] = (String)data[1];
-				types.add(row);
-			}
-		}
-		 unitTypeList = types;
-	}
-	
+	//TODO: copy end
 	
 	@PostConstruct
 	public void postConstruct(){
 		log.info("[[ PlanSingletonBean start. ]]");
-		queryPlanType();
-		queryUnitType();
+		//TODO: copy begin
+		query$$001PlanTypes$$001();
+		//TODO: copy end
 	}
 	
 	@PreDestroy

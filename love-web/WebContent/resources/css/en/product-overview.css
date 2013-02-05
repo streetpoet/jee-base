@@ -27,6 +27,6 @@ textarea {
 }
 
 #data-table {
-	width: 920px;
+	width: 100%;
 	overflow: auto;
 }

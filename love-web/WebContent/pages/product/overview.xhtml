@@ -16,8 +16,12 @@
 
 	<ui:define name="body_content">
 	
+	<div class="form-header">
+			<h1>Add New Product</h1>
+	</div>
+	<div class="form-body">
 	<h:form>
-		<h:panelGrid columns="4">
+		<h:panelGrid columns="4" columnClasses="firstCol,,firstCol">
 		
 			<h:outputLabel value="#{productBundle['product.classify']}" for="classify" />
 			<h:selectOneMenu id="classify" required="true" value="#{queryCondition.productCondition.classifyId}">
@@ -26,7 +30,7 @@
 			</h:selectOneMenu>
 			
 			<h:outputLabel value="#{productBundle['product.name']}" for="product_name" />
-			<h:inputText id="product_name" value="#{queryCondition.productCondition.productName}" immediate="true" maxlength="100">
+			<h:inputText id="product_name" value="#{queryCondition.productCondition.productName}" immediate="true" maxlength="100" style="width: 100%;">
 				<f:validateLength minimum="" maximum="100" />
 			</h:inputText>
 			
@@ -79,13 +83,16 @@
 				<f:validateLength minimum="0" maximum="500"></f:validateLength>
 			</h:inputTextarea>
 			
-			
 			<h:commandButton action="#{productAction.queryProduct}" value="Smart Query" styleClass="green-button" />
 		</h:panelGrid>
 	</h:form>
+	</div>
 	
+	<h:panelGroup rendered="#{not empty queryCondition.products}">
+	<div class="form-body">
 	<div id="data-table" class="bubble">
-	<h:dataTable border="1" value="#{queryCondition.products}" var="p" rendered="#{not empty queryCondition.products}">
+	
+	<h:dataTable border="1" value="#{queryCondition.products}" var="p">
 		<h:column><h:outputText value="#{p.productName}" /></h:column>
 		<h:column><h:outputText value="#{p.classifyName}" /></h:column>
 		<h:column><h:outputText value="#{p.forUserName}" /></h:column>
@@ -111,6 +118,8 @@
 			<h:commandButton value="Next" action="#{productAction.loadNextPage}" styleClass="button page" />
 		</h:panelGroup>
 	</h:form>
+	</div>
+	</h:panelGroup>
 	
 	</ui:define>
 	</ui:composition>

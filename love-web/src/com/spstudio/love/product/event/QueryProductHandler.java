@@ -38,7 +38,6 @@ public class QueryProductHandler implements Serializable {
 	@Inject @LoveLogged Logger log;
 	@Inject @ProductQualifier Product product;
 
-	@LoveTrace
 	public void queryProduct(@Observes @QueryProductEventQualifier QueryProductEvent event){
 		switch (event.getQueryMode()) {
 		case ALL_PRODUCTS:

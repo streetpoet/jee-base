@@ -3,6 +3,7 @@ package com.spstudio.love.product.event;
 import interfaces.IProduct;
 
 import java.io.Serializable;
+import java.util.ResourceBundle;
 
 import javax.enterprise.context.Dependent;
 import javax.enterprise.event.Observes;
@@ -34,9 +35,19 @@ public class UpdateProductHandler implements Serializable {
 	public void updateProduct(@Observes @UpdateProductEventQualifier UpdateProductEvent event){
 		
 		int result = productRemoteBean.updateProduct(product.clone());
-		FacesContext.getCurrentInstance().addMessage(
-				FacesMessage.FACES_MESSAGES, 
-				new FacesMessage(FacesMessage.SEVERITY_INFO, result == 1 ? "Success":"fail", ""));
-		product.clear();
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		ResourceBundle bundle = ResourceBundle.getBundle("messages.product.Message", context.getViewRoot().getLocale());
+		switch (result) {
+		case 1:
+			context.addMessage(FacesMessage.FACES_MESSAGES, 
+					new FacesMessage(FacesMessage.SEVERITY_INFO, bundle.getString("product.modify.msg.success"), ""));
+			break;
+
+		default:
+			context.addMessage(FacesMessage.FACES_MESSAGES, 
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, bundle.getString("product.modify.msg.failure"), ""));
+			break;
+		}
 	}
 }

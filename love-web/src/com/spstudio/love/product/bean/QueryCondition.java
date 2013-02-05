@@ -10,10 +10,13 @@ import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.jboss.logging.Logger;
+
 import com.spstudio.love.product.entity.Product;
 import com.spstudio.love.product.helper.ProductCondition;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.constant.Configuration;
+import com.spstudio.love.system.qualifier.LoveLogged;
 
 @Named
 @ConversationScoped
@@ -28,17 +31,18 @@ public class QueryCondition implements Serializable {
 	ProductCondition productCondition;
 	PageObject pageObject;
 	private List<Product> products;
+	@Inject @LoveLogged Logger log;
 
 	@PostConstruct
 	public void postConstruct(){
 		productCondition = new ProductCondition();
 		pageObject = new PageObject();
-		System.out.println("### QueryCondition#postConstruct");
+		log.trace("### QueryCondition#postConstruct");
 	}
 	
 	@PreDestroy
 	public void preDestroy(){
-		System.out.println("### QueryCondition#preDestroy");
+		log.trace("### QueryCondition#preDestroy");
 	}
 
 	public void beginConversation(){

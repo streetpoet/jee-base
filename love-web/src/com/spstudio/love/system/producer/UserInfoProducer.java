@@ -7,7 +7,6 @@ import javax.inject.Inject;
 
 import com.spstudio.love.system.bean.UserInfo;
 import com.spstudio.love.system.helper.DatabaseHelper;
-import com.spstudio.love.system.qualifier.LoveTrace;
 import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 public class UserInfoProducer {
@@ -23,7 +22,6 @@ public class UserInfoProducer {
 	@SuppressWarnings("unused")
 	@Produces
 	@UserInfoQualifier
-	@LoveTrace
 	private UserInfo produceUserInfo(){
 		UserInfo userInfo = new UserInfo();
 		List<Object[]> list = dbHelper.doQuery(Query_User_Family_Info, new Object[]{principal.getName()});

@@ -20,12 +20,10 @@ import com.spstudio.love.product.event.QueryProductEvent.QueryMode;
 import com.spstudio.love.product.event.QueryProductEventQualifier;
 import com.spstudio.love.product.event.UpdateProductEvent;
 import com.spstudio.love.product.event.UpdateProductEventQualifier;
-import com.spstudio.love.product.nav.ProductNav;
 import com.spstudio.love.product.qualifier.ProductSingleRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.bean.UserInfo;
 import com.spstudio.love.system.qualifier.FamilyMembers;
-import com.spstudio.love.system.qualifier.LoveTrace;
 
 @Model
 public class ProductAction {
@@ -48,7 +46,6 @@ public class ProductAction {
 		return selectItems;
 	}
 	
-	@LoveTrace
 	public List<SelectItem> getFamilyMembers() {
 		List<SelectItem> selectItems = new ArrayList<SelectItem>();
 		if (members != null && members.size() != 0){
@@ -94,24 +91,17 @@ public class ProductAction {
 		queryProduct();
 	}
 	
-	public void beforePhase(javax.faces.event.PhaseEvent event){
+	public void beforePhaseForProduct(javax.faces.event.PhaseEvent event){
 		if (event.getPhaseId().equals(PhaseId.RENDER_RESPONSE)){
 			if (!FacesContext.getCurrentInstance().isPostback()){
-				queryProduct();
+				queryProductEvent.fire(new QueryProductEvent(QueryMode.ONE_PRODUCT));
+				queryCondition.endConversation();
 			}
 		}
 	}
 	
-	public void beforePhaseForProduct(javax.faces.event.PhaseEvent event){
-		if (event.getPhaseId().equals(PhaseId.RENDER_RESPONSE)
-				&& !FacesContext.getCurrentInstance().isPostback()){
-			queryProductEvent.fire(new QueryProductEvent(QueryMode.ONE_PRODUCT));
-			queryCondition.endConversation();
-		}
-	}
-	
 	public void modify(){
-		
+		updateProductEvent.fire(new UpdateProductEvent());
 	}
 	
 }

@@ -1,4 +1,4 @@
-package java;
+package javasource;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,9 +32,9 @@ public class GenerateSingletonEJB {
 		}
 		for (File f : fs) {
 			if (f.isFile()) {
-				fileCopy(f.getPath(), des + File.separator + f.getName().toLowerCase());
+				fileCopy(f.getPath(), des + File.separator + EJBSingletonConvertor.convert(f.getName()));
 			} else if (f.isDirectory()) {
-				copy(f.getPath(), des + File.separator + f.getName().toLowerCase());
+				copy(f.getPath(), des + File.separator + EJBSingletonConvertor.convert(f.getName()).toLowerCase());
 			}
 		}
 

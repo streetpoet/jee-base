@@ -15,7 +15,7 @@ public class PlanBean implements IPlan {
 	
 	private static final String ADD_PLAN_SQL = "insert into f2_plan(" +
 			"familyId, typeId, title, content, needMoney, amount, terminalDate, isRepeat, repeatUnitId, entry_user_id, entry_datetime) " +
-			"values (?,?,?,?,?,?,?,?,?,?)";
+			"values (?,?,?,?,?,?,?,?,?,?,now())";
 	
 	@Override
 	public boolean addPlan(Plan plan) {
@@ -29,8 +29,7 @@ public class PlanBean implements IPlan {
 			plan.getTerminalDate(),
 			plan.isRepeat(),
 			plan.getRepeatUnitId(),
-			plan.getEntryUserId(),
-			plan.getEntryDatetime()
+			plan.getEntryUserId()
 		};
 		return helper.doDMLOperation(ADD_PLAN_SQL, params) == 1;
 	}

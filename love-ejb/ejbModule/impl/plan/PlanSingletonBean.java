@@ -66,7 +66,7 @@ public class PlanSingletonBean implements IPlanSingleton {
 	@Schedule(minute = "*/1", hour = "*", persistent = false)
 	public void queryUnitType(){
 		List<String[]> types = new ArrayList<String[]>();
-		List<Object[]> result = helper.doQuery("select id, unitName from f2_plan_unit order by id", null);
+		List<Object[]> result = helper.doQuery("select id, unitName from f2_repeat_unit order by id", null);
 		if (result != null && result.size() != 0){
 			for (Object[] data: result){
 				String[] row = new String[2];

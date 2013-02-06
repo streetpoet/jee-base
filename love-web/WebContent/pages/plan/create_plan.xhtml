@@ -31,7 +31,7 @@
 				<h:panelGrid columns="1" width="100%" >
 					<h:panelGrid columns="2" columnClasses="firstCol, secondCol" width="100%">
 						<h:outputLabel value="Plan Title:" for="title" />
-						<h:inputText id="title" value="#{plan.title}" immediate="true" maxlength="45" styleClass="input-block">
+						<h:inputText id="title" value="#{plan.title}" immediate="true" maxlength="45" styleClass="input-block" validatorMessage="Please check plan title.">
 							<f:validateRequired />
 							<f:validateLength minimum="1" maximum="45" />
 						</h:inputText>

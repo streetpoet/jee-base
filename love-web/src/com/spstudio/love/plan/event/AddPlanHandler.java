@@ -3,7 +3,6 @@ package com.spstudio.love.plan.event;
 import interfaces.plan.IPlan;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.enterprise.context.Dependent;
 import javax.enterprise.event.Observes;
@@ -37,12 +36,18 @@ public class AddPlanHandler implements Serializable {
 		plan.setNeedMoney(plan.getAmount() != 0);
 		plan.setRepeat(plan.getTypeId() == 2);
 		plan.setEntryUserId(userInfo.getUserId());
-		plan.setEntryDatetime(new Date());
 		Plan p = plan.clone();
 		boolean result = planRemoteBean.addPlan(p);
-		FacesContext.getCurrentInstance().addMessage(
-				FacesMessage.FACES_MESSAGES, 
-				new FacesMessage(FacesMessage.SEVERITY_INFO, result ? "success" : "fail", ""));
-		plan.clear();
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		if (result){
+			context.addMessage(FacesMessage.FACES_MESSAGES, 
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "SUCCESS", ""));
+			plan.clear();
+		}else {
+			context.addMessage(FacesMessage.FACES_MESSAGES, 
+				new FacesMessage(FacesMessage.SEVERITY_ERROR, "Failure", ""));
+		}
+		
 	}
 }

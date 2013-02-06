@@ -4,10 +4,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
+	
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><h:outputText value="#{sysBundle['website-name']}" /></title>
 </h:head>
+
 <h:body>
 	<h:outputStylesheet library="css/#{view.locale}" name="love.css" />
 	<ui:insert name="css_content" />
@@ -16,7 +18,7 @@
 	<div class="header-container">
 		<div class="content-container">
 			<a href="#{facesContext.externalContext.requestContextPath}/pages/home/home.faces">
-				<h:graphicImage height="30px" value="/resources/#{view.locale}/images/logo.png" />
+				<h:graphicImage height="30px" value="/resources/images/#{view.locale}/logo.png" />
 			</a>
 			<div style="float: right;">
 				<h:form>
@@ -28,24 +30,24 @@
 	
 	<!-- Body -->
 	<div class="body-container">
-	<div class="content-container">
-		<ui:insert name="body_content" />
-	</div>
+		<div class="content-container">
+			<ui:insert name="body_content" />
+		</div>
 	</div>
 	
 	<!-- Footer -->
 	<div id = "footer">
 		<div class="footer-container">
-			<p class="right"> ©2013 SP Studio Inc. All rights reserved. </p>
+			<p class="right">#{sysBundle['website.copyright']}</p>
 			<ul id="legal">
 				<li>
-					<a href="#">Terms of Service</a>
+					<a href="#">#{sysBundle['website.service.terms']}</a>
 				</li>
 				<li>
-					<a href="#">Privacy</a>
+					<a href="#">#{sysBundle['website.Privacy']}</a>
 				</li>
 				<li>
-					<a href="#">Security</a>
+					<a href="#">#{sysBundle['website.Security']}</a>
 				</li>
 			</ul>
 		</div>

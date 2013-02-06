@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+<h:body>
+	
+	<ui:composition template="/pages/home/template.xhtml">
+	<ui:define name="css_content">
+		<h:outputStylesheet library="css/#{view.locale}" name="form.css" />
+		<h:outputStylesheet library="css/#{view.locale}" name="product-overview.css" />
+	</ui:define>
+
+	<ui:define name="body_content">
+	
+	<div class="form-header">
+			<h1>Add New Product</h1>
+	</div>
+	<div class="form-body">
+	<h:form>
+		<h:panelGrid columns="4" columnClasses="firstCol,,firstCol">
+		
+			<h:outputLabel value="#{productBundle['product.classify']}" for="classify" />
+			<h:selectOneMenu id="classify" required="true" value="#{queryCondition.productCondition.classifyId}">
+				<f:selectItem itemValue="-1" itemLabel="all"/>
+				<f:selectItems value="#{productAction.classifyItems}" />
+			</h:selectOneMenu>
+			
+			<h:outputLabel value="#{productBundle['product.name']}" for="product_name" />
+			<h:inputText id="product_name" value="#{queryCondition.productCondition.productName}" immediate="true" maxlength="100" style="width: 100%;">
+				<f:validateLength minimum="" maximum="100" />
+			</h:inputText>
+			
+			<h:outputLabel value="#{productBundle['product.forUserId']}" for="main_user" />
+			<h:selectOneMenu id="main_user" required="true" value="#{queryCondition.productCondition.forUserId}">
+				<f:selectItem itemValue="-1" itemLabel="all"/>
+				<f:selectItems value="#{productAction.familyMembers}" />
+			</h:selectOneMenu>
+			
+			<h:outputLabel value="#{productBundle['product.price']}" for="price" />
+			<h:panelGroup>
+				<h:inputText id="price" value="#{queryCondition.productCondition.priceFrom}" immediate="true" maxlength="7">
+					<f:convertNumber minIntegerDigits="0" maxIntegerDigits="9999999"/>
+				</h:inputText> &nbsp;-&nbsp;
+				<h:inputText value="#{queryCondition.productCondition.priceTo}" immediate="true" maxlength="7">
+					<f:convertNumber minIntegerDigits="0" maxIntegerDigits="9999999"/>
+				</h:inputText>
+			</h:panelGroup>
+			
+			<h:outputLabel value="#{productBundle['product.buydate']}" for="product_buy_date" />
+			<h:panelGroup>
+				<h:inputText id="product_buy_date" value="#{queryCondition.productCondition.buyDateFrom}">
+					<f:convertDateTime pattern="yyyy/MM/dd"/>
+					<f:convertDateTime pattern="yyyy-MM-dd"/>
+					<f:convertDateTime pattern="yyyyMMdd"/>
+				</h:inputText> &nbsp;-&nbsp;
+				<h:inputText value="#{queryCondition.productCondition.buyDateTo}">
+					<f:convertDateTime pattern="yyyy/MM/dd"/>
+					<f:convertDateTime pattern="yyyy-MM-dd"/>
+					<f:convertDateTime pattern="yyyyMMdd"/>
+				</h:inputText>
+			</h:panelGroup>
+			
+			<h:outputLabel value="#{productBundle['product.warrantyEndDate']}" for="warranty_end_date" />
+			<h:panelGroup>
+				<h:inputText id="warranty_end_date" value="#{queryCondition.productCondition.warrantyEndDateFrom}">
+					<f:convertDateTime pattern="yyyy/MM/dd"/>
+					<f:convertDateTime pattern="yyyy-MM-dd"/>
+					<f:convertDateTime pattern="yyyyMMdd"/>
+				</h:inputText> &nbsp;-&nbsp;
+				<h:inputText value="#{queryCondition.productCondition.warrantyEndDateTo}">
+					<f:convertDateTime pattern="yyyy/MM/dd"/>
+					<f:convertDateTime pattern="yyyy-MM-dd"/>
+					<f:convertDateTime pattern="yyyyMMdd"/>
+				</h:inputText>
+			</h:panelGroup>
+			
+			<h:outputLabel value="#{productBundle['product.description']}" for="desc" />
+			<h:inputTextarea id="desc" value="#{queryCondition.productCondition.description}" maxlength="500">
+				<f:validateLength minimum="0" maximum="500"></f:validateLength>
+			</h:inputTextarea>
+			
+			<h:commandButton action="#{productAction.queryProduct}" value="Smart Query" styleClass="green-button" />
+		</h:panelGrid>
+	</h:form>
+	</div>
+	
+	<h:panelGroup rendered="#{not empty queryCondition.products}">
+	<div class="form-body">
+	<div id="data-table" class="bubble">
+	
+	<h:dataTable border="1" value="#{queryCondition.products}" var="p">
+		<h:column><h:outputText value="#{p.productName}" /></h:column>
+		<h:column><h:outputText value="#{p.classifyName}" /></h:column>
+		<h:column><h:outputText value="#{p.forUserName}" /></h:column>
+		<h:column><h:outputText value="#{p.price}" /></h:column>
+		<h:column><h:outputText value="#{p.buyDate}" /></h:column>
+		<h:column><h:outputText value="#{p.warrantyEndDate}" /></h:column>
+		<h:column><h:outputText value="#{p.description}" /></h:column>
+		<h:column>
+			<h:link outcome="product_modify" value="Modify" includeViewParams="true">
+				<f:param name="pid" value="#{p.id}"></f:param>
+			</h:link>
+		</h:column>
+	</h:dataTable>
+	</div>
+	
+	<h:form>
+		<h:panelGroup>
+			<h:commandButton value="Pre" action="#{productAction.loadPrePage}" styleClass="button page" />
+			<h:outputFormat value="Current Page {0}, Total {1}">
+				<f:param value="#{queryCondition.pageObject.currentPageNumber}"/>
+				<f:param value="#{queryCondition.pageObject.maxPageNumber}"/>
+			</h:outputFormat>
+			<h:commandButton value="Next" action="#{productAction.loadNextPage}" styleClass="button page" />
+		</h:panelGroup>
+	</h:form>
+	</div>
+	</h:panelGroup>
+	
+	</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

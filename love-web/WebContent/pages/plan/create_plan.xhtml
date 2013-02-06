@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+
+<h:body>
+
+	<ui:composition template="/pages/home/template.xhtml">
+	<ui:define name="css_content">
+		<h:outputStylesheet library="css/#{view.locale}" name="form.css" />
+	</ui:define>
+	<ui:define name="body_content">
+	
+	<!-- Body Begin -->
+	<div style="margin: 20px auto; width: 600px;">
+		<div>
+			<h:messages layout="table" errorClass="error_header" infoClass="info_header" />
+		</div>
+	</div>
+	<div style="margin: 20px auto; width: 600px;">
+		<div class="form-header">
+			<h1><h:outputText value="#{planBundle['plan.create.title']}" /> </h1>
+		</div>
+		<div class="form-body">
+			<h:form>
+				<h:panelGrid columns="1" width="100%" >
+					<h:panelGrid columns="2" columnClasses="firstCol, secondCol" width="100%">
+						<h:outputLabel value="Plan Title:" for="title" />
+						<h:inputText id="title" value="#{plan.title}" immediate="true" maxlength="45" styleClass="input-block">
+							<f:validateRequired />
+							<f:validateLength minimum="1" maximum="45" />
+						</h:inputText>
+					</h:panelGrid>
+
+					<h:panelGrid columns="4" columnClasses="firstCol,,firstCol," width="100%">
+						<h:outputLabel value="Plan Type:" for="planType" />
+						<h:selectOneMenu id="planType" required="true" value="#{plan.typeId}">
+							<f:selectItems value="#{planAction.planTypesItems}" />
+						</h:selectOneMenu>
+						
+						<h:outputLabel value="Plan Unit:" for="planUnit" />
+						<h:selectOneMenu id="planUnit" required="true" value="#{plan.repeatUnitId}">
+							<f:selectItems value="#{planAction.planUnitItems}" />
+						</h:selectOneMenu>
+					</h:panelGrid>
+					<h:panelGrid columns="4" columnClasses="firstCol,,firstCol," width="100%">
+						<h:outputLabel value="Terminal Date:" for="terminalDate" />
+						<h:inputText id="terminalDate" value="#{plan.terminalDate}" maxlength="10" style="width: 120px;">
+							<f:convertDateTime pattern="yyyy/MM/dd"/>
+						</h:inputText>
+						
+						<h:outputLabel value="Money Need:" for="money" />
+						<h:inputText id="money" value="#{plan.amount}" maxlength="8" style="width: 120px;">
+							<f:validateLongRange minimum="0" maximum="99999999"></f:validateLongRange>
+							<f:convertNumber minIntegerDigits="0" maxIntegerDigits="9999999"/>
+						</h:inputText>
+					</h:panelGrid>
+					<h:panelGrid columns="2" columnClasses="firstCol, secondCol" width="100%">
+						<h:outputLabel value="#{productBundle['product.description']}" for="content" />
+						<h:inputTextarea id="content" value="#{plan.content}" maxlength="5000" style="height: 300px;">
+							<f:validateLength minimum="0" maximum="5000"></f:validateLength>
+						</h:inputTextarea>
+					</h:panelGrid>
+				</h:panelGrid>
+				<h:commandButton action="#{planAction.createPlan}" value="Create Plan" styleClass="green-button" style="margin-top: 10px;"/>
+			</h:form>
+		</div>
+	</div>
+	<!-- Body End -->
+	
+	</ui:define>
+	</ui:composition>
+
+
+</h:body>
+
+</html>

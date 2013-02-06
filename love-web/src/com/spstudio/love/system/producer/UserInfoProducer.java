@@ -19,10 +19,9 @@ public class UserInfoProducer {
 		+ " from users, family, userFamilyRef "
 		+ " where users.id = userFamilyRef.userId and userFamilyRef.familyId = family.id and users.username = ?";
 	
-	@SuppressWarnings("unused")
 	@Produces
 	@UserInfoQualifier
-	private UserInfo produceUserInfo(){
+	UserInfo produceUserInfo(){
 		UserInfo userInfo = new UserInfo();
 		List<Object[]> list = dbHelper.doQuery(Query_User_Family_Info, new Object[]{principal.getName()});
 		if (list != null && list.size() != 0){

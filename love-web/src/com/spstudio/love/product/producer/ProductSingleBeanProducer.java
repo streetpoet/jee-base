@@ -14,10 +14,9 @@ public class ProductSingleBeanProducer {
 	@EJB
 	LoveDaemon loveDaemon;
 	
-	@SuppressWarnings("unused")
 	@Produces
 	@ProductSingleRemoteBean
-	private IProductSingleton produce(){
+	IProductSingleton produce(){
 		IProductSingleton products = null;
  		try {
  			products = (IProductSingleton)loveDaemon.getInitialContext().lookup("ProductSingletonBean/remote");

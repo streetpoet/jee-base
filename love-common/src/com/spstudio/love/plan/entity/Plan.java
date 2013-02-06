@@ -28,7 +28,7 @@ public class Plan implements Cloneable, Serializable{
 	private Date entryDatetime;
 	private int entryUserId;
 	private boolean isRepeat;
-	private int repeatUnit;
+	private int repeatUnitId;
 	
 	
 	
@@ -38,7 +38,7 @@ public class Plan implements Cloneable, Serializable{
 		content = "";
 		amount = 0;
 		terminalDate = null;
-		repeatUnit = 1;
+		repeatUnitId = 1;
 	}
 	
 	public void setProduct(Plan p){
@@ -54,7 +54,7 @@ public class Plan implements Cloneable, Serializable{
 		entryDatetime = p.entryDatetime;
 		entryUserId = p.entryUserId;
 		isRepeat = p.isRepeat;
-		repeatUnit = p.repeatUnit;
+		repeatUnitId = p.repeatUnitId;
 	}
 	
 	public Plan clone(){
@@ -163,12 +163,12 @@ public class Plan implements Cloneable, Serializable{
 		this.isRepeat = isRepeat;
 	}
 
-	public int getRepeatUnit() {
-		return repeatUnit;
+	public int getRepeatUnitId() {
+		return repeatUnitId;
 	}
 
-	public void setRepeatUnit(int repeatUnit) {
-		this.repeatUnit = repeatUnit;
+	public void setRepeatUnitId(int repeatUnitId) {
+		this.repeatUnitId = repeatUnitId;
 	}
 	
 }

@@ -21,10 +21,9 @@ public class FamilyMembersProducer {
 			"where r.userId = u.id and r.familyId = " +
 			"(select ra.familyId from userFamilyRef ra where ra.userId = ?)";
 	
-	@SuppressWarnings("unused")
 	@Produces
 	@FamilyMembers
-	private List<UserInfo> produce(){
+	List<UserInfo> produce(){
 		
 		Object[] params = new Object[1];
 		params[0] = userInfo.getUserId();

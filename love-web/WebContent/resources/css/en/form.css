@@ -77,9 +77,12 @@
 }
 
 .firstCol{
+	text-align: right;
 	vertical-align: middle;
 	padding-left: 20px;
+	padding-right: 20px;
 	text-decoration: underline;
+	width: 100px;
 }
 
 .bubble {

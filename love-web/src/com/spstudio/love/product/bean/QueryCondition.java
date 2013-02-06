@@ -28,10 +28,11 @@ public class QueryCondition implements Serializable {
 	private static final long serialVersionUID = -5758972403494728013L;
 	
 	@Inject Conversation conversation;
+	@Inject @LoveLogged Logger log;
 	ProductCondition productCondition;
 	PageObject pageObject;
-	private List<Product> products;
-	@Inject @LoveLogged Logger log;
+	List<Product> products;
+	
 
 	@PostConstruct
 	public void postConstruct(){

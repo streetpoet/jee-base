@@ -18,7 +18,10 @@
 	<ui:define name="body_content">
 	
 	<div class="module">
-		<h:outputLink value="#" styleClass="func_block">Create Plan.</h:outputLink>
+		<h:outputLink value="overview.faces" styleClass="func_block">#{planBundle['func.overview']}</h:outputLink>
+	</div>
+	<div class="module">
+		<h:outputLink value="create_plan.faces" styleClass="func_block">#{planBundle['func.addPlan']}</h:outputLink>
 	</div>
 	
 	</ui:define>

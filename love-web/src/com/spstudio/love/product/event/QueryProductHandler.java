@@ -20,7 +20,6 @@ import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.bean.UserInfo;
 import com.spstudio.love.system.interfaces.IQueryResult;
 import com.spstudio.love.system.qualifier.LoveLogged;
-import com.spstudio.love.system.qualifier.LoveTrace;
 import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @Dependent

@@ -17,7 +17,7 @@
 	<ui:define name="body_content">
 	
 	<div class="form-header">
-			<h1>Add New Product</h1>
+		<h1>#{productBundle['product.add.title']}</h1>
 	</div>
 	<div class="form-body">
 	<h:form>
@@ -25,39 +25,39 @@
 		
 			<h:outputLabel value="#{productBundle['product.classify']}" for="classify" />
 			<h:selectOneMenu id="classify" required="true" value="#{queryCondition.productCondition.classifyId}">
-				<f:selectItem itemValue="-1" itemLabel="all"/>
+				<f:selectItem itemValue="-1" itemLabel="#{productBundle['product.select.alltype']}"/>			
 				<f:selectItems value="#{productAction.classifyItems}" />
 			</h:selectOneMenu>
 			
 			<h:outputLabel value="#{productBundle['product.name']}" for="product_name" />
-			<h:inputText id="product_name" value="#{queryCondition.productCondition.productName}" immediate="true" maxlength="100" style="width: 100%;">
+			<h:inputText id="product_name" value="#{queryCondition.productCondition.productName}" immediate="true" maxlength="100" validatorMessage="#{productBundle['validator.product.name']}" style="width: 100%;">
 				<f:validateLength minimum="" maximum="100" />
 			</h:inputText>
 			
 			<h:outputLabel value="#{productBundle['product.forUserId']}" for="main_user" />
 			<h:selectOneMenu id="main_user" required="true" value="#{queryCondition.productCondition.forUserId}">
-				<f:selectItem itemValue="-1" itemLabel="all"/>
+				<f:selectItem itemValue="-1" itemLabel="#{productBundle['product.select.allmember']}"/>
 				<f:selectItems value="#{productAction.familyMembers}" />
 			</h:selectOneMenu>
 			
 			<h:outputLabel value="#{productBundle['product.price']}" for="price" />
 			<h:panelGroup>
-				<h:inputText id="price" value="#{queryCondition.productCondition.priceFrom}" immediate="true" maxlength="7">
+				<h:inputText id="price" value="#{queryCondition.productCondition.priceFrom}" immediate="true" maxlength="7" converterMessage="#{productBundle['convertor.product.price']}">
 					<f:convertNumber minIntegerDigits="0" maxIntegerDigits="9999999"/>
 				</h:inputText> &nbsp;-&nbsp;
-				<h:inputText value="#{queryCondition.productCondition.priceTo}" immediate="true" maxlength="7">
+				<h:inputText value="#{queryCondition.productCondition.priceTo}" immediate="true" maxlength="7" converterMessage="#{productBundle['convertor.product.price']}">
 					<f:convertNumber minIntegerDigits="0" maxIntegerDigits="9999999"/>
 				</h:inputText>
 			</h:panelGroup>
 			
 			<h:outputLabel value="#{productBundle['product.buydate']}" for="product_buy_date" />
 			<h:panelGroup>
-				<h:inputText id="product_buy_date" value="#{queryCondition.productCondition.buyDateFrom}">
+				<h:inputText id="product_buy_date" value="#{queryCondition.productCondition.buyDateFrom}" converterMessage="#{productBundle['convertor.product.buydate']}">
 					<f:convertDateTime pattern="yyyy/MM/dd"/>
 					<f:convertDateTime pattern="yyyy-MM-dd"/>
 					<f:convertDateTime pattern="yyyyMMdd"/>
 				</h:inputText> &nbsp;-&nbsp;
-				<h:inputText value="#{queryCondition.productCondition.buyDateTo}">
+				<h:inputText value="#{queryCondition.productCondition.buyDateTo}" converterMessage="#{productBundle['convertor.product.buydate']}">
 					<f:convertDateTime pattern="yyyy/MM/dd"/>
 					<f:convertDateTime pattern="yyyy-MM-dd"/>
 					<f:convertDateTime pattern="yyyyMMdd"/>
@@ -66,12 +66,14 @@
 			
 			<h:outputLabel value="#{productBundle['product.warrantyEndDate']}" for="warranty_end_date" />
 			<h:panelGroup>
-				<h:inputText id="warranty_end_date" value="#{queryCondition.productCondition.warrantyEndDateFrom}">
+				<h:inputText id="warranty_end_date" value="#{queryCondition.productCondition.warrantyEndDateFrom}" 
+					converterMessage="#{productBundle['convertor.product.warrantydate']}">
 					<f:convertDateTime pattern="yyyy/MM/dd"/>
 					<f:convertDateTime pattern="yyyy-MM-dd"/>
 					<f:convertDateTime pattern="yyyyMMdd"/>
 				</h:inputText> &nbsp;-&nbsp;
-				<h:inputText value="#{queryCondition.productCondition.warrantyEndDateTo}">
+				<h:inputText value="#{queryCondition.productCondition.warrantyEndDateTo}" 
+					converterMessage="#{productBundle['convertor.product.warrantydate']}">
 					<f:convertDateTime pattern="yyyy/MM/dd"/>
 					<f:convertDateTime pattern="yyyy-MM-dd"/>
 					<f:convertDateTime pattern="yyyyMMdd"/>
@@ -79,7 +81,7 @@
 			</h:panelGroup>
 			
 			<h:outputLabel value="#{productBundle['product.description']}" for="desc" />
-			<h:inputTextarea id="desc" value="#{queryCondition.productCondition.description}" maxlength="500">
+			<h:inputTextarea id="desc" value="#{queryCondition.productCondition.description}" maxlength="500" validatorMessage="#{productBundle['validator.product.desc']}">
 				<f:validateLength minimum="0" maximum="500"></f:validateLength>
 			</h:inputTextarea>
 			
@@ -101,7 +103,7 @@
 		<h:column><h:outputText value="#{p.warrantyEndDate}" /></h:column>
 		<h:column><h:outputText value="#{p.description}" /></h:column>
 		<h:column>
-			<h:link outcome="product_modify" value="Modify" includeViewParams="true">
+			<h:link outcome="product_modify" value="#{productBundle['link.modify']}" includeViewParams="true">
 				<f:param name="pid" value="#{p.id}"></f:param>
 			</h:link>
 		</h:column>

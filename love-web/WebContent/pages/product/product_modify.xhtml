@@ -30,7 +30,7 @@
 	</div>
 	<div style="margin: 20px auto; width: 600px;">
 		<div class="form-header">
-			<h1>Add New Product</h1>
+			<h1><h:outputText value="#{productBundle['product.modify.title']}" /></h1>
 		</div>
 		<div class="form-body">
 			<h:form>
@@ -42,40 +42,41 @@
 					</h:selectOneMenu>
 					
 					<h:outputLabel value="#{productBundle['product.name']}" for="product_name" />
-					<h:inputText id="product_name" value="#{product.productName}" immediate="true" maxlength="100" styleClass="input-block">
+					<h:inputText id="product_name" value="#{product.productName}" immediate="true" maxlength="100" validatorMessage="#{productBundle['validator.product.name']}" styleClass="input-block">
 						<f:validateRequired />
 						<f:validateLength minimum="1" maximum="100" />
 					</h:inputText>
 					
 					<h:outputLabel value="#{productBundle['product.forUserId']}" for="main_user" />
 					<h:selectOneMenu id="main_user" required="true" value="#{product.forUserId}">
-						<f:selectItem itemValue="-1" itemLabel="all"/>
+						<f:selectItem itemValue="-1" itemLabel="#{productBundle['product.select.allmember']}"/>
 						<f:selectItems value="#{productAction.familyMembers}" />
 					</h:selectOneMenu>
 					
 					<h:outputLabel value="#{productBundle['product.price']}" for="price" />
-					<h:inputText id="price" value="#{product.price}" immediate="true" maxlength="7">
+					<h:inputText id="price" value="#{product.price}" immediate="true" maxlength="7" validatorMessage="#{productBundle['convertor.product.price']}" converterMessage="#{productBundle['convertor.product.price']}">
 						<f:validateRequired />
 						<f:convertNumber minIntegerDigits="0" maxIntegerDigits="9999999"/>
 					</h:inputText>
 					
 					<h:outputLabel value="#{productBundle['product.buydate']}" for="product_buy_date" />
-					<h:inputText id="product_buy_date" value="#{product.buyDate}">
+					<h:inputText id="product_buy_date" value="#{product.buyDate}" converterMessage="#{productBundle['convertor.product.buydate']}">
 						<f:convertDateTime pattern="yyyy/MM/dd"/>
 					</h:inputText>
 					
 					<h:outputLabel value="#{productBundle['product.warrantyEndDate']}" for="warranty_end_date" />
-					<h:inputText id="warranty_end_date" value="#{product.warrantyEndDate}">
+					<h:inputText id="warranty_end_date" value="#{product.warrantyEndDate}" converterMessage="#{productBundle['convertor.product.warrantydate']}">
 						<f:convertDateTime pattern="yyyy/MM/dd"/>
 						<f:convertDateTime pattern="yyyy-MM-dd"/>
 						<f:convertDateTime pattern="yyyyMMdd"/>
 					</h:inputText>
 					
 					<h:outputLabel value="#{productBundle['product.description']}" for="desc" />
-					<h:inputTextarea id="desc" value="#{product.description}" maxlength="500">
+					<h:inputTextarea id="desc" value="#{product.description}" maxlength="500" validatorMessage="##{productBundle['validator.product.desc']}">
 						<f:validateLength minimum="0" maximum="500"></f:validateLength>
 					</h:inputTextarea>
 				</h:panelGrid>
+				<h:inputHidden value="#{product.id}" />
 				<h:commandButton action="#{productAction.modify}" value="Modify Product" styleClass="green-button" style="margin-top: 10px;"/>
 			</h:form>
 		</div>

@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.ejb.AccessTimeout;
 import javax.ejb.ConcurrencyManagement;
 import javax.ejb.ConcurrencyManagementType;
@@ -85,10 +84,4 @@ public class PlanSingletonBean implements IPlanSingleton {
 		queryPlanType();
 		queryUnitType();
 	}
-	
-	@PreDestroy
-	public void preDestroy(){
-		log.info("[[ PlanSingletonBean end. ]]");
-	}
-
 }

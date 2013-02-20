@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.ejb.AccessTimeout;
 import javax.ejb.ConcurrencyManagement;
 import javax.ejb.ConcurrencyManagementType;
@@ -59,11 +58,6 @@ public class ProductSingletonBean implements IProductSingleton {
 	public void postConstruct(){
 		log.info("[[ ProductSingletonBean start. ]]");
 		queryProductClassify();
-	}
-	
-	@PreDestroy
-	public void preDestroy(){
-		log.info("[[ ProductSingletonBean end. ]]");
 	}
 
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import javax.faces.FacesException;
+import javax.faces.application.ViewExpiredException;
 import javax.faces.context.ExceptionHandler;
 import javax.faces.context.ExceptionHandlerWrapper;
 import javax.faces.context.FacesContext;
@@ -39,6 +40,18 @@ public class LoveExceptionHandler extends
 				try {
 					HttpServletResponse response = (HttpServletResponse) fc.getExternalContext().getResponse();
 					String url = fc.getExternalContext().getRequestContextPath() + fc.getExternalContext().getRequestServletPath();
+					fc.responseComplete();
+					response.sendRedirect(url);
+				} catch (IOException e) {
+					log.error(e);
+				} finally {
+					i.remove();
+				}
+			}else if (t.getClass().getName().contains("ViewExpiredException")){
+				FacesContext fc = FacesContext.getCurrentInstance();
+				try {
+					HttpServletResponse response = (HttpServletResponse) fc.getExternalContext().getResponse();
+					String url = fc.getExternalContext().getRequestContextPath();
 					fc.responseComplete();
 					response.sendRedirect(url);
 				} catch (IOException e) {

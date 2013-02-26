@@ -17,12 +17,12 @@ public class PlanRemoteBeanProducer {
 	@Produces
 	@PlanRemoteBean
 	IPlan produce(){
-		IPlan plans = null;
+		IPlan Plans = null;
  		try {
- 			plans = (IPlan)loveDaemon.getInitialContext().lookup("PlanBean/remote");
+ 			Plans = (IPlan)loveDaemon.getInitialContext().lookup("PlanBean/remote");
  		} catch (NamingException e) {
 			e.printStackTrace();
 		}
- 		return plans;
+ 		return Plans;
 	}
 }

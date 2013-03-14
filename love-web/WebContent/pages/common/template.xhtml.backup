@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><h:outputText value="#{sysBundle['website-name']}" /></title>
+</h:head>
+<h:body>
+	<h:outputStylesheet library="css/#{view.locale}" name="love.css" />
+	<ui:insert name="css_content" />
+	
+	<!-- Header -->
+	<div class="header-container">
+		<div class="content-container">
+			<a href="#{facesContext.externalContext.requestContextPath}/pages/home/home.faces">
+				<h:graphicImage height="30" value="/resources/images/#{view.locale}/logo.png" />
+			</a>
+			<a href="#" class="button header-actions">Register</a>
+		</div>
+	</div>
+	
+	<!-- Body -->
+	<ui:insert name="body_content" />
+	
+	<!-- Footer -->
+	<div id = "footer">
+		<div class="footer-container">
+			<p class="right"> ©2013 SP Studio Inc. All rights reserved. </p>
+			<ul id="legal">
+				<li>
+					<a href="#">Terms of Service</a>
+				</li>
+				<li>
+					<a href="#">Privacy</a>
+				</li>
+				<li>
+					<a href="#">Security</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</h:body>
+</html>

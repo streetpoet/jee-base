@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:body>
+	
+	<ui:composition template="/pages/home/template.xhtml">
+	<ui:define name="css_content">
+		<h:outputStylesheet library="css/#{view.locale}" name="form.css" />
+		<h:outputStylesheet library="css/#{view.locale}" name="product-overview.css" />
+		<h:outputScript>
+			function handleError(data){
+				alert(data.description);
+			}
+		</h:outputScript>
+	</ui:define>
+
+	<ui:define name="body_content">
+		<h:dataTable border="1" value="#{changeInterestAction.techClassifyList}" var="techBean">
+			<h:column><h:outputText value="#{techBean.classifyName}" /></h:column>
+			<h:column>
+				<h:dataTable border="1" value="#{techBean.subClassifyName}" var="subTech">
+					<h:column><h:outputText value="#{subTech}" /></h:column>
+				</h:dataTable>
+			</h:column>
+			<h:column>
+				<h:panelGroup id="select_region">
+					<h:inputHidden id="selected_id" value="#{techBean.classifyId}" />
+					<h:commandButton value="取消关注" action="#{changeInterestAction.unselect}" rendered="#{techBean.selected}">
+						<f:setPropertyActionListener target="#{selectedTechClassify.classifyId}" value="#{techBean.classifyId}"></f:setPropertyActionListener>
+						<f:ajax execute="selected_id" render="select_region" onerror="handleError"></f:ajax>
+					</h:commandButton>
+					<h:commandButton value="我感兴趣" action="#{changeInterestAction.select}" rendered="#{not techBean.selected}">
+						<f:setPropertyActionListener target="#{selectedTechClassify.classifyId}" value="#{techBean.classifyId}"></f:setPropertyActionListener>
+						<f:ajax execute="selected_id" render="select_region" onerror="handleError"></f:ajax>
+					</h:commandButton>
+					<h:outputText id="render_region" value="#{selectedTechClassify.classifyId}" />
+				</h:panelGroup>
+			</h:column>
+		</h:dataTable>
+	</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

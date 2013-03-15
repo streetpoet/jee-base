@@ -1,0 +1,63 @@
+<project name="love-domain" default="dist" basedir=".">
+	<description>
+		simple example build file
+	</description>
+	<!-- set global properties for this build -->
+	<property name="src" location="../design-pages" />
+	<property name="dist" location="dist" />
+
+	<target name="convert-to-jsf-tag-xhtml">
+		<!-- form -->
+		<replace dir="${src}">
+			<include name="**/*.xhtml" />
+			<replacetoken><![CDATA[<form]]></replacetoken>
+			<replacevalue><![CDATA[<h:form]]></replacevalue>
+		</replace>
+		<replace dir="${src}">
+			<include name="**/*.xhtml" />
+			<replacetoken><![CDATA[</form]]></replacetoken>
+			<replacevalue><![CDATA[</h:form]]></replacevalue>
+		</replace>
+
+		<!-- head -->
+		<replace dir="${src}" casesensitive="false">
+			<include name="**/*.xhtml" />
+			<replacetoken><![CDATA[<head]]></replacetoken>
+			<replacevalue><![CDATA[<h:head]]></replacevalue>
+		</replace>
+		<replace dir="${src}">
+			<include name="**/*.xhtml" />
+			<replacetoken><![CDATA[</head]]></replacetoken>
+			<replacevalue><![CDATA[</h:head]]></replacevalue>
+		</replace>
+
+		<!-- button -->
+		<replace dir="${src}">
+			<include name="**/*.xhtml" />
+			<replacetoken><![CDATA[<button]]></replacetoken>
+			<replacevalue><![CDATA[<h:button]]></replacevalue>
+		</replace>
+		<replace dir="${src}">
+			<include name="**/*.xhtml" />
+			<replacetoken><![CDATA[</button]]></replacetoken>
+			<replacevalue><![CDATA[</h:button]]></replacevalue>
+		</replace>
+
+		<!-- a -->
+		<replace dir="${src}">
+			<include name="**/*.xhtml" />
+			<replacetoken><![CDATA[<a]]></replacetoken>
+			<replacevalue><![CDATA[<h:commandLink]]></replacevalue>
+		</replace>
+		<replace dir="${src}">
+			<include name="**/*.xhtml" />
+			<replacetoken><![CDATA[</a]]></replacetoken>
+			<replacevalue><![CDATA[</h:commandLink]]></replacevalue>
+		</replace>
+
+	</target>
+
+	<target name="dist" depends="convert-to-jsf-tag-xhtml">
+
+	</target>
+</project>

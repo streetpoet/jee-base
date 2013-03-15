@@ -24,11 +24,11 @@
 				<div class="container">
 
 					<!-- Be sure to leave the brand out there if you want it shown -->
-					<h:commandLink class="brand" href="#">Source Matrix<sup>&#8482;</sup></h:commandLink>
+					<a class="brand" href="#">Source Matrix<sup>&#8482;</sup></a>
 
 					<div class="nav-collapse collapse pull-right">
 						<h:form class="form-inline navbar-form">
-							<h:button type="submit" class="btn btn-danger">Sign out</h:button>
+							<h:commandButton class="btn btn-danger" action="#{sysCore.logout}" value="Sign out"></h:commandButton>
 						</h:form>
 					</div>
 				</div>

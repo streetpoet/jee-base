@@ -35,24 +35,24 @@
 		<replace dir="${src}">
 			<include name="**/*.xhtml" />
 			<replacetoken><![CDATA[<button]]></replacetoken>
-			<replacevalue><![CDATA[<h:button]]></replacevalue>
+			<replacevalue><![CDATA[<h:commandButton]]></replacevalue>
 		</replace>
 		<replace dir="${src}">
 			<include name="**/*.xhtml" />
 			<replacetoken><![CDATA[</button]]></replacetoken>
-			<replacevalue><![CDATA[</h:button]]></replacevalue>
+			<replacevalue><![CDATA[</h:commandButton]]></replacevalue>
 		</replace>
 
 		<!-- a -->
 		<replace dir="${src}">
 			<include name="**/*.xhtml" />
 			<replacetoken><![CDATA[<a]]></replacetoken>
-			<replacevalue><![CDATA[<h:commandLink]]></replacevalue>
+			<replacevalue><![CDATA[<h:link]]></replacevalue>
 		</replace>
 		<replace dir="${src}">
 			<include name="**/*.xhtml" />
 			<replacetoken><![CDATA[</a]]></replacetoken>
-			<replacevalue><![CDATA[</h:commandLink]]></replacevalue>
+			<replacevalue><![CDATA[</h:link]]></replacevalue>
 		</replace>
 
 	</target>

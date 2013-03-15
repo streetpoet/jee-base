@@ -12,7 +12,7 @@
 	<h:outputStylesheet library="css/#{view.locale}" name="/bootstrap-responsive.css" />
 	<h:outputStylesheet library="css/#{view.locale}" name="/bootstrap.min.css" />
 	<h:outputStylesheet library="css/#{view.locale}" name="/docs.css" />
-	<title><h:outputText value="#{sysBundle['website-name']}" /></title>
+	<title><h:outputText value="#{sysBundle['website-name']}" escape="false" /></title>
 </h:head>
 
 <body>
@@ -24,7 +24,7 @@
 				<div class="container">
 
 					<!-- Be sure to leave the brand out there if you want it shown -->
-					<a class="brand" href="#"><h:outputText value="#{sysBundle['website-name']}" /></a>
+					<a class="brand" href="#"><h:outputText value="#{sysBundle['website-name']}" escape="false" /></a>
 
 					<!-- Everything you want hidden at 940px or less, place within here -->
 					<div class="nav-collapse collapse pull-right">

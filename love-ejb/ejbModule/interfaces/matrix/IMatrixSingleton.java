@@ -7,6 +7,6 @@ import javax.ejb.Remote;
 @Remote
 public interface IMatrixSingleton {
 	
-	public List<String[]> retrieveDebugInfoList();
+	public List<String[]> retrieveProjectList();
 	
 }

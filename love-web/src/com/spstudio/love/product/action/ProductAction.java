@@ -13,8 +13,8 @@ import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
 import com.spstudio.love.product.bean.QueryCondition;
-import com.spstudio.love.product.event.AddProductEvent;
-import com.spstudio.love.product.event.AddProductEventQualifier;
+import com.spstudio.love.product.event.createProductEvent;
+import com.spstudio.love.product.event.createProductEventQualifier;
 import com.spstudio.love.product.event.QueryProductEvent;
 import com.spstudio.love.product.event.QueryProductEvent.QueryMode;
 import com.spstudio.love.product.event.QueryProductEventQualifier;
@@ -29,7 +29,7 @@ import com.spstudio.love.system.qualifier.FamilyMembers;
 public class ProductAction {
 	
 	@Inject @ProductSingleRemoteBean IProductSingleton productSingleton;
-	@Inject @AddProductEventQualifier Event<AddProductEvent> addProductEvent;
+	@Inject @createProductEventQualifier Event<createProductEvent> createProductEvent;
 	@Inject @QueryProductEventQualifier Event<QueryProductEvent> queryProductEvent;
 	@Inject @UpdateProductEventQualifier Event<UpdateProductEvent> updateProductEvent;
 	@Inject @FamilyMembers List<UserInfo> members;
@@ -60,7 +60,7 @@ public class ProductAction {
 	 * Add New Product
 	 */
 	public void addProduct() {
-		addProductEvent.fire(new AddProductEvent());
+		createProductEvent.fire(new createProductEvent());
 	}
 	
 	public void updateProduct(){

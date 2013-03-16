@@ -2,7 +2,7 @@ package com.spstudio.love.product.event;
 
 import java.io.Serializable;
 
-public class AddProductEvent implements Serializable{
+public class createProductEvent implements Serializable{
 
 	/**
 	 * 

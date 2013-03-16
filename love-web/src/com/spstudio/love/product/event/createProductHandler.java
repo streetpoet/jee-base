@@ -18,7 +18,7 @@ import com.spstudio.love.system.qualifier.LoveTrace;
 import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @Dependent
-public class AddProductHandler implements Serializable {
+public class createProductHandler implements Serializable {
 
 	/**
 	 * 
@@ -30,7 +30,7 @@ public class AddProductHandler implements Serializable {
 	@Inject @UserInfoQualifier UserInfo userInfo;
 
 	@LoveTrace
-	public void addProduct(@Observes @AddProductEventQualifier AddProductEvent event){
+	public void addProduct(@Observes @createProductEventQualifier createProductEvent event){
 		
 		product.setFamilyId(userInfo.getFamilyId());
 		Product p = product.clone();

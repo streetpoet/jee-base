@@ -64,9 +64,9 @@ public class ${module.moduleName?cap_first}Bean implements I${module.moduleName?
 		result = helper.doQuery("", params); //TODO: Replace "" with proper sql.
 		List<${module.entityBeanName?cap_first}> list${module.entityBeanName?cap_first} = new ArrayList<${module.entityBeanName?cap_first}>();
 		if (result != null && result.size() != 0){
-			${module.entityBeanName?cap_first} temp${module.entityBeanName} = new ${module.entityBeanName?cap_first}();
+			${module.entityBeanName?cap_first} temp${module.entityBeanName?cap_first} = new ${module.entityBeanName?cap_first}();
 			for(Object[] row: result){
-				${module.entityBeanName?cap_first} ${module.entityBeanName} = temp${module.entityBeanName}.clone();
+				${module.entityBeanName?cap_first} ${module.entityBeanName} = temp${module.entityBeanName?cap_first}.clone();
 //				${module.entityBeanName}.setId((Integer)row[0]);
 				list${module.entityBeanName?cap_first}.add(${module.entityBeanName});
 			}

@@ -31,24 +31,24 @@ public class MatrixSingletonBean implements IMatrixSingleton {
 	@Inject @LoveLogged Logger log;
 	@Inject DatabaseHelper helper;
 	
-	private List<String[]> debugInfoList = null;
-	private String SQL = "";
+	private List<String[]> returnList = null;
 
 	@Override
 	@Lock(LockType.READ)
-	public List<String[]> retrieveDebugInfoList() {
-		return debugInfoList;
+	public List<String[]> retrieveProjectList() {
+		return returnList;
 	}
 	
 	@Schedule(minute = "*/10", hour = "*", persistent = false)
-	public void queryDebugListType(){
-		List<String[]> types = new ArrayList<String[]>();
-		debugInfoList = types;
+	public void timer(){
+		List<String[]> list = new ArrayList<String[]>();
+		//TODO: Write logic here, add values to 'list'.
+		returnList = list;
 	}
 	
 	@PostConstruct
 	public void postConstruct(){
 		log.info("[[ MatrixSingletonBean start. ]]");
-		queryDebugListType();
+		timer();
 	}
 }

@@ -27,14 +27,14 @@
 								<h3>日报模块</h3>
 								<p>生成日报及周报文件，提高效率</p>
 							</h:link></li>
-						<li class="span3"><h:link href="#" class="thumbnail">
+						<li class="span3"><h:outputLink value="#{facesContext.externalContext.requestContextPath}/pages/matrix/home.faces" styleClass="thumbnail">
 								<h:graphicImage value="/resources/img/#{view.locale}/2.jpg" styleClass="img-rounded" />
 								<h3>代码生成模块</h3>
 								<p>
 									<h:outputText value="#{sysBundle['website-name']}" escape="false" />
 									核心功能
 								</p>
-							</h:link></li>
+							</h:outputLink></li>
 						<li class="span3"><h:link href="#" class="thumbnail">
 								<h3>Developing</h3>
 								<p>Coming soon...</p>

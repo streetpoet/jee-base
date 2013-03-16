@@ -2,19 +2,45 @@ package com.spstudio.love.matrix.engine;
 
 public class ModuleBean {
 	
+	/*
+	 * module properties
+	 */
 	private String moduleName;
-	private String firstUpperModuleName;
 	
+	/*
+	 * web properties
+	 */
+	
+	
+	/*
+	 * ejb properties
+	 */
+	private String singletonEjbMethodName;
+	
+	/*
+	 * common, for communicate from web to ejb
+	 */
+	private String entityBeanName;
+	
+	/*
+	 * Getter/Setter
+	 */
 	public String getModuleName() {
 		return moduleName;
 	}
 	public void setModuleName(String moduleName) {
 		this.moduleName = moduleName;
 	}
-	public String getFirstUpperModuleName() {
-		return moduleName.substring(0, 1).toUpperCase() + moduleName.substring(1);
+	public String getEntityBeanName() {
+		return entityBeanName;
 	}
-	public void setFirstUpperModuleName(String firstUpperModuleName) {
-		this.firstUpperModuleName = firstUpperModuleName;
+	public void setEntityBeanName(String entityBeanName) {
+		this.entityBeanName = entityBeanName;
+	}
+	public String getSingletonEjbMethodName() {
+		return singletonEjbMethodName;
+	}
+	public void setSingletonEjbMethodName(String singletonEjbMethodName) {
+		this.singletonEjbMethodName = singletonEjbMethodName;
 	}
 }

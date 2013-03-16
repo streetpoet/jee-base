@@ -4,10 +4,8 @@ import java.io.Serializable;
 
 import javax.enterprise.inject.Model;
 
-import com.spstudio.love.matrix.qualifier.MatrixProjectQualifier;
-
 @Model
-@MatrixProjectQualifier
+@com.spstudio.love.matrix.qualifier.MatrixProjectQualifier
 public class MatrixProject implements Cloneable, Serializable{
 	
 	private int id;

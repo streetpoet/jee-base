@@ -40,15 +40,15 @@ public class ${module.moduleName?cap_first}SingletonBean implements I${module.mo
 	}
 	
 	@Schedule(minute = "*/10", hour = "*", persistent = false)
-	public void executeQuery(){
-		List<String[]> types = new ArrayList<String[]>();
-		//TODO: Write Code Here.
-		returnList = types;
+	public void timer(){
+		List<String[]> list = new ArrayList<String[]>();
+		//TODO: Write logic here, add values to 'list'.
+		returnList = list;
 	}
 	
 	@PostConstruct
 	public void postConstruct(){
 		log.info("[[ ${module.moduleName?cap_first}SingletonBean start. ]]");
-		executeQuery();
+		timer();
 	}
 }

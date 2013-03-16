@@ -1,11 +1,19 @@
-package impl.${module.moduleName};
+package impl.matrix;
 
-import interfaces.${module.moduleName}.I${module.moduleName?cap_first};
+import interfaces.matrix.IMatrix;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import com.spstudio.love.matrix.entity.${module.entityBeanName?cap_first};
+import com.spstudio.love.matrix.helper.${module.entityBeanName?cap_first}Condition;
+import com.spstudio.love.matrix.helper.${module.entityBeanName?cap_first}QueryResult;
+import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.helper.DatabaseHelper;
+import com.spstudio.love.system.interfaces.IQueryResult;
 
 @Stateless
 public class ${module.moduleName?cap_first}Bean implements I${module.moduleName?cap_first} {
@@ -15,22 +23,25 @@ public class ${module.moduleName?cap_first}Bean implements I${module.moduleName?
 	@Override
 	public boolean create${module.entityBeanName?cap_first}(${module.entityBeanName?cap_first} ${module.entityBeanName}) {
 		Object[] params = new Object[]{
+			//TODO: Add parameters here.
 		};
-		return helper.doDMLOperation("", params) == 1;
+		return helper.doDMLOperation("", params) == 1; //TODO: Replace "" with proper sql.
 	}
 	
 	@Override
 	public int delete${module.entityBeanName?cap_first}(${module.entityBeanName?cap_first} ${module.entityBeanName}) {
 		Object[] params = new Object[]{
+			//TODO: Add parameters here.
 		};
-		return helper.doDMLOperation("", params);
+		return helper.doDMLOperation("", params); //TODO: Replace "" with proper sql.
 	}
 	
 	@Override
 	public int update${module.entityBeanName?cap_first}(${module.entityBeanName?cap_first} ${module.entityBeanName}) {
 		Object[] params = new Object[]{
+			//TODO: Add parameters here.
 		};
-		return helper.doDMLOperation("", params);
+		return helper.doDMLOperation("", params); //TODO: Replace "" with proper sql.
 	}
 
 	@Override
@@ -39,7 +50,7 @@ public class ${module.moduleName?cap_first}Bean implements I${module.moduleName?
 		IQueryResult<${module.entityBeanName?cap_first}> returnResult = new ${module.entityBeanName?cap_first}QueryResult();
 		
 		// query total number
-		List<Object[]> result = helper.doQuery("", null);
+		List<Object[]> result = helper.doQuery("", null); //TODO: Replace "" with proper sql.
 		if (result != null && result.size() != 0){
 			pageObject.setTotalRecordsNumber(0);
 		}
@@ -50,13 +61,13 @@ public class ${module.moduleName?cap_first}Bean implements I${module.moduleName?
 				pageObject.getOffset(),
 				pageObject.getMaxRecordsPerPage()
 			};
-		result = helper.doQuery("", params);
-		List<${module.entityBeanName?cap_first}> listProduct = new ArrayList<${module.entityBeanName?cap_first}>();
+		result = helper.doQuery("", params); //TODO: Replace "" with proper sql.
+		List<${module.entityBeanName?cap_first}> list${module.entityBeanName?cap_first} = new ArrayList<${module.entityBeanName?cap_first}>();
 		if (result != null && result.size() != 0){
 			${module.entityBeanName?cap_first} temp${module.entityBeanName} = new ${module.entityBeanName?cap_first}();
 			for(Object[] row: result){
 				${module.entityBeanName?cap_first} ${module.entityBeanName} = temp${module.entityBeanName}.clone();
-//				product.setId((Integer)row[0]);
+//				${module.entityBeanName}.setId((Integer)row[0]);
 				list${module.entityBeanName?cap_first}.add(${module.entityBeanName});
 			}
 		}

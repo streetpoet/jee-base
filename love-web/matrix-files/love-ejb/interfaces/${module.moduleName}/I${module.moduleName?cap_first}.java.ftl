@@ -1,25 +1,23 @@
-package interfaces.${module.moduleName};
+package interfaces.matrix;
 
 import javax.ejb.Remote;
 
+import com.spstudio.love.matrix.entity.${module.entityBeanName?cap_first};
+import com.spstudio.love.matrix.helper.${module.entityBeanName?cap_first}Condition;
+import com.spstudio.love.system.bean.PageObject;
+import com.spstudio.love.system.interfaces.IQueryResult;
+
 @Remote
-public interface I${module.moduleName?cap_first} {
-		
-	@Inject DatabaseHelper helper;
+public interface IMatrix {
 	
-	@Override
 	public boolean create${module.entityBeanName?cap_first}(${module.entityBeanName?cap_first} ${module.entityBeanName});
 	
-	@Override
 	public int delete${module.entityBeanName?cap_first}(${module.entityBeanName?cap_first} ${module.entityBeanName});
 	
-	@Override
 	public int update${module.entityBeanName?cap_first}(${module.entityBeanName?cap_first} ${module.entityBeanName});
 
-	@Override
 	public IQueryResult<${module.entityBeanName?cap_first}> query${module.entityBeanName?cap_first}(${module.entityBeanName?cap_first}Condition condition, PageObject pageObject);
 	
-	@Override
 	public ${module.entityBeanName?cap_first} load${module.entityBeanName?cap_first}(int ${module.entityBeanName}Id);
 
 }

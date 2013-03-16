@@ -31,24 +31,24 @@ public class ${module.moduleName?cap_first}SingletonBean implements I${module.mo
 	@Inject @LoveLogged Logger log;
 	@Inject DatabaseHelper helper;
 	
-	private List<String[]> debugInfoList = null;
-	private String SQL = "";
+	private List<String[]> returnList = null;
 
 	@Override
 	@Lock(LockType.READ)
-	public List<String[]> retrieveDebugInfoList() {
-		return debugInfoList;
+	public List<String[]> ${module.singletonEjbMethodName}() {
+		return returnList;
 	}
 	
 	@Schedule(minute = "*/10", hour = "*", persistent = false)
-	public void queryDebugListType(){
+	public void executeQuery(){
 		List<String[]> types = new ArrayList<String[]>();
-		debugInfoList = types;
+		//TODO: Write Code Here.
+		returnList = types;
 	}
 	
 	@PostConstruct
 	public void postConstruct(){
 		log.info("[[ ${module.moduleName?cap_first}SingletonBean start. ]]");
-		queryDebugListType();
+		executeQuery();
 	}
 }

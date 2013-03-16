@@ -15,11 +15,11 @@ public class ${module.firstUpperModuleName}Bean implements I${module.firstUpperM
 	private static final String SQL = "insert into table debug values(?)";
 	
 	@Override
-	public String debug(String debug);
+	public String debug(String debug){
 		Object[] params = new Object[]{
 			"debug"
 		};
-		helper.doDMLOperation(SQL, params) == 1
+		helper.doDMLOperation(SQL, params);
 		return "success";
 	}
 

@@ -1,4 +1,4 @@
-package interfaces.interest;
+package interfaces.${module.moduleName};
 
 import javax.ejb.Remote;
 

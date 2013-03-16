@@ -1,6 +1,6 @@
-package impl.interest;
+package impl.${module.moduleName};
 
-import interfaces.interest.IInterestSingleton;
+import interfaces.${module.moduleName}.I${module.firstUpperModuleName}Singleton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,47 +26,29 @@ import com.spstudio.love.system.qualifier.LoveLogged;
 @Startup
 @ConcurrencyManagement(ConcurrencyManagementType.CONTAINER)
 @AccessTimeout(unit = TimeUnit.SECONDS, value = 5)
-public class InterestSingletonBean implements IInterestSingleton {
+public class ${module.firstUpperModuleName}SingletonBean implements I${module.firstUpperModuleName}Singleton {
 	
 	@Inject @LoveLogged Logger log;
 	@Inject DatabaseHelper helper;
 	
-	private List<String[]> techClassifyList = null;
-	private String queryAllTechClassifySQL = "select "
-											+"    c1.id, c1.class_name, c2.id, c2.class_name "
-											+"from "
-											+"    f3_class_1 c1, "
-											+"    f3_class_2 c2 "
-											+"where "
-											+"    c1.id = c2.father_id "
-											+"order by c1.id , c2.id";
+	private List<String[]> debugInfoList = null;
+	private String SQL = "";
 
 	@Override
 	@Lock(LockType.READ)
-	public List<String[]> retrieveTechClassifyList() {
-		return techClassifyList;
+	public List<String[]> retrieveDebugInfoList() {
+		return debugInfoList;
 	}
 	
 	@Schedule(minute = "*/10", hour = "*", persistent = false)
-	public void queryInterestType(){
+	public void queryDebugListType(){
 		List<String[]> types = new ArrayList<String[]>();
-		List<Object[]> result = helper.doQuery(queryAllTechClassifySQL, null);
-		if (result != null && result.size() != 0){
-			for (Object[] data: result){
-				String[] row = new String[4];
-				row[IInterestSingleton.TechClassify.INDEX_ID] = String.valueOf(data[IInterestSingleton.TechClassify.INDEX_ID]);
-				row[IInterestSingleton.TechClassify.INDEX_TECH_CLASS_1_NAME] = (String)data[IInterestSingleton.TechClassify.INDEX_TECH_CLASS_1_NAME];
-				row[IInterestSingleton.TechClassify.INDEX_CLASS_2_ID] = String.valueOf(data[IInterestSingleton.TechClassify.INDEX_CLASS_2_ID]);
-				row[IInterestSingleton.TechClassify.INDEX_TECH_CLASS_2_NAME] = (String)data[IInterestSingleton.TechClassify.INDEX_TECH_CLASS_2_NAME];
-				types.add(row);
-			}
-		}
-		 techClassifyList = types;
+		debugInfoList = types;
 	}
 	
 	@PostConstruct
 	public void postConstruct(){
-		log.info("[[ InterestSingletonBean start. ]]");
-		queryInterestType();
+		log.info("[[ ${module.firstUpperModuleName}SingletonBean start. ]]");
+		queryDebugListType();
 	}
 }

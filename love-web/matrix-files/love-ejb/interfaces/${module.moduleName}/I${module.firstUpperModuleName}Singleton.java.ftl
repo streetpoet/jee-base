@@ -1,19 +1,12 @@
-package interfaces.interest;
+package interfaces.${module.moduleName};
 
 import java.util.List;
 
 import javax.ejb.Remote;
 
 @Remote
-public interface IInterestSingleton {
+public interface I${module.firstUpperModuleName}Singleton {
 	
-	public List<String[]> retrieveTechClassifyList();
+	public List<String[]> retrieveDebugInfoList();
 	
-	public static class TechClassify{
-		public static final int INDEX_ID = 0;
-		public static final int INDEX_TECH_CLASS_1_NAME = 1;
-		public static final int INDEX_CLASS_2_ID = 2;
-		public static final int INDEX_TECH_CLASS_2_NAME = 3;
-	}
-
 }

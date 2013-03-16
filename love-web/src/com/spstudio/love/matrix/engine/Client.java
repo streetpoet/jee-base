@@ -14,7 +14,7 @@ public class Client {
 		cb.setTemplateInputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/love-ejb");
 		cb.setOutputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/output");
 		ModuleBean mb = new ModuleBean();
-		mb.setModuleName("william");
+		mb.setModuleName("matrix");
 		cb.setModuleBean(mb);
 		
 		new Client().execute(cb);

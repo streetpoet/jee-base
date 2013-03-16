@@ -14,6 +14,6 @@ import javax.inject.Qualifier;
 @Qualifier
 @Retention(RUNTIME)
 @Target({TYPE, METHOD, FIELD, PARAMETER})
-public @interface Delete${module.firstUpperModuleName}EventQualifier{
+public @interface Query${module.moduleName?cap_first}EventQualifier{
 
 }

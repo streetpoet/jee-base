@@ -12,8 +12,8 @@ import javax.inject.Named;
 
 import org.jboss.logging.Logger;
 
-import com.spstudio.love.${module.moduleName}.entity.${module.firstUpperModuleName};
-import com.spstudio.love.${module.moduleName}.helper.${module.firstUpperModuleName}Condition;
+import com.spstudio.love.${module.moduleName}.entity.${module.moduleName?cap_first};
+import com.spstudio.love.${module.moduleName}.helper.${module.moduleName?cap_first}Condition;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.constant.Configuration;
 import com.spstudio.love.system.qualifier.LoveLogged;
@@ -24,14 +24,14 @@ public class QueryCondition implements Serializable {
 	
 	@Inject Conversation conversation;
 	@Inject @LoveLogged Logger log;
-	${module.firstUpperModuleName}Condition ${module.moduleName}Condition;
+	${module.moduleName?cap_first}Condition ${module.moduleName}Condition;
 	PageObject pageObject;
-	List<${module.firstUpperModuleName}> ${module.moduleName}s;
+	List<${module.moduleName?cap_first}> ${module.moduleName}s;
 	
 
 	@PostConstruct
 	public void postConstruct(){
-		${module.moduleName}Condition = new ${module.firstUpperModuleName}Condition();
+		${module.moduleName}Condition = new ${module.moduleName?cap_first}Condition();
 		pageObject = new PageObject();
 		log.trace("### QueryCondition#postConstruct");
 	}
@@ -54,11 +54,11 @@ public class QueryCondition implements Serializable {
 		}
 	}
 
-	public ${module.firstUpperModuleName}Condition get${module.firstUpperModuleName}Condition() {
+	public ${module.moduleName?cap_first}Condition get${module.moduleName?cap_first}Condition() {
 		return ${module.moduleName}Condition;
 	}
 
-	public void set${module.firstUpperModuleName}Condition(${module.firstUpperModuleName}Condition ${module.moduleName}Condition) {
+	public void set${module.moduleName?cap_first}Condition(${module.moduleName?cap_first}Condition ${module.moduleName}Condition) {
 		this.${module.moduleName}Condition = ${module.moduleName}Condition;
 	}
 
@@ -78,11 +78,11 @@ public class QueryCondition implements Serializable {
 		this.pageObject = pageObject;
 	}
 
-	public List<${module.firstUpperModuleName}> get${module.firstUpperModuleName}s() {
+	public List<${module.moduleName?cap_first}> get${module.moduleName?cap_first}s() {
 		return ${module.moduleName}s;
 	}
 
-	public void set${module.firstUpperModuleName}s(List<${module.firstUpperModuleName}> ${module.moduleName}s) {
+	public void set${module.moduleName?cap_first}s(List<${module.moduleName?cap_first}> ${module.moduleName}s) {
 		this.${module.moduleName}s = ${module.moduleName}s;
 	}
 	

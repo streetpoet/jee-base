@@ -2,10 +2,10 @@ package com.spstudio.love.${module.moduleName}.event;
 
 import java.io.Serializable;
 
-public class Query${module.firstUpperModuleName}Event implements Serializable{
+public class Query${module.moduleName?cap_first}Event implements Serializable{
 
 
-	public Query${module.firstUpperModuleName}Event(QueryMode mode){
+	public Query${module.moduleName?cap_first}Event(QueryMode mode){
 		queryMode = mode;
 	}
 	

@@ -1,6 +1,6 @@
 package com.spstudio.love.${module.moduleName}.event;
 
-import interfaces.I${module.firstUpperModuleName};
+import interfaces.I${module.moduleName?cap_first};
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -11,24 +11,24 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-import com.spstudio.love.${module.moduleName}.entity.${module.firstUpperModuleName};
-import com.spstudio.love.${module.moduleName}.qualifier.${module.firstUpperModuleName}Qualifier;
-import com.spstudio.love.${module.moduleName}.qualifier.${module.firstUpperModuleName}RemoteBean;
+import com.spstudio.love.${module.moduleName}.entity.${module.moduleName?cap_first};
+import com.spstudio.love.${module.moduleName}.qualifier.${module.moduleName?cap_first}Qualifier;
+import com.spstudio.love.${module.moduleName}.qualifier.${module.moduleName?cap_first}RemoteBean;
 import com.spstudio.love.system.bean.UserInfo;
 import com.spstudio.love.system.qualifier.LoveTrace;
 import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @Dependent
-public class Delete${module.firstUpperModuleName}Handler implements Serializable {
+public class Delete${module.moduleName?cap_first}Handler implements Serializable {
 	
-	@Inject @${module.firstUpperModuleName}Qualifier ${module.firstUpperModuleName} ${module.moduleName};
-	@Inject @${module.firstUpperModuleName}RemoteBean I${module.firstUpperModuleName} ${module.moduleName}RemoteBean;
+	@Inject @${module.moduleName?cap_first}Qualifier ${module.moduleName?cap_first} ${module.moduleName};
+	@Inject @${module.moduleName?cap_first}RemoteBean I${module.moduleName?cap_first} ${module.moduleName}RemoteBean;
 	@Inject @UserInfoQualifier UserInfo userInfo;
 
 	@LoveTrace
-	public void delete${module.firstUpperModuleName}(@Observes @Delete${module.firstUpperModuleName}EventQualifier Delete${module.firstUpperModuleName}Event event){
+	public void delete${module.moduleName?cap_first}(@Observes @Delete${module.moduleName?cap_first}EventQualifier Delete${module.moduleName?cap_first}Event event){
 		
-		int result = ${module.moduleName}RemoteBean.delete${module.firstUpperModuleName}(${module.moduleName}.clone());
+		int result = ${module.moduleName}RemoteBean.delete${module.moduleName?cap_first}(${module.moduleName}.clone());
 		FacesContext context = FacesContext.getCurrentInstance();
 		
 		ResourceBundle bundle = ResourceBundle.getBundle("messages.${module.moduleName}.Message", context.getViewRoot().getLocale());

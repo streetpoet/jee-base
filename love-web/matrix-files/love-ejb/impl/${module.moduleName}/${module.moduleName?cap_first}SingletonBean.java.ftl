@@ -1,6 +1,6 @@
 package impl.${module.moduleName};
 
-import interfaces.${module.moduleName}.I${module.firstUpperModuleName}Singleton;
+import interfaces.${module.moduleName}.I${module.moduleName?cap_first}Singleton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ import com.spstudio.love.system.qualifier.LoveLogged;
 @Startup
 @ConcurrencyManagement(ConcurrencyManagementType.CONTAINER)
 @AccessTimeout(unit = TimeUnit.SECONDS, value = 5)
-public class ${module.firstUpperModuleName}SingletonBean implements I${module.firstUpperModuleName}Singleton {
+public class ${module.moduleName?cap_first}SingletonBean implements I${module.moduleName?cap_first}Singleton {
 	
 	@Inject @LoveLogged Logger log;
 	@Inject DatabaseHelper helper;
@@ -48,7 +48,7 @@ public class ${module.firstUpperModuleName}SingletonBean implements I${module.fi
 	
 	@PostConstruct
 	public void postConstruct(){
-		log.info("[[ ${module.firstUpperModuleName}SingletonBean start. ]]");
+		log.info("[[ ${module.moduleName?cap_first}SingletonBean start. ]]");
 		queryDebugListType();
 	}
 }

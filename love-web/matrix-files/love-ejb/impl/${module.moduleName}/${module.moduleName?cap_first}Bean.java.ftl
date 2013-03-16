@@ -1,6 +1,6 @@
 package impl.${module.moduleName};
 
-import interfaces.${module.moduleName}.I${module.firstUpperModuleName};
+import interfaces.${module.moduleName}.I${module.moduleName?cap_first};
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import com.spstudio.love.system.helper.DatabaseHelper;
 
 @Stateless
-public class ${module.firstUpperModuleName}Bean implements I${module.firstUpperModuleName} {
+public class ${module.moduleName?cap_first}Bean implements I${module.moduleName?cap_first} {
 
 	@Inject DatabaseHelper helper;
 	

@@ -1,6 +1,6 @@
 package com.spstudio.love.${module.moduleName}.action;
 
-import interfaces.I${module.firstUpperModuleName}Singleton;
+import interfaces.${module.moduleName}.I${module.firstUpperModuleName}Singleton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,18 +29,19 @@ import com.spstudio.love.system.qualifier.FamilyMembers;
 public class ${module.firstUpperModuleName}Action {
 	
 	@Inject @${module.firstUpperModuleName}SingleRemoteBean I${module.firstUpperModuleName}Singleton ${module.moduleName}Singleton;
-	@Inject @create${module.firstUpperModuleName}EventQualifier Event<create${module.firstUpperModuleName}Event> create${module.firstUpperModuleName}Event;
+	@Inject @Create${module.firstUpperModuleName}EventQualifier Event<Create${module.firstUpperModuleName}Event> create${module.firstUpperModuleName}Event;
+	@Inject @Delete${module.firstUpperModuleName}EventQualifier Event<Delete${module.firstUpperModuleName}Event> delete${module.firstUpperModuleName}Event;
 	@Inject @Query${module.firstUpperModuleName}EventQualifier Event<Query${module.firstUpperModuleName}Event> query${module.firstUpperModuleName}Event;
 	@Inject @Update${module.firstUpperModuleName}EventQualifier Event<Update${module.firstUpperModuleName}Event> update${module.firstUpperModuleName}Event;
 	@Inject @FamilyMembers List<UserInfo> members;
 	@Inject QueryCondition queryCondition;
 	
 	public List<SelectItem> getClassifyItems() {
-		List<String[]> list = ${module.moduleName}Singleton.retrieve${module.firstUpperModuleName}Classify();
+		List<String[]> list = null;
 		List<SelectItem> selectItems = new ArrayList<SelectItem>();
 		if (list != null && list.size() != 0){
 			for (String[] data: list){
-				selectItems.add(new SelectItem(data[I${module.firstUpperModuleName}Singleton.INDEX_CLASSIFY_ID], data[I${module.firstUpperModuleName}Singleton.INDEX_CLASSIFY_NAME]));
+				
 			}
 		}
 		return selectItems;

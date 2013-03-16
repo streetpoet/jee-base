@@ -1,6 +1,6 @@
 package com.spstudio.love.${module.moduleName}.producer;
 
-import interfaces.I${module.firstUpperModuleName}Singleton;
+import interfaces.${module.moduleName}.I${module.firstUpperModuleName}Singleton;
 
 import javax.ejb.EJB;
 import javax.enterprise.inject.Produces;

@@ -49,9 +49,10 @@
 							<div class="control-group">
 								<label class="control-label" for="inputProject">选择项目</label>
 								<div class="controls">
-									<select>
-										<option>1</option>
-									</select> <a href="#myModal" class="btn btn-success" data-toggle="modal">新增项目</a>
+									<h:selectOneMenu>
+										<f:selectItems value="#{matrixAction.classifyItems}" />
+									</h:selectOneMenu>
+									<a href="#myModal" class="btn btn-success" data-toggle="modal">新增项目</a>
 								</div>
 							</div>
 							<div class="control-group">

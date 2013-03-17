@@ -31,6 +31,7 @@ public class MatrixSingletonBean implements IMatrixSingleton {
 	@Inject @LoveLogged Logger log;
 	@Inject DatabaseHelper helper;
 	
+	private static final String SQL = "select id, project_name from f4_project order by id";
 	private List<String[]> returnList = null;
 
 	@Override
@@ -41,9 +42,11 @@ public class MatrixSingletonBean implements IMatrixSingleton {
 	
 	@Schedule(minute = "*/10", hour = "*", persistent = false)
 	public void timer(){
-		List<String[]> list = new ArrayList<String[]>();
-		//TODO: Write logic here, add values to 'list'.
-		returnList = list;
+		List<String[]> projectList = new ArrayList<String[]>();
+		for(Object[] object: helper.doQuery(SQL, null)){
+			projectList.add(new String[]{String.valueOf(object[0]), (String)object[1]});
+		}
+		returnList = projectList;
 	}
 	
 	@PostConstruct

@@ -28,11 +28,6 @@ import com.spstudio.love.system.qualifier.FamilyMembers;
 @Model
 public class MatrixAction {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -161126299956366L;
-	
 	@Inject @MatrixSingleRemoteBean IMatrixSingleton matrixSingleton;
 	@Inject @CreateMatrixEventQualifier Event<CreateMatrixEvent> createMatrixEvent;
 	@Inject @DeleteMatrixEventQualifier Event<DeleteMatrixEvent> deleteMatrixEvent;
@@ -43,10 +38,11 @@ public class MatrixAction {
 	
 	public List<SelectItem> getClassifyItems() {
 		List<String[]> list = matrixSingleton.retrieveProjectList();
+		System.out.println(list.size());
 		List<SelectItem> selectItems = new ArrayList<SelectItem>();
 		if (list != null && list.size() != 0){
 			for (String[] data: list){
-				//TODO: Add values to 'selectItems'
+				selectItems.add(new SelectItem(data[0], data[1]));
 			}
 		}
 		return selectItems;

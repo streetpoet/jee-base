@@ -28,11 +28,6 @@ import com.spstudio.love.system.qualifier.FamilyMembers;
 @Model
 public class ${module.moduleName?cap_first}Action {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -${uid()}L;
-	
 	@Inject @${module.moduleName?cap_first}SingleRemoteBean I${module.moduleName?cap_first}Singleton ${module.moduleName}Singleton;
 	@Inject @Create${module.moduleName?cap_first}EventQualifier Event<Create${module.moduleName?cap_first}Event> create${module.moduleName?cap_first}Event;
 	@Inject @Delete${module.moduleName?cap_first}EventQualifier Event<Delete${module.moduleName?cap_first}Event> delete${module.moduleName?cap_first}Event;

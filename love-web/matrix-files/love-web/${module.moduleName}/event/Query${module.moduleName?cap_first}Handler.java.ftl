@@ -32,13 +32,13 @@ public class Query${module.moduleName?cap_first}Handler implements Serializable 
 	@Inject @LoveLogged Logger log;
 	@Inject @${module.entityBeanName?cap_first}Qualifier ${module.entityBeanName?cap_first} ${module.entityBeanName};
 
-	public void query${module.moduleName?cap_first}(@Observes @Query${module.moduleName?cap_first}EventQualifier Query${module.moduleName?cap_first}Event event){
+	public void query${module.entityBeanName?cap_first}(@Observes @Query${module.moduleName?cap_first}EventQualifier Query${module.moduleName?cap_first}Event event){
 		switch (event.getQueryMode()) {
 		case LOAD_ALL_MATRIXPROJECT:
 			loadAll${module.moduleName?cap_first}();
 			break;
 		case LOAD_ONE_MATRIXPROJECT:
-			loadOne${module.moduleName?cap_first}();
+			loadSingle${module.moduleName?cap_first}();
 			break;
 
 		default:

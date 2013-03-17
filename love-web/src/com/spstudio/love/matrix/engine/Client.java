@@ -2,6 +2,9 @@ package com.spstudio.love.matrix.engine;
 
 import java.io.File;
 
+import com.spstudio.love.matrix.engine.freemarker.FreemarkerGenerator;
+import com.spstudio.love.matrix.engine.freemarker.MatrixUtil;
+
 public class Client {
 
 	private ConfigBean cb;

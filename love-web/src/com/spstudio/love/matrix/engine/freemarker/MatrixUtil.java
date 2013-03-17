@@ -1,4 +1,4 @@
-package com.spstudio.love.matrix.engine;
+package com.spstudio.love.matrix.engine.freemarker;
 
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
@@ -9,6 +9,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.spstudio.love.matrix.engine.ConfigBean;
+import com.spstudio.love.matrix.engine.ModuleBean;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;

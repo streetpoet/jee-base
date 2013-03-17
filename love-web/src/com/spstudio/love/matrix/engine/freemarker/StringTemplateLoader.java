@@ -1,4 +1,4 @@
-package com.spstudio.love.matrix.engine;
+package com.spstudio.love.matrix.engine.freemarker;
 
 import java.io.IOException;
 import java.io.Reader;

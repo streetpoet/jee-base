@@ -1,4 +1,4 @@
-package com.spstudio.love.matrix.engine;
+package com.spstudio.love.matrix.engine.freemarker;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.spstudio.love.matrix.engine.ConfigBean;
 
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
@@ -32,6 +34,12 @@ public class FreemarkerGenerator {
 			Template temp = cfg.getTemplate(file.getName());
 			Map<Object, Object> root = new HashMap<Object, Object>();
 			root.put(ConfigBean.MODULE_BEAN_VAR, MatrixUtil.convertBean(cb.getModuleBean()));
+			
+			/*
+			 * add customer method here.
+			 */
+			root.put(UID.UID, new UID());
+			
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile)));
 			temp.process(root, bw);
 			bw.flush();

@@ -11,12 +11,12 @@ public class Client {
 	 */
 	public static void main(String[] args) {
 		ConfigBean cb = new ConfigBean();
-		cb.setTemplateInputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/love-ejb");
+		cb.setTemplateInputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/love-web");
 		cb.setOutputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/output");
 		ModuleBean mb = new ModuleBean();
 		mb.setModuleName("matrix");
 		mb.setEntityBeanName("matrixProject");
-		mb.setSingletonEjbMethodName("retrieveProjectList");
+		mb.setSingletonEjbMethodName("retrieveMatrixProjectList");
 		cb.setModuleBean(mb);
 		
 		new Client().execute(cb);

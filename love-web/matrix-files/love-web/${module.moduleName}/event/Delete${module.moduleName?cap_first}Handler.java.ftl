@@ -28,7 +28,7 @@ public class Delete${module.moduleName?cap_first}Handler implements Serializable
 	@LoveTrace
 	public void delete${module.moduleName?cap_first}(@Observes @Delete${module.moduleName?cap_first}EventQualifier Delete${module.moduleName?cap_first}Event event){
 		
-		int result = ${module.moduleName}RemoteBean.delete${module.moduleName?cap_first}(${module.entityBeanName}.clone());
+		int result = ${module.moduleName}RemoteBean.delete${module.entityBeanName?cap_first}(${module.entityBeanName}.clone());
 		FacesContext context = FacesContext.getCurrentInstance();
 		
 		ResourceBundle bundle = ResourceBundle.getBundle("messages.${module.moduleName}.Message", context.getViewRoot().getLocale());

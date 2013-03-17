@@ -15,10 +15,16 @@ public class Client {
 		cb.setOutputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/output");
 		ModuleBean mb = new ModuleBean();
 		mb.setModuleName("matrix");
-		mb.setEntityBeanName("matrixProject");
-		mb.setSingletonEjbMethodName("retrieveMatrixProjectList");
+		mb.setEntityBeanName("nsvProject");
+		mb.setSingletonEjbMethodName("retrieveNsvProjectArray");
 		cb.setModuleBean(mb);
 		
+		new Client().execute(cb);
+		
+		cb.setTemplateInputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/love-ejb");
+		new Client().execute(cb);
+		
+		cb.setTemplateInputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/love-common");
 		new Client().execute(cb);
 	}	
 

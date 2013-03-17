@@ -3,18 +3,18 @@ package com.spstudio.love.matrix.helper;
 import java.io.Serializable;
 import java.util.List;
 
-import com.spstudio.love.matrix.entity.MatrixProject;
+import com.spstudio.love.matrix.entity.NsvProject;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.interfaces.IQueryResult;
 
-public class MatrixProjectQueryResult implements IQueryResult<MatrixProject>, Serializable {
+public class NsvProjectQueryResult implements IQueryResult<NsvProject>, Serializable {
 	
-	private List<MatrixProject> listMatrixProject;
+	private List<NsvProject> listNsvProject;
 	private PageObject pageObject;
 	
 	@Override
-	public List<MatrixProject> getResultData() {
-		return listMatrixProject;
+	public List<NsvProject> getResultData() {
+		return listNsvProject;
 	}
 
 	@Override
@@ -22,8 +22,8 @@ public class MatrixProjectQueryResult implements IQueryResult<MatrixProject>, Se
 		return pageObject;
 	}
 
-	public void setListMatrixProject(List<MatrixProject> listMatrixProject) {
-		this.listMatrixProject = listMatrixProject;
+	public void setListNsvProject(List<NsvProject> listNsvProject) {
+		this.listNsvProject = listNsvProject;
 	}
 
 	public void setPageObject(PageObject pageObject) {

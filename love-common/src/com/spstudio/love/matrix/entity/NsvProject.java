@@ -5,8 +5,8 @@ import java.io.Serializable;
 import javax.enterprise.inject.Model;
 
 @Model
-@com.spstudio.love.matrix.qualifier.MatrixProjectQualifier
-public class MatrixProject implements Cloneable, Serializable{
+@com.spstudio.love.matrix.qualifier.NsvProjectQualifier
+public class NsvProject implements Cloneable, Serializable{
 	
 	private int id;
 	
@@ -14,18 +14,18 @@ public class MatrixProject implements Cloneable, Serializable{
 		id = 0;
 	}
 	
-	public void setMatrixProject(MatrixProject p){
-		id = p.id;
+	public void setNsvProject(NsvProject nsvProject){
+		id = nsvProject.id;
 	}
 	
-	public MatrixProject clone(){
-		MatrixProject p = null;
+	public NsvProject clone(){
+		NsvProject nsvProject = null;
 		try{
-			p = (MatrixProject)super.clone();
+			nsvProject = (NsvProject)super.clone();
 		}catch(CloneNotSupportedException e){
 			e.printStackTrace();
 		}
-		return p;	
+		return nsvProject;	
 	}
 
 	public int getId() {

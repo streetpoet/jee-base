@@ -37,7 +37,7 @@ public class ${module.moduleName?cap_first}Action {
 	@Inject ${module.entityBeanName?cap_first}QueryConversation ${module.entityBeanName}QueryConversation;
 	
 	public List<SelectItem> getClassifyItems() {
-		List<String[]> list = ${module.moduleName}Singleton.retrieveProjectList();
+		List<String[]> list = ${module.moduleName}Singleton.${module.singletonEjbMethodName}();
 		List<SelectItem> selectItems = new ArrayList<SelectItem>();
 		if (list != null && list.size() != 0){
 			for (String[] data: list){
@@ -60,7 +60,7 @@ public class ${module.moduleName?cap_first}Action {
 	}
 	
 	public void query${module.entityBeanName?cap_first}() {
-		query${module.moduleName?cap_first}Event.fire(new Query${module.moduleName?cap_first}Event(QueryMode.LOAD_ALL_MATRIXPROJECT));
+		query${module.moduleName?cap_first}Event.fire(new Query${module.moduleName?cap_first}Event(QueryMode.LOAD_ALL_RECORD));
 		${module.entityBeanName}QueryConversation.beginConversation();
 	}
 

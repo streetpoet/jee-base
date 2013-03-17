@@ -34,10 +34,10 @@ public class Query${module.moduleName?cap_first}Handler implements Serializable 
 
 	public void query${module.entityBeanName?cap_first}(@Observes @Query${module.moduleName?cap_first}EventQualifier Query${module.moduleName?cap_first}Event event){
 		switch (event.getQueryMode()) {
-		case LOAD_ALL_MATRIXPROJECT:
+		case LOAD_ALL_RECORD:
 			loadAll${module.moduleName?cap_first}();
 			break;
-		case LOAD_ONE_MATRIXPROJECT:
+		case LOAD_SINGLE_RECORD:
 			loadSingle${module.moduleName?cap_first}();
 			break;
 

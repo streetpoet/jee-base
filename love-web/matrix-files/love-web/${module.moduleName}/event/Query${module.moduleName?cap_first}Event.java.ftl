@@ -20,7 +20,7 @@ public class Query${module.moduleName?cap_first}Event implements Serializable{
 	}
 
 	public static enum QueryMode{
-		LOAD_ALL_${module.entityBeanName?upper_case}, LOAD_ONE_${module.entityBeanName?upper_case};
+		LOAD_ALL_RECORD, LOAD_SINGLE_RECORD;
 	}
 
 }

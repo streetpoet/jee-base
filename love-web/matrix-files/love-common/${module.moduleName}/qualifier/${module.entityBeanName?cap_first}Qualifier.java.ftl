@@ -14,6 +14,6 @@ import javax.inject.Qualifier;
 @Qualifier
 @Retention(RUNTIME)
 @Target({TYPE, METHOD, FIELD, PARAMETER})
-public @interface ProductQualifier{
+public @interface ${module.entityBeanName?cap_first}Qualifier{
 
 }

@@ -4,4 +4,7 @@ import com.spstudio.love.${module.moduleName}.entity.${module.entityBeanName?cap
 
 public class ${module.entityBeanName?cap_first}Condition extends ${module.entityBeanName?cap_first} implements Cloneable{
 	
+	public ${module.entityBeanName?cap_first}Condition clone(){
+		return (${module.entityBeanName?cap_first}Condition)super.clone();
+	}
 }

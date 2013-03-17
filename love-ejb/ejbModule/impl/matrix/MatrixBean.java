@@ -8,9 +8,9 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import com.spstudio.love.matrix.entity.MatrixProject;
-import com.spstudio.love.matrix.helper.MatrixProjectCondition;
-import com.spstudio.love.matrix.helper.MatrixProjectQueryResult;
+import com.spstudio.love.matrix.entity.NsvProject;
+import com.spstudio.love.matrix.helper.NsvProjectCondition;
+import com.spstudio.love.matrix.helper.NsvProjectQueryResult;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.helper.DatabaseHelper;
 import com.spstudio.love.system.interfaces.IQueryResult;
@@ -21,7 +21,7 @@ public class MatrixBean implements IMatrix {
 	@Inject DatabaseHelper helper;
 	
 	@Override
-	public boolean createMatrixProject(MatrixProject matrixProject) {
+	public boolean createNsvProject(NsvProject nsvProject) {
 		Object[] params = new Object[]{
 			//TODO: Add parameters here.
 		};
@@ -29,7 +29,7 @@ public class MatrixBean implements IMatrix {
 	}
 	
 	@Override
-	public int deleteMatrixProject(MatrixProject matrixProject) {
+	public int deleteNsvProject(NsvProject nsvProject) {
 		Object[] params = new Object[]{
 			//TODO: Add parameters here.
 		};
@@ -37,7 +37,7 @@ public class MatrixBean implements IMatrix {
 	}
 	
 	@Override
-	public int updateMatrixProject(MatrixProject matrixProject) {
+	public int updateNsvProject(NsvProject nsvProject) {
 		Object[] params = new Object[]{
 			//TODO: Add parameters here.
 		};
@@ -45,16 +45,16 @@ public class MatrixBean implements IMatrix {
 	}
 
 	@Override
-	public IQueryResult<MatrixProject> queryMatrixProject(MatrixProjectCondition condition,
+	public IQueryResult<NsvProject> queryNsvProject(NsvProjectCondition condition,
 			PageObject pageObject) {
-		IQueryResult<MatrixProject> returnResult = new MatrixProjectQueryResult();
+		IQueryResult<NsvProject> returnResult = new NsvProjectQueryResult();
 		
 		// query total number
 		List<Object[]> result = helper.doQuery("", null); //TODO: Replace "" with proper sql.
 		if (result != null && result.size() != 0){
 			pageObject.setTotalRecordsNumber(0);
 		}
-		((MatrixProjectQueryResult)returnResult).setPageObject(pageObject);
+		((NsvProjectQueryResult)returnResult).setPageObject(pageObject);
 		
 		// query paging data
 		Object[] params = new Object[] {
@@ -62,32 +62,32 @@ public class MatrixBean implements IMatrix {
 				pageObject.getMaxRecordsPerPage()
 			};
 		result = helper.doQuery("", params); //TODO: Replace "" with proper sql.
-		List<MatrixProject> listMatrixProject = new ArrayList<MatrixProject>();
+		List<NsvProject> listNsvProject = new ArrayList<NsvProject>();
 		if (result != null && result.size() != 0){
-			MatrixProject tempMatrixProject = new MatrixProject();
+			NsvProject tempNsvProject = new NsvProject();
 			for(Object[] row: result){
-				MatrixProject matrixProject = tempMatrixProject.clone();
-//				matrixProject.setId((Integer)row[0]);
-				listMatrixProject.add(matrixProject);
+				NsvProject nsvProject = tempNsvProject.clone();
+//				nsvProject.setId((Integer)row[0]);
+				listNsvProject.add(nsvProject);
 			}
 		}
-		((MatrixProjectQueryResult)returnResult).setListMatrixProject(listMatrixProject);
+		((NsvProjectQueryResult)returnResult).setListNsvProject(listNsvProject);
 		
 		return returnResult;
 	}
 	
 	/**
-	 * Return MatrixProject Object
+	 * Return NsvProject Object
 	 */
 	@Override
-	public MatrixProject loadMatrixProject(int matrixProjectId) {
-		Object[] params = new Object[]{matrixProjectId};
+	public NsvProject loadNsvProject(int nsvProjectId) {
+		Object[] params = new Object[]{nsvProjectId};
 		List<Object[]> result = helper.doQuery("", params);
 		if (result != null && result.size() != 0){
 			Object[] row = result.get(0);
-			MatrixProject matrixProject = new MatrixProject();
-//			matrixProject.setId((Integer)row[0]);
-			return matrixProject;
+			NsvProject nsvProject = new NsvProject();
+//			nsvProject.setId((Integer)row[0]);
+			return nsvProject;
 		}
 		return null;
 	}

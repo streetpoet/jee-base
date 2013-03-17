@@ -35,7 +35,7 @@ public class MatrixSingletonBean implements IMatrixSingleton {
 
 	@Override
 	@Lock(LockType.READ)
-	public List<String[]> retrieveProjectList() {
+	public List<String[]> retrieveNsvProjectArray() {
 		return returnList;
 	}
 	

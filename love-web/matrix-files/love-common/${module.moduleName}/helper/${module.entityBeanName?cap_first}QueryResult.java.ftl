@@ -8,6 +8,10 @@ import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.interfaces.IQueryResult;
 
 public class ${module.entityBeanName?cap_first}QueryResult implements IQueryResult<${module.entityBeanName?cap_first}>, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -${uid()}L;
 	
 	private List<${module.entityBeanName?cap_first}> list${module.entityBeanName?cap_first};
 	private PageObject pageObject;

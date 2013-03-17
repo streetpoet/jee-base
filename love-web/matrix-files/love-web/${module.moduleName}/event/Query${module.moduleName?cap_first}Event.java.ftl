@@ -3,7 +3,10 @@ package com.spstudio.love.${module.moduleName}.event;
 import java.io.Serializable;
 
 public class Query${module.moduleName?cap_first}Event implements Serializable{
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -${uid()}L;
 
 	public Query${module.moduleName?cap_first}Event(QueryMode mode){
 		queryMode = mode;

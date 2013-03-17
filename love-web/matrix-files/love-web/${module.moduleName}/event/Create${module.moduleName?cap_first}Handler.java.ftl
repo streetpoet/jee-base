@@ -20,6 +20,11 @@ import com.spstudio.love.system.qualifier.UserInfoQualifier;
 @Dependent
 public class Create${module.moduleName?cap_first}Handler implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -${uid()}L;
+	
 	@Inject @${module.entityBeanName?cap_first}Qualifier ${module.entityBeanName?cap_first} ${module.moduleName}Project;
 	@Inject @${module.moduleName?cap_first}RemoteBean I${module.moduleName?cap_first} ${module.moduleName}RemoteBean;
 	@Inject @UserInfoQualifier UserInfo userInfo;

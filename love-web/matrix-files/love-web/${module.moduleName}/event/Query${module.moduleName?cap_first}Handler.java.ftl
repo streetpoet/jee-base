@@ -24,6 +24,10 @@ import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @Dependent
 public class Query${module.moduleName?cap_first}Handler implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -${uid()}L;
 	
 	@Inject ${module.entityBeanName?cap_first}QueryConversation ${module.entityBeanName}QueryConversation;
 	@Inject @UserInfoQualifier UserInfo userInfo;

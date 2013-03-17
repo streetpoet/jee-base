@@ -20,6 +20,10 @@ import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @Dependent
 public class Delete${module.moduleName?cap_first}Handler implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -${uid()}L;
 	
 	@Inject @${module.entityBeanName?cap_first}Qualifier ${module.entityBeanName?cap_first} ${module.entityBeanName};
 	@Inject @${module.moduleName?cap_first}RemoteBean I${module.moduleName?cap_first} ${module.moduleName}RemoteBean;

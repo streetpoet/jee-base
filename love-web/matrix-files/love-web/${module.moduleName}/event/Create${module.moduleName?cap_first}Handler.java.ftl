@@ -25,7 +25,7 @@ public class Create${module.moduleName?cap_first}Handler implements Serializable
 	@Inject @UserInfoQualifier UserInfo userInfo;
 
 	@LoveTrace
-	public void add${module.moduleName?cap_first}(@Observes @Create${module.moduleName?cap_first}EventQualifier Create${module.moduleName?cap_first}Event event){
+	public void create${module.entityBeanName?cap_first}(@Observes @Create${module.moduleName?cap_first}EventQualifier Create${module.moduleName?cap_first}Event event){
 		
 		${module.entityBeanName?cap_first} temp${module.entityBeanName?cap_first} = ${module.moduleName}Project.clone();
 		boolean result = ${module.moduleName}RemoteBean.create${module.entityBeanName?cap_first}(temp${module.entityBeanName?cap_first});

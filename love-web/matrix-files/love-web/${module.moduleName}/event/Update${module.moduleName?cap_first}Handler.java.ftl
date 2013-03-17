@@ -26,7 +26,7 @@ public class Update${module.moduleName?cap_first}Handler implements Serializable
 	@Inject @UserInfoQualifier UserInfo userInfo;
 
 	@LoveTrace
-	public void update${module.moduleName?cap_first}(@Observes @Update${module.moduleName?cap_first}EventQualifier Update${module.moduleName?cap_first}Event event){
+	public void update${module.entityBeanName?cap_first}(@Observes @Update${module.moduleName?cap_first}EventQualifier Update${module.moduleName?cap_first}Event event){
 		
 		int result = ${module.moduleName}RemoteBean.update${module.entityBeanName?cap_first}(${module.entityBeanName}.clone());
 		FacesContext context = FacesContext.getCurrentInstance();

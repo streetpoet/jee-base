@@ -26,7 +26,7 @@ public class Delete${module.moduleName?cap_first}Handler implements Serializable
 	@Inject @UserInfoQualifier UserInfo userInfo;
 
 	@LoveTrace
-	public void delete${module.moduleName?cap_first}(@Observes @Delete${module.moduleName?cap_first}EventQualifier Delete${module.moduleName?cap_first}Event event){
+	public void delete${module.entityBeanName?cap_first}(@Observes @Delete${module.moduleName?cap_first}EventQualifier Delete${module.moduleName?cap_first}Event event){
 		
 		int result = ${module.moduleName}RemoteBean.delete${module.entityBeanName?cap_first}(${module.entityBeanName}.clone());
 		FacesContext context = FacesContext.getCurrentInstance();

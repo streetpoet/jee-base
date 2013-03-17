@@ -1,4 +1,4 @@
-package com.spstudio.love.product.qualifier;
+package com.spstudio.love.${module.moduleName}.qualifier;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;

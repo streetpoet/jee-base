@@ -14,23 +14,23 @@
 				<div class="row-fluid">
 					<div class="span12">
 						<ul class="nav nav-pills">
-							<li><a href="#">首页</a></li>
+							<li><h:link href="#">首页</h:link></li>
 							<li>
 								<ul class="nav nav-pills">
-									<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> 项目生成模块 <b
+									<li class="dropdown"><h:link class="dropdown-toggle" data-toggle="dropdown" href="#"> 项目生成模块 <b
 											class="caret"></b>
-									</a>
+									</h:link>
 										<ul class="dropdown-menu">
-											<li><a href="#">模块1</a></li>
-											<li><a href="#">模块2</a></li>
-											<li><a href="#">模块3</a></li>
-											<li><a href="#">模块4</a></li>
+											<li><h:link href="#">模块1</h:link></li>
+											<li><h:link href="#">模块2</h:link></li>
+											<li><h:link href="#">模块3</h:link></li>
+											<li><h:link href="#">模块4</h:link></li>
 										</ul></li>
 								</ul>
 							</li>
-							<li class="active"><a href="#">项目框架生成</a></li>
-							<li><a href="#">Web模块生成</a></li>
-							<li><a href="#">EJB模块生成</a></li>
+							<li class="active"><h:link href="#">项目框架生成</h:link></li>
+							<li><h:link href="#">Web模块生成</h:link></li>
+							<li><h:link href="#">EJB模块生成</h:link></li>
 						</ul>
 					</div>
 				</div>
@@ -45,21 +45,21 @@
 				</div>
 				<div class="row-fluid">
 					<div class="span8 offset2 text-left">
-						<form class="form-horizontal">
+						<h:form class="form-horizontal">
 							<div class="control-group">
 								<label class="control-label" for="inputProject">选择项目</label>
 								<div class="controls">
-									<select>
+									<h:selectOneMenu>
 										<option>1</option>
-									</select> <a href="#myModal" class="btn btn-success" data-toggle="modal">新增项目</a>
+									</h:selectOneMenu> <h:link href="#myModal" class="btn btn-success" data-toggle="modal">新增项目</h:link>
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="inputProject">选择模块</label>
 								<div class="controls">
-									<select>
+									<h:selectOneMenu>
 										<option>1</option>
-									</select> <a href="#myModal" class="btn btn-success" data-toggle="modal">新增模块</a>
+									</h:selectOneMenu> <h:link href="#myModal" class="btn btn-success" data-toggle="modal">新增模块</h:link>
 								</div>
 							</div>
 							<div class="control-group">
@@ -69,29 +69,29 @@
 								</div>
 							</div>
 							<div class="form-actions">
-								<button type="submit" class="btn btn-primary">开始生成</button>
-								<button type="reset" class="btn btn-warning">重置</button>
+								<h:commandButton type="submit" class="btn btn-primary">开始生成</h:commandButton>
+								<h:commandButton type="reset" class="btn btn-warning">重置</h:commandButton>
 							</div>
-						</form>
+						</h:form>
 					</div>
 				</div>
 				<div class="row-fluid">
 					<div class="span12">
-						<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+						<h:link href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</h:link>
 
 						<!-- Modal -->
 						<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 							aria-hidden="true">
 							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								<h:commandButton type="button" class="close" data-dismiss="modal" aria-hidden="true">×</h:commandButton>
 								<h3 id="myModalLabel">Modal header</h3>
 							</div>
 							<div class="modal-body">
 								<p>One fine body…</p>
 							</div>
 							<div class="modal-footer">
-								<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-								<button class="btn btn-primary">Save changes</button>
+								<h:commandButton class="btn" data-dismiss="modal" aria-hidden="true">关闭</h:commandButton>
+								<h:commandButton class="btn btn-primary">Save changes</h:commandButton>
 							</div>
 						</div>
 					</div>

@@ -54,6 +54,18 @@
 			<replacetoken><![CDATA[</a]]></replacetoken>
 			<replacevalue><![CDATA[</h:link]]></replacevalue>
 		</replace>
+		
+		<!-- select -->
+		<replace dir="${src}">
+			<include name="**/*.xhtml" />
+			<replacetoken><![CDATA[<select]]></replacetoken>
+			<replacevalue><![CDATA[<h:selectOneMenu]]></replacevalue>
+		</replace>
+		<replace dir="${src}">
+			<include name="**/*.xhtml" />
+			<replacetoken><![CDATA[</select]]></replacetoken>
+			<replacevalue><![CDATA[</h:selectOneMenu]]></replacevalue>
+		</replace>
 
 	</target>
 

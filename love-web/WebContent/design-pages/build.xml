@@ -47,12 +47,12 @@
 		<replace dir="${src}">
 			<include name="**/*.xhtml" />
 			<replacetoken><![CDATA[<a]]></replacetoken>
-			<replacevalue><![CDATA[<h:link]]></replacevalue>
+			<replacevalue><![CDATA[<h:outputLink]]></replacevalue>
 		</replace>
 		<replace dir="${src}">
 			<include name="**/*.xhtml" />
 			<replacetoken><![CDATA[</a]]></replacetoken>
-			<replacevalue><![CDATA[</h:link]]></replacevalue>
+			<replacevalue><![CDATA[</h:outputLink]]></replacevalue>
 		</replace>
 		
 		<!-- select -->

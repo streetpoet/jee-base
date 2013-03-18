@@ -7,8 +7,11 @@ import java.util.List;
 
 import javax.enterprise.event.Event;
 import javax.enterprise.inject.Model;
+import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
+
+import org.jboss.logging.Logger;
 
 import com.spstudio.love.matrix.bean.MatrixProjectQueryConversation;
 import com.spstudio.love.matrix.event.CreateMatrixEvent;
@@ -24,6 +27,7 @@ import com.spstudio.love.matrix.qualifier.MatrixSingleRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.bean.UserInfo;
 import com.spstudio.love.system.qualifier.FamilyMembers;
+import com.spstudio.love.system.qualifier.LoveLogged;
 
 @Model
 public class MatrixAction {
@@ -35,10 +39,10 @@ public class MatrixAction {
 	@Inject @UpdateMatrixEventQualifier Event<UpdateMatrixEvent> updateMatrixEvent;
 	@Inject @FamilyMembers List<UserInfo> members;
 	@Inject MatrixProjectQueryConversation matrixProjectQueryConversation;
+	@Inject @LoveLogged Logger log;
 	
 	public List<SelectItem> getClassifyItems() {
 		List<String[]> list = matrixSingleton.retrieveProjectList();
-		System.out.println(list.size());
 		List<SelectItem> selectItems = new ArrayList<SelectItem>();
 		if (list != null && list.size() != 0){
 			for (String[] data: list){
@@ -49,7 +53,8 @@ public class MatrixAction {
 	}
 	
 	public void createMatrixProject() {
-		createMatrixEvent.fire(new CreateMatrixEvent());
+//		createMatrixEvent.fire(new CreateMatrixEvent());
+		log.info("createMatrixProject");
 	}
 	
 	public void deleteMatrixProject() {
@@ -83,5 +88,14 @@ public class MatrixAction {
 		}
 		queryMatrixProject();
 	}
+	
+	/*
+	 * page action
+	 */
+	public void onProjectSelectionChange(ValueChangeEvent event){
+		System.out.println("111");
+		log.info("onProjectSelectionChange" + event.getNewValue());
+	}
+	
 	
 }

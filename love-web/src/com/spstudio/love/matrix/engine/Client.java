@@ -18,7 +18,7 @@ public class Client {
 		cb.setOutputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/output");
 		ModuleBean mb = new ModuleBean();
 		mb.setModuleName("matrix");
-		mb.setEntityBeanName("matrixProject");
+		mb.setEntityBeanName("matrixModule");
 		mb.setSingletonEjbMethodName("retrieveProjectList");
 		cb.setModuleBean(mb);
 		

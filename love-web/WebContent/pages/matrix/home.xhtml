@@ -10,30 +10,32 @@
 		<ui:define name="body">
 
 			<!-- Body -->
-			<div class="container-fluid" style="margin-top: 20px;">
+			<div class="container" style="margin-top: 20px;">
 				<div class="row-fluid">
 					<div class="span12">
 						<ul class="nav nav-pills">
-							<li><h:outputLink value="#{facesContext.externalContext.requestContextPath}/pages/home/home.faces">首页</h:outputLink></li>
+							<li><h:link href="#">首页</h:link></li>
 							<li>
 								<ul class="nav nav-pills">
-									<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> 项目生成模块 <b
-											class="caret"></b>
-									</a>
+									<li class="dropdown"><h:link class="dropdown-toggle" data-toggle="dropdown" href="#"> 项目生成模块 <b
+												class="caret"></b>
+										</h:link>
 										<ul class="dropdown-menu">
-											<li><a href="#">模块1</a></li>
-											<li><a href="#">模块2</a></li>
-											<li><a href="#">模块3</a></li>
-											<li><a href="#">模块4</a></li>
+											<li><h:link href="#">模块1</h:link></li>
+											<li><h:link href="#">模块2</h:link></li>
+											<li><h:link href="#">模块3</h:link></li>
+											<li><h:link href="#">模块4</h:link></li>
 										</ul></li>
 								</ul>
 							</li>
-							<li class="active"><a href="#">项目框架生成</a></li>
-							<li><a href="#">Web模块生成</a></li>
-							<li><a href="#">EJB模块生成</a></li>
+							<li class="active"><h:link href="#">项目框架生成</h:link></li>
+							<li><h:link href="#">Web模块生成</h:link></li>
+							<li><h:link href="#">EJB模块生成</h:link></li>
 						</ul>
 					</div>
 				</div>
+
+				<!-- form title -->
 				<div class="row-fluid">
 					<div class="span8 offset2">
 						<div class="page-header text-left">
@@ -43,62 +45,56 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- form -->
 				<div class="row-fluid">
 					<div class="span8 offset2 text-left">
-						<form class="form-horizontal">
+						<h:form class="form-horizontal">
 							<div class="control-group">
-								<label class="control-label" for="inputProject">选择项目</label>
+								<h:outputLabel class="control-label" for="project" value="项目选择" />
 								<div class="controls">
-									<h:selectOneMenu>
+									<h:selectOneMenu id="project" value="#{matrixProject.id}">
 										<f:selectItems value="#{matrixAction.classifyItems}" />
 									</h:selectOneMenu>
-									<a href="#myModal" class="btn btn-success" data-toggle="modal">新增项目</a>
+									<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增项目</h:outputLink>
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label" for="inputProject">选择模块</label>
+								<h:outputLabel class="control-label" for="module" value="模块选择" />
 								<div class="controls">
-									<select>
-										<option>1</option>
-									</select> <a href="#myModal" class="btn btn-success" data-toggle="modal">新增模块</a>
+									<h:selectOneMenu id="module" value="#{matrixProject.id}">
+										<f:selectItems value="#{matrixAction.classifyItems}" />
+									</h:selectOneMenu>
+									<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增模块</h:outputLink>
 								</div>
 							</div>
 							<div class="control-group">
-								<label class="control-label" for="inputPassword">模块名称</label>
+								<label class="control-label" for="moduleName">模块名称</label>
 								<div class="controls">
-									<input type="text" placeholder="模块名称" />
+									<h:inputText id="moduleName" placeholder="模块名称" value="#{matrixModule.moduleName}" />
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="entityBeanName">实体Bean名称</label>
+								<div class="controls">
+									<h:inputText id="entityBeanName" placeholder="实体Bean名称" value="#{matrixModule.moduleName}"/>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="singleEjbMethodName">单例EJB方法名</label>
+								<div class="controls">
+									<h:inputText id="singleEjbMethodName" placeholder="单例EJB方法名" value="#{matrixModule.moduleName}"/>
 								</div>
 							</div>
 							<div class="form-actions">
-								<button type="submit" class="btn btn-primary">开始生成</button>
-								<button type="reset" class="btn btn-warning">重置</button>
+								<h:commandButton type="submit" class="btn btn-primary btn-large" value="生成代码" />
+								&nbsp;
+								<h:commandButton type="reset" class="btn btn-warning btn-large" value="重置" />
 							</div>
-						</form>
-					</div>
-				</div>
-				<div class="row-fluid">
-					<div class="span12">
-						<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
-
-						<!-- Modal -->
-						<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-							aria-hidden="true">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-								<h3 id="myModalLabel">Modal header</h3>
-							</div>
-							<div class="modal-body">
-								<p>One fine body…</p>
-							</div>
-							<div class="modal-footer">
-								<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-								<button class="btn btn-primary">Save changes</button>
-							</div>
-						</div>
+						</h:form>
 					</div>
 				</div>
 			</div>
-
 		</ui:define>
 	</ui:composition>
 </h:body>

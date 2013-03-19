@@ -53,8 +53,7 @@ public class MatrixAction {
 	}
 	
 	public void createMatrixProject() {
-//		createMatrixEvent.fire(new CreateMatrixEvent());
-		log.info("createMatrixProject");
+		createMatrixEvent.fire(new CreateMatrixEvent());
 	}
 	
 	public void deleteMatrixProject() {
@@ -96,6 +95,5 @@ public class MatrixAction {
 		System.out.println("111");
 		log.info("onProjectSelectionChange" + event.getNewValue());
 	}
-	
 	
 }

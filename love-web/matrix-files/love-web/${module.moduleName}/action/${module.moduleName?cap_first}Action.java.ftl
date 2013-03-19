@@ -11,15 +11,15 @@ import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
 import com.spstudio.love.${module.moduleName}.bean.${module.entityBeanName?cap_first}QueryConversation;
-import com.spstudio.love.${module.moduleName}.event.Create${module.moduleName?cap_first}Event;
-import com.spstudio.love.${module.moduleName}.event.Create${module.moduleName?cap_first}EventQualifier;
-import com.spstudio.love.${module.moduleName}.event.Delete${module.moduleName?cap_first}Event;
-import com.spstudio.love.${module.moduleName}.event.Delete${module.moduleName?cap_first}EventQualifier;
-import com.spstudio.love.${module.moduleName}.event.Query${module.moduleName?cap_first}Event;
-import com.spstudio.love.${module.moduleName}.event.Query${module.moduleName?cap_first}Event.QueryMode;
-import com.spstudio.love.${module.moduleName}.event.Query${module.moduleName?cap_first}EventQualifier;
-import com.spstudio.love.${module.moduleName}.event.Update${module.moduleName?cap_first}Event;
-import com.spstudio.love.${module.moduleName}.event.Update${module.moduleName?cap_first}EventQualifier;
+import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}CreateEvent;
+import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}CreateEventQualifier;
+import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}DeleteEvent;
+import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}DeleteEventQualifier;
+import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}QueryEvent;
+import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}QueryEvent.QueryMode;
+import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}QueryEventQualifier;
+import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}UpdateEvent;
+import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}UpdateEventQualifier;
 import com.spstudio.love.${module.moduleName}.qualifier.${module.moduleName?cap_first}SingleRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.bean.UserInfo;
@@ -29,10 +29,10 @@ import com.spstudio.love.system.qualifier.FamilyMembers;
 public class ${module.moduleName?cap_first}Action {
 	
 	@Inject @${module.moduleName?cap_first}SingleRemoteBean I${module.moduleName?cap_first}Singleton ${module.moduleName}Singleton;
-	@Inject @Create${module.moduleName?cap_first}EventQualifier Event<Create${module.moduleName?cap_first}Event> create${module.moduleName?cap_first}Event;
-	@Inject @Delete${module.moduleName?cap_first}EventQualifier Event<Delete${module.moduleName?cap_first}Event> delete${module.moduleName?cap_first}Event;
-	@Inject @Query${module.moduleName?cap_first}EventQualifier Event<Query${module.moduleName?cap_first}Event> query${module.moduleName?cap_first}Event;
-	@Inject @Update${module.moduleName?cap_first}EventQualifier Event<Update${module.moduleName?cap_first}Event> update${module.moduleName?cap_first}Event;
+	@Inject @${module.moduleName?cap_first}CreateEventQualifier Event<${module.moduleName?cap_first}CreateEvent> ${module.moduleName}CreateEvent;
+	@Inject @${module.moduleName?cap_first}DeleteEventQualifier Event<${module.moduleName?cap_first}DeleteEvent> ${module.moduleName}DeleteEvent;
+	@Inject @${module.moduleName?cap_first}QueryEventQualifier Event<${module.moduleName?cap_first}QueryEvent> ${module.moduleName}QueryEvent;
+	@Inject @${module.moduleName?cap_first}UpdateEventQualifier Event<${module.moduleName?cap_first}UpdateEvent> ${module.moduleName}UpdateEvent;
 	@Inject @FamilyMembers List<UserInfo> members;
 	@Inject ${module.entityBeanName?cap_first}QueryConversation ${module.entityBeanName}QueryConversation;
 	
@@ -48,19 +48,19 @@ public class ${module.moduleName?cap_first}Action {
 	}
 	
 	public void create${module.entityBeanName?cap_first}() {
-		create${module.moduleName?cap_first}Event.fire(new Create${module.moduleName?cap_first}Event());
+		${module.moduleName}CreateEvent.fire(new ${module.moduleName?cap_first}CreateEvent());
 	}
 	
 	public void delete${module.entityBeanName?cap_first}() {
-		delete${module.moduleName?cap_first}Event.fire(new Delete${module.moduleName?cap_first}Event());
+		${module.moduleName}DeleteEvent.fire(new ${module.moduleName?cap_first}DeleteEvent());
 	}
 	
 	public void update${module.entityBeanName?cap_first}(){
-		update${module.moduleName?cap_first}Event.fire(new Update${module.moduleName?cap_first}Event());
+		${module.moduleName}UpdateEvent.fire(new ${module.moduleName?cap_first}UpdateEvent());
 	}
 	
 	public void query${module.entityBeanName?cap_first}() {
-		query${module.moduleName?cap_first}Event.fire(new Query${module.moduleName?cap_first}Event(QueryMode.LOAD_ALL_RECORD));
+		${module.moduleName}QueryEvent.fire(new ${module.moduleName?cap_first}QueryEvent(QueryMode.LOAD_ALL_RECORD));
 		${module.entityBeanName}QueryConversation.beginConversation();
 	}
 

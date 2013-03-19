@@ -19,7 +19,7 @@ import com.spstudio.love.system.qualifier.LoveTrace;
 import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @Dependent
-public class ${module.moduleName?cap_first}UpdateHandler implements Serializable {
+public class ${module.moduleName?cap_first}UpdateEventHandler implements Serializable {
 	/**
 	 * 
 	 */

@@ -23,7 +23,7 @@ import com.spstudio.love.system.qualifier.LoveLogged;
 import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @Dependent
-public class ${module.moduleName?cap_first}QueryHandler implements Serializable {
+public class ${module.moduleName?cap_first}QueryEventHandler implements Serializable {
 	/**
 	 * 
 	 */

@@ -19,7 +19,7 @@ import com.spstudio.love.system.qualifier.LoveTrace;
 import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @Dependent
-public class ${module.moduleName?cap_first}DeleteHandler implements Serializable {
+public class ${module.moduleName?cap_first}DeleteEventHandler implements Serializable {
 	/**
 	 * 
 	 */

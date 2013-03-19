@@ -18,7 +18,7 @@ import com.spstudio.love.system.qualifier.LoveTrace;
 import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @Dependent
-public class Create${module.moduleName?cap_first}Handler implements Serializable {
+public class ${module.moduleName?cap_first}CreateEventHandler implements Serializable {
 	
 	/**
 	 * 
@@ -30,7 +30,7 @@ public class Create${module.moduleName?cap_first}Handler implements Serializable
 	@Inject @UserInfoQualifier UserInfo userInfo;
 
 	@LoveTrace
-	public void create${module.entityBeanName?cap_first}(@Observes @Create${module.moduleName?cap_first}EventQualifier Create${module.moduleName?cap_first}Event event){
+	public void create${module.entityBeanName?cap_first}(@Observes @${module.moduleName?cap_first}CreateEventQualifier ${module.moduleName?cap_first}CreateEvent event){
 		
 		${module.entityBeanName?cap_first} temp${module.entityBeanName?cap_first} = ${module.moduleName}Project.clone();
 		boolean result = ${module.moduleName}RemoteBean.create${module.entityBeanName?cap_first}(temp${module.entityBeanName?cap_first});

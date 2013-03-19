@@ -23,7 +23,7 @@ import com.spstudio.love.system.qualifier.LoveLogged;
 import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @Dependent
-public class Query${module.moduleName?cap_first}Handler implements Serializable {
+public class ${module.moduleName?cap_first}QueryHandler implements Serializable {
 	/**
 	 * 
 	 */
@@ -36,7 +36,7 @@ public class Query${module.moduleName?cap_first}Handler implements Serializable 
 	@Inject @LoveLogged Logger log;
 	@Inject @${module.entityBeanName?cap_first}Qualifier ${module.entityBeanName?cap_first} ${module.entityBeanName};
 
-	public void query${module.entityBeanName?cap_first}(@Observes @Query${module.moduleName?cap_first}EventQualifier Query${module.moduleName?cap_first}Event event){
+	public void query${module.entityBeanName?cap_first}(@Observes @${module.moduleName?cap_first}QueryEventQualifier ${module.moduleName?cap_first}QueryEvent event){
 		switch (event.getQueryMode()) {
 		case LOAD_ALL_RECORD:
 			loadAll${module.moduleName?cap_first}();

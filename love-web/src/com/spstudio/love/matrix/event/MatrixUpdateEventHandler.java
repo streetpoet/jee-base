@@ -19,18 +19,18 @@ import com.spstudio.love.system.qualifier.LoveTrace;
 import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @Dependent
-public class UpdateMatrixHandler implements Serializable {
+public class MatrixUpdateEventHandler implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -69259875805229L;
+	private static final long serialVersionUID = -4341457013923L;
 	
 	@Inject @MatrixProjectQualifier MatrixProject matrixProject;
 	@Inject @MatrixRemoteBean IMatrix matrixRemoteBean;
 	@Inject @UserInfoQualifier UserInfo userInfo;
 
 	@LoveTrace
-	public void updateMatrixProject(@Observes @UpdateMatrixEventQualifier UpdateMatrixEvent event){
+	public void updateMatrixProject(@Observes @MatrixUpdateEventQualifier MatrixUpdateEvent event){
 		
 		int result = matrixRemoteBean.updateMatrixProject(matrixProject.clone());
 		FacesContext context = FacesContext.getCurrentInstance();

@@ -21,6 +21,10 @@ import com.spstudio.love.system.qualifier.LoveLogged;
 @Named
 @ConversationScoped
 public class MatrixProjectQueryConversation implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -29567954744579L;
 	
 	@Inject Conversation conversation;
 	@Inject @LoveLogged Logger log;

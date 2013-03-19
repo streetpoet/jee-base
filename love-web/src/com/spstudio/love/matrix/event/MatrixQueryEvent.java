@@ -2,13 +2,13 @@ package com.spstudio.love.matrix.event;
 
 import java.io.Serializable;
 
-public class QueryMatrixEvent implements Serializable{
+public class MatrixQueryEvent implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -154431318579705L;
+	private static final long serialVersionUID = -210041685571803L;
 
-	public QueryMatrixEvent(QueryMode mode){
+	public MatrixQueryEvent(QueryMode mode){
 		queryMode = mode;
 	}
 	

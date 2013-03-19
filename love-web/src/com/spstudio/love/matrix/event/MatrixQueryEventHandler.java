@@ -23,11 +23,11 @@ import com.spstudio.love.system.qualifier.LoveLogged;
 import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @Dependent
-public class QueryMatrixHandler implements Serializable {
+public class MatrixQueryEventHandler implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -122411910109058L;
+	private static final long serialVersionUID = -64089072085849L;
 	
 	@Inject MatrixProjectQueryConversation matrixProjectQueryConversation;
 	@Inject @UserInfoQualifier UserInfo userInfo;
@@ -36,7 +36,7 @@ public class QueryMatrixHandler implements Serializable {
 	@Inject @LoveLogged Logger log;
 	@Inject @MatrixProjectQualifier MatrixProject matrixProject;
 
-	public void queryMatrixProject(@Observes @QueryMatrixEventQualifier QueryMatrixEvent event){
+	public void queryMatrixProject(@Observes @MatrixQueryEventQualifier MatrixQueryEvent event){
 		switch (event.getQueryMode()) {
 		case LOAD_ALL_RECORD:
 			loadAllMatrix();

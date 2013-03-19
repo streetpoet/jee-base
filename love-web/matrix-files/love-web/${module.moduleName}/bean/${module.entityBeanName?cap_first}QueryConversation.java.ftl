@@ -21,6 +21,10 @@ import com.spstudio.love.system.qualifier.LoveLogged;
 @Named
 @ConversationScoped
 public class ${module.entityBeanName?cap_first}QueryConversation implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -${uid()}L;
 	
 	@Inject Conversation conversation;
 	@Inject @LoveLogged Logger log;

@@ -19,6 +19,7 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
+import com.spstudio.love.matrix.entity.MatrixProject;
 import com.spstudio.love.system.helper.DatabaseHelper;
 import com.spstudio.love.system.qualifier.LoveLogged;
 
@@ -32,19 +33,22 @@ public class MatrixSingletonBean implements IMatrixSingleton {
 	@Inject DatabaseHelper helper;
 	
 	private static final String SQL = "select id, project_name from f4_project order by id";
-	private List<String[]> returnList = null;
+	private List<MatrixProject> returnList = null;
 
 	@Override
 	@Lock(LockType.READ)
-	public List<String[]> retrieveProjectList() {
+	public List<MatrixProject> retrieveProjectList() {
 		return returnList;
 	}
 	
 	@Schedule(minute = "*/10", hour = "*", persistent = false)
 	public void timer(){
-		List<String[]> projectList = new ArrayList<String[]>();
+		List<MatrixProject> projectList = new ArrayList<MatrixProject>();
 		for(Object[] object: helper.doQuery(SQL, null)){
-			projectList.add(new String[]{String.valueOf(object[0]), (String)object[1]});
+			MatrixProject mp = new MatrixProject();
+			mp.setId((Integer)object[0]);
+			mp.setProjectName((String)object[1]);
+			projectList.add(mp);
 		}
 		returnList = projectList;
 	}

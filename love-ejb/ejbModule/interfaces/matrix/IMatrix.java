@@ -1,7 +1,10 @@
 package interfaces.matrix;
 
+import java.util.List;
+
 import javax.ejb.Remote;
 
+import com.spstudio.love.matrix.entity.MatrixModule;
 import com.spstudio.love.matrix.entity.MatrixProject;
 import com.spstudio.love.matrix.helper.MatrixProjectCondition;
 import com.spstudio.love.system.bean.PageObject;
@@ -20,4 +23,5 @@ public interface IMatrix {
 	
 	public MatrixProject loadMatrixProject(int matrixProjectId);
 
+	public List<MatrixModule> loadMatrixModuleList(int matrixProjectId);
 }

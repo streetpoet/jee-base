@@ -1,5 +1,6 @@
 package com.spstudio.love.matrix.action;
 
+import interfaces.matrix.IMatrix;
 import interfaces.matrix.IMatrixSingleton;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
 import com.spstudio.love.matrix.bean.MatrixProjectQueryConversation;
+import com.spstudio.love.matrix.entity.MatrixModule;
 import com.spstudio.love.matrix.entity.MatrixProject;
 import com.spstudio.love.matrix.event.MatrixCreateEvent;
 import com.spstudio.love.matrix.event.MatrixCreateEventQualifier;
@@ -21,6 +23,7 @@ import com.spstudio.love.matrix.event.MatrixQueryEvent.QueryMode;
 import com.spstudio.love.matrix.event.MatrixQueryEventQualifier;
 import com.spstudio.love.matrix.event.MatrixUpdateEvent;
 import com.spstudio.love.matrix.event.MatrixUpdateEventQualifier;
+import com.spstudio.love.matrix.qualifier.MatrixRemoteBean;
 import com.spstudio.love.matrix.qualifier.MatrixSingleRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.bean.UserInfo;
@@ -30,6 +33,7 @@ import com.spstudio.love.system.qualifier.FamilyMembers;
 public class MatrixAction {
 	
 	@Inject @MatrixSingleRemoteBean IMatrixSingleton matrixSingleton;
+	@Inject @MatrixRemoteBean IMatrix matrixBean;
 	@Inject @MatrixCreateEventQualifier Event<MatrixCreateEvent> matrixCreateEvent;
 	@Inject @MatrixDeleteEventQualifier Event<MatrixDeleteEvent> matrixDeleteEvent;
 	@Inject @MatrixQueryEventQualifier Event<MatrixQueryEvent> matrixQueryEvent;
@@ -43,6 +47,17 @@ public class MatrixAction {
 		if (list != null && list.size() != 0){
 			for (MatrixProject project: list){
 				selectItems.add(new SelectItem(project.getId(), project.getProjectName()));
+			}
+		}
+		return selectItems;
+	}
+	
+	public List<SelectItem> getMatrixModuleList(){
+		List<MatrixModule> list = matrixBean.loadMatrixModuleList(1);
+		List<SelectItem> selectItems = new ArrayList<SelectItem>();
+		if (list != null && list.size() != 0){
+			for (MatrixModule module: list){
+				selectItems.add(new SelectItem(module.getId(), module.getModuleName()));
 			}
 		}
 		return selectItems;

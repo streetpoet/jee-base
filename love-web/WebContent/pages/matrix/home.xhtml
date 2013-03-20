@@ -58,15 +58,13 @@
 									<c:if test="#{msg.severity.ordinal ne 0}">
 										<div class="alert alert-error">
 											<button class="close" data-dismiss="alert" type="button">×</button>
-											<span class="label label-important">Error</span>&nbsp;
-											<strong><h:outputText value="#{msg.summary}" /></strong>
+											<span class="label label-important">Error</span>&nbsp; <strong><h:outputText value="#{msg.summary}" /></strong>
 										</div>
 									</c:if>
 									<c:if test="#{msg.severity.ordinal eq 0}">
 										<div class="alert alert-success">
 											<button class="close" data-dismiss="alert" type="button">×</button>
-											<span class="label label-success">Success</span>&nbsp;
-											<strong><h:outputText value="#{msg.summary}" /></strong>
+											<span class="label label-success">Success</span>&nbsp; <strong><h:outputText value="#{msg.summary}" /></strong>
 										</div>
 									</c:if>
 								</c:forEach>
@@ -84,7 +82,8 @@
 							<div class="control-group">
 								<h:outputLabel class="control-label" for="project" value="项目选择" />
 								<div class="controls">
-									<h:selectOneMenu id="project" value="#{matrixProject.id}">
+									<h:selectOneMenu id="project" value="#{matrixProject.id}" required="true" requiredMessage="必须选择一个项目">
+										<f:selectItem noSelectionOption="true" />
 										<f:selectItems value="#{matrixAction.matrixProjectList}" />
 									</h:selectOneMenu>
 									&nbsp;
@@ -98,7 +97,7 @@
 								<h:outputLabel class="control-label" for="module" value="模块选择" />
 								<div class="controls">
 									<h:selectOneMenu id="module" value="#{matrixModule.id}" required="true" requiredMessage="必须选择一个模块用来生成方案">
-
+										<f:selectItems value="#{matrixAction.matrixModuleList}" />
 									</h:selectOneMenu>
 									&nbsp;
 									<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增模块</h:outputLink>

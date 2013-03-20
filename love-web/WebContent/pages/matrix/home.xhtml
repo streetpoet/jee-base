@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <h:body>
 
@@ -14,7 +15,7 @@
 				<div class="row-fluid">
 					<div class="span12">
 						<ul class="nav nav-pills">
-							<li><h:link href="#">首页</h:link></li>
+							<li><h:link outcome="LOGOUT" value="Home"></h:link></li>
 							<li>
 								<ul class="nav nav-pills">
 									<li class="dropdown"><h:link class="dropdown-toggle" data-toggle="dropdown" href="#"> 项目生成模块 <b
@@ -34,60 +35,102 @@
 						</ul>
 					</div>
 				</div>
+			</div>
+			<div class="container-fluid">
 
 				<!-- form title -->
 				<div class="row-fluid">
 					<div class="span8 offset2">
 						<div class="page-header text-left">
 							<h2>
-								项目子模块代码生成方案 <small>version 1.0</small>
+								项目模块属性配置 <small>version 1.0</small>
 							</h2>
 						</div>
 					</div>
 				</div>
 
+				<!-- alert part -->
+				<h:panelGroup rendered="#{fn:length(facesContext.messageList) ne 0}">
+					<div class="row-fluid">
+						<div class="span8 offset2 text-left">
+							<h:panelGroup rendered="#{fn:length(facesContext.messageList) ne 0}">
+								<c:forEach items="#{facesContext.messageList}" var="msg">
+									<c:if test="#{msg.severity.ordinal ne 0}">
+										<div class="alert alert-error">
+											<button class="close" data-dismiss="alert" type="button">×</button>
+											<span class="label label-important">Error</span>&nbsp;
+											<strong><h:outputText value="#{msg.summary}" /></strong>
+										</div>
+									</c:if>
+									<c:if test="#{msg.severity.ordinal eq 0}">
+										<div class="alert alert-success">
+											<button class="close" data-dismiss="alert" type="button">×</button>
+											<span class="label label-success">Success</span>&nbsp;
+											<strong><h:outputText value="#{msg.summary}" /></strong>
+										</div>
+									</c:if>
+								</c:forEach>
+							</h:panelGroup>
+						</div>
+					</div>
+				</h:panelGroup>
 				<!-- form -->
 				<div class="row-fluid">
-					<div class="span8 offset2 text-left">
+					<div class="span8 offset2 text-left bs-docs-example">
 						<h:form class="form-horizontal">
+
+							<!-- 项目选择 -->
+
 							<div class="control-group">
 								<h:outputLabel class="control-label" for="project" value="项目选择" />
 								<div class="controls">
 									<h:selectOneMenu id="project" value="#{matrixProject.id}">
 										<f:selectItems value="#{matrixAction.matrixProjectList}" />
 									</h:selectOneMenu>
-									&nbsp;<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增项目</h:outputLink>
+									&nbsp;
+									<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增项目</h:outputLink>
 								</div>
 							</div>
+
+							<!-- 模块选择 -->
+
 							<div class="control-group">
 								<h:outputLabel class="control-label" for="module" value="模块选择" />
 								<div class="controls">
-									<h:selectOneMenu id="module">
-										
+									<h:selectOneMenu id="module" value="#{matrixModule.id}" required="true" requiredMessage="必须选择一个模块用来生成方案">
+
 									</h:selectOneMenu>
-									&nbsp;<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增模块</h:outputLink>
+									&nbsp;
+									<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增模块</h:outputLink>
 								</div>
 							</div>
+
+							<!-- 模块名称 -->
+
 							<div class="control-group">
 								<h:outputLabel class="control-label" for="moduleName" value="模块名称" />
 								<div class="controls">
-									<h:inputText id="moduleName" placeholder="模块名称" value="#{matrixModule.moduleName}" />
+									<h:inputText id="moduleName" placeholder="模块名称" value="#{matrixModule.moduleName}" required="true"
+										requiredMessage="模块名称必须输入" />
 								</div>
 							</div>
+
+
 							<div class="control-group">
 								<h:outputLabel class="control-label" for="entityBeanName" value="实体Bean名称" />
 								<div class="controls">
-									<h:inputText id="entityBeanName" placeholder="实体Bean名称" value="#{matrixModule.entityBeanName}"/>
+									<h:inputText id="entityBeanName" placeholder="实体Bean名称" value="#{matrixModule.entityBeanName}" />
 								</div>
 							</div>
 							<div class="control-group">
 								<h:outputLabel class="control-label" for="singleEjbMethodName" value="单例EJB方法名" />
 								<div class="controls">
-									<h:inputText id="singleEjbMethodName" placeholder="单例EJB方法名" value="#{matrixModule.singletonEjbMethodName}"/>
+									<h:inputText id="singleEjbMethodName" placeholder="单例EJB方法名" value="#{matrixModule.singletonEjbMethodName}" />
 								</div>
 							</div>
 							<div class="form-actions">
-								<h:commandButton type="submit" class="btn btn-primary btn-large" value="生成代码" action="#{matrixAction.createMatrixProject}" />
+								<h:commandButton type="submit" class="btn btn-primary btn-large" value="生成方案(zip)"
+									action="#{matrixAction.createMatrixProject}" />
 								&nbsp;
 								<h:commandButton type="reset" class="btn btn-warning btn-large" value="重置" />
 							</div>

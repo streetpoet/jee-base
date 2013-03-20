@@ -13,6 +13,7 @@ public class MatrixProject implements Cloneable, Serializable{
 	private static final long serialVersionUID = -174859695150398L;
 	
 	private int id;
+	private String projectName;
 	
 	public void clear(){
 		id = 0;
@@ -20,6 +21,7 @@ public class MatrixProject implements Cloneable, Serializable{
 	
 	public void setMatrixProject(MatrixProject matrixProject){
 		id = matrixProject.id;
+		projectName = matrixProject.projectName;
 	}
 	
 	public MatrixProject clone(){
@@ -38,6 +40,14 @@ public class MatrixProject implements Cloneable, Serializable{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getProjectName() {
+		return projectName;
+	}
+
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
 	}
 	
 }

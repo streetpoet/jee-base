@@ -65,10 +65,11 @@
         </div>
     </div>
     <div class="row-fluid">
-        <div class="span8 offset2 text-left">
+        <div class="span8 offset2 text-left hero-unit">
+            <div class="alert alert-error"> ... </div>
             <h:form class="form-horizontal">
                 <div class="control-group">
-                    <label class="control-label" for="inputProject">选择项目</label>
+                    <h:outputLabel class="control-label" for="inputProject">选择项目</h:outputLabel>
                     <div class="controls">
                         <h:selectOneMenu>
                             <option>1</option>
@@ -76,7 +77,7 @@
                         <h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增项目</h:outputLink> </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="inputProject">选择模块</label>
+                    <h:outputLabel class="control-label" for="inputProject">选择模块</h:outputLabel>
                     <div class="controls">
                         <h:selectOneMenu>
                             <option>1</option>
@@ -84,19 +85,19 @@
                         <h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增模块</h:outputLink> </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="moduleName">模块名称</label>
+                    <h:outputLabel class="control-label" for="moduleName">模块名称</h:outputLabel>
                     <div class="controls">
                         <input id="moduleName" type="text" placeholder="模块名称" />
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="entityBeanName">实体Bean名称</label>
+                    <h:outputLabel class="control-label" for="entityBeanName">实体Bean名称</h:outputLabel>
                     <div class="controls">
                         <input id="entityBeanName" type="text" placeholder="实体Bean名称" />
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="singleEjbMethodName">单例EJB方法名</label>
+                    <h:outputLabel class="control-label" for="singleEjbMethodName">单例EJB方法名</h:outputLabel>
                     <div class="controls">
                         <input id="singleEjbMethodName" type="text" placeholder="单例EJB方法名" />
                     </div>

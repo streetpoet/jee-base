@@ -11,6 +11,7 @@ import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
 import com.spstudio.love.matrix.bean.MatrixProjectQueryConversation;
+import com.spstudio.love.matrix.entity.MatrixProject;
 import com.spstudio.love.matrix.event.MatrixCreateEvent;
 import com.spstudio.love.matrix.event.MatrixCreateEventQualifier;
 import com.spstudio.love.matrix.event.MatrixDeleteEvent;
@@ -36,12 +37,12 @@ public class MatrixAction {
 	@Inject @FamilyMembers List<UserInfo> members;
 	@Inject MatrixProjectQueryConversation matrixProjectQueryConversation;
 	
-	public List<SelectItem> getClassifyItems() {
-		List<String[]> list = matrixSingleton.retrieveProjectList();
+	public List<SelectItem> getMatrixProjectList() {
+		List<MatrixProject> list = matrixSingleton.retrieveProjectList();
 		List<SelectItem> selectItems = new ArrayList<SelectItem>();
 		if (list != null && list.size() != 0){
-			for (String[] data: list){
-				//TODO: Add values to 'selectItems'
+			for (MatrixProject project: list){
+				selectItems.add(new SelectItem(project.getId(), project.getProjectName()));
 			}
 		}
 		return selectItems;

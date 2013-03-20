@@ -15,47 +15,49 @@
 	<title><h:outputText value="#{sysBundle['website-name']}" escape="false" /></title>
 </h:head>
 
-<body>
+<f:view>
+	<body>
 
-	<!-- header navigator -->
-	<div class="container">
-		<div class="navbar navbar-fixed-top navbar-inverse">
-			<div class="navbar-inner">
-				<div class="container">
-
-					<!-- Be sure to leave the brand out there if you want it shown -->
-					<a class="brand" href="#"><h:outputText value="#{sysBundle['website-name']}" escape="false" /></a>
-
-					<div class="nav-collapse collapse pull-right">
-						<h:form class="form-inline navbar-form">
-							<h:commandButton class="btn btn-danger" action="#{sysCore.logout}" value="Sign out"></h:commandButton>
-						</h:form>
+		<!-- header navigator -->
+		<div class="container">
+			<div class="navbar navbar-fixed-top navbar-inverse">
+				<div class="navbar-inner">
+					<div class="container">
+						<!-- brand -->
+						<a class="brand" href="#"><h:outputText value="#{sysBundle['website-name']}" escape="false" /></a>
+						<!-- logout button -->
+						<div class="nav-collapse collapse pull-right">
+							<h:form class="form-inline navbar-form">
+								<h:commandButton class="btn btn-danger" action="#{sysCore.logout}" value="Sign out"></h:commandButton>
+							</h:form>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<ui:insert name="body"></ui:insert>
+		<ui:insert name="body"></ui:insert>
 
-	<!-- Footer -->
-	<footer class="footer">
-	<div class="container">
-		<p>Designed and built all base on open-source technologies, Power by William, NSV Co,Ltd.</p>
-		<p>
-			Code not licensed under <h:link href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</h:link>
-			<ul class="footer-links">
-				<li><h:link href="#" target="_blank">About</h:link></li>
-				<li class="muted">&middot;</li>
-				<li><h:link href="#" target="_blank">Issues</h:link></li>
-				<li class="muted">&middot;</li>
-				<li><h:link href="#">Changelog</h:link></li>
-			</ul>
-		</p>
-	</div>
-	</footer>
+		<!-- Footer -->
+		<footer class="footer">
+		<div class="container">
+			<p>Designed and built all base on open-source technologies, Power by William, NSV Co,Ltd.</p>
+			<p>
+				Code not licensed under
+				<h:link href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</h:link>
+				<ul class="footer-links">
+					<li><h:link href="#" target="_blank">About</h:link></li>
+					<li class="muted">&middot;</li>
+					<li><h:link href="#" target="_blank">Issues</h:link></li>
+					<li class="muted">&middot;</li>
+					<li><h:link href="#">Changelog</h:link></li>
+				</ul>
+			</p>
+		</div>
+		</footer>
 
-	<h:outputScript library="js/#{view.locale}" name="/jquery.js"></h:outputScript>
-	<h:outputScript library="js/#{view.locale}" name="/bootstrap.min.js"></h:outputScript>
-</body>
+		<h:outputScript library="js/#{view.locale}" name="/jquery.js"></h:outputScript>
+		<h:outputScript library="js/#{view.locale}" name="/bootstrap.min.js"></h:outputScript>
+	</body>
+</f:view>
 </html>

@@ -37,6 +37,6 @@ public class MatrixCreateEventHandler implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(
 				FacesMessage.FACES_MESSAGES, 
 				new FacesMessage(FacesMessage.SEVERITY_INFO, result ? "success" : "fail", ""));
-		matrixProject.clear();
+//		matrixProject.clear();
 	}
 }

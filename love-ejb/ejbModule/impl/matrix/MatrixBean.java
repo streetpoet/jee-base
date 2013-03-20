@@ -25,7 +25,7 @@ public class MatrixBean implements IMatrix {
 		Object[] params = new Object[]{
 			//TODO: Add parameters here.
 		};
-		return helper.doDMLOperation("", params) == 1; //TODO: Replace "" with proper sql.
+		return true; //helper.doDMLOperation("", params) == 1; //TODO: Replace "" with proper sql.
 	}
 	
 	@Override

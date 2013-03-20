@@ -2,6 +2,8 @@ package com.spstudio.love.matrix.entity;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.enterprise.inject.Model;
 
 @Model
@@ -48,6 +50,16 @@ public class MatrixProject implements Cloneable, Serializable{
 
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
+	}
+	
+	@PostConstruct
+	public void p1(){
+		System.out.println("@PostConstruct");
+	}
+	
+	@PreDestroy
+	public void p2(){
+		System.out.println("@PreDestroy");
 	}
 	
 }

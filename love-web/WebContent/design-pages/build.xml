@@ -66,7 +66,18 @@
 			<replacetoken><![CDATA[</select]]></replacetoken>
 			<replacevalue><![CDATA[</h:selectOneMenu]]></replacevalue>
 		</replace>
-
+		
+		<!-- label -->
+		<replace dir="${src}">
+			<include name="**/*.xhtml" />
+			<replacetoken><![CDATA[<label]]></replacetoken>
+			<replacevalue><![CDATA[<h:outputLabel]]></replacevalue>
+		</replace>
+		<replace dir="${src}">
+			<include name="**/*.xhtml" />
+			<replacetoken><![CDATA[</label]]></replacetoken>
+			<replacevalue><![CDATA[</h:outputLabel]]></replacevalue>
+		</replace>
 	</target>
 
 	<target name="dist" depends="convert-to-jsf-tag-xhtml">

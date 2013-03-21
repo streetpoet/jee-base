@@ -11,13 +11,15 @@ import java.io.OutputStreamWriter;
 public class FormatSQLForJavaUseTool {
 	
 	public static void main(String args[]) throws Exception{
-		new FormatSQLForJavaUseTool().execute();
+//		String currentPath = System.getProperty("user.dir");
+//		String inputFileStr = currentPath + File.separator + "workspace" + File.separator + "sql-before.txt";
+//		String outputFileStr = inputFileStr.substring(0, inputFileStr.lastIndexOf(File.separator)) + File.separator + "sql-after.txt";
+		
+		new FormatSQLForJavaUseTool().execute(args[0], args[1]);
 	}
 	
-	public void execute() throws Exception{
-		String currentPath = System.getProperty("user.dir");
-		String inputFileStr = currentPath + File.separator + "workspace" + File.separator + "sql-before.txt";
-		String outputFileStr = inputFileStr.substring(0, inputFileStr.lastIndexOf(File.separator)) + File.separator + "sql-after.txt";
+	public void execute(String inputFileStr, String outputFileStr) throws Exception{
+		
 		File inputFile = new File(inputFileStr);
 		File outputFile = new File(outputFileStr);
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile)));

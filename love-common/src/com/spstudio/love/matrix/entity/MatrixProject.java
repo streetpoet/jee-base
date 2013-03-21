@@ -14,11 +14,11 @@ public class MatrixProject implements Cloneable, Serializable{
 	 */
 	private static final long serialVersionUID = -174859695150398L;
 	
-	private int id;
+	private int id = -1;
 	private String projectName;
 	
 	public void clear(){
-		id = 0;
+		id = -1;
 	}
 	
 	public void setMatrixProject(MatrixProject matrixProject){

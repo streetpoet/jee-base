@@ -27,8 +27,6 @@ import com.spstudio.love.matrix.event.MatrixUpdateEventQualifier;
 import com.spstudio.love.matrix.qualifier.MatrixRemoteBean;
 import com.spstudio.love.matrix.qualifier.MatrixSingleRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
-import com.spstudio.love.system.bean.UserInfo;
-import com.spstudio.love.system.qualifier.FamilyMembers;
 
 @Model
 public class MatrixAction {
@@ -39,36 +37,46 @@ public class MatrixAction {
 	@Inject @MatrixDeleteEventQualifier Event<MatrixDeleteEvent> matrixDeleteEvent;
 	@Inject @MatrixQueryEventQualifier Event<MatrixQueryEvent> matrixQueryEvent;
 	@Inject @MatrixUpdateEventQualifier Event<MatrixUpdateEvent> matrixUpdateEvent;
-	@Inject @FamilyMembers List<UserInfo> members;
 	@Inject MatrixProjectQueryConversation matrixProjectQueryConversation;
+	@Inject @com.spstudio.love.matrix.qualifier.MatrixProjectQualifier MatrixProject matrixProject;
+	@Inject @com.spstudio.love.matrix.qualifier.MatrixModuleQualifier MatrixModule matrixModule;
+	
+	private List<SelectItem> matrixProjectSelectItem;
+	private List<SelectItem> matrixModuleSelectItem;
 	
 	public List<SelectItem> getMatrixProjectList() {
+
+		if (matrixProjectSelectItem != null){
+			return matrixProjectSelectItem;
+		}
 		List<MatrixProject> list = matrixSingleton.retrieveProjectList();
-		List<SelectItem> selectItems = new ArrayList<SelectItem>();
+		matrixProjectSelectItem = new ArrayList<SelectItem>();
 		if (list != null && list.size() != 0){
 			for (MatrixProject project: list){
-				selectItems.add(new SelectItem(project.getId(), project.getProjectName()));
+				matrixProjectSelectItem.add(new SelectItem(project.getId(), project.getProjectName()));
 			}
 		}
-		return selectItems;
+		return matrixProjectSelectItem;
 	}
 	
-	public List<SelectItem> getMatrixModuleList(int matrixProjectId){
-		List<SelectItem> selectItems = new ArrayList<SelectItem>();
-		if (matrixProjectId == -1){
-			return selectItems;
+	public List<SelectItem> getMatrixModuleList(){
+		if (matrixModuleSelectItem != null){
+			return matrixModuleSelectItem;
 		}
-		List<MatrixModule> list = matrixBean.loadMatrixModuleList(matrixProjectId);
-		if (list != null && list.size() != 0){
-			for (MatrixModule module: list){
-				selectItems.add(new SelectItem(module.getId(), module.getModuleName()));
+		matrixModuleSelectItem = new ArrayList<SelectItem>();
+		if (matrixProject.getId() != -1){
+			List<MatrixModule> list = matrixBean.loadMatrixModuleList(matrixProject.getId());
+			if (list != null && list.size() != 0){
+				for (MatrixModule module: list){
+					matrixModuleSelectItem.add(new SelectItem(module.getId(), module.getModuleName()));
+				}
 			}
 		}
-		return selectItems;
+		return matrixModuleSelectItem;
 	}
 	
 	public void onMatrixProjectListValueChange(ValueChangeEvent event){
-		System.out.println("New value is " + event.getNewValue());
+		matrixProject.setId((Integer)event.getNewValue());
 	}
 	
 	public void createMatrixProject() {

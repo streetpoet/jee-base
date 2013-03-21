@@ -66,6 +66,7 @@ public class DatabaseHelper {
 	}
 	
 	public List<Object[]> doQuery(String sql, Object[] params) {
+		log.trace("doQuery: " + sql);
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try {

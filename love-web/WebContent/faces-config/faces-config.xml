@@ -35,11 +35,10 @@
 	<factory>
 	    <exception-handler-factory>com.spstudio.love.system.exception.LoveExceptionHandlerFactory</exception-handler-factory>
 	</factory>
-
-<!-- 
+ 
 	<lifecycle>
 		<phase-listener>com.spstudio.love.system.listener.LoveLifeCycleListener</phase-listener>
 	</lifecycle>
- -->
+
  
 </faces-config>

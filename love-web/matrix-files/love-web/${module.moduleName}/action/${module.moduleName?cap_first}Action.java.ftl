@@ -23,7 +23,6 @@ import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_firs
 import com.spstudio.love.${module.moduleName}.qualifier.${module.moduleName?cap_first}SingleRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.bean.UserInfo;
-import com.spstudio.love.system.qualifier.FamilyMembers;
 
 @Model
 public class ${module.moduleName?cap_first}Action {
@@ -33,7 +32,6 @@ public class ${module.moduleName?cap_first}Action {
 	@Inject @${module.moduleName?cap_first}DeleteEventQualifier Event<${module.moduleName?cap_first}DeleteEvent> ${module.moduleName}DeleteEvent;
 	@Inject @${module.moduleName?cap_first}QueryEventQualifier Event<${module.moduleName?cap_first}QueryEvent> ${module.moduleName}QueryEvent;
 	@Inject @${module.moduleName?cap_first}UpdateEventQualifier Event<${module.moduleName?cap_first}UpdateEvent> ${module.moduleName}UpdateEvent;
-	@Inject @FamilyMembers List<UserInfo> members;
 	@Inject ${module.entityBeanName?cap_first}QueryConversation ${module.entityBeanName}QueryConversation;
 	
 	public List<SelectItem> getClassifyItems() {

@@ -1,7 +1,6 @@
 <project name="SourceMatrix" default="dist" basedir=".">
 	<description>
-		compile ejb interfaces files to jar file, and copy to
-		web-project's library.
+		compile ejb interfaces files to web-project's library.
 		Written by William.
 	</description>
 

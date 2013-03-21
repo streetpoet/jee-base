@@ -38,7 +38,7 @@
 			</div>
 			<div class="container-fluid">
 
-				<!-- form title -->
+				<!-- Form Title -->
 				<div class="row-fluid">
 					<div class="span8 offset2">
 						<div class="page-header text-left">
@@ -49,7 +49,8 @@
 					</div>
 				</div>
 
-				<!-- alert part -->
+				<!-- Message Region -->
+				
 				<h:panelGroup rendered="#{fn:length(facesContext.messageList) ne 0}">
 					<div class="row-fluid">
 						<div class="span8 offset2 text-left">
@@ -72,7 +73,9 @@
 						</div>
 					</div>
 				</h:panelGroup>
-				<!-- form -->
+				
+				<!-- Form -->
+				
 				<div class="row-fluid">
 					<div class="span8 offset2 text-left bs-docs-example">
 						<h:form class="form-horizontal">
@@ -82,9 +85,10 @@
 							<div class="control-group">
 								<h:outputLabel class="control-label" for="project" value="项目选择" />
 								<div class="controls">
-									<h:selectOneMenu id="project" value="#{matrixProject.id}" required="true" requiredMessage="必须选择一个项目">
+									<h:selectOneMenu id="project" value="#{matrixProject.id}" required="true" requiredMessage="必须选择一个项目" valueChangeListener="#{matrixAction.onMatrixProjectListValueChange}" immediate="true">
 										<f:selectItem noSelectionOption="true" />
 										<f:selectItems value="#{matrixAction.matrixProjectList}" />
+										<f:ajax event="change" execute="project" render="module"></f:ajax>
 									</h:selectOneMenu>
 									&nbsp;
 									<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增项目</h:outputLink>
@@ -97,7 +101,7 @@
 								<h:outputLabel class="control-label" for="module" value="模块选择" />
 								<div class="controls">
 									<h:selectOneMenu id="module" value="#{matrixModule.id}" required="true" requiredMessage="必须选择一个模块用来生成方案">
-										<f:selectItems value="#{matrixAction.matrixModuleList}" />
+										<f:selectItems value="#{matrixAction.getMatrixModuleList()}" />
 									</h:selectOneMenu>
 									&nbsp;
 									<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增模块</h:outputLink>

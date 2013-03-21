@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.enterprise.event.Event;
 import javax.enterprise.inject.Model;
+import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
@@ -52,15 +53,22 @@ public class MatrixAction {
 		return selectItems;
 	}
 	
-	public List<SelectItem> getMatrixModuleList(){
-		List<MatrixModule> list = matrixBean.loadMatrixModuleList(1);
+	public List<SelectItem> getMatrixModuleList(int matrixProjectId){
 		List<SelectItem> selectItems = new ArrayList<SelectItem>();
+		if (matrixProjectId == -1){
+			return selectItems;
+		}
+		List<MatrixModule> list = matrixBean.loadMatrixModuleList(matrixProjectId);
 		if (list != null && list.size() != 0){
 			for (MatrixModule module: list){
 				selectItems.add(new SelectItem(module.getId(), module.getModuleName()));
 			}
 		}
 		return selectItems;
+	}
+	
+	public void onMatrixProjectListValueChange(ValueChangeEvent event){
+		System.out.println("New value is " + event.getNewValue());
 	}
 	
 	public void createMatrixProject() {

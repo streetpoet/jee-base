@@ -52,14 +52,4 @@ public class MatrixProject implements Cloneable, Serializable{
 		this.projectName = projectName;
 	}
 	
-	@PostConstruct
-	public void p1(){
-		System.out.println("@PostConstruct");
-	}
-	
-	@PreDestroy
-	public void p2(){
-		System.out.println("@PreDestroy");
-	}
-	
 }

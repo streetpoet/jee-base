@@ -6,6 +6,8 @@ import interfaces.matrix.IMatrixSingleton;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.enterprise.event.Event;
 import javax.enterprise.inject.Model;
 import javax.faces.event.ValueChangeEvent;
@@ -79,6 +81,9 @@ public class MatrixAction {
 		matrixProject.setId((Integer)event.getNewValue());
 	}
 	
+	public void txtchange(ValueChangeEvent event){
+		System.out.println(event.getOldValue());
+	}
 	public void createMatrixProject() {
 		matrixCreateEvent.fire(new MatrixCreateEvent());
 	}
@@ -113,6 +118,16 @@ public class MatrixAction {
 			pageObject.setCurrentPageNumber(pageObject.getCurrentPageNumber() + 1);
 		}
 		queryMatrixProject();
+	}
+	
+	@PostConstruct
+	public void p1(){
+		System.out.println("---------------- MatrixAction @PostConstruct");
+	}
+	
+	@PreDestroy
+	public void p2(){
+		System.out.println("---------------- MatrixAction @PreDestroy");
 	}
 	
 }

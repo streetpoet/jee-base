@@ -103,7 +103,7 @@
 								<h:outputLabel class="control-label" for="module" value="模块选择" />
 								<div class="controls">
 									<h:selectOneMenu id="module" value="#{matrixModule.id}" required="true" requiredMessage="必须选择一个模块用来生成方案"
-										converterMessage="convert error" validatorMessage="validation error" onchange="alert('changed');">
+										converterMessage="convert error" validatorMessage="validation error">
 										<f:selectItems value="#{matrixAction.matrixModuleList}" />
 									</h:selectOneMenu>
 									&nbsp;
@@ -117,7 +117,8 @@
 								<h:outputLabel class="control-label" for="moduleName" value="模块名称" />
 								<div class="controls">
 									<h:inputText id="moduleName" placeholder="模块名称" value="#{matrixModule.moduleName}" required="true"
-										requiredMessage="模块名称必须输入" />
+										requiredMessage="模块名称必须输入" valueChangeListener="#{matrixAction.txtchange}" >
+									</h:inputText>
 								</div>
 							</div>
 

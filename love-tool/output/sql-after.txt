@@ -1,0 +1,8 @@
+ "select  "
++"    m.id, m.module_name "
++"from "
++"    f4_module m, "
++"    f4_project_module_ref r "
++"where "
++"	m.id = r.module_id "
++"	and r.project_id = 2 "

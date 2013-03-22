@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<h:outputStylesheet library="css/#{view.locale}" name="/bootstrap-responsive.css" />
+	<h:outputStylesheet library="css/#{view.locale}" name="/bootstrap.min.css" />
+	<h:outputStylesheet library="css/#{view.locale}" name="/docs.css" />
+	<title><h:outputText value="#{sysBundle['website-name']}" /></title>
+</h:head>
+
+<body>
+
+	<!-- header navigator -->
+	<div class="container-fluid">
+		<div class="navbar navbar-fixed-top navbar-inverse">
+			<div class="navbar-inner">
+				<div class="container">
+
+					<!-- Be sure to leave the brand out there if you want it shown -->
+					<h:commandLink class="brand" href="#">Source Matrix<sup>&#8482;</sup></h:commandLink>
+
+					<div class="nav-collapse collapse pull-right">
+						<h:form class="form-inline navbar-form">
+							<h:button type="submit" class="btn btn-danger">Sign out</h:button>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<ui:insert name="body"></ui:insert>
+
+	<!-- Footer -->
+	<footer class="footer">
+	<div class="container">
+		<p>Designed and built all base on open-source technologies, Power by William, NSV Co,Ltd.</p>
+		<p>
+			Code not licensed under <h:commandLink href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</h:commandLink>
+			<ul class="footer-links">
+				<li><h:commandLink href="#" target="_blank">About</h:commandLink></li>
+				<li class="muted">&middot;</li>
+				<li><h:commandLink href="#" target="_blank">Issues</h:commandLink></li>
+				<li class="muted">&middot;</li>
+				<li><h:commandLink href="#">Changelog</h:commandLink></li>
+			</ul>
+		</p>
+	</div>
+	</footer>
+
+	<h:outputScript library="js/#{view.locale}" name="/jquery.js"></h:outputScript>
+	<h:outputScript library="js/#{view.locale}" name="/bootstrap.min.js"></h:outputScript>
+</body>
+</html>

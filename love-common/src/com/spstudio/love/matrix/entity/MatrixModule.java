@@ -4,8 +4,10 @@ import java.io.Serializable;
 
 import javax.enterprise.inject.Model;
 
+import com.spstudio.love.matrix.qualifier.MatrixModuleQualifier;
+
 @Model
-@com.spstudio.love.matrix.qualifier.MatrixModuleQualifier
+@MatrixModuleQualifier
 public class MatrixModule implements Cloneable, Serializable{
 	/**
 	 * 

@@ -39,7 +39,7 @@ public class ProductSingletonBean implements IProductSingleton {
 		return productClassify;
 	}
 	
-	@Schedule(minute = "*/1", hour = "*", persistent = false)
+	@Schedule(minute = "*/10", hour = "*", persistent = false)
 	public void queryProductClassify(){
 		List<String[]> classify = new ArrayList<String[]>();
 		List<Object[]> result = helper.doQuery("select id, kindName from f1_classify", null);

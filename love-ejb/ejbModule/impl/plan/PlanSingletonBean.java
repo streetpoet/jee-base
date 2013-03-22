@@ -39,7 +39,7 @@ public class PlanSingletonBean implements IPlanSingleton {
 		return planTypeList;
 	}
 	
-	@Schedule(minute = "*/1", hour = "*", persistent = false)
+	@Schedule(minute = "*/10", hour = "*", persistent = false)
 	public void queryPlanType(){
 		List<String[]> types = new ArrayList<String[]>();
 		List<Object[]> result = helper.doQuery("select id, typeName from f2_plan_type order by id", null);
@@ -62,7 +62,7 @@ public class PlanSingletonBean implements IPlanSingleton {
 		return unitTypeList;
 	}
 	
-	@Schedule(minute = "*/1", hour = "*", persistent = false)
+	@Schedule(minute = "*/10", hour = "*", persistent = false)
 	public void queryUnitType(){
 		List<String[]> types = new ArrayList<String[]>();
 		List<Object[]> result = helper.doQuery("select id, unitName from f2_repeat_unit order by id", null);

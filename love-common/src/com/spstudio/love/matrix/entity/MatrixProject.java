@@ -2,8 +2,6 @@ package com.spstudio.love.matrix.entity;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.enterprise.inject.Model;
 
 @Model

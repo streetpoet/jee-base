@@ -6,7 +6,7 @@
 	<navigation-rule>
 		<from-view-id>/pages/*</from-view-id>
 		<navigation-case>
-			<from-outcome>LOGOUT</from-outcome>
+			<from-outcome>HOME</from-outcome>
 			<to-view-id>/pages/home/home.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>

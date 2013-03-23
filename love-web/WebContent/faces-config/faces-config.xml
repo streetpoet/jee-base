@@ -30,7 +30,7 @@
 			<base-name>messages.plan.Message</base-name>
 			<var>planBundle</var>
 		</resource-bundle>
-
+		<message-bundle>Messages</message-bundle>
 	</application>
 	<factory>
 	    <exception-handler-factory>com.spstudio.love.system.exception.LoveExceptionHandlerFactory</exception-handler-factory>

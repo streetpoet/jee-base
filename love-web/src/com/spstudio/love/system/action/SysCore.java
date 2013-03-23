@@ -9,6 +9,6 @@ import com.spstudio.love.system.nav.SystemNav;
 public class SysCore {
 	public Object logout(){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return SystemNav.LOGOUT;
+		return SystemNav.HOME;
 	}
 }

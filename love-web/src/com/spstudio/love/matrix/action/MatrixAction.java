@@ -3,17 +3,26 @@ package com.spstudio.love.matrix.action;
 import interfaces.matrix.IMatrix;
 import interfaces.matrix.IMatrixSingleton;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.enterprise.context.Conversation;
+import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.event.Event;
-import javax.enterprise.inject.Model;
+import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseId;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
+import javax.inject.Named;
 
+import org.jboss.logging.Logger;
+import org.jboss.weld.context.ManagedConversation;
+
+import com.spstudio.love.matrix.bean.MatrixModuleHtmlSelectionBean;
+import com.spstudio.love.matrix.bean.MatrixProjectHtmlSelectionBean;
 import com.spstudio.love.matrix.bean.MatrixProjectQueryConversation;
 import com.spstudio.love.matrix.entity.MatrixModule;
 import com.spstudio.love.matrix.entity.MatrixProject;
@@ -29,10 +38,18 @@ import com.spstudio.love.matrix.event.MatrixUpdateEventQualifier;
 import com.spstudio.love.matrix.qualifier.MatrixRemoteBean;
 import com.spstudio.love.matrix.qualifier.MatrixSingleRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
+import com.spstudio.love.system.qualifier.LoveLogged;
 
-@Model
-public class MatrixAction {
+@ConversationScoped
+@Named
+public class MatrixAction implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7032744584511809741L;
+	
+	@Inject Conversation conversation;
 	@Inject @MatrixSingleRemoteBean IMatrixSingleton matrixSingleton;
 	@Inject @MatrixRemoteBean IMatrix matrixBean;
 	@Inject @MatrixCreateEventQualifier Event<MatrixCreateEvent> matrixCreateEvent;
@@ -42,48 +59,38 @@ public class MatrixAction {
 	@Inject MatrixProjectQueryConversation matrixProjectQueryConversation;
 	@Inject @com.spstudio.love.matrix.qualifier.MatrixProjectQualifier MatrixProject matrixProject;
 	@Inject @com.spstudio.love.matrix.qualifier.MatrixModuleQualifier MatrixModule matrixModule;
-	
-	private List<SelectItem> matrixProjectSelectItem;
-	private List<SelectItem> matrixModuleSelectItem;
+	@Inject MatrixModuleHtmlSelectionBean matrixModuleHtmlSelectBean;
+	@Inject MatrixProjectHtmlSelectionBean matrixProjectHtmlSelectionBean;
+	@Inject @LoveLogged Logger log;
 	
 	public List<SelectItem> getMatrixProjectList() {
-
-		if (matrixProjectSelectItem != null){
-			return matrixProjectSelectItem;
-		}
-		List<MatrixProject> list = matrixSingleton.retrieveProjectList();
-		matrixProjectSelectItem = new ArrayList<SelectItem>();
-		if (list != null && list.size() != 0){
-			for (MatrixProject project: list){
-				matrixProjectSelectItem.add(new SelectItem(project.getId(), project.getProjectName()));
-			}
-		}
-		return matrixProjectSelectItem;
+		return matrixProjectHtmlSelectionBean.getMatrixProjectList();
 	}
 	
 	public List<SelectItem> getMatrixModuleList(){
-		if (matrixModuleSelectItem != null){
-			return matrixModuleSelectItem;
-		}
-		matrixModuleSelectItem = new ArrayList<SelectItem>();
-		if (matrixProject.getId() != -1){
-			List<MatrixModule> list = matrixBean.loadMatrixModuleList(matrixProject.getId());
-			if (list != null && list.size() != 0){
-				for (MatrixModule module: list){
-					matrixModuleSelectItem.add(new SelectItem(module.getId(), module.getModuleName()));
-				}
-			}
-		}
-		return matrixModuleSelectItem;
+		return matrixModuleHtmlSelectBean.getMatrixModuleList();
 	}
 	
 	public void onMatrixProjectListValueChange(ValueChangeEvent event){
-		matrixProject.setId((Integer)event.getNewValue());
+		log.trace("event.getOldValue() = " + event.getOldValue());
+		matrixModuleHtmlSelectBean.reloadModleListByProjectId((Integer)event.getNewValue());
 	}
 	
-	public void txtchange(ValueChangeEvent event){
-		System.out.println(event.getOldValue());
+	public Object startConversation() {
+		if (conversation.isTransient()) {
+			conversation.begin();
+			log.trace("--------------conversation start: cid=" + conversation.getId());
+		}
+		return "MATRIX_HOME";
 	}
+	
+	public void endConversation() {
+		if (!(conversation.isTransient())) {
+			log.trace("--------------conversation end: cid=" + conversation.getId());
+			conversation.end();
+		}
+	}
+	
 	public void createMatrixProject() {
 		matrixCreateEvent.fire(new MatrixCreateEvent());
 	}

@@ -28,7 +28,7 @@
 								<p>生成日报及周报文件，提高效率</p>
 							</h:link></li>
 						<li class="span3"><h:form >
-								<h:commandLink action="#{matrixAction.startConversation()}" styleClass="thumbnail" >
+								<h:commandLink action="MATRIX_HOME" styleClass="thumbnail" actionListener="#{matrixAction.startConversation()}">
 									<h:graphicImage value="/resources/img/#{view.locale}/2.jpg" styleClass="img-rounded" />
 									<h3>代码生成模块</h3>
 									<p>

@@ -6,20 +6,15 @@ import interfaces.matrix.IMatrixSingleton;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.event.Event;
-import javax.faces.context.FacesContext;
-import javax.faces.event.PhaseId;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.jboss.logging.Logger;
-import org.jboss.weld.context.ManagedConversation;
 
 import com.spstudio.love.matrix.bean.MatrixModuleHtmlSelectionBean;
 import com.spstudio.love.matrix.bean.MatrixProjectHtmlSelectionBean;
@@ -35,6 +30,8 @@ import com.spstudio.love.matrix.event.MatrixQueryEvent.QueryMode;
 import com.spstudio.love.matrix.event.MatrixQueryEventQualifier;
 import com.spstudio.love.matrix.event.MatrixUpdateEvent;
 import com.spstudio.love.matrix.event.MatrixUpdateEventQualifier;
+import com.spstudio.love.matrix.qualifier.MatrixModuleQualifier;
+import com.spstudio.love.matrix.qualifier.MatrixProjectQualifier;
 import com.spstudio.love.matrix.qualifier.MatrixRemoteBean;
 import com.spstudio.love.matrix.qualifier.MatrixSingleRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
@@ -57,8 +54,8 @@ public class MatrixAction implements Serializable {
 	@Inject @MatrixQueryEventQualifier Event<MatrixQueryEvent> matrixQueryEvent;
 	@Inject @MatrixUpdateEventQualifier Event<MatrixUpdateEvent> matrixUpdateEvent;
 	@Inject MatrixProjectQueryConversation matrixProjectQueryConversation;
-	@Inject @com.spstudio.love.matrix.qualifier.MatrixProjectQualifier MatrixProject matrixProject;
-	@Inject @com.spstudio.love.matrix.qualifier.MatrixModuleQualifier MatrixModule matrixModule;
+	@Inject @MatrixProjectQualifier MatrixProject matrixProject;
+	@Inject @MatrixModuleQualifier MatrixModule matrixModule;
 	@Inject MatrixModuleHtmlSelectionBean matrixModuleHtmlSelectBean;
 	@Inject MatrixProjectHtmlSelectionBean matrixProjectHtmlSelectionBean;
 	@Inject @LoveLogged Logger log;
@@ -76,12 +73,10 @@ public class MatrixAction implements Serializable {
 		matrixModuleHtmlSelectBean.reloadModleListByProjectId((Integer)event.getNewValue());
 	}
 	
-	public Object startConversation() {
+	public void startConversation() {
 		if (conversation.isTransient()) {
 			conversation.begin();
-			log.trace("--------------conversation start: cid=" + conversation.getId());
 		}
-		return "MATRIX_HOME";
 	}
 	
 	public void endConversation() {
@@ -125,16 +120,6 @@ public class MatrixAction implements Serializable {
 			pageObject.setCurrentPageNumber(pageObject.getCurrentPageNumber() + 1);
 		}
 		queryMatrixProject();
-	}
-	
-	@PostConstruct
-	public void p1(){
-		System.out.println("---------------- MatrixAction @PostConstruct");
-	}
-	
-	@PreDestroy
-	public void p2(){
-		System.out.println("---------------- MatrixAction @PreDestroy");
 	}
 	
 }

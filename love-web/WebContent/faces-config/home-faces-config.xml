@@ -7,7 +7,7 @@
 	    <description>when user click individual module from home page, just directly link to those pages.</description>
 		<from-view-id>/pages/home/home.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>MATRIX_HOME</from-outcome>
+		    <from-outcome>MATRIX_HOME</from-outcome>
 			<to-view-id>/pages/matrix/home.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>

@@ -1,5 +1,5 @@
 package com.spstudio.love.system.nav;
 
 public enum SystemNav {
-	HOME;
+	HOME, MATRIX_HOME,
 }

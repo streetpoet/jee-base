@@ -1,6 +1,7 @@
 package interfaces.matrix;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Remote;
 
@@ -10,5 +11,5 @@ import com.spstudio.love.matrix.entity.MatrixProject;
 public interface IMatrixSingleton {
 	
 	public List<MatrixProject> retrieveProjectList();
-	
+	public Map<String, List<String>> retrieveGenerationConfiguration();
 }

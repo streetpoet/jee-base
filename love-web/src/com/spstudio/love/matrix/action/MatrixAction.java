@@ -36,6 +36,7 @@ import com.spstudio.love.matrix.qualifier.MatrixRemoteBean;
 import com.spstudio.love.matrix.qualifier.MatrixSingleRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.qualifier.LoveLogged;
+import com.spstudio.love.system.qualifier.LoveTrace;
 
 @ConversationScoped
 @Named
@@ -72,12 +73,14 @@ public class MatrixAction implements Serializable {
 		matrixModuleHtmlSelectBean.reloadModleListByProjectId((Integer)event.getNewValue());
 	}
 	
+	@LoveTrace
 	public void startConversation() {
 		if (conversation.isTransient()) {
 			conversation.begin();
 		}
 	}
 	
+	@LoveTrace
 	public void endConversation() {
 		if (!(conversation.isTransient())) {
 			conversation.end();

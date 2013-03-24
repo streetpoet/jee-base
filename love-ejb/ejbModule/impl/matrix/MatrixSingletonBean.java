@@ -3,7 +3,9 @@ package impl.matrix;
 import interfaces.matrix.IMatrixSingleton;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
@@ -33,12 +35,26 @@ public class MatrixSingletonBean implements IMatrixSingleton {
 	@Inject DatabaseHelper helper;
 	
 	private static final String SQL = "select id, project_name from f4_project order by id";
+	private static final String LOAD_CONFIG_SQL =  "select  "
+												+"    sc.key, sc.value "
+												+"from "
+												+"    sys_config sc "
+												+"where "
+												+"    sc.module_id = 1 "
+												+"order by sc.key ";
+
 	private List<MatrixProject> returnList = null;
+	private Map<String, List<String>> returnConfigMap;
 
 	@Override
 	@Lock(LockType.READ)
 	public List<MatrixProject> retrieveProjectList() {
 		return returnList;
+	}
+	
+	@Override
+	public Map<String, List<String>> retrieveGenerationConfiguration() {
+		return returnConfigMap;
 	}
 	
 	@Schedule(minute = "*/10", hour = "*", persistent = false)
@@ -51,6 +67,21 @@ public class MatrixSingletonBean implements IMatrixSingleton {
 			projectList.add(mp);
 		}
 		returnList = projectList;
+		
+		Map<String, List<String>> configMap = new HashMap<String, List<String>>();
+		String currentKey = "";
+		for(Object[] object: helper.doQuery(LOAD_CONFIG_SQL, null)){
+			String key = (String)object[0];
+			if (! currentKey.equals(key)){
+				currentKey = key;
+				List<String> list = new ArrayList<String>();
+				list.add((String)object[1]);
+				configMap.put(currentKey, list);
+				continue;
+			}
+			configMap.get(key).add((String)object[1]);
+		}
+		returnConfigMap = configMap;
 	}
 	
 	@PostConstruct
@@ -58,4 +89,5 @@ public class MatrixSingletonBean implements IMatrixSingleton {
 		log.info("[[ MatrixSingletonBean start. ]]");
 		timer();
 	}
+
 }

@@ -25,7 +25,7 @@ public class FreemarkerGenerator {
 		
 		File templatefolder = new File(file.getAbsolutePath().substring(0, file.getAbsolutePath().lastIndexOf(File.separator)));
 		String outputFilePathWithFtlSymbol = cb.getOutputPath() + file.getAbsolutePath().replace(cb.getTemplateInputPath().substring(0, cb.getTemplateInputPath().lastIndexOf(File.separator)), "");
-		File outputFile = new File(MatrixUtil.convertFtlString(cb.getModuleBean(), outputFilePathWithFtlSymbol).replace(".ftl", ""));
+		File outputFile = new File(MatrixUtil.convertFtlString(cb.getMatrixModule(), outputFilePathWithFtlSymbol).replace(".ftl", ""));
 		
 		try {
 			Configuration cfg = new Configuration();
@@ -33,7 +33,7 @@ public class FreemarkerGenerator {
 			cfg.setObjectWrapper(new DefaultObjectWrapper());
 			Template temp = cfg.getTemplate(file.getName());
 			Map<Object, Object> root = new HashMap<Object, Object>();
-			root.put(ConfigBean.MODULE_BEAN_VAR, MatrixUtil.convertBean(cb.getModuleBean()));
+			root.put(ConfigBean.MODULE_BEAN_VAR, MatrixUtil.convertBean(cb.getMatrixModule()));
 			
 			/*
 			 * add customer method here.

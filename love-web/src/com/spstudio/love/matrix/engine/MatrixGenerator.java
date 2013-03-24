@@ -4,8 +4,9 @@ import java.io.File;
 
 import com.spstudio.love.matrix.engine.freemarker.FreemarkerGenerator;
 import com.spstudio.love.matrix.engine.freemarker.MatrixUtil;
+import com.spstudio.love.matrix.entity.MatrixModule;
 
-public class Client {
+public class MatrixGenerator {
 
 	private ConfigBean cb;
 	
@@ -15,20 +16,20 @@ public class Client {
 	public static void main(String[] args) {
 		ConfigBean cb = new ConfigBean();		
 		cb.setOutputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/output");
-		ModuleBean mb = new ModuleBean();
+		MatrixModule mb = new MatrixModule();
 		mb.setModuleName("matrix");
 		mb.setEntityBeanName("matrixProject");
 		mb.setSingletonEjbMethodName("retrieveProjectList");
-		cb.setModuleBean(mb);
+		cb.setMatrixModule(mb);
 		
 		cb.setTemplateInputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/love-web");
-		new Client().execute(cb);
+		new MatrixGenerator().execute(cb);
 		
 		cb.setTemplateInputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/love-ejb");
-		new Client().execute(cb);
+		new MatrixGenerator().execute(cb);
 		
 		cb.setTemplateInputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/love-common");
-		new Client().execute(cb);
+		new MatrixGenerator().execute(cb);
 	}	
 
 	public void execute(ConfigBean cb) {
@@ -54,7 +55,7 @@ public class Client {
 	
 	private void processFolder(File folder){
 		String outputFolderPathWithFtlSymbol = cb.getOutputPath() + folder.getAbsolutePath().replace(cb.getTemplateInputPath().substring(0, cb.getTemplateInputPath().lastIndexOf(File.separator)), "");
-		File outputFolderFile = new File(MatrixUtil.convertFtlString(cb.getModuleBean(), outputFolderPathWithFtlSymbol));
+		File outputFolderFile = new File(MatrixUtil.convertFtlString(cb.getMatrixModule(), outputFolderPathWithFtlSymbol));
 		if (!outputFolderFile.exists()){
 			if (!outputFolderFile.mkdirs()){
 				System.err.println("can't create folder --> " + outputFolderPathWithFtlSymbol);

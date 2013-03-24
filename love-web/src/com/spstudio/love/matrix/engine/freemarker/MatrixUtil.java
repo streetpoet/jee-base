@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.spstudio.love.matrix.engine.ConfigBean;
-import com.spstudio.love.matrix.engine.ModuleBean;
+import com.spstudio.love.matrix.entity.MatrixModule;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -44,7 +44,7 @@ public class MatrixUtil {
 		return returnMap;
 	}
 
-	public static String convertFtlString(ModuleBean mb, String stringWithFtlSymbol) {
+	public static String convertFtlString(MatrixModule mb, String stringWithFtlSymbol) {
 		try {
 			Configuration cfg = new Configuration();
 			cfg.setTemplateLoader(new StringTemplateLoader(stringWithFtlSymbol));

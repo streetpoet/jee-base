@@ -1,1 +1,10 @@
-1,
+=======================
+online backup
+=======================
+
+1, localhost:mysql sp$ bin/ndb_mgm
+2, ndb_mgm> start backup 3
+
+=======================
+restore
+=======================

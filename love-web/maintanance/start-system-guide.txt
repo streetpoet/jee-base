@@ -1,0 +1,8 @@
+1, start cluster db
+	1, localhost:~ sp$ cd Documents/server/mysql
+	2, localhost:mysql sp$ bin/ndb_mgmd -f manager/config.ini --configdir=manager/
+	3, localhost:mysql sp$ bin/ndbd
+	4, localhost:mysql sp$ bin/ndbd
+	5, localhost:mysql sp$ bin/mysqld_safe &
+2, start jboss server
+	1, jboss_root_folder/bin/run.sh -b 0.0.0.0 --configuration=all

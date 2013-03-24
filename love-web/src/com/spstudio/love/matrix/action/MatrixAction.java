@@ -69,7 +69,6 @@ public class MatrixAction implements Serializable {
 	}
 	
 	public void onMatrixProjectListValueChange(ValueChangeEvent event){
-		log.trace("event.getOldValue() = " + event.getOldValue());
 		matrixModuleHtmlSelectBean.reloadModleListByProjectId((Integer)event.getNewValue());
 	}
 	
@@ -81,7 +80,6 @@ public class MatrixAction implements Serializable {
 	
 	public void endConversation() {
 		if (!(conversation.isTransient())) {
-			log.trace("--------------conversation end: cid=" + conversation.getId());
 			conversation.end();
 		}
 	}

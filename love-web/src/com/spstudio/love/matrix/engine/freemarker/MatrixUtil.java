@@ -33,6 +33,9 @@ public class MatrixUtil {
 			String propertyName = descriptor.getName();
 			if (!propertyName.equals("class")) {
 				Method readMethod = descriptor.getReadMethod();
+				if (readMethod == null){
+					continue;
+				}
 				Object result = readMethod.invoke(bean, new Object[0]);
 				if (result != null) {
 					returnMap.put(propertyName, result);

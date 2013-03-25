@@ -1,6 +1,6 @@
-package impl.matrix;
+package impl.${module.moduleName};
 
-import interfaces.matrix.IMatrix;
+import interfaces.${module.moduleName}.I${module.moduleName?cap_first};
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +8,9 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import com.spstudio.love.matrix.entity.${module.entityBeanName?cap_first};
-import com.spstudio.love.matrix.helper.${module.entityBeanName?cap_first}Condition;
-import com.spstudio.love.matrix.helper.${module.entityBeanName?cap_first}QueryResult;
+import com.spstudio.love.${module.moduleName}.entity.${module.entityBeanName?cap_first};
+import com.spstudio.love.${module.moduleName}.helper.${module.entityBeanName?cap_first}Condition;
+import com.spstudio.love.${module.moduleName}.helper.${module.entityBeanName?cap_first}QueryResult;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.helper.DatabaseHelper;
 import com.spstudio.love.system.interfaces.IQueryResult;

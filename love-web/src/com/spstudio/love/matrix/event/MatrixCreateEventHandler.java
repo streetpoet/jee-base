@@ -49,13 +49,17 @@ public class MatrixCreateEventHandler implements Serializable {
 		cb.setMatrixModule(matrixModule);
 
 		List<String> listInputPath = configMap.get(ConfigBean.INPUT_FTL_PATH);
+		try{
+			deletefile(cb.getOutputPath());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		for (String inputPath : listInputPath) {
 			cb.setTemplateInputPath(inputPath);
 			generator.execute(cb);
 		}
 
 		try {
-			deletefile(cb.getOutputPath());
 			new ZipUtils().compress(cb.getOutputPath());
 			File outputFolder = new File(cb.getOutputPath());
 			downloadFile(outputFolder.getParent() + File.separator + outputFolder.getName() + ".zip");

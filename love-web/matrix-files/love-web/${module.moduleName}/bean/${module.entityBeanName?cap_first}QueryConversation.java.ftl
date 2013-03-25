@@ -12,8 +12,8 @@ import javax.inject.Named;
 
 import org.jboss.logging.Logger;
 
-import com.spstudio.love.matrix.entity.${module.entityBeanName?cap_first};
-import com.spstudio.love.matrix.helper.${module.entityBeanName?cap_first}Condition;
+import com.spstudio.love.${module.moduleName}.entity.${module.entityBeanName?cap_first};
+import com.spstudio.love.${module.moduleName}.helper.${module.entityBeanName?cap_first}Condition;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.constant.Configuration;
 import com.spstudio.love.system.qualifier.LoveLogged;

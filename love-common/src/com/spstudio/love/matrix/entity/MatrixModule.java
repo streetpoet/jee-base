@@ -15,10 +15,10 @@ public class MatrixModule implements Cloneable, Serializable{
 	private static final long serialVersionUID = -278460101699583L;
 	
 	private int id;
-	private String moduleName;
-	private String entityBeanName;
-	private String singletonEjbMethodName;
-	private String functionName;
+	private String moduleName; /** 模块名称，代表项目中的模块，模块中有若干的功能。小写字母开头。 */
+	private String entityBeanName; /** 可预见的在EJB与WEB SERVER间传递的实体对象，默认对于普通Session EJB，会生成增删改查方法。 */
+	private String singletonEjbMethodName; /** 单例EJB方法名，用来生成demo代码 */
+	private String functionName; /** 模块中的子功能名，子功能可能是一个模块中的一个画面。 */
 	
 	public void clear(){
 		id = 0;

@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link type="text/css" rel="stylesheet" href="../../resources/css/en/bootstrap-responsive.css" />
-<link type="text/css" rel="stylesheet" href="../../resources/css/en/bootstrap.min.css" />
-<link type="text/css" rel="stylesheet" href="../../resources/css/en/docs.css" />
+<link type="text/css" rel="stylesheet" href="../resources/css/en/bootstrap-responsive.css" />
+<link type="text/css" rel="stylesheet" href="../resources/css/en/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="../resources/css/en/docs.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Love-Website</title>
@@ -95,18 +95,19 @@
                     <label class="control-label" for="moduleName">模块名称</label>
                     <div class="controls">
                         <input id="moduleName" type="text" placeholder="模块名称" />
-                    </div>
+                        <span class="label label-info">首字母小写，将作为包名出现，如：report</span> </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="entityBeanName">实体Bean名称</label>
                     <div class="controls">
                         <input id="entityBeanName" type="text" placeholder="实体Bean名称" />
-                    </div>
+                        <span class="label label-info">首字母小写，将自动生成Session Bean的增删改查功能。</span> </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="singleEjbMethodName">单例EJB方法名</label>
+                    <label class="control-label" for="singleEjbMethodName">Select元素对于Bean名称</label>
                     <div class="controls">
-                        <input id="singleEjbMethodName" type="text" placeholder="单例EJB方法名" />
+                        <input id="singleEjbMethodName" type="text" placeholder="Select元素对应Bean名称" />
+                        <span class="label label-info">首字母小写，将自动生成单例Bean的缓存查询功能</span>
                     </div>
                 </div>
                 <div class="form-actions">
@@ -133,7 +134,7 @@
         </p>
     </div>
 </footer>
-<script type="text/javascript" src="../../resources/js/en/jquery.js"></script> 
-<script type="text/javascript" src="../../resources/js/en/bootstrap.min.js"></script>
+<script type="text/javascript" src="../resources/js/en/jquery.js"></script> 
+<script type="text/javascript" src="../resources/js/en/bootstrap.min.js"></script>
 </body>
 </html>

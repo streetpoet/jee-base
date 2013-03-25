@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:body>
+	<composite:interface>
+		<composite:attribute name="username" />
+		<composite:attribute name="password" />
+		<composite:attribute name="usernameLabel" />
+		<composite:attribute name="passwordLabel" />
+		<composite:attribute name="submitLabel"></composite:attribute>
+		<composite:attribute name="loginBean" required="true" />
+		<composite:attribute name="loginAction" method-signature="java.lang.String action()" required="true" />
+		<composite:editableValueHolder name="usernameValue" targets="loginForm:username" />
+		<composite:editableValueHolder name="passwordValue" targets="loginForm:password" />
+	</composite:interface>
+
+	<composite:implementation>
+		<h:form id="loginForm">
+			<h:panelGrid columns="2">
+
+				<h:outputLabel value="#{cc.attrs.usernameLabel}" for="username" />
+				<h:inputText id="username" label="#{cc.attrs.usernameLabel}" value="#{cc.attrs.loginBean.username}" />
+
+				<h:outputLabel value="#{cc.attrs.passwordLabel}" for="password" />
+				<h:inputText id="password" label="#{cc.attrs.passwordLabel}" value="#{cc.attrs.loginBean.password}" />
+
+				<h:commandButton value="#{cc.attrs.submitLabel}" action="#{cc.attrs.loginAction}" />
+			</h:panelGrid>
+		</h:form>
+	</composite:implementation>
+</h:body>
+</html>

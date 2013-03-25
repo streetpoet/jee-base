@@ -8,7 +8,6 @@ import java.util.List;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.event.Event;
-import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -16,6 +15,7 @@ import javax.inject.Named;
 import org.jboss.logging.Logger;
 
 import com.spstudio.love.${module.moduleName}.bean.${module.entityBeanName?cap_first}QueryConversation;
+import com.spstudio.love.${module.moduleName}.bean.${module.selectBeanName?cap_first}HtmlSelectionBean;
 import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}CreateEvent;
 import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}CreateEventQualifier;
 import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}DeleteEvent;
@@ -26,8 +26,10 @@ import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_firs
 import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}UpdateEvent;
 import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}UpdateEventQualifier;
 import com.spstudio.love.${module.moduleName}.qualifier.${module.moduleName?cap_first}SingleRemoteBean;
-import com.spstudio.love.sample.bean.${module.selectBeanName?cap_first}HtmlSelectionBean;
+
 import com.spstudio.love.system.bean.PageObject;
+import com.spstudio.love.system.qualifier.LoveLogged;
+import com.spstudio.love.system.qualifier.LoveTrace;
 
 @ConversationScoped
 @Named
@@ -37,6 +39,7 @@ public class ${module.moduleName?cap_first}Action implements Serializable {
 	 */
 	private static final long serialVersionUID = -${uid()}L;
 	
+	@Inject Conversation conversation;
 	@Inject @${module.moduleName?cap_first}SingleRemoteBean I${module.moduleName?cap_first}Singleton ${module.moduleName}Singleton;
 	@Inject @${module.moduleName?cap_first}CreateEventQualifier Event<${module.moduleName?cap_first}CreateEvent> ${module.moduleName}CreateEvent;
 	@Inject @${module.moduleName?cap_first}DeleteEventQualifier Event<${module.moduleName?cap_first}DeleteEvent> ${module.moduleName}DeleteEvent;

@@ -19,6 +19,7 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
+import com.spstudio.love.sample.entity.${module.selectBeanName?cap_first};
 import com.spstudio.love.system.helper.DatabaseHelper;
 import com.spstudio.love.system.qualifier.LoveLogged;
 

@@ -1,18 +1,14 @@
 package com.spstudio.love.${module.moduleName}.entity;
 
 import java.io.Serializable;
-
 import javax.enterprise.inject.Model;
 
-import com.spstudio.love.${module.moduleName}.qualifier.${module.moduleName?cap_first}ProjectQualifier;
-
 @Model
-@${module.selectBeanName?cap_first}Qualifier
 public class ${module.selectBeanName?cap_first} implements Cloneable, Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -${uid()};
+	private static final long serialVersionUID = -${uid()}L;
 	
 	private int id = -1;
 	private String label;

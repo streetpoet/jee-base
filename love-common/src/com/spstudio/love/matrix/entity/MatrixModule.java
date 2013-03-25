@@ -18,6 +18,7 @@ public class MatrixModule implements Cloneable, Serializable{
 	private String moduleName;
 	private String entityBeanName;
 	private String singletonEjbMethodName;
+	private String functionName;
 	
 	public void clear(){
 		id = 0;
@@ -25,6 +26,10 @@ public class MatrixModule implements Cloneable, Serializable{
 	
 	public void setMatrixModule(MatrixModule matrixModule){
 		id = matrixModule.id;
+		moduleName = matrixModule.moduleName;
+		entityBeanName = matrixModule.entityBeanName;
+		singletonEjbMethodName = matrixModule.singletonEjbMethodName;
+		functionName = matrixModule.functionName;
 	}
 	
 	public MatrixModule clone(){
@@ -68,5 +73,12 @@ public class MatrixModule implements Cloneable, Serializable{
 	public void setSingletonEjbMethodName(String singletonEjbMethodName) {
 		this.singletonEjbMethodName = singletonEjbMethodName;
 	}
-	
+
+	public String getFunctionName() {
+		return functionName;
+	}
+
+	public void setFunctionName(String functionName) {
+		this.functionName = functionName;
+	}
 }

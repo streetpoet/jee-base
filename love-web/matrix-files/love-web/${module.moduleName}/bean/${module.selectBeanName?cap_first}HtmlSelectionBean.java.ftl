@@ -14,7 +14,7 @@ import com.spstudio.love.${module.moduleName}.entity.${module.moduleName?cap_fir
 import com.spstudio.love.${module.moduleName}.qualifier.${module.moduleName?cap_first}SingleRemoteBean;
 
 @Dependent
-public class ${module.moduleName?cap_first}${module.selectBeanName?cap_first}HtmlSelectionBean implements Serializable{
+public class ${module.selectBeanName?cap_first}HtmlSelectionBean implements Serializable{
 
 	/**
 	 * 
@@ -28,7 +28,7 @@ public class ${module.moduleName?cap_first}${module.selectBeanName?cap_first}Htm
 		if (${module.selectBeanName}List != null){
 			return ${module.selectBeanName}List;
 		}
-		List<${module.selectBeanName?cap_first}> list = ${module.moduleName}Singleton.retrieveProjectList();
+		List<${module.selectBeanName?cap_first}> list = ${module.moduleName}Singleton.retrieve${module.selectBeanName?cap_first}List();
 		${module.selectBeanName}List = new ArrayList<SelectItem>();
 		if (list != null && list.size() != 0){
 			for (${module.selectBeanName?cap_first} bean: list){

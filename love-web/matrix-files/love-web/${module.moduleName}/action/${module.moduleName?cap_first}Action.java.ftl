@@ -21,6 +21,7 @@ import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_firs
 import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}UpdateEvent;
 import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}UpdateEventQualifier;
 import com.spstudio.love.${module.moduleName}.qualifier.${module.moduleName?cap_first}SingleRemoteBean;
+import com.spstudio.love.sample.bean.${module.selectBeanName?cap_first}HtmlSelectionBean;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.bean.UserInfo;
 

@@ -1,11 +1,11 @@
 package com.spstudio.love.${module.moduleName}.entity;
 
 import java.io.Serializable;
-
 import javax.enterprise.inject.Model;
+import com.spstudio.love.${module.moduleName}.qualifier.${module.entityBeanName?cap_first}Qualifier;
 
 @Model
-@com.spstudio.love.${module.moduleName}.qualifier.${module.entityBeanName?cap_first}Qualifier
+@${module.entityBeanName?cap_first}Qualifier
 public class ${module.entityBeanName?cap_first} implements Cloneable, Serializable{
 	/**
 	 * 

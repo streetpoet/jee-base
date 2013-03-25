@@ -2,13 +2,15 @@ package com.spstudio.love.sample.action;
 
 import interfaces.sample.ISampleSingleton;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.event.Event;
-import javax.enterprise.inject.Model;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.spstudio.love.sample.bean.EntityQueryConversation;
 import com.spstudio.love.sample.event.SampleCreateEvent;
@@ -22,10 +24,15 @@ import com.spstudio.love.sample.event.SampleUpdateEvent;
 import com.spstudio.love.sample.event.SampleUpdateEventQualifier;
 import com.spstudio.love.sample.qualifier.SampleSingleRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
-import com.spstudio.love.system.bean.UserInfo;
 
-@Model
-public class SampleAction {
+@ConversationScoped
+@Named
+public class SampleAction implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8975596566612102932L;
 	
 	@Inject @SampleSingleRemoteBean ISampleSingleton sampleSingleton;
 	@Inject @SampleCreateEventQualifier Event<SampleCreateEvent> sampleCreateEvent;

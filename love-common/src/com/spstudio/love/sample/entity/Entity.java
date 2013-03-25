@@ -4,8 +4,10 @@ import java.io.Serializable;
 
 import javax.enterprise.inject.Model;
 
+import com.spstudio.love.sample.qualifier.EntityQualifier;
+
 @Model
-@com.spstudio.love.sample.qualifier.EntityQualifier
+@EntityQualifier
 public class Entity implements Cloneable, Serializable{
 	/**
 	 * 

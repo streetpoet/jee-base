@@ -4,10 +4,10 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 	
 	<navigation-rule>
-	    <from-view-id>/pages/product/product_modify.xhtml</from-view-id>
+	    <from-view-id>/pages/${module.moduleName}/${module.functionName}.xhtml</from-view-id>
 	    <navigation-case>
-	        <from-outcome>MODIFY</from-outcome>
-	        <to-view-id>/pages/product/product_modify.xhtml</to-view-id>
+	        <from-outcome>SUCCESS</from-outcome>
+	        <to-view-id>/pages/${module.moduleName}/${module.functionName}.xhtml</to-view-id>
 	        <redirect></redirect>
 	    </navigation-case>
 	</navigation-rule>

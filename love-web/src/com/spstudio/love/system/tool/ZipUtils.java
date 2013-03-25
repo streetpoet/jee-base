@@ -34,7 +34,7 @@ public class ZipUtils {
 	 * @param srcFile
 	 * @throws Exception
 	 */
-	public static void compress(File srcFile) throws Exception {
+	public void compress(File srcFile) throws Exception {
 		String name = srcFile.getName();
 		String baseDir = srcFile.getParent();
 		String destPath = baseDir + File.separator + name + EXT;
@@ -50,7 +50,7 @@ public class ZipUtils {
 	 *            目标路径
 	 * @throws Exception
 	 */
-	public static void compress(File srcFile, File destFile) throws Exception {
+	public void compress(File srcFile, File destFile) throws Exception {
 
 		// 对输出文件做CRC32校验
 		CheckedOutputStream cos = new CheckedOutputStream(new FileOutputStream(
@@ -71,7 +71,7 @@ public class ZipUtils {
 	 * @param destPath
 	 * @throws Exception
 	 */
-	public static void compress(File srcFile, String destPath) throws Exception {
+	public void compress(File srcFile, String destPath) throws Exception {
 		compress(srcFile, new File(destPath));
 	}
 
@@ -86,7 +86,7 @@ public class ZipUtils {
 	 *            压缩包内相对路径
 	 * @throws Exception
 	 */
-	private static void compress(File srcFile, ZipOutputStream zos,
+	private void compress(File srcFile, ZipOutputStream zos,
 			String basePath) throws Exception {
 		if (srcFile.isDirectory()) {
 			compressDir(srcFile, zos, basePath);
@@ -101,7 +101,7 @@ public class ZipUtils {
 	 * @param srcPath
 	 * @throws Exception
 	 */
-	public static void compress(String srcPath) throws Exception {
+	public void compress(String srcPath) throws Exception {
 		File srcFile = new File(srcPath);
 
 		compress(srcFile);
@@ -116,7 +116,7 @@ public class ZipUtils {
 	 *            目标文件路径
 	 * 
 	 */
-	public static void compress(String srcPath, String destPath)
+	public void compress(String srcPath, String destPath)
 			throws Exception {
 		File srcFile = new File(srcPath);
 
@@ -131,7 +131,7 @@ public class ZipUtils {
 	 * @param basePath
 	 * @throws Exception
 	 */
-	private static void compressDir(File dir, ZipOutputStream zos,
+	private void compressDir(File dir, ZipOutputStream zos,
 			String basePath) throws Exception {
 
 		File[] files = dir.listFiles();
@@ -163,7 +163,7 @@ public class ZipUtils {
 	 *            压缩文件中的当前路径
 	 * @throws Exception
 	 */
-	private static void compressFile(File file, ZipOutputStream zos, String dir)
+	private void compressFile(File file, ZipOutputStream zos, String dir)
 			throws Exception {
 
 		/**

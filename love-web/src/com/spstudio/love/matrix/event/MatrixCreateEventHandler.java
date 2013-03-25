@@ -55,12 +55,32 @@ public class MatrixCreateEventHandler implements Serializable {
 		}
 
 		try {
-			ZipUtils.compress(cb.getOutputPath());
+			deletefile(cb.getOutputPath());
+			new ZipUtils().compress(cb.getOutputPath());
 			File outputFolder = new File(cb.getOutputPath());
 			downloadFile(outputFolder.getParent() + File.separator + outputFolder.getName() + ".zip");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private boolean deletefile(String delpath) throws Exception {
+		File file = new File(delpath);
+		if (!file.isDirectory()) {
+			file.delete();
+		} else if (file.isDirectory()) {
+			String[] filelist = file.list();
+			for (int i = 0; i < filelist.length; i++) {
+				File delfile = new File(delpath + File.separator + filelist[i]);
+				if (!delfile.isDirectory()) {
+					delfile.delete();
+				} else if (delfile.isDirectory()) {
+					deletefile(delpath + File.separator + filelist[i]);
+				}
+			}
+			file.delete();
+		}
+		return true;
 	}
 
 	private void downloadFile(String zipFile) {

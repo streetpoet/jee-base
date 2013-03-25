@@ -4,33 +4,10 @@ import java.io.File;
 
 import com.spstudio.love.matrix.engine.freemarker.FreemarkerGenerator;
 import com.spstudio.love.matrix.engine.freemarker.MatrixUtil;
-import com.spstudio.love.matrix.entity.MatrixModule;
 
 public class MatrixGenerator {
 
 	private ConfigBean cb;
-	
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		ConfigBean cb = new ConfigBean();		
-		cb.setOutputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/output");
-		MatrixModule mb = new MatrixModule();
-		mb.setModuleName("matrix");
-		mb.setEntityBeanName("matrixProject");
-		mb.setSingletonEjbMethodName("retrieveProjectList");
-		cb.setMatrixModule(mb);
-		
-		cb.setTemplateInputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/love-web");
-		new MatrixGenerator().execute(cb);
-		
-		cb.setTemplateInputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/love-ejb");
-		new MatrixGenerator().execute(cb);
-		
-		cb.setTemplateInputPath("/Users/sp/Documents/work/git/jee-base/love-web/matrix-files/love-common");
-		new MatrixGenerator().execute(cb);
-	}	
 
 	public void execute(ConfigBean cb) {
 		this.cb = cb;

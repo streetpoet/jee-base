@@ -7,6 +7,6 @@ import javax.ejb.Remote;
 @Remote
 public interface I${module.moduleName?cap_first}Singleton {
 	
-	public List<String[]> ${module.singletonEjbMethodName}();
+	public List<${module.selectBeanName?cap_first}> retrieve${module.selectBeanName?cap_first}List();
 	
 }

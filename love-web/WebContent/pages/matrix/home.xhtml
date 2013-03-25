@@ -128,6 +128,7 @@
 										<h:inputText id="moduleName" placeholder="模块名称" value="#{matrixModule.moduleName}" required="true"
 											requiredMessage="模块名称必须输入">
 										</h:inputText>
+										<span class="label label-info">首字母小写，将作为包名出现，如：report</span>
 									</div>
 								</div>
 
@@ -136,19 +137,18 @@
 									<h:outputLabel class="control-label" for="entityBeanName" value="实体Bean名称" />
 									<div class="controls">
 										<h:inputText id="entityBeanName" placeholder="实体Bean名称" value="#{matrixModule.entityBeanName}" />
+										<span class="label label-info">首字母小写，将自动生成Session Bean的增删改查功能。</span>
 									</div>
 								</div>
 								<div class="control-group">
-									<h:outputLabel class="control-label" for="singleEjbMethodName" value="单例EJB方法名" />
+									<h:outputLabel class="control-label" for="selectBeanName" value="Select元素对于Bean名称" />
 									<div class="controls">
-										<h:inputText id="singleEjbMethodName" placeholder="单例EJB方法名" value="#{matrixModule.singletonEjbMethodName}" />
+										<h:inputText id="selectBeanName" placeholder="Select元素对于Bean名称" value="#{matrixModule.selectBeanName}" />
+										<span class="label label-info">首字母小写，将自动生成单例Bean的缓存查询功能</span>
 									</div>
 								</div>
 								<div class="form-actions">
-									<h:commandButton type="submit" class="btn btn-primary btn-large" value="生成方案(.zip)"
-										action="#{matrixAction.createMatrixProject}">
-
-									</h:commandButton>
+									<h:commandButton type="submit" class="btn btn-primary btn-large" value="生成方案(.zip)" action="#{matrixAction.createMatrixProject}" />
 									&nbsp;
 									<h:commandButton type="reset" class="btn btn-warning btn-large" value="重置" />
 								</div>

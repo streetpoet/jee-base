@@ -17,7 +17,7 @@ public class MatrixModule implements Cloneable, Serializable{
 	private int id;
 	private String moduleName; /** 模块名称，代表项目中的模块，模块中有若干的功能。小写字母开头。 */
 	private String entityBeanName; /** 可预见的在EJB与WEB SERVER间传递的实体对象，默认对于普通Session EJB，会生成增删改查方法。 */
-	private String singletonEjbMethodName; /** 单例EJB方法名，用来生成demo代码 */
+	private String selectBeanName; /** 可预见的SELECT元素Bean对应的名字*/
 	private String functionName; /** 模块中的子功能名，子功能可能是一个模块中的一个画面。 */
 	
 	public void clear(){
@@ -28,7 +28,7 @@ public class MatrixModule implements Cloneable, Serializable{
 		id = matrixModule.id;
 		moduleName = matrixModule.moduleName;
 		entityBeanName = matrixModule.entityBeanName;
-		singletonEjbMethodName = matrixModule.singletonEjbMethodName;
+		selectBeanName = matrixModule.selectBeanName;
 		functionName = matrixModule.functionName;
 	}
 	
@@ -66,19 +66,19 @@ public class MatrixModule implements Cloneable, Serializable{
 		this.entityBeanName = entityBeanName;
 	}
 
-	public String getSingletonEjbMethodName() {
-		return singletonEjbMethodName;
-	}
-
-	public void setSingletonEjbMethodName(String singletonEjbMethodName) {
-		this.singletonEjbMethodName = singletonEjbMethodName;
-	}
-
 	public String getFunctionName() {
 		return functionName;
 	}
 
 	public void setFunctionName(String functionName) {
 		this.functionName = functionName;
+	}
+
+	public String getSelectBeanName() {
+		return selectBeanName;
+	}
+
+	public void setSelectBeanName(String selectBeanName) {
+		this.selectBeanName = selectBeanName;
 	}
 }

@@ -31,17 +31,17 @@ public class ${module.moduleName?cap_first}SingletonBean implements I${module.mo
 	@Inject @LoveLogged Logger log;
 	@Inject DatabaseHelper helper;
 	
-	private List<String[]> returnList = null;
+	private List<${module.selectBeanName?cap_first}> returnList = null;
 
 	@Override
 	@Lock(LockType.READ)
-	public List<String[]> ${module.singletonEjbMethodName}() {
+	public List<${module.selectBeanName?cap_first}> retrieve${module.selectBeanName?cap_first}List() {
 		return returnList;
 	}
 	
 	@Schedule(minute = "*/10", hour = "*", persistent = false)
 	public void timer(){
-		List<String[]> list = new ArrayList<String[]>();
+		List<${module.selectBeanName?cap_first}> list = new ArrayList<${module.selectBeanName?cap_first}>();
 		//TODO: Write logic here, add values to 'list'.
 		returnList = list;
 	}

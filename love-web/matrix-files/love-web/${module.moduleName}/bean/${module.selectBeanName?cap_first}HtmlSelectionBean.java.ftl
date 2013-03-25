@@ -10,7 +10,7 @@ import javax.enterprise.context.Dependent;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
-import com.spstudio.love.${module.moduleName}.entity.${module.moduleName?cap_first};
+import com.spstudio.love.${module.moduleName}.entity.${module.selectBeanName?cap_first};
 import com.spstudio.love.${module.moduleName}.qualifier.${module.moduleName?cap_first}SingleRemoteBean;
 
 @Dependent

@@ -34,10 +34,10 @@ public class ${module.moduleName?cap_first}Action {
 	@Inject @${module.moduleName?cap_first}QueryEventQualifier Event<${module.moduleName?cap_first}QueryEvent> ${module.moduleName}QueryEvent;
 	@Inject @${module.moduleName?cap_first}UpdateEventQualifier Event<${module.moduleName?cap_first}UpdateEvent> ${module.moduleName}UpdateEvent;
 	@Inject ${module.entityBeanName?cap_first}QueryConversation ${module.entityBeanName}QueryConversation;
-	@Inject ${module.moduleName?cap_first}${module.selectBeanName?cap_first}HtmlSelectionBean ${module.moduleName}${module.selectBeanName?cap_first}HtmlSelectBean;
+	@Inject ${module.selectBeanName?cap_first}HtmlSelectionBean ${module.selectBeanName}HtmlSelectBean;
 	
 	public List<SelectItem> get${module.selectBeanName?cap_first}List() {
-		return ${module.moduleName}${module.selectBeanName?cap_first}HtmlSelectBean.get${module.selectBeanName?cap_first}List;
+		return ${module.selectBeanName}HtmlSelectBean.get${module.selectBeanName?cap_first}List;
 	}
 	
 	public void create${module.entityBeanName?cap_first}() {

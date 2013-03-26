@@ -143,4 +143,10 @@ public class MatrixBean implements IMatrix {
 		}
 		return null;
 	}
+
+	@Override
+	public boolean updateSolution(MatrixProject project, MatrixModule module, MatrixFunction function) {
+
+		return false;
+	}
 }

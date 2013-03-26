@@ -27,4 +27,6 @@ public interface IMatrix {
 	public List<MatrixModule> loadMatrixModuleList(int matrixProjectId);
 	
 	public List<MatrixFunction> loadMatrixFunctionList(int matrixModuleId);
+	
+	public boolean updateSolution(MatrixProject project, MatrixModule module, MatrixFunction function);
 }

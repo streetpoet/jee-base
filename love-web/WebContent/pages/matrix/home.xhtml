@@ -22,7 +22,7 @@
 										<h:outputLink class="brand" href="#">当前位置：</h:outputLink>
 										<ul class="nav">
 											<li><h:commandLink action="HOME" value="Home"
-													actionListener="#{matrixAction.endConversation}" /></li>
+													 /></li>
 											<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">其他模块<b class="caret"></b>
 											</a>
 												<ul class="dropdown-menu">
@@ -91,17 +91,11 @@
 								<div class="control-group">
 									<h:outputLabel class="control-label" for="project" value="项目选择" />
 									<div class="controls">
-										<h:selectOneMenu label="hhh" id="project" value="#{matrixProject.id}" required="true" requiredMessage="必须选择一个项目"
-											converterMessage="convert error" validatorMessage="validation error"
-											valueChangeListener="#{matrixAction.onMatrixProjectListValueChange}">
+										<h:selectOneMenu label="project selection" id="project" value="#{matrixProject.id}" required="true" valueChangeListener="#{matrixAction.onMatrixProjectListValueChange}">
 											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true"/>
 											<f:selectItems value="#{matrixAction.matrixProjectList}" />
-											
-											<f:ajax event="change" execute="project " render="module">
-												
-											</f:ajax>
-										</h:selectOneMenu>
-										&nbsp;
+											<f:ajax event="change" execute="project" render="module" />
+										</h:selectOneMenu>&nbsp;
 										<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增项目</h:outputLink>
 									</div>
 								</div>
@@ -111,42 +105,72 @@
 								<div class="control-group">
 									<h:outputLabel class="control-label" for="module" value="模块选择" />
 									<div class="controls">
-										<h:selectOneMenu id="module" value="#{matrixModule.id}" required="true" requiredMessage="必须选择一个模块用来生成方案"
-											converterMessage="convert error" validatorMessage="validation error">
+										<h:selectOneMenu label="module selection" id="module" value="#{matrixModule.id}" required="true" valueChangeListener="#{matrixAction.onMatrixModuleListValueChange}">
+											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true"/>
 											<f:selectItems value="#{matrixAction.matrixModuleList}" />
-										</h:selectOneMenu>
-										&nbsp;
+											<f:ajax event="change" execute="module" render="function" />
+										</h:selectOneMenu>&nbsp;
 										<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增模块</h:outputLink>
 									</div>
 								</div>
 
+								<!-- 功能选择 -->
+
+								<div class="control-group">
+									<h:outputLabel class="control-label" for="function" value="功能选择" />
+									<div class="controls">
+										<h:selectOneMenu id="function" value="#{matrixFunction.id}" required="true">
+											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true"/>
+											<f:selectItems value="#{matrixAction.matrixFunctionList}" />
+										</h:selectOneMenu>&nbsp;
+										<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增功能</h:outputLink>
+									</div>
+								</div>
+								
 								<!-- 模块名称 -->
 
 								<div class="control-group">
 									<h:outputLabel class="control-label" for="moduleName" value="模块名称" />
 									<div class="controls">
-										<h:inputText id="moduleName" placeholder="模块名称" value="#{matrixModule.moduleName}" required="true"
-											requiredMessage="模块名称必须输入">
+										<h:inputText id="moduleName" placeholder="模块名称" value="#{matrixModule.moduleName}" required="true">
 										</h:inputText>
 										<span class="label label-info">首字母小写，将作为包名出现，如：report</span>
 									</div>
 								</div>
-
+								
+								<!-- 功能名称 -->
 
 								<div class="control-group">
-									<h:outputLabel class="control-label" for="entityBeanName" value="实体Bean名称" />
+									<h:outputLabel class="control-label" for="funcName" value="功能名称" />
+									<div class="controls">
+										<h:inputText id="funcName" placeholder="功能名称" value="#{matrixFunction.functionName}" required="true">
+										</h:inputText>
+										<span class="label label-info">首字母小写，将作为页面名称出现，如：report</span>
+									</div>
+								</div>
+
+								<!-- Entity Bean名称 -->
+
+								<div class="control-group">
+									<h:outputLabel class="control-label" for="entityBeanName" value="Entity Bean Name" />
 									<div class="controls">
 										<h:inputText id="entityBeanName" placeholder="实体Bean名称" value="#{matrixModule.entityBeanName}" />
 										<span class="label label-info">首字母小写，将自动生成Session Bean的增删改查功能。</span>
 									</div>
 								</div>
+								
+								<!-- Select Bean名称 -->
+								
 								<div class="control-group">
-									<h:outputLabel class="control-label" for="selectBeanName" value="Select元素对于Bean名称" />
+									<h:outputLabel class="control-label" for="selectBeanName" value="Selection Bean Name" />
 									<div class="controls">
 										<h:inputText id="selectBeanName" placeholder="Select元素对于Bean名称" value="#{matrixModule.selectBeanName}" />
 										<span class="label label-info">首字母小写，将自动生成单例Bean的缓存查询功能</span>
 									</div>
 								</div>
+								
+								<!-- 提交按钮 -->
+								
 								<div class="form-actions">
 									<h:commandButton type="submit" class="btn btn-primary btn-large" value="生成方案(.zip)" action="#{matrixAction.createMatrixProject}" />
 									&nbsp;

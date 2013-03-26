@@ -9,6 +9,9 @@ import java.util.List;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.event.Event;
+import javax.faces.event.AbortProcessingException;
+import javax.faces.event.ActionEvent;
+import javax.faces.event.ActionListener;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
@@ -16,6 +19,7 @@ import javax.inject.Named;
 
 import org.jboss.logging.Logger;
 
+import com.spstudio.love.matrix.bean.MatrixFunctionHtmlSelectionBean;
 import com.spstudio.love.matrix.bean.MatrixModuleHtmlSelectionBean;
 import com.spstudio.love.matrix.bean.MatrixProjectHtmlSelectionBean;
 import com.spstudio.love.matrix.bean.MatrixProjectQueryConversation;
@@ -57,9 +61,12 @@ public class MatrixAction implements Serializable {
 	@Inject MatrixProjectQueryConversation matrixProjectQueryConversation;
 	@Inject @MatrixProjectQualifier MatrixProject matrixProject;
 	@Inject @MatrixModuleQualifier MatrixModule matrixModule;
-	@Inject MatrixModuleHtmlSelectionBean matrixModuleHtmlSelectBean;
 	@Inject MatrixProjectHtmlSelectionBean matrixProjectHtmlSelectionBean;
+	@Inject MatrixModuleHtmlSelectionBean matrixModuleHtmlSelectBean;
+	@Inject MatrixFunctionHtmlSelectionBean matrixFunctionHtmlSelectionBean;
+	
 	@Inject @LoveLogged Logger log;
+	private MyActionListener myListener;
 	
 	public List<SelectItem> getMatrixProjectList() {
 		return matrixProjectHtmlSelectionBean.getMatrixProjectList();
@@ -69,8 +76,16 @@ public class MatrixAction implements Serializable {
 		return matrixModuleHtmlSelectBean.getMatrixModuleList();
 	}
 	
+	public List<SelectItem> getMatrixFunctionList(){
+		return matrixFunctionHtmlSelectionBean.getMatrixFunctionList();
+	}
+	
 	public void onMatrixProjectListValueChange(ValueChangeEvent event){
 		matrixModuleHtmlSelectBean.reloadModleListByProjectId((Integer)event.getNewValue());
+	}
+	
+	public void onMatrixModuleListValueChange(ValueChangeEvent event){
+		matrixFunctionHtmlSelectionBean.reloadFunctionListByModuleId((Integer)event.getNewValue());
 	}
 	
 	@LoveTrace
@@ -123,4 +138,21 @@ public class MatrixAction implements Serializable {
 		queryMatrixProject();
 	}
 	
+	public MyActionListener getMyListener() {
+		return myListener;
+	}
+
+	public void setMyListener(MyActionListener myListener) {
+		this.myListener = myListener;
+	}
+
+	public class MyActionListener implements ActionListener{
+
+		@Override
+		public void processAction(ActionEvent arg0)
+				throws AbortProcessingException {
+			System.out.println(arg0);
+		}
+		
+	}
 }

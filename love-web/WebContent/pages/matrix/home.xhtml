@@ -94,7 +94,7 @@
 										<h:selectOneMenu label="project selection" id="project" value="#{matrixProject.id}" required="true" valueChangeListener="#{matrixAction.onMatrixProjectListValueChange}">
 											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true"/>
 											<f:selectItems value="#{matrixAction.matrixProjectList}" />
-											<f:ajax event="change" execute="project" render="module" />
+											<f:ajax event="change" execute="project" render="module function" />
 										</h:selectOneMenu>&nbsp;
 										<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增项目</h:outputLink>
 									</div>

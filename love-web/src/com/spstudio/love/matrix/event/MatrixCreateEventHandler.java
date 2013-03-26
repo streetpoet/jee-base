@@ -19,8 +19,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.spstudio.love.matrix.engine.ConfigBean;
 import com.spstudio.love.matrix.engine.MatrixGenerator;
+import com.spstudio.love.matrix.entity.MatrixFunction;
 import com.spstudio.love.matrix.entity.MatrixModule;
+import com.spstudio.love.matrix.entity.MatrixProject;
 import com.spstudio.love.matrix.qualifier.MatrixModuleQualifier;
+import com.spstudio.love.matrix.qualifier.MatrixProjectQualifier;
 import com.spstudio.love.matrix.qualifier.MatrixRemoteBean;
 import com.spstudio.love.matrix.qualifier.MatrixSingleRemoteBean;
 import com.spstudio.love.system.qualifier.LoveTrace;
@@ -36,17 +39,29 @@ public class MatrixCreateEventHandler implements Serializable {
 
 	@Inject @MatrixRemoteBean IMatrix matrixRemoteBean;
 	@Inject @MatrixSingleRemoteBean IMatrixSingleton matrixSingletonBean;
+	@Inject @MatrixProjectQualifier MatrixProject matrixProject;
 	@Inject @MatrixModuleQualifier MatrixModule matrixModule;
+	@Inject MatrixFunction matrixFunction;
 
 	@LoveTrace
 	public void createMatrixProject(@Observes @MatrixCreateEventQualifier MatrixCreateEvent event) {
-
+		persistance();
+		generateSolution();
+	}
+	
+	private void persistance(){
+		matrixRemoteBean.updateSolution(matrixProject.clone(), matrixModule.clone(), matrixFunction.clone());
+	}
+	
+	private void generateSolution(){
 		MatrixGenerator generator = new MatrixGenerator();
 		ConfigBean cb = new ConfigBean();
 		Map<String, List<String>> configMap = matrixSingletonBean.retrieveGenerationConfiguration();
 
 		cb.setOutputPath(configMap.get(ConfigBean.OUTPUT_PATH).get(0));
 		cb.setMatrixModule(matrixModule);
+		cb.setMatrixFunction(matrixFunction);
+		cb.setMatrixProject(matrixProject);
 
 		List<String> listInputPath = configMap.get(ConfigBean.INPUT_FTL_PATH);
 		try{

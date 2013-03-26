@@ -1,7 +1,8 @@
 select 
-    sc.key, sc.value
+    func.id, func.function_name
 from
-    sys_config sc
+    f4_function func,
+    f4_module_function_ref ref
 where
-    sc.module_id = 1
-order by sc.key
+    ref.module_id = 1
+        and ref.function_id = func.id

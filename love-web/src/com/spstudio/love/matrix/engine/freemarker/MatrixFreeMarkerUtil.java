@@ -11,12 +11,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.spstudio.love.matrix.engine.ConfigBean;
-import com.spstudio.love.matrix.entity.MatrixModule;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 
-public class MatrixUtil {
+public class MatrixFreeMarkerUtil {
 
 	public static Map<Object, Object> convertBean(Object bean)
 			throws IntrospectionException, IllegalAccessException,
@@ -47,14 +46,14 @@ public class MatrixUtil {
 		return returnMap;
 	}
 
-	public static String convertFtlString(MatrixModule mb, String stringWithFtlSymbol) {
+	public static String convertFtlString(ConfigBean cb, String textWithFtlSymbol) {
 		try {
 			Configuration cfg = new Configuration();
-			cfg.setTemplateLoader(new StringTemplateLoader(stringWithFtlSymbol));
+			cfg.setTemplateLoader(new StringTemplateLoader(textWithFtlSymbol));
 			cfg.setDefaultEncoding("UTF-8");
 			Template template = cfg.getTemplate("");
 			Map<Object, Object> root = new HashMap<Object, Object>();
-			root.put(ConfigBean.MODULE_BEAN_VAR, mb);
+			assembleFreeMarkerRootObject(root, cb);
 			StringWriter writer = new StringWriter();
 			template.process(root, writer);
 			return writer.toString();
@@ -64,4 +63,11 @@ public class MatrixUtil {
 		
 		return null;
 	}
+	
+	public static void assembleFreeMarkerRootObject(Map<Object, Object> root, ConfigBean cb){
+		root.put(ConfigBean.MODULE_BEAN_VAR, cb.getMatrixModule());
+		root.put(ConfigBean.FUNCTION_BEAN_VAR, cb.getMatrixFunction());
+		root.put(ConfigBean.PROJECT_BEAN_VAR, cb.getMatrixProject());
+	}
+	
 }

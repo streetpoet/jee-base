@@ -3,7 +3,7 @@ package com.spstudio.love.matrix.engine;
 import java.io.File;
 
 import com.spstudio.love.matrix.engine.freemarker.FreemarkerGenerator;
-import com.spstudio.love.matrix.engine.freemarker.MatrixUtil;
+import com.spstudio.love.matrix.engine.freemarker.MatrixFreeMarkerUtil;
 
 public class MatrixGenerator {
 
@@ -44,7 +44,7 @@ public class MatrixGenerator {
 	
 	private void processFolder(File folder){
 		String outputFolderPathWithFtlSymbol = cb.getOutputPath() + folder.getAbsolutePath().replace(cb.getTemplateInputPath().substring(0, cb.getTemplateInputPath().lastIndexOf(File.separator)), "");
-		File outputFolderFile = new File(MatrixUtil.convertFtlString(cb.getMatrixModule(), outputFolderPathWithFtlSymbol));
+		File outputFolderFile = new File(MatrixFreeMarkerUtil.convertFtlString(cb, outputFolderPathWithFtlSymbol));
 		if (!outputFolderFile.exists()){
 			if (!outputFolderFile.mkdirs()){
 				System.err.println("can't create folder --> " + outputFolderPathWithFtlSymbol);

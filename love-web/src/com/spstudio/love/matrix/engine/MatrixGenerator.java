@@ -8,6 +8,18 @@ import com.spstudio.love.matrix.engine.freemarker.MatrixUtil;
 public class MatrixGenerator {
 
 	private ConfigBean cb;
+	
+	/*
+	public static void main(String args[]){
+		ConfigBean config = new ConfigBean();
+		config.setTemplateInputPath("/Users/sp/Documents/work/git/jee-base/love-web/build");
+		config.setOutputPath("/Users/sp/Documents/work/git/jee-base/love-web/build");
+		MatrixModule mm = new MatrixModule();
+		mm.setModuleName("project");
+		config.setMatrixModule(mm);
+		new MatrixGenerator().execute(config);
+	}
+	*/
 
 	public void execute(ConfigBean cb) {
 		this.cb = cb;

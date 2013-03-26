@@ -84,7 +84,7 @@
 
 					<div class="row-fluid">
 						<div class="span8 offset2 text-left bs-docs-example">
-							<h:form class="form-horizontal">
+							<h:form class="form-horizontal tip">
 
 								<!-- 项目选择 -->
 
@@ -132,9 +132,9 @@
 								<div class="control-group">
 									<h:outputLabel class="control-label" for="moduleName" value="模块名称" />
 									<div class="controls">
-										<h:inputText id="moduleName" placeholder="模块名称" value="#{matrixModule.moduleName}" required="true">
-										</h:inputText>
-										<span class="label label-info">首字母小写，将作为包名出现，如：report</span>
+										<h:inputText id="moduleName" placeholder="模块名称" value="#{matrixModule.moduleName}" required="true" />
+										&nbsp;<a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
+											title="模块名将生成为代码中的包名，建议起成简短的英文单词，如，report"><i class="icon-question-sign" /></a>
 									</div>
 								</div>
 								

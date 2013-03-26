@@ -8,6 +8,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import com.spstudio.love.matrix.entity.MatrixFunction;
 import com.spstudio.love.matrix.entity.MatrixModule;
 import com.spstudio.love.matrix.entity.MatrixProject;
 import com.spstudio.love.matrix.helper.MatrixProjectCondition;
@@ -112,6 +113,31 @@ public class MatrixBean implements IMatrix {
 				mm.setId((Integer)row[0]);
 				mm.setModuleName((String)row[1]);
 				returnList.add(mm);
+			}
+			return returnList;
+		}
+		return null;
+	}
+
+	@Override
+	public List<MatrixFunction> loadMatrixFunctionList(int matrixModuleId) {
+		String querySQL =  "select  "
+						+"    func.id, func.function_name "
+						+"from "
+						+"    f4_function func, "
+						+"    f4_module_function_ref ref "
+						+"where "
+						+"    ref.module_id = ? "
+						+"        and ref.function_id = func.id ";
+		Object[] params = new Object[]{matrixModuleId};
+		List<Object[]> result = helper.doQuery(querySQL, params);
+		if (result != null && result.size() != 0){
+			List<MatrixFunction> returnList = new ArrayList<MatrixFunction>();
+			for (Object[] row : result) {
+				MatrixFunction mf = new MatrixFunction();
+				mf.setId((Integer)row[0]);
+				mf.setFunctionName((String)row[1]);
+				returnList.add(mf);
 			}
 			return returnList;
 		}

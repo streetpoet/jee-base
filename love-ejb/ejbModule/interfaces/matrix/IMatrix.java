@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import com.spstudio.love.matrix.entity.MatrixFunction;
 import com.spstudio.love.matrix.entity.MatrixModule;
 import com.spstudio.love.matrix.entity.MatrixProject;
 import com.spstudio.love.matrix.helper.MatrixProjectCondition;
@@ -24,4 +25,6 @@ public interface IMatrix {
 	public MatrixProject loadMatrixProject(int matrixProjectId);
 
 	public List<MatrixModule> loadMatrixModuleList(int matrixProjectId);
+	
+	public List<MatrixFunction> loadMatrixFunctionList(int matrixModuleId);
 }

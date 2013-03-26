@@ -18,7 +18,6 @@ public class MatrixModule implements Cloneable, Serializable{
 	private String moduleName; /** 模块名称，代表项目中的模块，模块中有若干的功能。小写字母开头。 */
 	private String entityBeanName; /** 可预见的在EJB与WEB SERVER间传递的实体对象，默认对于普通Session EJB，会生成增删改查方法。 */
 	private String selectBeanName; /** 可预见的SELECT元素Bean对应的名字*/
-	private String functionName; /** 小写模块中的子功能名，用来生成网页文件名(*.xhtml) */
 	
 	public void clear(){
 		id = 0;
@@ -29,7 +28,6 @@ public class MatrixModule implements Cloneable, Serializable{
 		moduleName = matrixModule.moduleName;
 		entityBeanName = matrixModule.entityBeanName;
 		selectBeanName = matrixModule.selectBeanName;
-		functionName = matrixModule.functionName;
 	}
 	
 	public MatrixModule clone(){
@@ -64,14 +62,6 @@ public class MatrixModule implements Cloneable, Serializable{
 
 	public void setEntityBeanName(String entityBeanName) {
 		this.entityBeanName = entityBeanName;
-	}
-
-	public String getFunctionName() {
-		return functionName;
-	}
-
-	public void setFunctionName(String functionName) {
-		this.functionName = functionName;
 	}
 
 	public String getSelectBeanName() {

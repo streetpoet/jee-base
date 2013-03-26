@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Love-Website</title>
+
 </h:head>
 
 <body>
@@ -74,7 +75,7 @@
     </div>
     <div class="row-fluid">
         <div class="span8 offset2 text-left bs-docs-example">
-            <h:form class="form-horizontal">
+            <h:form class="form-horizontal tip">
                 <div class="control-group">
                     <h:outputLabel class="control-label" for="inputProject">选择项目</h:outputLabel>
                     <div class="controls">
@@ -94,8 +95,10 @@
                 <div class="control-group">
                     <h:outputLabel class="control-label" for="moduleName">模块名称</h:outputLabel>
                     <div class="controls">
-                        <input id="moduleName" type="text" placeholder="模块名称" />
-                        <span class="label label-info">首字母小写，将作为包名出现，如：report</span> </div>
+                        <input id="moduleName" type="text" placeholder="模块名称" data-toggle="tooltip" data-original-title="test text"
+                        	data-placement="right" />
+                        <h:outputLink id="example" title="" data-toggle="tooltip" href="#" data-original-title="test text"
+                        	data-placement="right">whatever keytar</h:outputLink> </div>
                 </div>
                 <div class="control-group">
                     <h:outputLabel class="control-label" for="entityBeanName">实体Bean名称</h:outputLabel>
@@ -107,8 +110,7 @@
                     <h:outputLabel class="control-label" for="singleEjbMethodName">Select元素对于Bean名称</h:outputLabel>
                     <div class="controls">
                         <input id="singleEjbMethodName" type="text" placeholder="Select元素对应Bean名称" />
-                        <span class="label label-info">首字母小写，将自动生成单例Bean的缓存查询功能</span>
-                    </div>
+                        <span class="label label-info">首字母小写，将自动生成单例Bean的缓存查询功能</span> </div>
                 </div>
                 <div class="form-actions">
                     <h:commandButton type="submit" class="btn btn-primary">开始生成</h:commandButton>
@@ -135,6 +137,16 @@
     </div>
 </footer>
 <script type="text/javascript" src="../resources/js/en/jquery.js"></script> 
-<script type="text/javascript" src="../resources/js/en/bootstrap.min.js"></script>
+<script type="text/javascript" src="../resources/js/en/bootstrap.min.js"></script> 
+<script type="text/javascript" src="../resources/js/en/jquery.tipsy.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+		$('.tip').tooltip({
+      		selector: "input[data-toggle=tooltip]"
+   		})
+    });
+
+</script>
 </body>
 </html>

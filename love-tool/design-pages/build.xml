@@ -6,7 +6,15 @@
 	<property name="src" location="../design-pages" />
 	<property name="dist" location="dist" />
 
-	<target name="convert-to-jsf-tag-xhtml">
+	<target name="dup-files">
+	    <copy overwrite="true" encoding="utf-8" todir="${src}">
+	        <fileset dir="${src}">
+	            <include name="**/*.html"/>
+	        </fileset>
+    		<globmapper from="*.html" to="*.xhtml"/>
+	    </copy>
+	</target>
+	<target name="convert-to-jsf-tag-xhtml" depends="dup-files">
 		<!-- form -->
 		<replace dir="${src}">
 			<include name="**/*.xhtml" />

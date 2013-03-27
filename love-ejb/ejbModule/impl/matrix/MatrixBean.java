@@ -5,6 +5,8 @@ import interfaces.matrix.IMatrix;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+import javax.ejb.EJBContext;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -21,6 +23,39 @@ import com.spstudio.love.system.interfaces.IQueryResult;
 public class MatrixBean implements IMatrix {
 
 	@Inject DatabaseHelper helper;
+	@Resource EJBContext context;
+	
+	private static String moduleQuerySQL =    "select  "
+			+"    m.id, m.module_label "
+			+"from "
+			+"    f4_module m, "
+			+"    f4_project_module_ref r "
+			+"where "
+			+"	m.id = r.module_id "
+			+"	and r.project_id = ? ";
+	private static String functionQuerySQL =  "select  "
+			+"    func.id, func.function_label "
+			+"from "
+			+"    f4_function func, "
+			+"    f4_module_function_ref ref "
+			+"where "
+			+"    ref.module_id = ? "
+			+"        and ref.function_id = func.id ";
+	private static final String moduleUpdateSQL =  "update "
+			+"	f4_module "
+			+"set "
+			+"	module_name = ? "
+			+"	,entity_bean_name = ?  "
+			+"	,select_bean_name = ? "
+			+"where "
+			+"	id = ? ";
+	private static String functionUpdateSQL =  "update "
+			+"	f4_function "
+			+"set "
+			+"	function_name = ? "
+			+"where "
+			+"	id = ? ";
+	
 	
 	@Override
 	public boolean createMatrixProject(MatrixProject matrixProject) {
@@ -96,16 +131,8 @@ public class MatrixBean implements IMatrix {
 
 	@Override
 	public List<MatrixModule> loadMatrixModuleList(int matrixProjectId) {
-		String querySQL =    "select  "
-							+"    m.id, m.module_name "
-							+"from "
-							+"    f4_module m, "
-							+"    f4_project_module_ref r "
-							+"where "
-							+"	m.id = r.module_id "
-							+"	and r.project_id = ? ";
 		Object[] params = new Object[]{matrixProjectId};
-		List<Object[]> result = helper.doQuery(querySQL, params);
+		List<Object[]> result = helper.doQuery(moduleQuerySQL, params);
 		if (result != null && result.size() != 0){
 			List<MatrixModule> returnList = new ArrayList<MatrixModule>();
 			for (Object[] row : result) {
@@ -121,16 +148,8 @@ public class MatrixBean implements IMatrix {
 
 	@Override
 	public List<MatrixFunction> loadMatrixFunctionList(int matrixModuleId) {
-		String querySQL =  "select  "
-						+"    func.id, func.function_name "
-						+"from "
-						+"    f4_function func, "
-						+"    f4_module_function_ref ref "
-						+"where "
-						+"    ref.module_id = ? "
-						+"        and ref.function_id = func.id ";
 		Object[] params = new Object[]{matrixModuleId};
-		List<Object[]> result = helper.doQuery(querySQL, params);
+		List<Object[]> result = helper.doQuery(functionQuerySQL, params);
 		if (result != null && result.size() != 0){
 			List<MatrixFunction> returnList = new ArrayList<MatrixFunction>();
 			for (Object[] row : result) {
@@ -147,6 +166,19 @@ public class MatrixBean implements IMatrix {
 	@Override
 	public boolean updateSolution(MatrixProject project, MatrixModule module, MatrixFunction function) {
 
-		return false;
+		Object[] params = new Object[]{module.getModuleName(), module.getEntityBeanName(), module.getSelectBeanName(), module.getId()};
+		int effectRowCount = helper.doDMLOperation(moduleUpdateSQL, params);
+		if (effectRowCount != 1){
+			context.setRollbackOnly();
+			return false;
+		}
+		
+		params = new Object[]{function.getFunctionName(), function.getId()};
+		effectRowCount = helper.doDMLOperation(functionUpdateSQL, params);
+		if (effectRowCount != 1){
+			context.setRollbackOnly();
+			return false;
+		}
+		return true;
 	}
 }

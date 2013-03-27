@@ -22,6 +22,16 @@ public class DatabaseHelper {
 	@Inject @LoveDataSource DataSource ds;
 	@Inject @LoveLogged Logger log;
 
+	public void beginTransaction(){
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		try {
+			conn = ds.getConnection();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public int doDMLOperation(String sql, Object[] params) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -44,6 +54,7 @@ public class DatabaseHelper {
 			int effectRow = stmt.executeUpdate();
 			return effectRow;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return -1;
 		} finally {
 			if (stmt != null) {
@@ -98,6 +109,7 @@ public class DatabaseHelper {
 			rs.close();
 			return listResult;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return null;
 		} finally {
 			if (stmt != null) {

@@ -1,8 +1,6 @@
-select 
-    func.id, func.function_name
-from
-    f4_function func,
-    f4_module_function_ref ref
+update
+	f4_function
+set
+	function_name = ?
 where
-    ref.module_id = 1
-        and ref.function_id = func.id
+	id = ?

@@ -9,9 +9,6 @@ import java.util.List;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.event.Event;
-import javax.faces.event.AbortProcessingException;
-import javax.faces.event.ActionEvent;
-import javax.faces.event.ActionListener;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
@@ -66,7 +63,6 @@ public class MatrixAction implements Serializable {
 	@Inject MatrixFunctionHtmlSelectionBean matrixFunctionHtmlSelectionBean;
 	
 	@Inject @LoveLogged Logger log;
-	private MyActionListener myListener;
 	
 	public List<SelectItem> getMatrixProjectList() {
 		return matrixProjectHtmlSelectionBean.getMatrixProjectList();
@@ -138,21 +134,4 @@ public class MatrixAction implements Serializable {
 		queryMatrixProject();
 	}
 	
-	public MyActionListener getMyListener() {
-		return myListener;
-	}
-
-	public void setMyListener(MyActionListener myListener) {
-		this.myListener = myListener;
-	}
-
-	public class MyActionListener implements ActionListener{
-
-		@Override
-		public void processAction(ActionEvent arg0)
-				throws AbortProcessingException {
-			System.out.println(arg0);
-		}
-		
-	}
 }

@@ -5,6 +5,8 @@ import interfaces.${module.moduleName}.I${module.moduleName?cap_first};
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+import javax.ejb.EJBContext;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -19,6 +21,7 @@ import com.spstudio.love.system.interfaces.IQueryResult;
 public class ${module.moduleName?cap_first}Bean implements I${module.moduleName?cap_first} {
 
 	@Inject DatabaseHelper helper;
+	@Resource EJBContext context;
 	
 	@Override
 	public boolean create${module.entityBeanName?cap_first}(${module.entityBeanName?cap_first} ${module.entityBeanName}) {

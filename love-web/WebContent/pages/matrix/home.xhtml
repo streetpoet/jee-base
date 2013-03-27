@@ -19,28 +19,28 @@
 
 				<div class="container" style="margin-top: 20px;">
 					<div class="row-fluid">
-						<div class="span12">
-							<h:form>
-								<div class="navbar">
-									<div class="navbar-inner">
-										<h:outputLink class="brand" href="#">当前位置：</h:outputLink>
-										<ul class="nav">
-											<li><h:commandLink action="HOME" value="Home" /></li>
-											<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">其他模块<b class="caret"></b>
-											</a>
-												<ul class="dropdown-menu">
-													<li><h:outputLink href="#">模块1</h:outputLink></li>
-													<li><h:outputLink href="#">模块2</h:outputLink></li>
-													<li><h:outputLink href="#">模块3</h:outputLink></li>
-													<li><h:outputLink href="#">模块4</h:outputLink></li>
-												</ul></li>
-											<li><h:outputLink styleClass="active" href="#">项目模块属性配置</h:outputLink></li>
-											<li><h:outputLink href="#">功能2</h:outputLink></li>
-										</ul>
-									</div>
-								</div>
-							</h:form>
-						</div>
+					<div class="span12">
+						<h:form>
+							<div class="navbar">
+							<div class="navbar-inner">
+								<h:outputLink class="brand" href="#">当前位置：</h:outputLink>
+								<ul class="nav">
+									<li><h:commandLink action="HOME" value="Home" /></li>
+									<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">其他模块<b class="caret"></b>
+									</a>
+										<ul class="dropdown-menu">
+											<li><h:outputLink href="#">模块1</h:outputLink></li>
+											<li><h:outputLink href="#">模块2</h:outputLink></li>
+											<li><h:outputLink href="#">模块3</h:outputLink></li>
+											<li><h:outputLink href="#">模块4</h:outputLink></li>
+										</ul></li>
+									<li><h:outputLink styleClass="active" href="#">项目模块属性配置</h:outputLink></li>
+									<li><h:outputLink href="#">功能2</h:outputLink></li>
+								</ul>
+							</div>
+							</div>
+						</h:form>
+					</div>
 					</div>
 				</div>
 
@@ -48,37 +48,37 @@
 
 					<!-- Form Title -->
 					<div class="row-fluid">
-						<div class="span8 offset2">
-							<div class="page-header text-left">
-								<h2>
-									项目模块属性配置 <small>version 1.0</small>
-								</h2>
-							</div>
+					<div class="span8 offset2">
+						<div class="page-header text-left">
+							<h2>
+								项目模块属性配置 <small>version 1.0</small>
+							</h2>
 						</div>
+					</div>
 					</div>
 
 					<!-- Message Region -->
-
+					<h:messages style="display: none;"/>
 					<h:panelGroup rendered="#{fn:length(facesContext.messageList) ne 0}">
 						<div class="row-fluid">
-							<div class="span8 offset2 text-left">
-								<h:panelGroup rendered="#{fn:length(facesContext.messageList) ne 0}">
-									<c:forEach items="#{facesContext.messageList}" var="msg">
-										<c:if test="#{msg.severity.ordinal ne 0}">
-											<div class="alert alert-error">
-												<button class="close" data-dismiss="alert" type="button">×</button>
-												<span class="label label-important">Error</span>&nbsp; <strong><h:outputText value="#{msg.summary}" /></strong>
-											</div>
-										</c:if>
-										<c:if test="#{msg.severity.ordinal eq 0}">
-											<div class="alert alert-success">
-												<button class="close" data-dismiss="alert" type="button">×</button>
-												<span class="label label-success">Success</span>&nbsp; <strong><h:outputText value="#{msg.summary}" /></strong>
-											</div>
-										</c:if>
-									</c:forEach>
-								</h:panelGroup>
-							</div>
+						<div class="span8 offset2 text-left">
+							<h:panelGroup rendered="#{fn:length(facesContext.messageList) ne 0}">
+								<c:forEach items="#{facesContext.messageList}" var="msg">
+									<c:if test="#{msg.severity.ordinal ne 0}">
+										<div class="alert alert-error">
+											<button class="close" data-dismiss="alert" type="button">×</button>
+											<span class="label label-important">Error</span>&nbsp; <strong><h:outputText value="#{msg.summary}" /></strong>
+										</div>
+									</c:if>
+									<c:if test="#{msg.severity.ordinal eq 0}">
+										<div class="alert alert-success">
+											<button class="close" data-dismiss="alert" type="button">×</button>
+											<span class="label label-success">Success</span>&nbsp; <strong><h:outputText value="#{msg.summary}" /></strong>
+										</div>
+									</c:if>
+								</c:forEach>
+							</h:panelGroup>
+						</div>
 						</div>
 					</h:panelGroup>
 

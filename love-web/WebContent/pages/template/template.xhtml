@@ -14,7 +14,7 @@
 	<h:outputStylesheet library="css/#{view.locale}" name="/bootstrap-responsive.css" />
 	<h:outputStylesheet library="css/#{view.locale}" name="/bootstrap.min.css" />
 	<h:outputStylesheet library="css/#{view.locale}" name="/docs.css" />
-	<h:outputStylesheet library="css/#{view.locale}" name="/tipsy.css" />
+	<ui:insert name="header"></ui:insert>
 	<title><h:outputText value="#{sysBundle['website-name']}" escape="false" /></title>
 </h:head>
 	<body>
@@ -62,14 +62,7 @@
 
 		<h:outputScript library="js/#{view.locale}" name="/jquery.js"></h:outputScript>
 		<h:outputScript library="js/#{view.locale}" name="/bootstrap.min.js"></h:outputScript>
-		<h:outputScript library="js/#{view.locale}" name="/jquery.tipsy.js"></h:outputScript>
-		<h:outputScript>
-		    $(document).ready(function () {
-				$('.tip').tooltip({
-      				selector: "a[data-toggle=tooltip]"
-   				})
-    		});
-		</h:outputScript>
+		<ui:insert name="footer"></ui:insert>
 	</body>
 	
 </html>

@@ -26,10 +26,12 @@ public class FormatSQLForJavaUseTool {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile)));
 		
 		String line = null;
+		String temp = "";
 		int index = 0;
 		while ((line = br.readLine()) != null){
-			bw.write((index == 0 ? " \"" : "+\"") + line + " \"");
-			bw.newLine();
+			temp = (index == 0 ? " \"" : "+\"") + line + " \"";
+			bw.write(temp); System.out.println(temp);
+			bw.newLine();System.out.println("\r\n");
 			index ++;
 		}
 		

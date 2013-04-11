@@ -60,9 +60,10 @@ public class MatrixBean implements IMatrix {
 	@Override
 	public boolean createMatrixProject(MatrixProject matrixProject) {
 		Object[] params = new Object[]{
-			//TODO: Add parameters here.
+			matrixProject.getProjectName()
 		};
-		return true; //helper.doDMLOperation("", params) == 1; //TODO: Replace "" with proper sql.
+		int effectRowCount = helper.doDMLOperation("insert into f4_project(project_name) values(?)", params);
+		return effectRowCount == 1;
 	}
 	
 	@Override

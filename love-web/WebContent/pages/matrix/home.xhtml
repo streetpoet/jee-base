@@ -25,7 +25,7 @@
 							<div class="navbar-inner">
 								<h:outputLink class="brand" href="#">当前位置：</h:outputLink>
 								<ul class="nav">
-									<li><h:commandLink action="HOME" value="Home" /></li>
+									<li><h:commandLink action="HOME" value="Home" actionListener="#{matrixAction.endConversation()}" /></li>
 									<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">其他模块<b class="caret"></b>
 									</a>
 										<ul class="dropdown-menu">
@@ -100,8 +100,33 @@
 											<f:ajax event="change" execute="project" render="module function" />
 										</h:selectOneMenu>
 										&nbsp;
-										<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增项目</h:outputLink>
+										<a href="#myProjectModal" class="btn btn-success" data-toggle="modal">新增项目</a>
 									</div>
+								</div>
+								
+								<!-- Create Project Modal -->
+								<div id="projectModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myProjectModalLabel" aria-hidden="true">
+								    <div class="modal-header">
+								        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								        <h3 id="myProjectModalLabel">输入新项目名称</h3>
+								    </div>
+								    
+								    <div class="modal-body form-horizontal">
+								        <p>
+								        	<div class="control-group">
+									            <h:outputLabel class="control-label" for="projectName" value="新项目名称" />
+									            <div class="controls">
+									            	<h:inputText id="projectName" value="#{matrixProject.projectName}" />
+									            </div>
+								            </div>
+								        </p>
+								    </div>
+								    <div class="modal-footer">
+								        <h:commandButton styleClass="btn btn-primary" value="保存新项目名称" action="#{matrixAction.createMatrixProject()}" >
+								        	<f:ajax execute="projectName" render="project" onevent="monitorProjectModel"/>
+								        </h:commandButton>
+								        <input type="button" class="btn btn-warning" data-dismiss="modal" aria-hidden="true" value="关闭"></input>
+								    </div>
 								</div>
 
 								<!-- 模块选择 -->
@@ -113,10 +138,10 @@
 											valueChangeListener="#{matrixAction.onMatrixModuleListValueChange}">
 											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true" />
 											<f:selectItems value="#{matrixAction.matrixModuleList}" />
-											<f:ajax event="change" execute="module" render="function" />
+											<f:ajax event="change" execute="module" render="function" onevent="" />
 										</h:selectOneMenu>
 										&nbsp;
-										<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增模块</h:outputLink>
+										<h:outputLink href="#myProjectModal" class="btn btn-success" data-toggle="modal">新增模块</h:outputLink>
 									</div>
 								</div>
 
@@ -130,7 +155,7 @@
 											<f:selectItems value="#{matrixAction.matrixFunctionList}" />
 										</h:selectOneMenu>
 										&nbsp;
-										<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增功能</h:outputLink>
+										<h:outputLink href="#myProjectModal" class="btn btn-success" data-toggle="modal">新增功能</h:outputLink>
 									</div>
 								</div>
 
@@ -192,7 +217,7 @@
 
 								<div class="form-actions">
 									<h:commandButton type="submit" class="btn btn-primary btn-large" value="生成方案(.zip)"
-										action="#{matrixAction.createMatrixProject}" />
+										action="#{matrixAction.createMatrixProject()}" />
 									&nbsp;
 									<h:commandButton type="reset" class="btn btn-warning btn-large" value="重置" />
 								</div>
@@ -200,6 +225,7 @@
 						</div>
 					</div>
 				</div>
+				
 			</f:view>
 		</ui:define>
 		<ui:define name="footer">
@@ -210,6 +236,12 @@
 	      				selector: "a[data-toggle=tooltip]"
 	   				})
 	    		});
+	    		
+	    		function monitorProjectModel(data){
+					if (data.status == 'success'){
+						$('#projectModal').tooltip('hide');
+					}
+				}
 			</h:outputScript>
 		</ui:define>
 	</ui:composition>

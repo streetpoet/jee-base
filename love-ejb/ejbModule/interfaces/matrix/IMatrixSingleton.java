@@ -11,5 +11,6 @@ import com.spstudio.love.matrix.entity.MatrixProject;
 public interface IMatrixSingleton {
 	
 	public List<MatrixProject> retrieveProjectList();
+	public void refreshProjectCache();
 	public Map<String, List<String>> retrieveGenerationConfiguration();
 }

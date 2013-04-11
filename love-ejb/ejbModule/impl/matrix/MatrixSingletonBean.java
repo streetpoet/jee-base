@@ -59,14 +59,7 @@ public class MatrixSingletonBean implements IMatrixSingleton {
 	
 	@Schedule(minute = "*/10", hour = "*", persistent = false)
 	public void timer(){
-		List<MatrixProject> projectList = new ArrayList<MatrixProject>();
-		for(Object[] object: helper.doQuery(SQL, null)){
-			MatrixProject mp = new MatrixProject();
-			mp.setId((Integer)object[0]);
-			mp.setProjectName((String)object[1]);
-			projectList.add(mp);
-		}
-		returnList = projectList;
+		refreshProjectCache();
 		
 		Map<String, List<String>> configMap = new HashMap<String, List<String>>();
 		String currentKey = "";
@@ -88,6 +81,18 @@ public class MatrixSingletonBean implements IMatrixSingleton {
 	public void postConstruct(){
 		log.info("[[ MatrixSingletonBean start. ]]");
 		timer();
+	}
+
+	@Override
+	public void refreshProjectCache() {
+		List<MatrixProject> projectList = new ArrayList<MatrixProject>();
+		for(Object[] object: helper.doQuery(SQL, null)){
+			MatrixProject mp = new MatrixProject();
+			mp.setId((Integer)object[0]);
+			mp.setProjectName((String)object[1]);
+			projectList.add(mp);
+		}
+		returnList = projectList;
 	}
 
 }

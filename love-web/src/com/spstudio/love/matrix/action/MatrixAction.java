@@ -23,6 +23,7 @@ import com.spstudio.love.matrix.bean.MatrixProjectQueryConversation;
 import com.spstudio.love.matrix.entity.MatrixModule;
 import com.spstudio.love.matrix.entity.MatrixProject;
 import com.spstudio.love.matrix.event.MatrixCreateEvent;
+import com.spstudio.love.matrix.event.MatrixCreateEvent.MatrixCreateMode;
 import com.spstudio.love.matrix.event.MatrixCreateEventQualifier;
 import com.spstudio.love.matrix.event.MatrixDeleteEvent;
 import com.spstudio.love.matrix.event.MatrixDeleteEventQualifier;
@@ -98,8 +99,13 @@ public class MatrixAction implements Serializable {
 		}
 	}
 	
+	public void createMatrixSolution() {
+		matrixCreateEvent.fire(new MatrixCreateEvent(MatrixCreateMode.SOLUTION));
+	}
+	
+	@LoveTrace
 	public void createMatrixProject() {
-		matrixCreateEvent.fire(new MatrixCreateEvent());
+		matrixCreateEvent.fire(new MatrixCreateEvent(MatrixCreateMode.PROJECT));
 	}
 	
 	public void deleteMatrixProject() {

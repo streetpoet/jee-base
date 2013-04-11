@@ -45,8 +45,19 @@ public class MatrixCreateEventHandler implements Serializable {
 
 	@LoveTrace
 	public void createMatrixProject(@Observes @MatrixCreateEventQualifier MatrixCreateEvent event) {
-		persistance();
-		generateSolution();
+		switch (event.getMode()) {
+		case SOLUTION:
+			persistance();
+			generateSolution();
+			break;
+		case PROJECT:
+			if (matrixRemoteBean.createMatrixProject(matrixProject.clone())){
+				matrixSingletonBean.refreshProjectCache();
+			}
+			break;
+		default:
+			break;
+		}
 	}
 	
 	private void persistance(){

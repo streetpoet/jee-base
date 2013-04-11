@@ -9,7 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Love-Website</title>
-
 </head>
 
 <body>
@@ -122,6 +121,30 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">输入新项目名称</h3>
+    </div>
+    <div class="modal-body">
+        <p>
+        <form class="form-horizontal">
+            <label class="control-label" for="moduleName">新项目名称</label>
+            <div class="controls">
+                <input id="moduleName" type="text" placeholder="模块名称" />
+            </div>
+        </form>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary">保存</button>
+        <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+            <button type="button" class="btn btn-primary abc" data-loading-text="Loading..."  data-reset-text="original-text" 
+            	onclick="$('#myModal').modal('hide')" onmouseover="$('.abc').button('reset')">Loading state</button>
+    </div>
+</div>
+
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
@@ -139,7 +162,7 @@
 </footer>
 <script type="text/javascript" src="../resources/js/en/jquery.js"></script> 
 <script type="text/javascript" src="../resources/js/en/bootstrap.min.js"></script> 
-<script type="text/javascript" src="../resources/js/en/jquery.tipsy.js"></script>
+<script type="text/javascript" src="../resources/js/en/jquery.tipsy.js"></script> 
 <script type="text/javascript">
 
     $(document).ready(function () {

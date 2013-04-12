@@ -59,6 +59,7 @@ public class MatrixBean implements IMatrix {
 			+"where "
 			+"	id = ? ";
 	
+	private static String moduleInsertSQL = "insert into f4_module(module_label, module_name, entity_bean_name, select_bean_name) values(?, '', '', '')";
 	
 	@Override
 	public boolean createMatrixProject(MatrixProject matrixProject) {
@@ -187,9 +188,21 @@ public class MatrixBean implements IMatrix {
 	}
 
 	@Override
-	public boolean createMatrixModule(MatrixProject matrixProject,
-			MatrixModule matrixModule) {
+	public boolean createMatrixModule(MatrixProject matrixProject, MatrixModule matrixModule) {
 		
-		return false;
+		Object[] params = new Object[]{matrixModule.getModuleName()};
+		int effectRowCount = helper.doDMLOperation(moduleInsertSQL, params);
+		if (effectRowCount != 1){
+			context.setRollbackOnly();
+			return false;
+		}
+		
+		params = new Object[]{matrixProject.getId(), matrixModule.getModuleName()};
+		effectRowCount = helper.doDMLOperation("insert into f4_project_module_ref(project_id, module_id) values(?, select id from f4_module where module_label = ?)", params);
+		if (effectRowCount != 1){
+			context.setRollbackOnly();
+			return false;
+		}
+		return true;
 	}
 }

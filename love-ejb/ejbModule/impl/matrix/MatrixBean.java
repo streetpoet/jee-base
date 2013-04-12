@@ -33,6 +33,7 @@ public class MatrixBean implements IMatrix {
 			+"where "
 			+"	m.id = r.module_id "
 			+"	and r.project_id = ? ";
+	
 	private static String functionQuerySQL =  "select  "
 			+"    func.id, func.function_label "
 			+"from "
@@ -41,6 +42,7 @@ public class MatrixBean implements IMatrix {
 			+"where "
 			+"    ref.module_id = ? "
 			+"        and ref.function_id = func.id ";
+	
 	private static final String moduleUpdateSQL =  "update "
 			+"	f4_module "
 			+"set "
@@ -49,6 +51,7 @@ public class MatrixBean implements IMatrix {
 			+"	,select_bean_name = ? "
 			+"where "
 			+"	id = ? ";
+	
 	private static String functionUpdateSQL =  "update "
 			+"	f4_function "
 			+"set "
@@ -181,5 +184,12 @@ public class MatrixBean implements IMatrix {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public boolean createMatrixModule(MatrixProject matrixProject,
+			MatrixModule matrixModule) {
+		
+		return false;
 	}
 }

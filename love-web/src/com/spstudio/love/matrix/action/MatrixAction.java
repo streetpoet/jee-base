@@ -111,6 +111,10 @@ public class MatrixAction implements Serializable {
 		matrixCreateEvent.fire(new MatrixCreateEvent(MatrixCreateMode.MODULE));
 	}
 	
+	public void createMatrixFunction(){
+		matrixCreateEvent.fire(new MatrixCreateEvent(MatrixCreateMode.FUNCTION));
+	}
+	
 	public void deleteMatrixProject() {
 		matrixDeleteEvent.fire(new MatrixDeleteEvent());
 	}

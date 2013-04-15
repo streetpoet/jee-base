@@ -56,9 +56,10 @@ public class MatrixCreateEventHandler implements Serializable {
 			}
 			break;
 		case MODULE:
-			if (matrixRemoteBean.createMatrixModule(matrixProject.clone(), matrixModule.clone())){
-				
-			}
+			matrixRemoteBean.createMatrixModule(matrixProject.clone(), matrixModule.clone());
+			break;
+		case FUNCTION:
+//			matrixRemoteBean.c
 			break;
 		default:
 			break;

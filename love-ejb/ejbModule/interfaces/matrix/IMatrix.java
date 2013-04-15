@@ -18,6 +18,8 @@ public interface IMatrix {
 	
 	public boolean createMatrixModule(MatrixProject matrixProject, MatrixModule matrixModule);
 	
+	public boolean createMatrixFunction(MatrixModule matrixModule, MatrixFunction matrixFunction);
+	
 	public int deleteMatrixProject(MatrixProject matrixProject);
 	
 	public int updateMatrixProject(MatrixProject matrixProject);

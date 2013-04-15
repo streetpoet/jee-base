@@ -59,9 +59,14 @@ public class MatrixBean implements IMatrix {
 			+"where "
 			+"	id = ? ";
 	
-	private static final String projectModuleRefInsertSQL = "insert into f4_project_module_ref(project_id, module_id) values(?, select id from f4_module where module_label = ?)";
-	
+	private static final String projectModuleRefInsertSQL = "insert into f4_project_module_ref(project_id, module_id) values(?, (select id from f4_module where module_label = ?))";
+
 	private static String moduleInsertSQL = "insert into f4_module(module_label, module_name, entity_bean_name, select_bean_name) values(?, '', '', '')";
+
+	private static final String functionInsertSQL = "insert into f4_function(function_label, function_name) values(?, '')";
+	
+	private static final String moduleFunctionRefInsertSQL = "insert into f4_module_function_ref(module_id, function_id) values(?, (select id from f4_function where function_label = ?))";
+
 	
 	@Override
 	public boolean createMatrixProject(MatrixProject matrixProject) {
@@ -205,6 +210,26 @@ public class MatrixBean implements IMatrix {
 			context.setRollbackOnly();
 			return false;
 		}
+		return true;
+	}
+
+	@Override
+	public boolean createMatrixFunction(MatrixModule matrixModule, MatrixFunction matrixFunction) {
+		
+		Object[] params = new Object[]{matrixFunction.getFunctionName()};
+		int effectRowCount = helper.doDMLOperation(functionInsertSQL, params);
+		if (effectRowCount != 1){
+			context.setRollbackOnly();
+			return false;
+		}
+		
+		params = new Object[]{matrixModule.getId(), matrixFunction.getFunctionName()};
+		effectRowCount = helper.doDMLOperation(moduleFunctionRefInsertSQL, params);
+		if (effectRowCount != 1){
+			context.setRollbackOnly();
+			return false;
+		}
+		
 		return true;
 	}
 }

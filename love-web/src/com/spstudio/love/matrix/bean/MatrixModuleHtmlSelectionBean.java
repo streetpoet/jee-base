@@ -29,13 +29,9 @@ public class MatrixModuleHtmlSelectionBean implements Serializable{
 	@Inject @MatrixRemoteBean IMatrix matrixBean;
 	@Inject @LoveLogged Logger log;
 	@Inject @MatrixProjectQualifier MatrixProject matrixProject;
-	private List<SelectItem> matrixModuleList;
 
 	public List<SelectItem> getMatrixModuleList() {
-		if (matrixModuleList != null){
-			return matrixModuleList;
-		}
-		matrixModuleList = new ArrayList<SelectItem>();
+		List<SelectItem> matrixModuleList = new ArrayList<SelectItem>();
 		if (matrixProject.getId() != -1){
 			List<MatrixModule> list = matrixBean.loadMatrixModuleList(matrixProject.getId());
 			if (list != null && list.size() != 0){
@@ -48,7 +44,7 @@ public class MatrixModuleHtmlSelectionBean implements Serializable{
 	}
 
 	public void reloadModleListByProjectId(int projectId) {
-		matrixModuleList = new ArrayList<SelectItem>();
+		List<SelectItem> matrixModuleList = new ArrayList<SelectItem>();
 		List<MatrixModule> list = matrixBean.loadMatrixModuleList(projectId);
 		if (list != null && list.size() != 0){
 			for (MatrixModule module: list){

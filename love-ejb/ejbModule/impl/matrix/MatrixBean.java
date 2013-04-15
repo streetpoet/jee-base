@@ -59,6 +59,8 @@ public class MatrixBean implements IMatrix {
 			+"where "
 			+"	id = ? ";
 	
+	private static final String projectModuleRefInsertSQL = "insert into f4_project_module_ref(project_id, module_id) values(?, select id from f4_module where module_label = ?)";
+	
 	private static String moduleInsertSQL = "insert into f4_module(module_label, module_name, entity_bean_name, select_bean_name) values(?, '', '', '')";
 	
 	@Override
@@ -198,7 +200,7 @@ public class MatrixBean implements IMatrix {
 		}
 		
 		params = new Object[]{matrixProject.getId(), matrixModule.getModuleName()};
-		effectRowCount = helper.doDMLOperation("insert into f4_project_module_ref(project_id, module_id) values(?, select id from f4_module where module_label = ?)", params);
+		effectRowCount = helper.doDMLOperation(projectModuleRefInsertSQL, params);
 		if (effectRowCount != 1){
 			context.setRollbackOnly();
 			return false;

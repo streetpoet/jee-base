@@ -103,9 +103,12 @@ public class MatrixAction implements Serializable {
 		matrixCreateEvent.fire(new MatrixCreateEvent(MatrixCreateMode.SOLUTION));
 	}
 	
-	@LoveTrace
 	public void createMatrixProject() {
 		matrixCreateEvent.fire(new MatrixCreateEvent(MatrixCreateMode.PROJECT));
+	}
+	
+	public void createMatrixModule(){
+		matrixCreateEvent.fire(new MatrixCreateEvent(MatrixCreateMode.MODULE));
 	}
 	
 	public void deleteMatrixProject() {

@@ -55,6 +55,9 @@ public class MatrixCreateEventHandler implements Serializable {
 				matrixSingletonBean.refreshProjectCache();
 			}
 			break;
+		case MODULE:
+			
+			break;
 		default:
 			break;
 		}

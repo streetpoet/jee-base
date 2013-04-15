@@ -1,9 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <h:body>
 
@@ -12,35 +11,35 @@
 			<h:outputStylesheet library="css/#{view.locale}" name="/tipsy.css" />
 		</ui:define>
 		<ui:define name="body">
-			
+
 			<f:view>
-			
+
 				<!-- 导航栏部分 -->
 
 				<div class="container" style="margin-top: 20px;">
 					<div class="row-fluid">
-					<div class="span12">
-						<h:form>
-							<div class="navbar">
-							<div class="navbar-inner">
-								<h:outputLink class="brand" href="#">当前位置：</h:outputLink>
-								<ul class="nav">
-									<li><h:commandLink action="HOME" value="Home" actionListener="#{matrixAction.endConversation()}" /></li>
-									<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">其他模块<b class="caret"></b>
-									</a>
-										<ul class="dropdown-menu">
-											<li><h:outputLink href="#">模块1</h:outputLink></li>
-											<li><h:outputLink href="#">模块2</h:outputLink></li>
-											<li><h:outputLink href="#">模块3</h:outputLink></li>
-											<li><h:outputLink href="#">模块4</h:outputLink></li>
-										</ul></li>
-									<li><h:outputLink styleClass="active" href="#">项目模块属性配置</h:outputLink></li>
-									<li><h:outputLink href="#">功能2</h:outputLink></li>
-								</ul>
-							</div>
-							</div>
-						</h:form>
-					</div>
+						<div class="span12">
+							<h:form>
+								<div class="navbar">
+									<div class="navbar-inner">
+										<h:outputLink class="brand" href="#">当前位置：</h:outputLink>
+										<ul class="nav">
+											<li><h:commandLink action="HOME" value="Home" actionListener="#{matrixAction.endConversation()}" /></li>
+											<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">其他模块<b class="caret"></b>
+											</a>
+												<ul class="dropdown-menu">
+													<li><h:outputLink href="#">模块1</h:outputLink></li>
+													<li><h:outputLink href="#">模块2</h:outputLink></li>
+													<li><h:outputLink href="#">模块3</h:outputLink></li>
+													<li><h:outputLink href="#">模块4</h:outputLink></li>
+												</ul></li>
+											<li><h:outputLink styleClass="active" href="#">项目模块属性配置</h:outputLink></li>
+											<li><h:outputLink href="#">功能2</h:outputLink></li>
+										</ul>
+									</div>
+								</div>
+							</h:form>
+						</div>
 					</div>
 				</div>
 
@@ -48,37 +47,37 @@
 
 					<!-- Form Title -->
 					<div class="row-fluid">
-					<div class="span8 offset2">
-						<div class="page-header text-left">
-							<h2>
-								项目模块属性配置 <small>version 1.0</small>
-							</h2>
+						<div class="span8 offset2">
+							<div class="page-header text-left">
+								<h2>
+									项目模块属性配置 <small>version 1.0</small>
+								</h2>
+							</div>
 						</div>
-					</div>
 					</div>
 
 					<!-- Message Region -->
-					<h:messages style="display: none;"/>
+					<h:messages style="display: none;" />
 					<h:panelGroup rendered="#{fn:length(facesContext.messageList) ne 0}">
 						<div class="row-fluid">
-						<div class="span8 offset2 text-left">
-							<h:panelGroup rendered="#{fn:length(facesContext.messageList) ne 0}">
-								<c:forEach items="#{facesContext.messageList}" var="msg">
-									<c:if test="#{msg.severity.ordinal ne 0}">
-										<div class="alert alert-error">
-											<button class="close" data-dismiss="alert" type="button">×</button>
-											<span class="label label-important">Error</span>&nbsp; <strong><h:outputText value="#{msg.summary}" /></strong>
-										</div>
-									</c:if>
-									<c:if test="#{msg.severity.ordinal eq 0}">
-										<div class="alert alert-success">
-											<button class="close" data-dismiss="alert" type="button">×</button>
-											<span class="label label-success">Success</span>&nbsp; <strong><h:outputText value="#{msg.summary}" /></strong>
-										</div>
-									</c:if>
-								</c:forEach>
-							</h:panelGroup>
-						</div>
+							<div class="span8 offset2 text-left">
+								<h:panelGroup rendered="#{fn:length(facesContext.messageList) ne 0}">
+									<c:forEach items="#{facesContext.messageList}" var="msg">
+										<c:if test="#{msg.severity.ordinal ne 0}">
+											<div class="alert alert-error">
+												<button class="close" data-dismiss="alert" type="button">×</button>
+												<span class="label label-important">Error</span>&nbsp; <strong><h:outputText value="#{msg.summary}" /></strong>
+											</div>
+										</c:if>
+										<c:if test="#{msg.severity.ordinal eq 0}">
+											<div class="alert alert-success">
+												<button class="close" data-dismiss="alert" type="button">×</button>
+												<span class="label label-success">Success</span>&nbsp; <strong><h:outputText value="#{msg.summary}" /></strong>
+											</div>
+										</c:if>
+									</c:forEach>
+								</h:panelGroup>
+							</div>
 						</div>
 					</h:panelGroup>
 
@@ -86,7 +85,7 @@
 
 					<div class="row-fluid">
 						<div class="span8 offset2 text-left bs-docs-example">
-							<h:form class="form-horizontal tip">
+							<h:form class="form-horizontal tip" id="form">
 
 								<!-- 项目选择 -->
 
@@ -95,39 +94,38 @@
 									<div class="controls">
 										<h:selectOneMenu label="project selection" id="project" value="#{matrixProject.id}" required="true"
 											valueChangeListener="#{matrixAction.onMatrixProjectListValueChange}">
-											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true" />
 											<f:selectItems value="#{matrixAction.matrixProjectList}" />
 											<f:ajax event="change" execute="project" render="module function" />
 										</h:selectOneMenu>
-										&nbsp;
-										<a href="#myProjectModal" class="btn btn-success" data-toggle="modal">新增项目</a>
+										&nbsp; <a href="#projectModal" class="btn btn-success" data-toggle="modal">新增项目</a>
 									</div>
 								</div>
-								
+
 								<!-- Create Project Modal -->
 								<div id="projectModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myProjectModalLabel" aria-hidden="true">
-								    <div class="modal-header">
-								        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-								        <h3 id="myProjectModalLabel">输入新项目名称</h3>
-								    </div>
-								    
-								    <div class="modal-body form-horizontal">
-								        <p>
-								        	<div class="control-group">
-									            <h:outputLabel class="control-label" for="projectName" value="新项目名称" />
-									            <div class="controls">
-									            	<h:inputText id="projectName" value="#{matrixProject.projectName}" />
-									            </div>
-								            </div>
-								        </p>
-								    </div>
-								    <div class="modal-footer">
-								        <h:commandButton styleClass="btn btn-primary" value="保存新项目名称" action="#{matrixAction.createMatrixProject()}" >
-								        	<f:ajax execute="projectName" render="project" onevent="monitorProjectModel"/>
-								        </h:commandButton>
-								        <input type="button" class="btn btn-warning" data-dismiss="modal" aria-hidden="true" value="关闭"></input>
-								    </div>
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+										<h3 id="myProjectModalLabel">输入新项目名称</h3>
+									</div>
+
+									<div class="modal-body form-horizontal">
+										<p>
+											<div class="control-group">
+												<h:outputLabel class="control-label" for="projectName" value="新项目名称" />
+												<div class="controls">
+													<h:inputText id="projectName" value="#{matrixProject.projectName}" />
+												</div>
+											</div>
+										</p>
+									</div>
+									<div class="modal-footer">
+										<h:commandButton styleClass="btn btn-primary" value="保存新项目名称" action="#{matrixAction.createMatrixProject()}">
+											<f:ajax execute="projectName" render="project" onevent="monitorProjectModel" />
+										</h:commandButton>
+										<input type="button" class="btn btn-warning" data-dismiss="modal" aria-hidden="true" value="关闭"></input>
+									</div>
 								</div>
+
 
 								<!-- 模块选择 -->
 
@@ -140,8 +138,43 @@
 											<f:selectItems value="#{matrixAction.matrixModuleList}" />
 											<f:ajax event="change" execute="module" render="function" onevent="" />
 										</h:selectOneMenu>
-										&nbsp;
-										<h:outputLink href="#myProjectModal" class="btn btn-success" data-toggle="modal">新增模块</h:outputLink>
+										&nbsp; 
+										<a href="#moduleModal" class="btn btn-success" data-toggle="modal" 
+											onclick="$('#form\\:belongProject').val($('#form\\:project').val());">新增模块</a>
+									</div>
+								</div>
+
+								<!-- Create Module Modal -->
+								<div id="moduleModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="moduleModalLabel" aria-hidden="true">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+										<h3 id="moduleModalLabel">输入新模块名称</h3>
+									</div>
+
+									<div class="modal-body form-horizontal">
+										<p>
+											<div class="control-group">
+												<h:outputLabel class="control-label" for="belongProject" value="所属项目" />
+												<div class="controls">
+													<h:selectOneMenu label="project selection" id="belongProject" disabled="true">
+														<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true" />
+														<f:selectItems value="#{matrixAction.matrixProjectList}" />
+													</h:selectOneMenu>
+												</div>
+											</div>
+										<div class="control-group">
+											<h:outputLabel class="control-label" for="inputModuleLabel" value="新模块名称" />
+											<div class="controls">
+												<h:inputText id="inputModuleLabel" value="#{matrixModule.moduleName}" />
+											</div>
+										</div>
+										</p>
+									</div>
+									<div class="modal-footer">
+										<h:commandButton styleClass="btn btn-primary" value="保存新模块名称" action="#{matrixAction.createMatrixProject()}">
+											<f:ajax execute="projectName" render="project" onevent="monitorProjectModel" />
+										</h:commandButton>
+										<input type="button" class="btn btn-warning" data-dismiss="modal" aria-hidden="true" value="关闭"></input>
 									</div>
 								</div>
 
@@ -165,10 +198,8 @@
 									<h:outputLabel class="control-label" for="moduleName" value="模块名称" />
 									<div class="controls">
 										<h:inputText id="moduleName" placeholder="模块名称" value="#{matrixModule.moduleName}" required="true" />
-										&nbsp;
-										<a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
-											title="模块名称将生成为代码中的包名，建议起成简短且具有含义的英文单词，如，report">
-											<i class="icon-question-sign" />
+										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
+											title="模块名称将生成为代码中的包名，建议起成简短且具有含义的英文单词，如，report"> <i class="icon-question-sign" />
 										</a>
 									</div>
 								</div>
@@ -179,11 +210,8 @@
 									<h:outputLabel class="control-label" for="funcName" value="功能名称" />
 									<div class="controls">
 										<h:inputText id="funcName" placeholder="功能名称" value="#{matrixFunction.functionName}" required="true" />
-										&nbsp;
-										<a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
-											title="功能名称将生成为页面名，建议起成能够反映出该功能行为的动名词组合，如，addWorkPlan，系统会自动生成addWorkPlan.xhtml页面"><i
-											class="icon-question-sign" />
-										</a>
+										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
+											title="功能名称将生成为页面名，建议起成能够反映出该功能行为的动名词组合，如，addWorkPlan，系统会自动生成addWorkPlan.xhtml页面"><i class="icon-question-sign" /> </a>
 									</div>
 								</div>
 
@@ -193,9 +221,8 @@
 									<h:outputLabel class="control-label" for="entityBeanName" value="Entity Bean Name" />
 									<div class="controls">
 										<h:inputText id="entityBeanName" placeholder="Entity Bean Name" value="#{matrixModule.entityBeanName}" />
-										&nbsp;
-										<a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right" title="entity bean是用来在跨服务器的Web Server和Ejb Server之间传递的对象，系统会在非单例EJB中生成相应增删改查接口">
-											<i class="icon-question-sign" />
+										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
+											title="entity bean是用来在跨服务器的Web Server和Ejb Server之间传递的对象，系统会在非单例EJB中生成相应增删改查接口"> <i class="icon-question-sign" />
 										</a>
 									</div>
 								</div>
@@ -206,9 +233,8 @@
 									<h:outputLabel class="control-label" for="selectBeanName" value="Selection Bean Name" />
 									<div class="controls">
 										<h:inputText id="selectBeanName" placeholder="Selection Bean Name" value="#{matrixModule.selectBeanName}" />
-										&nbsp;
-										<a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right" title="selection bean将用来生成页面下拉列表对应的bean，默认将生成在单例EJB中并具备缓存机制">
-											<i class="icon-question-sign" />
+										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
+											title="selection bean将用来生成页面下拉列表对应的bean，默认将生成在单例EJB中并具备缓存机制"> <i class="icon-question-sign" />
 										</a>
 									</div>
 								</div>
@@ -216,8 +242,7 @@
 								<!-- 提交按钮 -->
 
 								<div class="form-actions">
-									<h:commandButton type="submit" class="btn btn-primary btn-large" value="生成方案(.zip)"
-										action="#{matrixAction.createMatrixProject()}" />
+									<h:commandButton type="submit" class="btn btn-primary btn-large" value="生成方案(.zip)" action="#{matrixAction.createMatrixProject()}" />
 									&nbsp;
 									<h:commandButton type="reset" class="btn btn-warning btn-large" value="重置" />
 								</div>
@@ -225,7 +250,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 			</f:view>
 		</ui:define>
 		<ui:define name="footer">
@@ -239,7 +264,7 @@
 	    		
 	    		function monitorProjectModel(data){
 					if (data.status == 'success'){
-						$('#projectModal').tooltip('hide');
+						$('#projectModal').modal('hide');
 					}
 				}
 			</h:outputScript>

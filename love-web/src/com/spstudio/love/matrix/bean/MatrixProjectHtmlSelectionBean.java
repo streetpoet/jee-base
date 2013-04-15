@@ -22,14 +22,10 @@ public class MatrixProjectHtmlSelectionBean implements Serializable{
 	private static final long serialVersionUID = -1262970165988845880L;
 	
 	@Inject @MatrixSingleRemoteBean IMatrixSingleton matrixSingleton;
-	private List<SelectItem> matrixProjectList;
 
 	public List<SelectItem> getMatrixProjectList() {
-		if (matrixProjectList != null){
-			return matrixProjectList;
-		}
 		List<MatrixProject> list = matrixSingleton.retrieveProjectList();
-		matrixProjectList = new ArrayList<SelectItem>();
+		List<SelectItem> matrixProjectList = new ArrayList<SelectItem>();
 		if (list != null && list.size() != 0){
 			for (MatrixProject project: list){
 				matrixProjectList.add(new SelectItem(project.getId(), project.getProjectName()));

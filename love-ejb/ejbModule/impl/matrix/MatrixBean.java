@@ -232,4 +232,16 @@ public class MatrixBean implements IMatrix {
 		
 		return true;
 	}
+
+	@Override
+	public MatrixModule loadMatrixModule(int matrixModuleId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MatrixFunction loadMatrixFunction(int matrixFunctionId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

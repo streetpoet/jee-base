@@ -27,6 +27,10 @@ public interface IMatrix {
 	public IQueryResult<MatrixProject> queryMatrixProject(MatrixProjectCondition condition, PageObject pageObject);
 	
 	public MatrixProject loadMatrixProject(int matrixProjectId);
+	
+	public MatrixModule loadMatrixModule(int matrixModuleId);
+	
+	public MatrixFunction loadMatrixFunction(int matrixFunctionId);
 
 	public List<MatrixModule> loadMatrixModuleList(int matrixProjectId);
 	

@@ -17,6 +17,7 @@ import javax.inject.Inject;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
+import com.spstudio.love.matrix.action.MatrixAction;
 import com.spstudio.love.matrix.engine.ConfigBean;
 import com.spstudio.love.matrix.engine.MatrixGenerator;
 import com.spstudio.love.matrix.entity.MatrixFunction;
@@ -42,6 +43,7 @@ public class MatrixCreateEventHandler implements Serializable {
 	@Inject @MatrixProjectQualifier MatrixProject matrixProject;
 	@Inject @MatrixModuleQualifier MatrixModule matrixModule;
 	@Inject MatrixFunction matrixFunction;
+	@Inject MatrixAction matrixAction;
 
 	@LoveTrace
 	public void createMatrixProject(@Observes @MatrixCreateEventQualifier MatrixCreateEvent event) {
@@ -56,10 +58,12 @@ public class MatrixCreateEventHandler implements Serializable {
 			}
 			break;
 		case MODULE:
+			matrixProject.setId(matrixAction.getSelectedProjectId());
 			matrixRemoteBean.createMatrixModule(matrixProject.clone(), matrixModule.clone());
 			break;
 		case FUNCTION:
-//			matrixRemoteBean.c
+			matrixModule.setId(matrixAction.getSelectedModuleId());
+			matrixRemoteBean.createMatrixFunction(matrixModule.clone(), matrixFunction.clone());
 			break;
 		default:
 			break;

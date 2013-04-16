@@ -92,7 +92,7 @@
 								<div class="control-group">
 									<h:outputLabel class="control-label" for="project" value="项目选择" />
 									<div class="controls">
-										<h:selectOneMenu label="project selection" id="project" value="#{matrixProject.id}" required="true"
+										<h:selectOneMenu label="project selection" id="project" value="#{matrixAction.selectedProjectId}" required="true"
 											valueChangeListener="#{matrixAction.onMatrixProjectListValueChange}">
 											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true" />
 											<f:selectItems value="#{matrixAction.matrixProjectList}" />
@@ -133,7 +133,7 @@
 								<div class="control-group">
 									<h:outputLabel class="control-label" for="module" value="模块选择" />
 									<div class="controls">
-										<h:selectOneMenu label="module selection" id="module" value="#{matrixModule.id}" required="true"
+										<h:selectOneMenu label="module selection" id="module" value="#{matrixAction.selectedModuleId}" required="true"
 											valueChangeListener="#{matrixAction.onMatrixModuleListValueChange}">
 											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true" />
 											<f:selectItems value="#{matrixAction.matrixModuleList}" />
@@ -184,7 +184,7 @@
 								<div class="control-group">
 									<h:outputLabel class="control-label" for="function" value="功能选择" />
 									<div class="controls">
-										<h:selectOneMenu id="function" value="#{matrixFunction.id}" required="true">
+										<h:selectOneMenu id="function" value="#{matrixAction.selectedFunctionId}" required="true">
 											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true" />
 											<f:selectItems value="#{matrixAction.matrixFunctionList}" />
 										</h:selectOneMenu>
@@ -212,12 +212,12 @@
 													</h:selectOneMenu>
 												</div>
 											</div>
-										<div class="control-group">
-											<h:outputLabel class="control-label" for="inputFunctionLabel" value="新功能名称" />
-											<div class="controls">
-												<h:inputText id="inputFunctionLabel" value="#{matrixFunction.functionName}" />
+											<div class="control-group">
+												<h:outputLabel class="control-label" for="inputFunctionLabel" value="新功能名称" />
+												<div class="controls">
+													<h:inputText id="inputFunctionLabel" value="#{matrixFunction.functionName}" />
+												</div>
 											</div>
-										</div>
 										</p>
 									</div>
 									<div class="modal-footer">

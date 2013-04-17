@@ -121,7 +121,7 @@
 									</div>
 									<div class="modal-footer">
 										<h:commandButton styleClass="btn btn-primary" value="保存新项目名称" action="#{matrixAction.createMatrixProject()}">
-											<f:ajax execute="projectName" render="project" onevent="monitorProjectModel" />
+											<f:ajax execute="projectName" render="project belongProject" onevent="monitorProjectModel" />
 										</h:commandButton>
 										<input type="button" class="btn btn-warning" data-dismiss="modal" aria-hidden="true" value="关闭"></input>
 									</div>
@@ -137,7 +137,7 @@
 											valueChangeListener="#{matrixAction.onMatrixModuleListValueChange}">
 											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true" />
 											<f:selectItems value="#{matrixAction.matrixModuleList}" />
-											<f:ajax event="change" execute="module" render="function" />
+											<f:ajax event="change" execute="module" render="function moduleName entityBeanName selectBeanName" />
 										</h:selectOneMenu>
 										&nbsp; 
 										<a href="#moduleModal" class="btn btn-success" data-toggle="modal" 
@@ -173,7 +173,7 @@
 									</div>
 									<div class="modal-footer">
 										<h:commandButton styleClass="btn btn-primary" value="保存新模块名称" action="#{matrixAction.createMatrixModule()}">
-											<f:ajax execute="project inputModuleLabel" render="module" onevent="monitorModuleModel" />
+											<f:ajax execute="project inputModuleLabel" render="module belongModule" onevent="monitorModuleModel" />
 										</h:commandButton>
 										<input type="button" class="btn btn-warning" data-dismiss="modal" aria-hidden="true" value="关闭"></input>
 									</div>
@@ -278,7 +278,7 @@
 								<!-- 提交按钮 -->
 
 								<div class="form-actions">
-									<h:commandButton type="submit" class="btn btn-primary btn-large" value="生成方案(.zip)" action="#{matrixAction.createMatrixProject()}" />
+									<h:commandButton type="submit" class="btn btn-primary btn-large" value="生成方案(.zip)" action="#{matrixAction.createMatrixSolution()}" />
 									&nbsp;
 									<h:commandButton type="reset" class="btn btn-warning btn-large" value="重置" />
 								</div>

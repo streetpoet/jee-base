@@ -71,6 +71,9 @@ public class MatrixCreateEventHandler implements Serializable {
 	}
 	
 	private void persistance(){
+		matrixProject.setId(matrixAction.getSelectedProjectId());
+		matrixModule.setId(matrixAction.getSelectedModuleId());
+		matrixFunction.setId(matrixAction.getSelectedFunctionId());
 		matrixRemoteBean.updateSolution(matrixProject.clone(), matrixModule.clone(), matrixFunction.clone());
 	}
 	

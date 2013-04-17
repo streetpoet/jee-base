@@ -67,6 +67,26 @@ public class MatrixBean implements IMatrix {
 	
 	private static final String moduleFunctionRefInsertSQL = "insert into f4_module_function_ref(module_id, function_id) values(?, (select id from f4_function where function_label = ?))";
 
+	private static final String loadOneModuleSQL =  "select  "
+													+"    id, "
+													+"    module_label, "
+													+"    module_name, "
+													+"    entity_bean_name, "
+													+"    select_bean_name "
+													+"from "
+													+"    f4_module "
+													+"where "
+													+"    id = ? ";
+	
+	private static final String loadOneFunctionSQL =  "select  "
+			+"    id, "
+			+"    function_label, "
+			+"    function_name "
+			+"from "
+			+"    f4_function "
+			+"where "
+			+"    id = ? ";
+
 	
 	@Override
 	public boolean createMatrixProject(MatrixProject matrixProject) {
@@ -235,13 +255,40 @@ public class MatrixBean implements IMatrix {
 
 	@Override
 	public MatrixModule loadMatrixModule(int matrixModuleId) {
-		// TODO Auto-generated method stub
+		Object[] params = new Object[]{matrixModuleId};
+		List<Object[]> result = helper.doQuery(loadOneModuleSQL, params);
+		
+		if (result != null && result.size() != 0){
+			for (Object[] row : result) {
+				MatrixModule module = new MatrixModule();
+				module.setId((Integer)row[0]);
+				module.setModuleLabel((String)row[1]);
+				module.setModuleName((String)row[2]);
+				module.setEntityBeanName((String)row[3]);
+				module.setSelectBeanName((String)row[4]);
+				return module;
+			}
+		}
+		
 		return null;
 	}
 
 	@Override
 	public MatrixFunction loadMatrixFunction(int matrixFunctionId) {
-		// TODO Auto-generated method stub
+		
+		Object[] params = new Object[]{matrixFunctionId};
+		List<Object[]> result = helper.doQuery(loadOneFunctionSQL, params);
+		
+		if (result != null && result.size() != 0){
+			for (Object[] row : result) {
+				MatrixFunction function = new MatrixFunction();
+				function.setId((Integer)row[0]);
+				function.setFunctionLabel((String)row[1]);
+				function.setFunctionName((String)row[2]);
+				return function;
+			}
+		}
+		
 		return null;
 	}
 }

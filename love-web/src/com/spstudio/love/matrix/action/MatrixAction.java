@@ -56,30 +56,30 @@ public class MatrixAction implements Serializable {
 	@Inject MatrixProjectQueryConversation matrixProjectQueryConversation;
 	@Inject @LoveLogged Logger log;
 	
-	private int selectedProjectId;
-	private int selectedModuleId;
-	private int selectedFunctionId;
+	private int selectedProjectId = -1;
+	private int selectedModuleId = -1;
+	private int selectedFunctionId = -1;
 	
 	public void onMatrixProjectListValueChange(ValueChangeEvent event){
-		selectedProjectId = (Integer)event.getNewValue();
+		
 	}
 	
 	public void onMatrixModuleListValueChange(ValueChangeEvent event){
 		selectedModuleId = (Integer)event.getNewValue();
+		matrixQueryEvent.fire(new MatrixQueryEvent(QueryMode.LOAD_SINGLE_MODULE));
 	}
 	
 	public void onMatrixFunctionListValueChange(ValueChangeEvent event){
 		selectedFunctionId = (Integer)event.getNewValue();
+		matrixQueryEvent.fire(new MatrixQueryEvent(QueryMode.LOAD_SINGLE_FUNCTION));
 	}
 	
-	@LoveTrace
 	public void startConversation() {
 		if (conversation.isTransient()) {
 			conversation.begin();
 		}
 	}
 	
-	@LoveTrace
 	public void endConversation() {
 		if (!(conversation.isTransient())) {
 			conversation.end();

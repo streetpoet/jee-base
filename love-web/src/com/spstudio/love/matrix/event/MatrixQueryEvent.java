@@ -23,7 +23,7 @@ public class MatrixQueryEvent implements Serializable{
 	}
 
 	public static enum QueryMode{
-		LOAD_ALL_RECORD, LOAD_SINGLE_RECORD;
+		LOAD_ALL_RECORD, LOAD_SINGLE_RECORD, LOAD_SINGLE_MODULE, LOAD_SINGLE_FUNCTION;
 	}
 
 }

@@ -13,6 +13,7 @@ public class MatrixFunction implements Cloneable, Serializable{
 	private static final long serialVersionUID = 7271837435147191440L;
 	private int id = -1;
 	private String functionName;
+	private String functionLabel;
 	
 	public void clear(){
 		id = -1;
@@ -21,6 +22,7 @@ public class MatrixFunction implements Cloneable, Serializable{
 	public void setMatrixProject(MatrixFunction matrixFunction){
 		id = matrixFunction.id;
 		functionName = matrixFunction.functionName;
+		functionLabel = matrixFunction.functionLabel;
 	}
 	
 	public MatrixFunction clone(){
@@ -48,5 +50,12 @@ public class MatrixFunction implements Cloneable, Serializable{
 	public void setFunctionName(String functionName) {
 		this.functionName = functionName;
 	}
-	
+
+	public String getFunctionLabel() {
+		return functionLabel;
+	}
+
+	public void setFunctionLabel(String functionLabel) {
+		this.functionLabel = functionLabel;
+	}
 }

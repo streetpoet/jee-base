@@ -12,8 +12,11 @@ import org.jboss.logging.Logger;
 
 import com.spstudio.love.matrix.action.MatrixAction;
 import com.spstudio.love.matrix.bean.MatrixProjectQueryConversation;
+import com.spstudio.love.matrix.entity.MatrixFunction;
+import com.spstudio.love.matrix.entity.MatrixModule;
 import com.spstudio.love.matrix.entity.MatrixProject;
 import com.spstudio.love.matrix.helper.MatrixProjectCondition;
+import com.spstudio.love.matrix.qualifier.MatrixModuleQualifier;
 import com.spstudio.love.matrix.qualifier.MatrixProjectQualifier;
 import com.spstudio.love.matrix.qualifier.MatrixRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
@@ -35,6 +38,8 @@ public class MatrixQueryEventHandler implements Serializable {
 	@Inject @MatrixRemoteBean IMatrix matrixRemoteBean;
 	@Inject @LoveLogged Logger log;
 	@Inject @MatrixProjectQualifier MatrixProject matrixProject;
+	@Inject @MatrixModuleQualifier MatrixModule matrixModule;
+	@Inject MatrixFunction matrixFunction;
 
 	public void queryMatrixProject(@Observes @MatrixQueryEventQualifier MatrixQueryEvent event){
 		switch (event.getQueryMode()) {
@@ -44,9 +49,28 @@ public class MatrixQueryEventHandler implements Serializable {
 		case LOAD_SINGLE_RECORD:
 			loadSingleMatrix();
 			break;
-
+		case LOAD_SINGLE_MODULE:
+			loadSingleMatrixModule();
+			break;
+		case LOAD_SINGLE_FUNCTION:
+			loadSingleMatrixFunction();
+			break;
 		default:
 			break;
+		}
+	}
+	
+	private void loadSingleMatrixFunction(){
+		MatrixFunction function = matrixRemoteBean.loadMatrixFunction(matrixAction.getSelectedFunctionId());
+		if (function != null){
+			matrixFunction.setMatrixProject(function);
+		}
+	}
+	
+	private void loadSingleMatrixModule(){
+		MatrixModule module = matrixRemoteBean.loadMatrixModule(matrixAction.getSelectedModuleId());
+		if (module != null){
+			matrixModule.setMatrixModule(module);
 		}
 	}
 	

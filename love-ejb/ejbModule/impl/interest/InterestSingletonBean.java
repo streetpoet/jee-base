@@ -19,6 +19,7 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
+import com.spstudio.love.interest.entity.TechTypeBean;
 import com.spstudio.love.system.helper.DatabaseHelper;
 import com.spstudio.love.system.qualifier.LoveLogged;
 
@@ -31,7 +32,7 @@ public class InterestSingletonBean implements IInterestSingleton {
 	@Inject @LoveLogged Logger log;
 	@Inject DatabaseHelper helper;
 	
-	private List<String[]> techClassifyList = null;
+	private List<TechTypeBean> returnList = null;
 	private String queryAllTechClassifySQL = "select "
 											+"    c1.id, c1.class_name, c2.id, c2.class_name "
 											+"from "
@@ -40,33 +41,33 @@ public class InterestSingletonBean implements IInterestSingleton {
 											+"where "
 											+"    c1.id = c2.father_id "
 											+"order by c1.id , c2.id";
-
-	@Override
-	@Lock(LockType.READ)
-	public List<String[]> retrieveTechClassifyList() {
-		return techClassifyList;
-	}
 	
 	@Schedule(minute = "*/10", hour = "*", persistent = false)
-	public void queryInterestType(){
-		List<String[]> types = new ArrayList<String[]>();
+	public void timer(){
+		List<TechTypeBean> list = new ArrayList<TechTypeBean>();
+		
 		List<Object[]> result = helper.doQuery(queryAllTechClassifySQL, null);
 		if (result != null && result.size() != 0){
 			for (Object[] data: result){
-				String[] row = new String[4];
-				row[IInterestSingleton.TechClassify.INDEX_ID] = String.valueOf(data[IInterestSingleton.TechClassify.INDEX_ID]);
-				row[IInterestSingleton.TechClassify.INDEX_TECH_CLASS_1_NAME] = (String)data[IInterestSingleton.TechClassify.INDEX_TECH_CLASS_1_NAME];
-				row[IInterestSingleton.TechClassify.INDEX_CLASS_2_ID] = String.valueOf(data[IInterestSingleton.TechClassify.INDEX_CLASS_2_ID]);
-				row[IInterestSingleton.TechClassify.INDEX_TECH_CLASS_2_NAME] = (String)data[IInterestSingleton.TechClassify.INDEX_TECH_CLASS_2_NAME];
-				types.add(row);
+				TechTypeBean bean = new TechTypeBean();
+				bean.setClassifyFirstId((Integer)data[0]);
+				bean.setClassifyFirstLabel((String)data[1]);
+				bean.setClassifySecondId((Integer)data[2]);
+				bean.setClassifySecondLabel((String)data[3]);
 			}
 		}
-		 techClassifyList = types;
+		returnList = list;
 	}
 	
 	@PostConstruct
 	public void postConstruct(){
 		log.info("[[ InterestSingletonBean start. ]]");
-		queryInterestType();
+		timer();
+	}
+
+	@Override
+	@Lock(LockType.READ)
+	public List<TechTypeBean> retrieveTechTypeBeanList() {
+		return returnList;
 	}
 }

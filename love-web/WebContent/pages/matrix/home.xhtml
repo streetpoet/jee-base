@@ -184,9 +184,11 @@
 								<div class="control-group">
 									<h:outputLabel class="control-label" for="function" value="功能选择" />
 									<div class="controls">
-										<h:selectOneMenu id="function" value="#{matrixAction.selectedFunctionId}" required="true">
+										<h:selectOneMenu id="function" value="#{matrixAction.selectedFunctionId}" required="true"
+											valueChangeListener="#{matrixAction.onMatrixFunctionListValueChange}">
 											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true" />
 											<f:selectItems value="#{matrixAction.matrixFunctionList}" />
+											<f:ajax event="change" execute="function" render="funcName" />
 										</h:selectOneMenu>
 										&nbsp;
 										<a href="#functionModal" class="btn btn-success" data-toggle="modal" 
@@ -256,7 +258,7 @@
 								<div class="control-group">
 									<h:outputLabel class="control-label" for="entityBeanName" value="Entity Bean Name" />
 									<div class="controls">
-										<h:inputText id="entityBeanName" placeholder="Entity Bean Name" value="#{matrixModule.entityBeanName}" />
+										<h:inputText id="entityBeanName" placeholder="Entity Bean Name" value="#{matrixModule.entityBeanName}" required="true" />
 										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
 											title="entity bean是用来在跨服务器的Web Server和Ejb Server之间传递的对象，系统会在非单例EJB中生成相应增删改查接口"> <i class="icon-question-sign" />
 										</a>
@@ -268,7 +270,7 @@
 								<div class="control-group">
 									<h:outputLabel class="control-label" for="selectBeanName" value="Selection Bean Name" />
 									<div class="controls">
-										<h:inputText id="selectBeanName" placeholder="Selection Bean Name" value="#{matrixModule.selectBeanName}" />
+										<h:inputText id="selectBeanName" placeholder="Selection Bean Name" value="#{matrixModule.selectBeanName}" required="true" />
 										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
 											title="selection bean将用来生成页面下拉列表对应的bean，默认将生成在单例EJB中并具备缓存机制"> <i class="icon-question-sign" />
 										</a>

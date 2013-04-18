@@ -1,6 +1,8 @@
-update
-	f4_function
-set
-	function_name = ?
+select 
+    id,
+    function_label,
+    function_name
+from
+    f4_function
 where
-	id = ?
+    id = 1;

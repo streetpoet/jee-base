@@ -1,5 +1,5 @@
 package com.spstudio.love.matrix.nav;
 
 public enum MatrixNav {
-	SUCCESS, FAILURE;
+	SUCCESS, FAILURE, MATRIX_HOME;
 }

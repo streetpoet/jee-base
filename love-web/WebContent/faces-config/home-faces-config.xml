@@ -5,7 +5,6 @@
 	
 	<navigation-rule>
 	    <description>when user click individual module from home page, just directly link to those pages.</description>
-		<from-view-id>/pages/home/home.xhtml</from-view-id>
 		<navigation-case>
 		    <from-outcome>MATRIX_HOME</from-outcome>
 			<to-view-id>/pages/matrix/home.xhtml</to-view-id>
@@ -15,7 +14,6 @@
 	
 	<navigation-rule>
 	    <description>when user click individual module from home page, just directly link to those pages.</description>
-		<from-view-id>/pages/home/home.xhtml</from-view-id>
 		<navigation-case>
 		    <from-outcome>INTEREST_HOME</from-outcome>
 			<to-view-id>/pages/interest/home.xhtml</to-view-id>

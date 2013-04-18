@@ -31,6 +31,7 @@ import com.spstudio.love.matrix.event.MatrixQueryEvent.QueryMode;
 import com.spstudio.love.matrix.event.MatrixQueryEventQualifier;
 import com.spstudio.love.matrix.event.MatrixUpdateEvent;
 import com.spstudio.love.matrix.event.MatrixUpdateEventQualifier;
+import com.spstudio.love.matrix.nav.MatrixNav;
 import com.spstudio.love.matrix.qualifier.MatrixRemoteBean;
 import com.spstudio.love.matrix.qualifier.MatrixSingleRemoteBean;
 import com.spstudio.love.system.bean.PageObject;
@@ -74,10 +75,11 @@ public class MatrixAction implements Serializable {
 		matrixQueryEvent.fire(new MatrixQueryEvent(QueryMode.LOAD_SINGLE_FUNCTION));
 	}
 	
-	public void startConversation() {
+	public Object startConversation() {
 		if (conversation.isTransient()) {
 			conversation.begin();
 		}
+		return MatrixNav.MATRIX_HOME;
 	}
 	
 	public void endConversation() {

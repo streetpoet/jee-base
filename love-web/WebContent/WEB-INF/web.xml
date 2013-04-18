@@ -5,7 +5,13 @@
 	<display-name>Love Website</display-name>
 	<context-param>
 		<param-name>javax.faces.CONFIG_FILES</param-name>
-		<param-value>/faces-config/faces-config.xml,/faces-config/system-faces-config.xml,/faces-config/home-faces-config.xml,/faces-config/matrix-faces-config.xml</param-value>
+		<param-value>
+		    /faces-config/faces-config.xml,
+		    /faces-config/system-faces-config.xml,
+		    /faces-config/home-faces-config.xml,
+		    /faces-config/matrix-faces-config.xml,
+		    /faces-config/interest-faces-config.xml
+		</param-value>
 	</context-param>
 	<context-param>
 		<!-- treat EMPTY string as NULL, for the bean validation(@NotNull will 

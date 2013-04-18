@@ -24,17 +24,8 @@
 									<div class="navbar-inner">
 										<h:outputLink class="brand" href="#">当前位置：</h:outputLink>
 										<ul class="nav">
-											<li><h:commandLink action="HOME" value="Home" actionListener="#{matrixAction.endConversation()}" /></li>
-											<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">其他模块<b class="caret"></b>
-											</a>
-												<ul class="dropdown-menu">
-													<li><h:outputLink href="#">模块1</h:outputLink></li>
-													<li><h:outputLink href="#">模块2</h:outputLink></li>
-													<li><h:outputLink href="#">模块3</h:outputLink></li>
-													<li><h:outputLink href="#">模块4</h:outputLink></li>
-												</ul></li>
-											<li><h:outputLink styleClass="active" href="#">项目模块属性配置</h:outputLink></li>
-											<li><h:outputLink href="#">功能2</h:outputLink></li>
+											<li><h:commandLink action="HOME" value="Home" actionListener="#{matrixConversationManager.endTotalConversation()}" /></li>
+											<li><h:commandLink action="#{matrixAction.startConversation()}" value="项目方案生成" actionListener="#{matrixConversationManager.endTotalConversation()}" /></li>
 										</ul>
 									</div>
 								</div>
@@ -94,7 +85,7 @@
 									<div class="controls">
 										<h:selectOneMenu label="project selection" id="project" value="#{matrixAction.selectedProjectId}" required="true"
 											valueChangeListener="#{matrixAction.onMatrixProjectListValueChange}">
-											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true" />
+											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="false" />
 											<f:selectItems value="#{matrixAction.matrixProjectList}" />
 											<f:ajax event="change" execute="project" render="module function belongModule" />
 										</h:selectOneMenu>
@@ -135,7 +126,7 @@
 									<div class="controls">
 										<h:selectOneMenu label="module selection" id="module" value="#{matrixAction.selectedModuleId}" required="true"
 											valueChangeListener="#{matrixAction.onMatrixModuleListValueChange}">
-											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true" />
+											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="false" />
 											<f:selectItems value="#{matrixAction.matrixModuleList}" />
 											<f:ajax event="change" execute="module" render="function moduleName entityBeanName selectBeanName" />
 										</h:selectOneMenu>
@@ -186,7 +177,7 @@
 									<div class="controls">
 										<h:selectOneMenu id="function" value="#{matrixAction.selectedFunctionId}" required="true"
 											valueChangeListener="#{matrixAction.onMatrixFunctionListValueChange}">
-											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true" />
+											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="false" />
 											<f:selectItems value="#{matrixAction.matrixFunctionList}" />
 											<f:ajax event="change" execute="function" render="funcName" />
 										</h:selectOneMenu>

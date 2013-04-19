@@ -21,17 +21,8 @@
 									<div class="navbar-inner">
 										<h:outputLink class="brand" href="#">当前位置：</h:outputLink>
 										<ul class="nav">
-											<li><h:commandLink action="HOME" value="Home" actionListener="${el}{${module.moduleName}Action.endConversation}" /></li>
-											<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">其他模块<b class="caret"></b>
-											</a>
-												<ul class="dropdown-menu">
-													<li><h:outputLink href="#">模块1</h:outputLink></li>
-													<li><h:outputLink href="#">模块2</h:outputLink></li>
-													<li><h:outputLink href="#">模块3</h:outputLink></li>
-													<li><h:outputLink href="#">模块4</h:outputLink></li>
-												</ul></li>
-											<li><h:outputLink styleClass="active" href="#">项目模块属性配置</h:outputLink></li>
-											<li><h:outputLink href="#">功能2</h:outputLink></li>
+											<li><h:commandLink action="HOME" value="Home" actionListener="${el}{${module.moduleName}ConversationManager.endTotalConversation()}" /></li>
+											<li><h:commandLink action="${el}{${module.moduleName}Action.startConversation()}" value="XXX" actionListener="${el}{${module.moduleName}ConversationManager.endTotalConversation()}" /></li>
 										</ul>
 									</div>
 								</div>
@@ -86,57 +77,12 @@
 						<div class="span8 offset2 text-left bs-docs-example">
 							<h:form class="form-horizontal">
 
-								<!-- selection item -->
-
-								<div class="control-group">
-									<h:outputLabel class="control-label" for="selectItem" value="select:" />
-									<div class="controls">
-										<h:selectOneMenu label="selectItem" id="selectItem" required="true"
-											valueChangeListener="${el}{${module.moduleName}Action.onMatrixProjectListValueChange}">
-											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true"/>
-											<f:selectItems value="${el}{${module.moduleName}Action.matrixProjectList}" />
-											
-											<f:ajax event="change" execute="project " render="module">
-												
-											</f:ajax>
-										</h:selectOneMenu>
-										&nbsp;
-										<h:outputLink href="#myModal" class="btn btn-success" data-toggle="modal">新增项目</h:outputLink>
-									</div>
-								</div>
-
-								<!-- 模块名称 -->
-
-								<div class="control-group">
-									<h:outputLabel class="control-label" for="moduleName" value="模块名称" />
-									<div class="controls">
-										<h:inputText id="moduleName" placeholder="模块名称" value="${el}{matrixModule.moduleName}" required="true"
-											requiredMessage="模块名称必须输入">
-										</h:inputText>
-										<span class="label label-info">首字母小写，将作为包名出现，如：report</span>
-									</div>
-								</div>
-
-
-								<div class="control-group">
-									<h:outputLabel class="control-label" for="entityBeanName" value="实体Bean名称" />
-									<div class="controls">
-										<h:inputText id="entityBeanName" placeholder="实体Bean名称" value="${el}{matrixModule.entityBeanName}" />
-										<span class="label label-info">首字母小写，将自动生成Session Bean的增删改查功能。</span>
-									</div>
-								</div>
-								<div class="control-group">
-									<h:outputLabel class="control-label" for="selectBeanName" value="Select元素对于Bean名称" />
-									<div class="controls">
-										<h:inputText id="selectBeanName" placeholder="Select元素对于Bean名称" value="${el}{matrixModule.selectBeanName}" />
-										<span class="label label-info">首字母小写，将自动生成单例Bean的缓存查询功能</span>
-									</div>
-								</div>
 								<div class="form-actions">
-									<h:commandButton type="submit" class="btn btn-primary btn-large" value="生成方案(.zip)" action="${el}{${module.moduleName}Action.createMatrixProject}" />
+									<h:commandButton type="submit" class="btn btn-primary btn-large" value="action" />
 									&nbsp;
-									<h:commandButton type="reset" class="btn btn-warning btn-large" value="重置" />
+									<h:commandButton type="reset" class="btn btn-warning btn-large" value="reset" />
 								</div>
+								
 							</h:form>
 						</div>
 					</div>

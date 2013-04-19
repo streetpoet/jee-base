@@ -19,22 +19,10 @@
 
 		<!-- Resource Bundles -->
 		<resource-bundle>
-			<base-name>messages.system.Message</base-name>
-			<var>sysBundle</var>
+			<base-name>messages.${module.moduleName}.Message</base-name>
+			<var>${module.moduleName}Bundle</var>
 		</resource-bundle>
-		<resource-bundle>
-			<base-name>messages.product.Message</base-name>
-			<var>productBundle</var>
-		</resource-bundle>
-		<resource-bundle>
-			<base-name>messages.plan.Message</base-name>
-			<var>planBundle</var>
-		</resource-bundle>
-		<resource-bundle>
-			<base-name>messages.matrix.Message</base-name>
-			<var>matrixBundle</var>
-		</resource-bundle>
-		<message-bundle>messages.jsf.Messages</message-bundle>
+		
 	</application>
 	<factory>
 	    <exception-handler-factory>com.spstudio.love.system.exception.LoveExceptionHandlerFactory</exception-handler-factory>

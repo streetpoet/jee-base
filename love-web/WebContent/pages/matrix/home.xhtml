@@ -22,10 +22,10 @@
 							<h:form>
 								<div class="navbar">
 									<div class="navbar-inner">
-										<h:outputLink class="brand" href="#">当前位置：</h:outputLink>
+										<h:outputLink class="brand" href="#">#{matrixBundle['matrix.current']}</h:outputLink>
 										<ul class="nav">
 											<li><h:commandLink action="HOME" value="Home" actionListener="#{matrixConversationManager.endTotalConversation()}" /></li>
-											<li><h:commandLink action="#{matrixAction.startConversation()}" value="项目方案生成" actionListener="#{matrixConversationManager.endTotalConversation()}" /></li>
+											<li><h:commandLink action="#{matrixAction.startConversation()}" value="#{matrixBundle['matrix.cfgsolution']}" actionListener="#{matrixConversationManager.endTotalConversation()}" /></li>
 										</ul>
 									</div>
 								</div>
@@ -41,7 +41,7 @@
 						<div class="span8 offset2">
 							<div class="page-header text-left">
 								<h2>
-									项目模块属性配置 <small>version 1.0</small>
+									#{matrixBundle['matrix.cfgsolution']} <small>v1.0</small>
 								</h2>
 							</div>
 						</div>
@@ -81,7 +81,7 @@
 								<!-- 项目选择 -->
 
 								<div class="control-group">
-									<h:outputLabel class="control-label" for="project" value="项目选择" />
+									<h:outputLabel class="control-label" for="project" value="#{matrixBundle['matrix.chooseProject']}" />
 									<div class="controls">
 										<h:selectOneMenu label="project selection" id="project" value="#{matrixAction.selectedProjectId}" required="true"
 											valueChangeListener="#{matrixAction.onMatrixProjectListValueChange}">
@@ -89,7 +89,7 @@
 											<f:selectItems value="#{matrixAction.matrixProjectList}" />
 											<f:ajax event="change" execute="project" render="module function belongModule" />
 										</h:selectOneMenu>
-										&nbsp; <a href="#projectModal" class="btn btn-success" data-toggle="modal">新增项目</a>
+										&nbsp; <a href="#projectModal" class="btn btn-success" data-toggle="modal">#{matrixBundle['matrix.createProject']}</a>
 									</div>
 								</div>
 
@@ -97,13 +97,13 @@
 								<div id="projectModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myProjectModalLabel" aria-hidden="true">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-										<h3 id="myProjectModalLabel">输入新项目名称</h3>
+										<h3 id="myProjectModalLabel">#{matrixBundle['matrix.inputProjectName']}</h3>
 									</div>
 
 									<div class="modal-body form-horizontal">
 										<p>
 											<div class="control-group">
-												<h:outputLabel class="control-label" for="projectName" value="新项目名称" />
+												<h:outputLabel class="control-label" for="projectName" value="#{matrixBundle['matrix.newProject']}" />
 												<div class="controls">
 													<h:inputText id="projectName" value="#{matrixProject.projectName}" />
 												</div>
@@ -111,10 +111,10 @@
 										</p>
 									</div>
 									<div class="modal-footer">
-										<h:commandButton styleClass="btn btn-primary" value="保存新项目名称" action="#{matrixAction.createMatrixProject()}">
+										<h:commandButton styleClass="btn btn-primary" value="#{matrixBundle['matrix.saveProject']}" action="#{matrixAction.createMatrixProject()}">
 											<f:ajax execute="projectName" render="project belongProject" onevent="monitorProjectModel" />
 										</h:commandButton>
-										<input type="button" class="btn btn-warning" data-dismiss="modal" aria-hidden="true" value="关闭"></input>
+										<input type="button" class="btn btn-warning" data-dismiss="modal" aria-hidden="true" value="#{matrixBundle['matrix.close']}"></input>
 									</div>
 								</div>
 
@@ -122,7 +122,7 @@
 								<!-- 模块选择 -->
 
 								<div class="control-group">
-									<h:outputLabel class="control-label" for="module" value="模块选择" />
+									<h:outputLabel class="control-label" for="module" value="#{matrixBundle['matrix.chooseModule']}" />
 									<div class="controls">
 										<h:selectOneMenu label="module selection" id="module" value="#{matrixAction.selectedModuleId}" required="true"
 											valueChangeListener="#{matrixAction.onMatrixModuleListValueChange}">
@@ -132,7 +132,7 @@
 										</h:selectOneMenu>
 										&nbsp; 
 										<a href="#moduleModal" class="btn btn-success" data-toggle="modal" 
-											onclick="$('#form\\:belongProject').val($('#form\\:project').val());">新增模块</a>
+											onclick="$('#form\\:belongProject').val($('#form\\:project').val());">#{matrixBundle['matrix.createModule']}</a>
 									</div>
 								</div>
 
@@ -140,13 +140,13 @@
 								<div id="moduleModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="moduleModalLabel" aria-hidden="true">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-										<h3 id="moduleModalLabel">输入新模块名称</h3>
+										<h3 id="moduleModalLabel">#{matrixBundle['matrix.inputModuleName']}</h3>
 									</div>
 
 									<div class="modal-body form-horizontal">
 										<p>
 											<div class="control-group">
-												<h:outputLabel class="control-label" for="belongProject" value="所属项目" />
+												<h:outputLabel class="control-label" for="belongProject" value="#{matrixBundle['matrix.belongProject']}" />
 												<div class="controls">
 													<h:selectOneMenu label="project selection" id="belongProject" disabled="true">
 														<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true" />
@@ -155,7 +155,7 @@
 												</div>
 											</div>
 										<div class="control-group">
-											<h:outputLabel class="control-label" for="inputModuleLabel" value="新模块名称" />
+											<h:outputLabel class="control-label" for="inputModuleLabel" value="#{matrixBundle['matrix.newModule']}" />
 											<div class="controls">
 												<h:inputText id="inputModuleLabel" value="#{matrixModule.moduleName}" />
 											</div>
@@ -163,17 +163,17 @@
 										</p>
 									</div>
 									<div class="modal-footer">
-										<h:commandButton styleClass="btn btn-primary" value="保存新模块名称" action="#{matrixAction.createMatrixModule()}">
+										<h:commandButton styleClass="btn btn-primary" value="#{matrixBundle['matrix.saveModule']}" action="#{matrixAction.createMatrixModule()}">
 											<f:ajax execute="project inputModuleLabel" render="module belongModule" onevent="monitorModuleModel" />
 										</h:commandButton>
-										<input type="button" class="btn btn-warning" data-dismiss="modal" aria-hidden="true" value="关闭"></input>
+										<input type="button" class="btn btn-warning" data-dismiss="modal" aria-hidden="true" value="#{matrixBundle['matrix.close']}"></input>
 									</div>
 								</div>
 
 								<!-- 功能选择 -->
 
 								<div class="control-group">
-									<h:outputLabel class="control-label" for="function" value="功能选择" />
+									<h:outputLabel class="control-label" for="function" value="#{matrixBundle['matrix.chooseFunction']}" />
 									<div class="controls">
 										<h:selectOneMenu id="function" value="#{matrixAction.selectedFunctionId}" required="true"
 											valueChangeListener="#{matrixAction.onMatrixFunctionListValueChange}">
@@ -183,7 +183,7 @@
 										</h:selectOneMenu>
 										&nbsp;
 										<a href="#functionModal" class="btn btn-success" data-toggle="modal" 
-											onclick="$('#form\\:belongModule').val($('#form\\:module').val());">新增功能</a>
+											onclick="$('#form\\:belongModule').val($('#form\\:module').val());">#{matrixBundle['matrix.createFunction']}</a>
 									</div>
 								</div>
 								
@@ -191,13 +191,13 @@
 								<div id="functionModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="functionModalLabel" aria-hidden="true">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-										<h3 id="functionModalLabel">输入新功能名称</h3>
+										<h3 id="functionModalLabel">#{matrixBundle['matrix.inputFunctionName']}</h3>
 									</div>
 
 									<div class="modal-body form-horizontal">
 										<p>
 											<div class="control-group">
-												<h:outputLabel class="control-label" for="belongModule" value="所属模块" />
+												<h:outputLabel class="control-label" for="belongModule" value="#{matrixBundle['matrix.belongModule']}" />
 												<div class="controls">
 													<h:selectOneMenu label="module selection" id="belongModule" disabled="true">
 														<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="true" />
@@ -206,7 +206,7 @@
 												</div>
 											</div>
 											<div class="control-group">
-												<h:outputLabel class="control-label" for="inputFunctionLabel" value="新功能名称" />
+												<h:outputLabel class="control-label" for="inputFunctionLabel" value="#{matrixBundle['matrix.newFunction']}" />
 												<div class="controls">
 													<h:inputText id="inputFunctionLabel" value="#{matrixFunction.functionName}" />
 												</div>
@@ -214,21 +214,21 @@
 										</p>
 									</div>
 									<div class="modal-footer">
-										<h:commandButton styleClass="btn btn-primary" value="保存新功能名称" action="#{matrixAction.createMatrixFunction()}">
+										<h:commandButton styleClass="btn btn-primary" value="#{matrixBundle['matrix.saveFunction']}" action="#{matrixAction.createMatrixFunction()}">
 											<f:ajax execute="module inputFunctionLabel" render="function" onevent="monitorFunctionModel" />
 										</h:commandButton>
-										<input type="button" class="btn btn-warning" data-dismiss="modal" aria-hidden="true" value="关闭"></input>
+										<input type="button" class="btn btn-warning" data-dismiss="modal" aria-hidden="true" value="#{matrixBundle['matrix.close']}"></input>
 									</div>
 								</div>
 
 								<!-- 模块名称 -->
 
 								<div class="control-group">
-									<h:outputLabel class="control-label" for="moduleName" value="模块名称" />
+									<h:outputLabel class="control-label" for="moduleName" value="#{matrixBundle['matrix.moduleName']}" />
 									<div class="controls">
-										<h:inputText id="moduleName" placeholder="模块名称" value="#{matrixModule.moduleName}" required="true" />
+										<h:inputText id="moduleName" placeholder="#{matrixBundle['matrix.moduleName']}" value="#{matrixModule.moduleName}" required="true" />
 										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
-											title="模块名称将生成为代码中的包名，建议起成简短且具有含义的英文单词，如，report"> <i class="icon-question-sign" />
+											title="#{matrixBundle['matrix.moduleNameTip']}"> <i class="icon-question-sign" />
 										</a>
 									</div>
 								</div>
@@ -236,34 +236,34 @@
 								<!-- 功能名称 -->
 
 								<div class="control-group">
-									<h:outputLabel class="control-label" for="funcName" value="功能名称" />
+									<h:outputLabel class="control-label" for="funcName" value="#{matrixBundle['matrix.functionName']}" />
 									<div class="controls">
-										<h:inputText id="funcName" placeholder="功能名称" value="#{matrixFunction.functionName}" required="true" />
+										<h:inputText id="funcName" placeholder="#{matrixBundle['matrix.functionName']}" value="#{matrixFunction.functionName}" required="true" />
 										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
-											title="功能名称将生成为页面名，建议起成能够反映出该功能行为的动名词组合，如，addWorkPlan，系统会自动生成addWorkPlan.xhtml页面"><i class="icon-question-sign" /> </a>
+											title="#{matrixBundle['matrix.functionNameTip']}"><i class="icon-question-sign" /> </a>
 									</div>
 								</div>
 
 								<!-- Entity Bean名称 -->
 
 								<div class="control-group">
-									<h:outputLabel class="control-label" for="entityBeanName" value="Entity Bean Name" />
+									<h:outputLabel class="control-label" for="entityBeanName" value="#{matrixBundle['matrix.entityBeanName']}" />
 									<div class="controls">
-										<h:inputText id="entityBeanName" placeholder="Entity Bean Name" value="#{matrixModule.entityBeanName}" required="true" />
+										<h:inputText id="entityBeanName" placeholder="#{matrixBundle['matrix.entityBeanName']}" value="#{matrixModule.entityBeanName}" required="true" />
 										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
-											title="entity bean是用来在跨服务器的Web Server和Ejb Server之间传递的对象，系统会在非单例EJB中生成相应增删改查接口"> <i class="icon-question-sign" />
+											title="#{matrixBundle['matrix.entityBeanNameTip']}"> <i class="icon-question-sign" />
 										</a>
 									</div>
 								</div>
 
-								<!-- Select Bean名称 -->
+								<!-- Selection Bean名称 -->
 
 								<div class="control-group">
-									<h:outputLabel class="control-label" for="selectBeanName" value="Selection Bean Name" />
+									<h:outputLabel class="control-label" for="selectBeanName" value="#{matrixBundle['matrix.selectionBeanName']}" />
 									<div class="controls">
-										<h:inputText id="selectBeanName" placeholder="Selection Bean Name" value="#{matrixModule.selectBeanName}" required="true" />
+										<h:inputText id="selectBeanName" placeholder="#{matrixBundle['matrix.selectionBeanName']}" value="#{matrixModule.selectBeanName}" required="true" />
 										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
-											title="selection bean将用来生成页面下拉列表对应的bean，默认将生成在单例EJB中并具备缓存机制"> <i class="icon-question-sign" />
+											title="#{matrixBundle['matrix.selectionBeanNameTip']}"> <i class="icon-question-sign" />
 										</a>
 									</div>
 								</div>
@@ -271,9 +271,9 @@
 								<!-- 提交按钮 -->
 
 								<div class="form-actions">
-									<h:commandButton type="submit" class="btn btn-primary btn-large" value="生成方案(.zip)" action="#{matrixAction.createMatrixSolution()}" />
+									<h:commandButton type="submit" class="btn btn-primary btn-large" value="#{matrixBundle['matrix.btnGenerateSolution']}" action="#{matrixAction.createMatrixSolution()}" />
 									&nbsp;
-									<h:commandButton type="reset" class="btn btn-warning btn-large" value="重置" />
+									<h:commandButton type="reset" class="btn btn-warning btn-large" value="#{matrixBundle['matrix.btnReset']}" />
 								</div>
 							</h:form>
 						</div>

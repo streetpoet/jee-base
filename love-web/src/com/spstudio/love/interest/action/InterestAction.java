@@ -15,7 +15,6 @@ import javax.inject.Named;
 import org.jboss.logging.Logger;
 
 import com.spstudio.love.interest.bean.TechSelectBeanQueryConversation;
-import com.spstudio.love.interest.bean.TechTypeBeanHtmlSelectionBean;
 import com.spstudio.love.interest.event.InterestCreateEvent;
 import com.spstudio.love.interest.event.InterestCreateEventQualifier;
 import com.spstudio.love.interest.event.InterestDeleteEvent;
@@ -26,7 +25,6 @@ import com.spstudio.love.interest.event.InterestQueryEventQualifier;
 import com.spstudio.love.interest.event.InterestUpdateEvent;
 import com.spstudio.love.interest.event.InterestUpdateEventQualifier;
 import com.spstudio.love.interest.qualifier.InterestSingleRemoteBean;
-
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.qualifier.LoveLogged;
 import com.spstudio.love.system.qualifier.LoveTrace;
@@ -46,11 +44,10 @@ public class InterestAction implements Serializable {
 	@Inject @InterestQueryEventQualifier Event<InterestQueryEvent> interestQueryEvent;
 	@Inject @InterestUpdateEventQualifier Event<InterestUpdateEvent> interestUpdateEvent;
 	@Inject TechSelectBeanQueryConversation techSelectBeanQueryConversation;
-	@Inject TechTypeBeanHtmlSelectionBean techTypeBeanHtmlSelectBean;
 	@Inject @LoveLogged Logger log;
 	
 	public List<SelectItem> getTechTypeBeanList() {
-		return techTypeBeanHtmlSelectBean.getTechTypeBeanList();
+		return null;
 	}
 	
 	public void createTechSelectBean() {

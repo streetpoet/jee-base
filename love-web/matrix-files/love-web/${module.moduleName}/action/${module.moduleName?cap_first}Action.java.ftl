@@ -15,7 +15,6 @@ import javax.inject.Named;
 import org.jboss.logging.Logger;
 
 import com.spstudio.love.${module.moduleName}.bean.${module.entityBeanName?cap_first}QueryConversation;
-import com.spstudio.love.${module.moduleName}.bean.${module.selectBeanName?cap_first}HtmlSelectionBean;
 import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}CreateEvent;
 import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}CreateEventQualifier;
 import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}DeleteEvent;
@@ -46,11 +45,10 @@ public class ${module.moduleName?cap_first}Action implements Serializable {
 	@Inject @${module.moduleName?cap_first}QueryEventQualifier Event<${module.moduleName?cap_first}QueryEvent> ${module.moduleName}QueryEvent;
 	@Inject @${module.moduleName?cap_first}UpdateEventQualifier Event<${module.moduleName?cap_first}UpdateEvent> ${module.moduleName}UpdateEvent;
 	@Inject ${module.entityBeanName?cap_first}QueryConversation ${module.entityBeanName}QueryConversation;
-	@Inject ${module.selectBeanName?cap_first}HtmlSelectionBean ${module.selectBeanName}HtmlSelectBean;
 	@Inject @LoveLogged Logger log;
 	
 	public List<SelectItem> get${module.selectBeanName?cap_first}List() {
-		return ${module.selectBeanName}HtmlSelectBean.get${module.selectBeanName?cap_first}List();
+		return null;
 	}
 	
 	public void create${module.entityBeanName?cap_first}() {

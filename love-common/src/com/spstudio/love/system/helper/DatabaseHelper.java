@@ -21,18 +21,20 @@ public class DatabaseHelper {
 	
 	@Inject @LoveDataSource DataSource ds;
 	@Inject @LoveLogged Logger log;
-
-	public void beginTransaction(){
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		try {
-			conn = ds.getConnection();
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}
+	
+	private enum OpMode {
+		RETURN_EFFECT_ROW, RETURN_GEN_KEY,
+	}
+	
+	public int doDMLOperationWithGeneratedKeyReturn(String sql, Object[] params){
+		return doDML(sql, params, OpMode.RETURN_GEN_KEY);
 	}
 	
 	public int doDMLOperation(String sql, Object[] params) {
+		return doDML(sql, params, OpMode.RETURN_EFFECT_ROW);
+	}
+	
+	private int doDML(String sql, Object[] params, OpMode flag){
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try {
@@ -51,8 +53,23 @@ public class DatabaseHelper {
 					}
 				}
 			}
-			int effectRow = stmt.executeUpdate();
-			return effectRow;
+			
+			switch (flag) {
+			case RETURN_EFFECT_ROW:
+				int effectRow = stmt.executeUpdate();
+				return effectRow;
+			case RETURN_GEN_KEY:
+				stmt.executeUpdate();
+				ResultSet gk = stmt.getGeneratedKeys();
+				if (gk.next()){
+					int generatedKey = gk.getInt(1);
+					return generatedKey;
+				}
+			default:
+				break;
+			}
+			
+			return 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return -1;

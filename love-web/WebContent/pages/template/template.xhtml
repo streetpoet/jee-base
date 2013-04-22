@@ -25,10 +25,9 @@
 				<div class="navbar-inner">
 					<div class="container">
 						<!-- brand -->
-						<h:link outcome="HOME" class="brand">
+						<a class="brand" href="#">
 							<h:outputText value="#{sysBundle['website-name']}" escape="false" />
-							<f:param name="cid" value="#{javax.enterprise.context.conversation.id}"/>
-						</h:link>
+						</a>
 						<!-- logout button -->
 						<div class="nav-collapse collapse pull-right">
 							<h:form class="form-inline navbar-form">

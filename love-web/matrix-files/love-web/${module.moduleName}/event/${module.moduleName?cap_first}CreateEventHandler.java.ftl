@@ -25,14 +25,14 @@ public class ${module.moduleName?cap_first}CreateEventHandler implements Seriali
 	 */
 	private static final long serialVersionUID = -${uid()}L;
 	
-	@Inject @${module.entityBeanName?cap_first}Qualifier ${module.entityBeanName?cap_first} ${module.moduleName}Project;
+	@Inject @${module.entityBeanName?cap_first}Qualifier ${module.entityBeanName?cap_first} ${module.entityBeanName};
 	@Inject @${module.moduleName?cap_first}RemoteBean I${module.moduleName?cap_first} ${module.moduleName}RemoteBean;
 	@Inject @UserInfoQualifier UserInfo userInfo;
 
 	@LoveTrace
 	public void create${module.entityBeanName?cap_first}(@Observes @${module.moduleName?cap_first}CreateEventQualifier ${module.moduleName?cap_first}CreateEvent event){
 		
-		${module.entityBeanName?cap_first} temp${module.entityBeanName?cap_first} = ${module.moduleName}Project.clone();
+		${module.entityBeanName?cap_first} temp${module.entityBeanName?cap_first} = ${module.entityBeanName}.clone();
 		boolean result = ${module.moduleName}RemoteBean.create${module.entityBeanName?cap_first}(temp${module.entityBeanName?cap_first});
 		FacesContext.getCurrentInstance().addMessage(
 				FacesMessage.FACES_MESSAGES, 

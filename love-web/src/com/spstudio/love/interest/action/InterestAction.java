@@ -15,6 +15,8 @@ import javax.inject.Named;
 import org.jboss.logging.Logger;
 
 import com.spstudio.love.interest.bean.TechSelectBeanQueryConversation;
+import com.spstudio.love.interest.entity.TechSelectBean;
+import com.spstudio.love.interest.entity.TechTypeBean;
 import com.spstudio.love.interest.event.InterestCreateEvent;
 import com.spstudio.love.interest.event.InterestCreateEventQualifier;
 import com.spstudio.love.interest.event.InterestDeleteEvent;
@@ -25,6 +27,7 @@ import com.spstudio.love.interest.event.InterestQueryEventQualifier;
 import com.spstudio.love.interest.event.InterestUpdateEvent;
 import com.spstudio.love.interest.event.InterestUpdateEventQualifier;
 import com.spstudio.love.interest.qualifier.InterestSingleRemoteBean;
+import com.spstudio.love.interest.qualifier.TechSelectBeanQualifier;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.qualifier.LoveLogged;
 import com.spstudio.love.system.qualifier.LoveTrace;
@@ -39,6 +42,7 @@ public class InterestAction implements Serializable {
 	
 	@Inject Conversation conversation;
 	@Inject @InterestSingleRemoteBean IInterestSingleton interestSingleton;
+	@Inject @TechSelectBeanQualifier TechSelectBean interestProject;
 	@Inject @InterestCreateEventQualifier Event<InterestCreateEvent> interestCreateEvent;
 	@Inject @InterestDeleteEventQualifier Event<InterestDeleteEvent> interestDeleteEvent;
 	@Inject @InterestQueryEventQualifier Event<InterestQueryEvent> interestQueryEvent;
@@ -46,8 +50,38 @@ public class InterestAction implements Serializable {
 	@Inject TechSelectBeanQueryConversation techSelectBeanQueryConversation;
 	@Inject @LoveLogged Logger log;
 	
+	private int[] selectedTechIds;
+	
 	public List<SelectItem> getTechTypeBeanList() {
 		return null;
+	}
+	
+	public void select(){
+		interestCreateEvent.fire(new InterestCreateEvent());
+	}
+	
+	public void unSelect(){
+		interestDeleteEvent.fire(new InterestDeleteEvent());
+	}
+	
+	public List<TechTypeBean> getTechClassifyInfo(){
+		List<TechTypeBean> listBean = interestSingleton.retrieveTechTypeBeanList();
+		String firstClassifyLabel = "";
+		TechTypeBean point = null;
+		int rowSpan = 0;
+		for (TechTypeBean bean: listBean){
+			if (!bean.getClassifyFirstLabel().equals(firstClassifyLabel)){
+				if (point != null){
+					point.setClassifyFirstRowSpan(rowSpan);
+				}
+				point = bean;
+				firstClassifyLabel = bean.getClassifyFirstLabel();
+				rowSpan = 0;
+			}
+			rowSpan ++;
+		}
+		point.setClassifyFirstRowSpan(rowSpan);
+		return listBean;
 	}
 	
 	public void createTechSelectBean() {
@@ -71,6 +105,7 @@ public class InterestAction implements Serializable {
 	public void startConversation() {
 		if (conversation.isTransient()) {
 			conversation.begin();
+			interestQueryEvent.fire(new InterestQueryEvent(QueryMode.LOAD_LIKED_TECH_LIST));
 		}
 	}
 	
@@ -99,5 +134,12 @@ public class InterestAction implements Serializable {
 		}
 		queryTechSelectBean();
 	}
-	
+
+	public int[] getSelectedTechIds() {
+		return selectedTechIds;
+	}
+
+	public void setSelectedTechIds(int[] selectedTechIds) {
+		this.selectedTechIds = selectedTechIds;
+	}
 }

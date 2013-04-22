@@ -54,6 +54,7 @@ public class InterestSingletonBean implements IInterestSingleton {
 				bean.setClassifyFirstLabel((String)data[1]);
 				bean.setClassifySecondId((Integer)data[2]);
 				bean.setClassifySecondLabel((String)data[3]);
+				list.add(bean);
 			}
 		}
 		returnList = list;

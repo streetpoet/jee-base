@@ -1,5 +1,7 @@
 package interfaces.interest;
 
+import java.util.List;
+
 import javax.ejb.Remote;
 
 import com.spstudio.love.interest.entity.TechSelectBean;
@@ -19,5 +21,7 @@ public interface IInterest {
 	public IQueryResult<TechSelectBean> queryTechSelectBean(TechSelectBeanCondition condition, PageObject pageObject);
 	
 	public TechSelectBean loadTechSelectBean(int TechSelectBeanId);
+	
+	public List<TechSelectBean> loadLikedTechSelectBean(int userId);
 
 }

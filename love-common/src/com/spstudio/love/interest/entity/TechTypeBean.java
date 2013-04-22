@@ -17,6 +17,7 @@ public class TechTypeBean implements Cloneable, Serializable{
 	private String classifyFirstLabel;
 	private int classifySecondId;
 	private String classifySecondLabel;
+	private int classifyFirstRowSpan;
 	
 	public void clear(){
 		id = -1;
@@ -84,5 +85,13 @@ public class TechTypeBean implements Cloneable, Serializable{
 
 	public void setClassifySecondLabel(String classifySecondLabel) {
 		this.classifySecondLabel = classifySecondLabel;
+	}
+
+	public int getClassifyFirstRowSpan() {
+		return classifyFirstRowSpan;
+	}
+
+	public void setClassifyFirstRowSpan(int classifyFirstRowSpan) {
+		this.classifyFirstRowSpan = classifyFirstRowSpan;
 	}
 }

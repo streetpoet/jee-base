@@ -1,8 +1,6 @@
-select 
-    id,
-    function_label,
-    function_name
-from
-    f4_function
+SELECT 
+    classify_id
+FROM
+    f3_user_selection us
 where
-    id = 1;
+    user_id = 1;

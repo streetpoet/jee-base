@@ -3,6 +3,7 @@ package com.spstudio.love.interest.event;
 import interfaces.interest.IInterest;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.enterprise.context.Dependent;
 import javax.enterprise.event.Observes;
@@ -14,8 +15,8 @@ import com.spstudio.love.interest.action.InterestAction;
 import com.spstudio.love.interest.bean.TechSelectBeanQueryConversation;
 import com.spstudio.love.interest.entity.TechSelectBean;
 import com.spstudio.love.interest.helper.TechSelectBeanCondition;
-import com.spstudio.love.interest.qualifier.TechSelectBeanQualifier;
 import com.spstudio.love.interest.qualifier.InterestRemoteBean;
+import com.spstudio.love.interest.qualifier.TechSelectBeanQualifier;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.bean.UserInfo;
 import com.spstudio.love.system.interfaces.IQueryResult;
@@ -44,10 +45,24 @@ public class InterestQueryEventHandler implements Serializable {
 		case LOAD_SINGLE_RECORD:
 			loadSingleInterest();
 			break;
-
+		case LOAD_LIKED_TECH_LIST:
+			loadLikedTechList();
+			break;
 		default:
 			break;
 		}
+	}
+	
+	private void loadLikedTechList(){
+		List<TechSelectBean> listBean = interestRemoteBean.loadLikedTechSelectBean(userInfo.getUserId());
+		int[] techIds = new int[]{};
+		if (listBean != null){
+			techIds = new int[listBean.size()];
+			for (int i = 0;i < listBean.size(); i ++){
+				techIds[i] = listBean.get(i).getTechClassifyId();
+			}
+		}
+		interestAction.setSelectedTechIds(techIds);
 	}
 	
 	private void loadSingleInterest(){

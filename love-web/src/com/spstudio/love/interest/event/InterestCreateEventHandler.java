@@ -35,6 +35,7 @@ public class InterestCreateEventHandler implements Serializable {
 		
 		TechSelectBean tempTechSelectBean = techSelectBean.clone();
 		tempTechSelectBean.setUserId(userInfo.getUserId());
+		System.out.println("userid = " + userInfo.getUserId() + ", classifyid = " + techSelectBean.getTechClassifyId() + ", select");
 		interestRemoteBean.createTechSelectBean(tempTechSelectBean);
 		interestQueryEvent.fire(new InterestQueryEvent(QueryMode.LOAD_LIKED_TECH_LIST));
 	}

@@ -56,10 +56,12 @@ public class InterestAction implements Serializable {
 		return null;
 	}
 	
+	@LoveTrace
 	public void select(){
 		interestCreateEvent.fire(new InterestCreateEvent());
 	}
 	
+	@LoveTrace
 	public void unSelect(){
 		interestDeleteEvent.fire(new InterestDeleteEvent());
 	}

@@ -33,6 +33,7 @@ public class InterestDeleteEventHandler implements Serializable {
 	public void deleteTechSelectBean(@Observes @InterestDeleteEventQualifier InterestDeleteEvent event){
 		TechSelectBean bean = techSelectBean.clone();
 		bean.setUserId(userInfo.getUserId());
+		System.out.println("userid = " + userInfo.getUserId() + ", classifyid = " + techSelectBean.getTechClassifyId() + ", unselect");
 		interestRemoteBean.deleteTechSelectBean(bean);
 		interestQueryEvent.fire(new InterestQueryEvent(QueryMode.LOAD_LIKED_TECH_LIST));
 	}

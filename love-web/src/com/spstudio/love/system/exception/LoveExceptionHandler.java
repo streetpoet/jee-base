@@ -35,7 +35,8 @@ public class LoveExceptionHandler extends
 			ExceptionQueuedEventContext context = (ExceptionQueuedEventContext)i.next().getSource();
 			Throwable t = context.getException();
 				
-			if (t.getClass().getName().contains("NonexistentConversationException")){
+			if (t.getClass().getName().contains("NonexistentConversationException")
+					|| t.getClass().getName().contains("ContextNotActiveException")){
 				FacesContext fc = FacesContext.getCurrentInstance();
 				try {
 					HttpServletResponse response = (HttpServletResponse) fc.getExternalContext().getResponse();

@@ -8,7 +8,7 @@
 		<session>
 			<ejb-name>ProductBean</ejb-name>
 			<security-role-ref>
-				<role-name>admin</role-name>
+				<role-name>Admin</role-name>
 				<role-link>MemberRole</role-link>
 			</security-role-ref>
 			<security-identity>
@@ -18,12 +18,21 @@
 		<session>
 			<ejb-name>ProductSingletonBean</ejb-name>
 			<security-role-ref>
-				<role-name>admin</role-name>
+				<role-name>Admin</role-name>
 				<role-link>MemberRole</role-link>
 			</security-role-ref>
 			<security-identity>
 				<use-caller-identity />
 			</security-identity>
+		</session>
+		<session>
+		    <ejb-name>SystemBean</ejb-name>
+		    <security-role-ref>
+		        <role-name>anonymous</role-name>
+		    </security-role-ref>
+		    <security-identity>
+		        <use-caller-identity />
+		    </security-identity>
 		</session>
 	</enterprise-beans>
 	<assembly-descriptor>
@@ -32,7 +41,7 @@
 			practice to ensure portability across application servers and for deployment 
 			descriptor maintenance. -->
 		<security-role>
-			<role-name>admin</role-name>
+			<role-name>Admin</role-name>
 		</security-role>
 		<security-role>
 			<role-name>MemberRole</role-name>
@@ -41,18 +50,11 @@
 		<!-- Permission Definition -->
 
 		<method-permission>
-			<unchecked />
-			<method>
-				<ejb-name>ProductBean</ejb-name>
-				<method-name>*</method-name>
-			</method>
-		</method-permission>
-		<method-permission>
-			<unchecked />
-			<method>
-				<ejb-name>ProductSingletonBean</ejb-name>
-				<method-name>*</method-name>
-			</method>
+		    <unchecked />
+		    <method>
+		        <ejb-name>SystemBean</ejb-name>
+		        <method-name>*</method-name>
+		    </method>
 		</method-permission>
 
 	</assembly-descriptor>

@@ -34,6 +34,10 @@
 			<base-name>messages.matrix.Message</base-name>
 			<var>matrixBundle</var>
 		</resource-bundle>
+		<resource-bundle>
+			<base-name>messages.interest.Message</base-name>
+			<var>interestBundle</var>
+		</resource-bundle>
 		<message-bundle>messages.jsf.Messages</message-bundle>
 	</application>
 	<factory>

@@ -10,26 +10,9 @@
 			<f:view>
 
 				<!-- Navigator -->
-
-				<div class="container" style="margin-top: 20px;">
-					<div class="row-fluid">
-						<div class="span12">
-							<h:form>
-								<div class="navbar">
-									<div class="navbar-inner">
-										<h:outputLink class="brand" href="#">当前位置：</h:outputLink>
-										<ul class="nav">
-											<li><h:commandLink action="HOME" value="Home" actionListener="#{interestConversationManager.endTotalConversation()}" /></li>
-											<li><h:commandLink action="#{interestAction.startConversation()}" value="兴趣选择"
-													actionListener="#{interestConversationManager.endTotalConversation()}" /></li>
-										</ul>
-									</div>
-								</div>
-							</h:form>
-						</div>
-					</div>
-				</div>
-
+				<ui:insert>
+					<ui:include src="./navigator.xhtml"></ui:include>
+				</ui:insert>
 
 				<div class="container-fluid">
 
@@ -99,7 +82,8 @@
 												<c:forEach items="#{interestAction.selectedTechIds}" var="techId">
 													<c:if test="#{techBean.classifyFirstId == techId}">
 														<p class="text-center">
-														<h:commandButton id="btn1-#{techBean.classifyFirstId}" value="取消关注" action="#{interestAction.unSelect}" styleClass="btn btn-danger" immediate="true">
+														<h:commandButton id="btn1-#{techBean.classifyFirstId}" value="取消关注" action="#{interestAction.unSelect}" styleClass="btn btn-danger" immediate="true" 
+															onclick="$(this).hide();$('#loading#{techBean.classifyFirstId}').show();">
 															<f:setPropertyActionListener target="#{techSelectBean.techClassifyId}" value="#{techBean.classifyFirstId}"></f:setPropertyActionListener>
 															<f:ajax execute="btn1-#{techBean.classifyFirstId}" render="form-#{techBean.classifyFirstId}" onerror="ajaxError" onevent="ajaxEvent"></f:ajax>
 														</h:commandButton>
@@ -109,12 +93,16 @@
 												</c:forEach>
 												<c:if test="#{isLiked == false}">
 													<p class="text-center">
-													<h:commandButton id="btn2-#{techBean.classifyFirstId}" value="我感兴趣" action="#{interestAction.select}" styleClass="btn btn-success" immediate="true">
+													<h:commandButton id="btn2-#{techBean.classifyFirstId}" value="我感兴趣" action="#{interestAction.select}" styleClass="btn btn-success" immediate="true" 
+														onclick="$(this).hide();$('#loading#{techBean.classifyFirstId}').show();">
 														<f:setPropertyActionListener target="#{techSelectBean.techClassifyId}" value="#{techBean.classifyFirstId}"></f:setPropertyActionListener>
 														<f:ajax execute="btn2-#{techBean.classifyFirstId}" render="form-#{techBean.classifyFirstId}" onerror="ajaxError" onevent="ajaxEvent"></f:ajax>
 													</h:commandButton>
 													</p>
 												</c:if>
+												<p class="text-center" id="loading#{techBean.classifyFirstId}" style="display: none;">
+													<h:graphicImage value="/resources/img/#{view.locale}/loading.gif" />
+												</p>
 											</h:form>
 											</td>
 										</c:if>
@@ -128,6 +116,7 @@
 				</div>
 
 				<h:outputScript>
+					
 					function ajaxError(data){
 						alert('Error - ' + data);
 					}

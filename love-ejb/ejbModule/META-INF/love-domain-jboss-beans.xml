@@ -12,6 +12,7 @@
 				<module-option name="hashAlgorithm">MD5</module-option> <!-- MD5, SHA -->
 				<module-option name="hashEncoding">base64</module-option> <!-- base64, hex or rfc2617 -->
 				<module-option name="hashUserPassword">true</module-option>
+				<module-option name="unauthenticatedIdentity">anonymous</module-option>
 			</login-module>
 
 		</authentication>

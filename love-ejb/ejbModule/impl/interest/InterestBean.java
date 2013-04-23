@@ -19,16 +19,23 @@ public class InterestBean implements IInterest {
 
 	@Inject DatabaseHelper helper;
 	
-	private static final String ADD_INTERESTING_TECH_SQL = "insert into f3_user_selection(user_id, classify_id, create_datetime) "
-														+"  select ?, ?, now() from dual"
-														+"  where not exists (select id from f3_user_selection where user_id = ? and classify_id = ?)";
-	private static final String QUERY_LIKED_TECH_LIST_SQL =  "SELECT  "
+	private static final String QUERY_LIKED_TECH_LIST_SQL =  "SELECT "
 			+"    classify_id "
 			+"FROM "
 			+"    f3_user_selection us "
 			+"where "
-			+"    user_id = ? ";
-	private static final String DELETE_ONE_LIKED_TECH_SQL = "delete from f3_user_selection where user_id = ? and classify_id = ?";
+			+"    user_id = ? and selected_flag = 1";
+
+	private static final String CREATE_OR_UPDATE_INTEREST_TECH_SQL =  "INSERT INTO "
+			+"f3_user_selection(id, user_id, classify_id, selected_flag, create_datetime, update_datetime) "
+			+"VALUES( "
+			+"ifnull((select b.id from f3_user_selection b where b.user_id = ? and b.classify_id = ?), (select max(c.id) + 1 from f3_user_selection c)),  "
+			+"?,  "
+			+"?,  "
+			+"?, "
+			+"now(), "
+			+"now())  "
+			+"ON DUPLICATE KEY UPDATE selected_flag = ?, update_datetime = now()";
 
 	
 	@Override
@@ -38,14 +45,23 @@ public class InterestBean implements IInterest {
 				techSelectBean.getTechClassifyId(),
 				techSelectBean.getUserId(),
 				techSelectBean.getTechClassifyId(),
+				1,
+				1
 		};
-		return helper.doDMLOperation(ADD_INTERESTING_TECH_SQL, params) == 1;
+		return helper.doDMLOperation(CREATE_OR_UPDATE_INTEREST_TECH_SQL, params) == 1;
 	}
 
 	@Override
 	public int deleteTechSelectBean(TechSelectBean techSelectBean) {
-		Object[] params = new Object[]{techSelectBean.getUserId(), techSelectBean.getTechClassifyId()};
-		return helper.doDMLOperation(DELETE_ONE_LIKED_TECH_SQL, params);
+		Object[] params = new Object[]{
+				techSelectBean.getUserId(), 
+				techSelectBean.getTechClassifyId(),
+				techSelectBean.getUserId(),
+				techSelectBean.getTechClassifyId(),
+				0,
+				0
+				};
+		return helper.doDMLOperation(CREATE_OR_UPDATE_INTEREST_TECH_SQL, params);
 	}
 
 	@Override

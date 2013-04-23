@@ -2,7 +2,28 @@
 <web-app id="WebApp_ID" version="3.0"
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	
 	<display-name>Love Website</display-name>
+	
+	<!-- ################################## -->
+	<!--     JSF Standard Context Params    -->
+	<!-- ################################## -->
+	
+	<context-param>
+		<!-- default value is 'Production', all are 'Development', 'UnitTest', 'SystemTest', 'Production' -->
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Production</param-value>
+	</context-param>
+	<context-param>
+		<!-- Save status on client or server -->
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>server</param-value>
+	</context-param>
+	<context-param>
+		<!-- treat EMPTY string as NULL, for the bean validation(@NotNull will work as intend) -->
+		<param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
+		<param-value>true</param-value>
+	</context-param>
 	<context-param>
 		<param-name>javax.faces.CONFIG_FILES</param-name>
 		<param-value>
@@ -13,24 +34,24 @@
 		    /faces-config/interest-faces-config.xml
 		</param-value>
 	</context-param>
+	
+	<!-- ################################### -->
+	<!--      JBoss JSF Context Params       -->
+	<!-- ################################### -->
+	
 	<context-param>
-		<!-- treat EMPTY string as NULL, for the bean validation(@NotNull will 
-			work as intend) -->
-		<param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
-		<param-value>true</param-value>
-	</context-param>
-	<!-- Context Setting for JSF -->
-	<context-param>
-		<!-- default value is 'Production', all are 'Development', 'UnitTest', 
-			'SystemTest', 'Production' -->
-		<param-name>javax.faces.PROJECT_STAGE</param-name>
-		<param-value>Development</param-value>
+      <param-name>org.jboss.jbossfaces.JSF_CONFIG_NAME</param-name>
+      <param-value>Mojarra-2.0.10</param-value>
 	</context-param>
 	<context-param>
-		<!-- Save status on client or server -->
-		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-		<param-value>server</param-value>
+	    <param-name>org.jboss.jbossfaces.WAR_BUNDLES_JSF_IMPL</param-name>
+	    <param-value>false</param-value>
 	</context-param>
+	<context-param>
+		<param-name>com.sun.faces.serializationProvider</param-name>
+		<param-value>org.jboss.web.jsf.integration.serialization.JBossSerializationProvider</param-value>
+	</context-param>
+	
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -53,11 +74,13 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Member Content</web-resource-name>
-			<url-pattern>/pages/*</url-pattern>
+			<url-pattern>/pages/home/*</url-pattern>
+			<url-pattern>/pages/interest/*</url-pattern>
+			<url-pattern>/pages/matrix/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>MemberRole</role-name>
-			<role-name>admin</role-name>
+			<role-name>Admin</role-name>
 		</auth-constraint>
 		<user-data-constraint>
 			<transport-guarantee>NONE</transport-guarantee>
@@ -67,7 +90,7 @@
 		<auth-method>FORM</auth-method>
 		<form-login-config>
 			<form-login-page>/pages/common/login.faces</form-login-page>
-			<form-error-page>/pages/common/exception_401.faces</form-error-page>
+			<form-error-page>/pages/common/exception.faces</form-error-page>
 		</form-login-config>
 	</login-config>
 	<security-role>
@@ -75,7 +98,7 @@
 		<role-name>MemberRole</role-name>
 	</security-role>
 	<security-role>
-		<description>Represent Normal User</description>
-		<role-name>admin</role-name>
+		<description>Represent Administrator</description>
+		<role-name>Admin</role-name>
 	</security-role>
 </web-app>

@@ -8,15 +8,28 @@ import javax.inject.Named;
 
 @SessionScoped
 @Named
-public class UserInfo implements Serializable{
+public class UserInfo implements Serializable, Cloneable{
 	
 	private static final long serialVersionUID = -5386449236793012236L;
 	
 	private int userId;
 	private int familyId;
+	private String loginId;
 	private String nickName;
 	private String familyName;
 	private String description;
+	private String password;
+	private String passwordRetry;
+	
+	public UserInfo clone(){
+		UserInfo ui = null;
+		try{
+			ui = (UserInfo)super.clone();
+		}catch(CloneNotSupportedException e){
+			e.printStackTrace();
+		}
+		return ui;	
+	}
 	
 	public int getUserId() {
 		return userId;
@@ -52,5 +65,28 @@ public class UserInfo implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPasswordRetry() {
+		return passwordRetry;
+	}
+
+	public void setPasswordRetry(String passwordRetry) {
+		this.passwordRetry = passwordRetry;
+	}
+
+	public String getLoginId() {
+		return loginId;
+	}
+
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
+	}
 }

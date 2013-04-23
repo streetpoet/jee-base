@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +40,17 @@ public class DatabaseHelper {
 		PreparedStatement stmt = null;
 		try {
 			conn = ds.getConnection();
-			stmt = conn.prepareStatement(sql);
+			switch (flag) {
+			case RETURN_EFFECT_ROW:
+				stmt = conn.prepareStatement(sql, Statement.NO_GENERATED_KEYS);
+				break;
+			case RETURN_GEN_KEY:
+				stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+				break;
+			default:
+				break;
+			}
+			
 			if (params != null){
 				for (int i = 0; i < params.length; i++) {
 					if (params[i] instanceof String) {

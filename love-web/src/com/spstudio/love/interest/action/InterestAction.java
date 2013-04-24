@@ -26,9 +26,11 @@ import com.spstudio.love.interest.event.InterestQueryEvent.QueryMode;
 import com.spstudio.love.interest.event.InterestQueryEventQualifier;
 import com.spstudio.love.interest.event.InterestUpdateEvent;
 import com.spstudio.love.interest.event.InterestUpdateEventQualifier;
+import com.spstudio.love.interest.nav.InterestNav;
 import com.spstudio.love.interest.qualifier.InterestSingleRemoteBean;
 import com.spstudio.love.interest.qualifier.TechSelectBeanQualifier;
 import com.spstudio.love.system.bean.PageObject;
+import com.spstudio.love.system.bean.UserMenu;
 import com.spstudio.love.system.qualifier.LoveLogged;
 import com.spstudio.love.system.qualifier.LoveTrace;
 
@@ -48,6 +50,7 @@ public class InterestAction implements Serializable {
 	@Inject @InterestQueryEventQualifier Event<InterestQueryEvent> interestQueryEvent;
 	@Inject @InterestUpdateEventQualifier Event<InterestUpdateEvent> interestUpdateEvent;
 	@Inject TechSelectBeanQueryConversation techSelectBeanQueryConversation;
+	@Inject UserMenu userMenu;
 	@Inject @LoveLogged Logger log;
 	
 	private int[] selectedTechIds;
@@ -103,15 +106,15 @@ public class InterestAction implements Serializable {
 		techSelectBeanQueryConversation.beginConversation();
 	}
 	
-	@LoveTrace
-	public void startConversation() {
+	public Object startConversation() {
 		if (conversation.isTransient()) {
 			conversation.begin();
+			userMenu.setCurrentMenuNav(InterestNav.INTEREST_HOME);
 			interestQueryEvent.fire(new InterestQueryEvent(QueryMode.LOAD_LIKED_TECH_LIST));
 		}
+		return InterestNav.INTEREST_HOME;
 	}
 	
-	@LoveTrace
 	public void endConversation() {
 		if (!(conversation.isTransient())) {
 			conversation.end();

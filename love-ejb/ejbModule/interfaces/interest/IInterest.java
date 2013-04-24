@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import com.spstudio.love.interest.entity.ClassifyStatBean;
+import com.spstudio.love.interest.entity.MemberStatBean;
 import com.spstudio.love.interest.entity.TechSelectBean;
 import com.spstudio.love.interest.helper.TechSelectBeanCondition;
 import com.spstudio.love.system.bean.PageObject;
@@ -24,4 +26,7 @@ public interface IInterest {
 	
 	public List<TechSelectBean> loadLikedTechSelectBean(int userId);
 
+	public List<ClassifyStatBean> loadClassifyStatBean();
+	
+	public List<MemberStatBean> loadMemberStatBean();
 }

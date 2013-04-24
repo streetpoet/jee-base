@@ -12,16 +12,12 @@ import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
-import org.jboss.logging.Logger;
-
 import com.spstudio.love.system.qualifier.LoveDataSource;
-import com.spstudio.love.system.qualifier.LoveLogged;
 
 @Dependent
 public class DatabaseHelper {
 	
 	@Inject @LoveDataSource DataSource ds;
-	@Inject @LoveLogged Logger log;
 	
 	private enum OpMode {
 		RETURN_EFFECT_ROW, RETURN_GEN_KEY,
@@ -105,7 +101,6 @@ public class DatabaseHelper {
 	}
 	
 	public List<Object[]> doQuery(String sql, Object[] params) {
-		log.trace("doQuery: " + sql);
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try {

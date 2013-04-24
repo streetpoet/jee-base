@@ -3,11 +3,29 @@
 	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 	
-	<navigation-rule>
-	    <from-view-id>/pages/interest/choose_tech.xhtml</from-view-id>
+    <navigation-rule>
+	    <from-view-id>/*</from-view-id>
 	    <navigation-case>
-	        <from-outcome>SUCCESS</from-outcome>
-	        <to-view-id>/pages/interest/choose_tech.xhtml</to-view-id>
+	        <from-outcome>INTEREST_HOME</from-outcome>
+	        <to-view-id>/pages/interest/home.xhtml</to-view-id>
+	        <redirect></redirect>
+	    </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	    <from-view-id>/*</from-view-id>
+	    <navigation-case>
+	        <from-outcome>CLASSIFY_STAT_HOME</from-outcome>
+	        <to-view-id>/pages/interest/classifyStatHome.xhtml</to-view-id>
+	        <redirect></redirect>
+	    </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	    <from-view-id>/*</from-view-id>
+	    <navigation-case>
+	        <from-outcome>MEMBER_STAT_HOME</from-outcome>
+	        <to-view-id>/pages/interest/MemberStatHome.xhtml</to-view-id>
 	        <redirect></redirect>
 	    </navigation-case>
 	</navigation-rule>

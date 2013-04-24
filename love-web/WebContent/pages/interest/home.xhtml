@@ -30,28 +30,9 @@
 
 					<!-- Message Region -->
 
-					<h:panelGroup rendered="#{fn:length(facesContext.messageList) ne 0}">
-						<div class="row-fluid">
-							<div class="span8 offset2 text-left">
-								<h:panelGroup rendered="#{fn:length(facesContext.messageList) ne 0}">
-									<c:forEach items="#{facesContext.messageList}" var="msg">
-										<c:if test="#{msg.severity.ordinal ne 0}">
-											<div class="alert alert-error">
-												<button class="close" data-dismiss="alert" type="button">×</button>
-												<span class="label label-important">Error</span>&nbsp; <strong><h:outputText value="#{msg.summary}" /></strong>
-											</div>
-										</c:if>
-										<c:if test="#{msg.severity.ordinal eq 0}">
-											<div class="alert alert-success">
-												<button class="close" data-dismiss="alert" type="button">×</button>
-												<span class="label label-success">Success</span>&nbsp; <strong><h:outputText value="#{msg.summary}" /></strong>
-											</div>
-										</c:if>
-									</c:forEach>
-								</h:panelGroup>
-							</div>
-						</div>
-					</h:panelGroup>
+					<ui:insert>
+						<ui:include src="./messages.xhtml"></ui:include>
+					</ui:insert>
 
 					<!-- Form -->
 

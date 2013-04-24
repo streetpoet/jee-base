@@ -14,25 +14,10 @@
 
 			<f:view>
 
-				<!-- 导航栏部分 -->
-
-				<div class="container" style="margin-top: 20px;">
-					<div class="row-fluid">
-						<div class="span12">
-							<h:form>
-								<div class="navbar">
-									<div class="navbar-inner">
-										<h:outputLink class="brand" href="#">#{matrixBundle['matrix.current']}</h:outputLink>
-										<ul class="nav">
-											<li><h:commandLink action="HOME" value="Home" actionListener="#{matrixConversationManager.endTotalConversation()}" /></li>
-											<li><h:commandLink action="#{matrixAction.startConversation()}" value="#{matrixBundle['matrix.cfgsolution']}" actionListener="#{matrixConversationManager.endTotalConversation()}" /></li>
-										</ul>
-									</div>
-								</div>
-							</h:form>
-						</div>
-					</div>
-				</div>
+				<!-- Navigator -->
+				<ui:insert>
+					<ui:include src="./navigator.xhtml"></ui:include>
+				</ui:insert>
 
 				<div class="container-fluid">
 

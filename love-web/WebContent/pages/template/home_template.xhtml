@@ -22,16 +22,15 @@
 		<div class="navbar navbar-fixed-top navbar-inverse">
 			<div class="navbar-inner">
 				<div class="container">
-
 					<!-- Be sure to leave the brand out there if you want it shown -->
-					<a class="brand" href="#"><h:outputText value="#{sysBundle['website-name']}" escape="false" /></a>
+					<a class="brand strong" href="#"><h:outputText value="#{sysBundle['website-name']}" escape="false" /></a>
 
 					<!-- Everything you want hidden at 940px or less, place within here -->
 					<div class="nav-collapse collapse pull-right">
 						<form class="form-inline navbar-form" method="post" action="j_security_check">
 							<input id="j_username" name="j_username" type="text" class="input-small input-medium" placeholder="Username" />
 							<input id="j_password" name="j_password" type="password" class="input-small input-medium" placeholder="Password" />
-							<button type="submit" class="btn btn-primary">Sign in</button>
+							<button type="submit" class="btn btn-success">Sign in</button>
 						</form>
 					</div>
 				</div>

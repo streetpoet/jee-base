@@ -20,10 +20,12 @@
 	<body>
 
 		<!-- header navigator -->
-		<div class="container">
+		<div class="container-fluid">
 			<div class="navbar navbar-fixed-top navbar-inverse">
 				<div class="navbar-inner">
-					<div class="container">
+					<div class="container-fluid">
+					<div class="row-fluid">
+					<div class="span8 offset2">
 						<!-- brand -->
 						<a class="brand" href="#">
 							<h:outputText value="#{sysBundle['website-name']}" escape="false" />
@@ -34,6 +36,8 @@
 								<h:commandButton class="btn btn-danger" action="#{sysCore.logout}" value="Sign out"></h:commandButton>
 							</h:form>
 						</div>
+					</div>
+					</div>
 					</div>
 				</div>
 			</div>

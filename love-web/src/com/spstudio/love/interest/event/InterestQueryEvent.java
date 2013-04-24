@@ -22,8 +22,12 @@ public class InterestQueryEvent implements Serializable{
 		this.queryMode = queryMode;
 	}
 
-	public static enum QueryMode{
-		LOAD_ALL_RECORD, LOAD_SINGLE_RECORD, LOAD_LIKED_TECH_LIST;
+	public static enum QueryMode {
+		LOAD_ALL_RECORD, 
+		LOAD_SINGLE_RECORD, 
+		LOAD_LIKED_TECH_LIST, 
+		LOAD_CLASSIFY_STAT_TECH_LIST,
+		LOAD_MEMBER_STAT_TECH_LIST,
 	}
 
 }

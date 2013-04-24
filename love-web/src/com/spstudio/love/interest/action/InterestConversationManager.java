@@ -7,8 +7,10 @@ import javax.inject.Inject;
 public class InterestConversationManager {
 	
 	@Inject InterestAction interestAction;
+	@Inject InterestClassifyStatAction interestClassifyStatAction;
 	
 	public void endTotalConversation(){
 		interestAction.endConversation();
+		interestClassifyStatAction.endConversation();
 	}
 }

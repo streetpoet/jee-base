@@ -12,6 +12,8 @@ import javax.inject.Inject;
 import org.jboss.logging.Logger;
 
 import com.spstudio.love.interest.action.InterestAction;
+import com.spstudio.love.interest.action.InterestClassifyStatAction;
+import com.spstudio.love.interest.action.MemberStatAction;
 import com.spstudio.love.interest.bean.TechSelectBeanQueryConversation;
 import com.spstudio.love.interest.entity.TechSelectBean;
 import com.spstudio.love.interest.helper.TechSelectBeanCondition;
@@ -33,6 +35,8 @@ public class InterestQueryEventHandler implements Serializable {
 	@Inject TechSelectBeanQueryConversation techSelectBeanQueryConversation;
 	@Inject @UserInfoQualifier UserInfo userInfo;
 	@Inject InterestAction interestAction;
+	@Inject InterestClassifyStatAction interestClassifyStatAction;
+	@Inject MemberStatAction memberStatAction;
 	@Inject @InterestRemoteBean IInterest interestRemoteBean;
 	@Inject @LoveLogged Logger log;
 	@Inject @TechSelectBeanQualifier TechSelectBean techSelectBean;
@@ -47,6 +51,12 @@ public class InterestQueryEventHandler implements Serializable {
 			break;
 		case LOAD_LIKED_TECH_LIST:
 			loadLikedTechList();
+			break;
+		case LOAD_CLASSIFY_STAT_TECH_LIST:
+			interestClassifyStatAction.setClassifyStatListBean(interestRemoteBean.loadClassifyStatBean());
+			break;
+		case LOAD_MEMBER_STAT_TECH_LIST:
+			memberStatAction.setMemberStatListBean(interestRemoteBean.loadMemberStatBean());
 			break;
 		default:
 			break;

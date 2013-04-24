@@ -12,8 +12,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import com.spstudio.love.interest.entity.TechSelectBean;
-import com.spstudio.love.interest.qualifier.TechSelectBeanQualifier;
 import com.spstudio.love.interest.qualifier.InterestRemoteBean;
+import com.spstudio.love.interest.qualifier.TechSelectBeanQualifier;
 import com.spstudio.love.system.bean.UserInfo;
 import com.spstudio.love.system.qualifier.LoveTrace;
 import com.spstudio.love.system.qualifier.UserInfoQualifier;

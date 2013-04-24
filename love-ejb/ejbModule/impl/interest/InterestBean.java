@@ -8,6 +8,8 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import com.spstudio.love.interest.entity.ClassifyStatBean;
+import com.spstudio.love.interest.entity.MemberStatBean;
 import com.spstudio.love.interest.entity.TechSelectBean;
 import com.spstudio.love.interest.helper.TechSelectBeanCondition;
 import com.spstudio.love.system.bean.PageObject;
@@ -36,6 +38,30 @@ public class InterestBean implements IInterest {
 			+"now(), "
 			+"now())  "
 			+"ON DUPLICATE KEY UPDATE selected_flag = ?, update_datetime = now()";
+	
+	private static final String QUERY_CLASSIFY_STAT_TECH_LIST_SQL =  "select  "
+			+"    us.classify_id, c1.class_name, us.user_id, u.nickname "
+			+"from "
+			+"    f3_user_selection us, "
+			+"    f3_class_1 c1, "
+			+"    users u "
+			+"where "
+			+"    us.selected_flag = 1 "
+			+"        and c1.id = us.classify_id "
+			+"        and u.id = us.user_id "
+			+"order by us.classify_id asc , us.update_datetime asc ";
+	
+	private static final String QUERY_MEMBER_STAT_TECH_LIST_SQL =  "select  "
+			+"    u.nickname, c1.class_name "
+			+"from "
+			+"    f3_class_1 c1, "
+			+"    f3_user_selection us, "
+			+"    users u "
+			+"where "
+			+"    u.id = us.user_id "
+			+"        and us.selected_flag = 1 "
+			+"        and c1.id = us.classify_id "
+			+"order by u.nickname asc , c1.class_name asc ";
 
 	
 	@Override
@@ -95,6 +121,57 @@ public class InterestBean implements IInterest {
 				listReturn.add(bean);
 			}
 			return listReturn;
+		}
+		return null;
+	}
+
+	@Override
+	public List<ClassifyStatBean> loadClassifyStatBean() {
+		List<Object[]> listResult = helper.doQuery(QUERY_CLASSIFY_STAT_TECH_LIST_SQL, null);
+		if (listResult != null){
+			List<ClassifyStatBean> returnList = new ArrayList<ClassifyStatBean>();
+			ClassifyStatBean bean = null;
+			for (Object[] row: listResult){
+				if (bean == null || (Integer)row[0] != bean.getTechClassifyId()){
+					if (bean != null){
+						returnList.add(bean);
+					}
+					bean = new ClassifyStatBean();
+				}
+				bean.setTechClassifyId((Integer)row[0]);
+				bean.setTechClassifyName((String)row[1]);
+				if (bean.getSelectedUserNameList() == null){
+					bean.setSelectedUserNameList(new ArrayList<String>());
+				}
+				bean.getSelectedUserNameList().add((String)row[3]);
+			}
+			returnList.add(bean);
+			return returnList;
+		}
+		return null;
+	}
+
+	@Override
+	public List<MemberStatBean> loadMemberStatBean() {
+		List<Object[]> listResult = helper.doQuery(QUERY_MEMBER_STAT_TECH_LIST_SQL, null);
+		if (listResult != null){
+			List<MemberStatBean> returnList = new ArrayList<MemberStatBean>();
+			MemberStatBean bean = null;
+			for (Object[] row: listResult){
+				if (bean == null || !bean.getNickName().equals((String)row[0])){
+					if (bean != null){
+						returnList.add(bean);
+					}
+					bean = new MemberStatBean();
+				}
+				bean.setNickName((String)row[0]);
+				if (bean.getTechClassifyName() == null){
+					bean.setTechClassifyName(new ArrayList<String>());
+				}
+				bean.getTechClassifyName().add((String)row[1]);
+			}
+			returnList.add(bean);
+			return returnList;
 		}
 		return null;
 	}

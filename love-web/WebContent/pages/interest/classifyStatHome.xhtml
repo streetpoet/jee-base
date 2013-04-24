@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:body>
+
+	<ui:composition template="../template/template.xhtml">
+		<ui:define name="body">
+			<f:view>
+
+				<!-- Navigator -->
+				<ui:insert>
+					<ui:include src="./navigator.xhtml"></ui:include>
+				</ui:insert>
+
+				<div class="container-fluid">
+
+					<!-- Form Title -->
+
+					<div class="row-fluid">
+						<div class="span8 offset2">
+							<div class="page-header text-left">
+								<h2>
+									按类统计 <small>version 1.0</small>
+								</h2>
+							</div>
+						</div>
+					</div>
+
+					<!-- Message Region -->
+					<ui:insert>
+						<ui:include src="./messages.xhtml"></ui:include>
+					</ui:insert>
+
+					<!-- Form -->
+
+					<div class="row-fluid">
+						<div class="span8 offset2 text-left bs-docs-example">
+							
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th nowrap="nowrap">技术分类</th>
+										<th>感兴趣成员</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="#{interestClassifyStatAction.classifyStatListBean}" var="st">
+										<tr>
+											<td>#{st.techClassifyId}</td>
+											<td nowrap="nowrap">#{st.techClassifyName}</td>
+											<td>
+												<c:forEach items="#{st.selectedUserNameList}" var="p">
+													<span class="label label-info">#{p}</span>
+												</c:forEach>
+											</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+							
+						</div>
+					</div>
+				</div>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

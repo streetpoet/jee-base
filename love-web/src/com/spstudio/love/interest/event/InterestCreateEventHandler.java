@@ -14,7 +14,6 @@ import com.spstudio.love.interest.event.InterestQueryEvent.QueryMode;
 import com.spstudio.love.interest.qualifier.InterestRemoteBean;
 import com.spstudio.love.interest.qualifier.TechSelectBeanQualifier;
 import com.spstudio.love.system.bean.UserInfo;
-import com.spstudio.love.system.qualifier.LoveTrace;
 import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @Dependent
@@ -30,12 +29,10 @@ public class InterestCreateEventHandler implements Serializable {
 	@Inject @UserInfoQualifier UserInfo userInfo;
 	@Inject @InterestQueryEventQualifier Event<InterestQueryEvent> interestQueryEvent;
 
-	@LoveTrace
 	public void createTechSelectBean(@Observes @InterestCreateEventQualifier InterestCreateEvent event){
 		
 		TechSelectBean tempTechSelectBean = techSelectBean.clone();
 		tempTechSelectBean.setUserId(userInfo.getUserId());
-		System.out.println("userid = " + userInfo.getUserId() + ", classifyid = " + techSelectBean.getTechClassifyId() + ", select");
 		interestRemoteBean.createTechSelectBean(tempTechSelectBean);
 		interestQueryEvent.fire(new InterestQueryEvent(QueryMode.LOAD_LIKED_TECH_LIST));
 	}

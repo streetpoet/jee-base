@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import javax.faces.FacesException;
-import javax.faces.application.ViewExpiredException;
 import javax.faces.context.ExceptionHandler;
 import javax.faces.context.ExceptionHandlerWrapper;
 import javax.faces.context.FacesContext;

@@ -14,7 +14,6 @@ import com.spstudio.love.interest.event.InterestQueryEvent.QueryMode;
 import com.spstudio.love.interest.qualifier.InterestRemoteBean;
 import com.spstudio.love.interest.qualifier.TechSelectBeanQualifier;
 import com.spstudio.love.system.bean.UserInfo;
-import com.spstudio.love.system.qualifier.LoveTrace;
 import com.spstudio.love.system.qualifier.UserInfoQualifier;
 
 @Dependent
@@ -29,11 +28,9 @@ public class InterestDeleteEventHandler implements Serializable {
 	@Inject @UserInfoQualifier UserInfo userInfo;
 	@Inject @InterestQueryEventQualifier Event<InterestQueryEvent> interestQueryEvent;
 
-	@LoveTrace
 	public void deleteTechSelectBean(@Observes @InterestDeleteEventQualifier InterestDeleteEvent event){
 		TechSelectBean bean = techSelectBean.clone();
 		bean.setUserId(userInfo.getUserId());
-		System.out.println("userid = " + userInfo.getUserId() + ", classifyid = " + techSelectBean.getTechClassifyId() + ", unselect");
 		interestRemoteBean.deleteTechSelectBean(bean);
 		interestQueryEvent.fire(new InterestQueryEvent(QueryMode.LOAD_LIKED_TECH_LIST));
 	}

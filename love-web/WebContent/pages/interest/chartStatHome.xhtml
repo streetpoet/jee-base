@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:body>
+
+	<ui:composition template="../template/template.xhtml">
+		<ui:define name="body">
+			<f:view>
+
+				<!-- Navigator -->
+				<ui:insert>
+					<ui:include src="./navigator.xhtml"></ui:include>
+				</ui:insert>
+
+				<div class="container-fluid">
+
+					<!-- Form Title -->
+
+					<div class="row-fluid">
+						<div class="span8 offset2">
+							<div class="page-header text-left">
+								<h2>
+									图表统计 <small>version 1.0</small>
+								</h2>
+							</div>
+						</div>
+					</div>
+
+					<!-- Message Region -->
+					<ui:insert>
+						<ui:include src="./messages.xhtml"></ui:include>
+					</ui:insert>
+
+					<!-- Form -->
+
+					<div class="row-fluid">
+						<div class="span8 offset2 text-left bs-docs-example">
+							
+							<div id="container" style="width:100%; height:400px;"></div>
+							
+						</div>
+					</div>
+				</div>
+				<h:outputScript library="js/#{view.locale}" name="/highcharts.js" />
+				<h:outputScript>
+$(function () {
+    	
+    	// Radialize the colors
+		Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+		    return {
+		        radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+		        stops: [
+		            [0, color],
+		            [1, Highcharts.Color(color).brighten(0.1).get('rgb')] // darken
+		        ]
+		    };
+		});
+		
+		// Build the chart
+        $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: '各技术分类选择比例分布图'
+            },
+            tooltip: {
+        	    pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+            	percentageDecimals: 1
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: '占总选择比例',
+                data: [
+                <c:forEach items="#{interestChartStatAction.chartClassifyPercentageListBean}" var="item" varStatus="status">
+                	<c:if test="#{status.index == 0}">
+                		{
+                        name: '#{item.classifyName}',
+                        y: #{item.selectedUserCount /interestChartStatAction.totalClassifyCount},
+                        sliced: true,
+                        selected: true
+                   		},
+                	</c:if>
+                	<c:if test="#{status.index != 0}">
+                		['<h:outputText value="#{item.classifyName}" />', #{item.selectedUserCount /interestChartStatAction.totalClassifyCount}],
+                	</c:if>
+                </c:forEach>
+                ]
+            }]
+        });
+    });
+				</h:outputScript>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

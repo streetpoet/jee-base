@@ -28,6 +28,7 @@ public class InterestQueryEvent implements Serializable{
 		LOAD_LIKED_TECH_LIST, 
 		LOAD_CLASSIFY_STAT_TECH_LIST,
 		LOAD_MEMBER_STAT_TECH_LIST,
+		LOAD_CHART_CLASSIFY_PERCENTAGE,
 	}
 
 }

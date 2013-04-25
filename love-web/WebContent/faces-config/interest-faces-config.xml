@@ -25,7 +25,16 @@
 	    <from-view-id>/*</from-view-id>
 	    <navigation-case>
 	        <from-outcome>MEMBER_STAT_HOME</from-outcome>
-	        <to-view-id>/pages/interest/MemberStatHome.xhtml</to-view-id>
+	        <to-view-id>/pages/interest/memberStatHome.xhtml</to-view-id>
+	        <redirect></redirect>
+	    </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	    <from-view-id>/*</from-view-id>
+	    <navigation-case>
+	        <from-outcome>CHART_STAT_HOME</from-outcome>
+	        <to-view-id>/pages/interest/chartStatHome.xhtml</to-view-id>
 	        <redirect></redirect>
 	    </navigation-case>
 	</navigation-rule>

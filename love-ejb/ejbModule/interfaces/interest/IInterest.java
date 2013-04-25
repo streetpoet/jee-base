@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import com.spstudio.love.interest.entity.ChartClassifyPercentageBean;
 import com.spstudio.love.interest.entity.ClassifyStatBean;
 import com.spstudio.love.interest.entity.MemberStatBean;
 import com.spstudio.love.interest.entity.TechSelectBean;
@@ -29,4 +30,6 @@ public interface IInterest {
 	public List<ClassifyStatBean> loadClassifyStatBean();
 	
 	public List<MemberStatBean> loadMemberStatBean();
+	
+	public List<ChartClassifyPercentageBean> loadClassifyPercentageBean();
 }

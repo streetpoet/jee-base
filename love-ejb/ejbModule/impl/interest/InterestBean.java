@@ -8,6 +8,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import com.spstudio.love.interest.entity.ChartClassifyPercentageBean;
 import com.spstudio.love.interest.entity.ClassifyStatBean;
 import com.spstudio.love.interest.entity.MemberStatBean;
 import com.spstudio.love.interest.entity.TechSelectBean;
@@ -62,6 +63,19 @@ public class InterestBean implements IInterest {
 			+"        and us.selected_flag = 1 "
 			+"        and c1.id = us.classify_id "
 			+"order by u.nickname asc , c1.class_name asc ";
+	
+	private static final String QUERY_CHART_CLASSIFY_PERCENTAGE_SQL =  "select  "
+			+"    c1.class_name, count(u.id) "
+			+"from "
+			+"    f3_class_1 c1, "
+			+"    f3_user_selection us, "
+			+"    users u "
+			+"where "
+			+"    u.id = us.user_id "
+			+"        and us.selected_flag = 1 "
+			+"        and c1.id = us.classify_id "
+			+"group by c1.class_name "
+			+"order by c1.class_name asc ";
 
 	
 	@Override
@@ -169,6 +183,28 @@ public class InterestBean implements IInterest {
 					bean.setTechClassifyName(new ArrayList<String>());
 				}
 				bean.getTechClassifyName().add((String)row[1]);
+			}
+			returnList.add(bean);
+			return returnList;
+		}
+		return null;
+	}
+
+	@Override
+	public List<ChartClassifyPercentageBean> loadClassifyPercentageBean() {
+		List<Object[]> listResult = helper.doQuery(QUERY_CHART_CLASSIFY_PERCENTAGE_SQL, null);
+		if (listResult != null){
+			List<ChartClassifyPercentageBean> returnList = new ArrayList<ChartClassifyPercentageBean>();
+			ChartClassifyPercentageBean bean = null;
+			for (Object[] row: listResult){
+				if (bean == null || !bean.getClassifyName().equals((String)row[0])){
+					if (bean != null){
+						returnList.add(bean);
+					}
+					bean = new ChartClassifyPercentageBean();
+				}
+				bean.setClassifyName((String)row[0]);
+				bean.setSelectedUserCount((Long)row[1]);
 			}
 			returnList.add(bean);
 			return returnList;

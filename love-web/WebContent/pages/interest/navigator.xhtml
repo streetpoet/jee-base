@@ -22,8 +22,8 @@
 				<h:commandLink action="#{memberStatAction.startConversation()}" value="按人统计" 
 					actionListener="#{interestConversationManager.endTotalConversation()}" />
 			</li>
-			<li class="#{fn:containsIgnoreCase(userMenu.currentMenuNav, 'CHART_HOME') ? 'active' : ''}">
-				<h:commandLink action="#{interestAction.startConversation()}" value="图表统计" 
+			<li class="#{fn:containsIgnoreCase(userMenu.currentMenuNav, 'CHART_STAT_HOME') ? 'active' : ''}">
+				<h:commandLink action="#{interestChartStatAction.startConversation()}" value="图表统计" 
 					actionListener="#{interestConversationManager.endTotalConversation()}" />
 			</li>
 		</ul>

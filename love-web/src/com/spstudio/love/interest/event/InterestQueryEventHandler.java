@@ -12,9 +12,11 @@ import javax.inject.Inject;
 import org.jboss.logging.Logger;
 
 import com.spstudio.love.interest.action.InterestAction;
+import com.spstudio.love.interest.action.InterestChartStatAction;
 import com.spstudio.love.interest.action.InterestClassifyStatAction;
 import com.spstudio.love.interest.action.MemberStatAction;
 import com.spstudio.love.interest.bean.TechSelectBeanQueryConversation;
+import com.spstudio.love.interest.entity.ChartClassifyPercentageBean;
 import com.spstudio.love.interest.entity.TechSelectBean;
 import com.spstudio.love.interest.helper.TechSelectBeanCondition;
 import com.spstudio.love.interest.qualifier.InterestRemoteBean;
@@ -37,6 +39,7 @@ public class InterestQueryEventHandler implements Serializable {
 	@Inject InterestAction interestAction;
 	@Inject InterestClassifyStatAction interestClassifyStatAction;
 	@Inject MemberStatAction memberStatAction;
+	@Inject InterestChartStatAction interestChartStatAction;
 	@Inject @InterestRemoteBean IInterest interestRemoteBean;
 	@Inject @LoveLogged Logger log;
 	@Inject @TechSelectBeanQualifier TechSelectBean techSelectBean;
@@ -57,6 +60,15 @@ public class InterestQueryEventHandler implements Serializable {
 			break;
 		case LOAD_MEMBER_STAT_TECH_LIST:
 			memberStatAction.setMemberStatListBean(interestRemoteBean.loadMemberStatBean());
+			break;
+		case LOAD_CHART_CLASSIFY_PERCENTAGE:
+			List<ChartClassifyPercentageBean> list = interestRemoteBean.loadClassifyPercentageBean();
+			int total = 0;
+			for (ChartClassifyPercentageBean bean: list){
+				total += bean.getSelectedUserCount();
+			}
+			interestChartStatAction.setChartClassifyPercentageListBean(list);
+			interestChartStatAction.setTotalClassifyCount(total);
 			break;
 		default:
 			break;

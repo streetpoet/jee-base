@@ -63,8 +63,8 @@
 		</div>
 		</footer>
 
-		<h:outputScript library="js/#{view.locale}" name="/jquery.js"></h:outputScript>
-		<h:outputScript library="js/#{view.locale}" name="/bootstrap.min.js"></h:outputScript>
+		<h:outputScript library="js/#{view.locale}" name="/jquery.js" target="head"></h:outputScript>
+		<h:outputScript library="js/#{view.locale}" name="/bootstrap.min.js" target="head"></h:outputScript>
 		<ui:insert name="footer"></ui:insert>
 	</body>
 	

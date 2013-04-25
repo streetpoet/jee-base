@@ -1,5 +1,5 @@
 select 
-    u.nickname, c1.class_name
+    c1.class_name, count(u.id)
 from
     f3_class_1 c1,
     f3_user_selection us,
@@ -8,4 +8,5 @@ where
     u.id = us.user_id
         and us.selected_flag = 1
         and c1.id = us.classify_id
-order by u.nickname asc , c1.class_name asc
+group by c1.class_name
+order by c1.class_name asc

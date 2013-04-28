@@ -1,17 +1,17 @@
-package com.spstudio.love.system.producer;
+package ${project.packageString}.system.producer;
 
 import javax.annotation.Resource;
 import javax.annotation.Resource.AuthenticationType;
 import javax.enterprise.inject.Produces;
 
-import com.spstudio.love.system.qualifier.LoveDataSource;
+import ${project.packageString}.system.qualifier.${project.projectCode?cap_first}DataSource;
 
 public class DataSourceProducer {
 	
 	@Produces
-	@LoveDataSource
-	@Resource(name = "LoveDB",
-			mappedName = "java:/LoveDB",
+	@${project.projectCode?cap_first}DataSource
+	@Resource(name = "${project.projectCode?cap_first}DB",
+			mappedName = "java:/${project.projectCode?cap_first}DB",
 			authenticationType = AuthenticationType.CONTAINER, 
 			shareable = false, 
 			description = "datasource of connection pool")

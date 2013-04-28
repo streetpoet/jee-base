@@ -1,4 +1,4 @@
-package com.spstudio.love.system.helper;
+package ${project.packageString}.system.helper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,12 +12,12 @@ import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
-import com.spstudio.love.system.qualifier.LoveDataSource;
+import ${project.projectCode}.system.qualifier.${project.projectCode?cap_first}DataSource;
 
 @Dependent
 public class DatabaseHelper {
 	
-	@Inject @LoveDataSource DataSource ds;
+	@Inject @${project.projectCode?cap_first}DataSource DataSource ds;
 	
 	private enum OpMode {
 		RETURN_EFFECT_ROW, RETURN_GEN_KEY,

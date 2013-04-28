@@ -26,6 +26,8 @@ public class MatrixProject implements Cloneable, Serializable{
 	public void setMatrixProject(MatrixProject matrixProject){
 		id = matrixProject.id;
 		projectName = matrixProject.projectName;
+		projectCode = matrixProject.projectCode;
+		packageString = matrixProject.packageString;
 	}
 	
 	public MatrixProject clone(){

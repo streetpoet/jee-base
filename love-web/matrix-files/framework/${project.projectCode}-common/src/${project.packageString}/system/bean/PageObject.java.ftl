@@ -1,4 +1,4 @@
-package com.spstudio.love.system.bean;
+package ${project.packageString}.system.bean;
 
 import java.io.Serializable;
 
@@ -10,7 +10,7 @@ public class PageObject implements Serializable, Cloneable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 5681846021601088862L;
+	private static final long serialVersionUID = -${uid()}L;
 	
 	private int currentPageNumber;
 	private int maxPageNumber;

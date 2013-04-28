@@ -1,4 +1,4 @@
-package com.spstudio.love.system.qualifier;
+package ${project.packageString}.system.qualifier;
 
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.TYPE;
@@ -14,6 +14,6 @@ import javax.interceptor.InterceptorBinding;
 @InterceptorBinding
 @Retention(RUNTIME)
 @Target({METHOD, TYPE})
-public @interface LoveTrace {
+public @interface ${project.projectCode?cap_first}Trace {
 
 }

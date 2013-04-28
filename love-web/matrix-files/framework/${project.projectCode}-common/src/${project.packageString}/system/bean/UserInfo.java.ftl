@@ -1,4 +1,4 @@
-package com.spstudio.love.system.bean;
+package ${project.packageString}.system.bean;
 
 
 import java.io.Serializable;

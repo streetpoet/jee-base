@@ -46,17 +46,24 @@ public class MatrixQueryEventHandler implements Serializable {
 		case LOAD_ALL_RECORD:
 			loadAllMatrix();
 			break;
-		case LOAD_SINGLE_RECORD:
-			loadSingleMatrix();
-			break;
 		case LOAD_SINGLE_MODULE:
 			loadSingleMatrixModule();
 			break;
 		case LOAD_SINGLE_FUNCTION:
 			loadSingleMatrixFunction();
 			break;
+		case LOAD_SINGLE_PROJECT:
+			loadSingleMatrixProject();
+			break;
 		default:
 			break;
+		}
+	}
+	
+	private void loadSingleMatrixProject(){
+		MatrixProject project = matrixRemoteBean.loadMatrixProject(matrixAction.getSelectedProjectId());
+		if (project != null){
+			matrixProject.setMatrixProject(project);
 		}
 	}
 	
@@ -72,11 +79,6 @@ public class MatrixQueryEventHandler implements Serializable {
 		if (module != null){
 			matrixModule.setMatrixModule(module);
 		}
-	}
-	
-	private void loadSingleMatrix(){
-		MatrixProject matrixProject = matrixRemoteBean.loadMatrixProject(this.matrixProject.getId());
-		this.matrixProject.setMatrixProject(matrixProject);
 	}
 	
 	private void loadAllMatrix(){

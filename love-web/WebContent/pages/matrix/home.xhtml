@@ -72,7 +72,7 @@
 											valueChangeListener="#{matrixAction.onMatrixProjectListValueChange}">
 											<f:selectItem itemValue="-1" itemLabel="" noSelectionOption="false" />
 											<f:selectItems value="#{matrixAction.matrixProjectList}" />
-											<f:ajax event="change" execute="project" render="module function belongModule" />
+											<f:ajax event="change" execute="project" render="module function belongModule projectCode projectPackage" />
 										</h:selectOneMenu>
 										&nbsp; <a href="#projectModal" class="btn btn-success" data-toggle="modal">#{matrixBundle['matrix.createProject']}</a>
 									</div>
@@ -102,7 +102,30 @@
 										<input type="button" class="btn btn-warning" data-dismiss="modal" aria-hidden="true" value="#{matrixBundle['matrix.close']}"></input>
 									</div>
 								</div>
+								
+								<!-- 项目Code -->
 
+								<div class="control-group">
+									<h:outputLabel class="control-label" for="projectCode" value="#{matrixBundle['matrix.projectCode']}" />
+									<div class="controls">
+										<h:inputText id="projectCode" placeholder="#{matrixBundle['matrix.projectCode']}" value="#{matrixProject.projectCode}" required="true" />
+										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
+											title="#{matrixBundle['matrix.projectCodeTip']}"> <i class="icon-question-sign" />
+										</a>
+									</div>
+								</div>
+								
+								<!-- 项目package -->
+
+								<div class="control-group">
+									<h:outputLabel class="control-label" for="projectPackage" value="#{matrixBundle['matrix.projectPackage']}" />
+									<div class="controls">
+										<h:inputText id="projectPackage" placeholder="#{matrixBundle['matrix.projectPackage']}" value="#{matrixProject.packageString}" required="true" />
+										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
+											title="#{matrixBundle['matrix.projectPackageTip']}"> <i class="icon-question-sign" />
+										</a>
+									</div>
+								</div>
 
 								<!-- 模块选择 -->
 
@@ -155,6 +178,42 @@
 									</div>
 								</div>
 
+								<!-- 模块名称 -->
+
+								<div class="control-group">
+									<h:outputLabel class="control-label" for="moduleName" value="#{matrixBundle['matrix.moduleName']}" />
+									<div class="controls">
+										<h:inputText id="moduleName" placeholder="#{matrixBundle['matrix.moduleName']}" value="#{matrixModule.moduleName}" required="true" />
+										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
+											title="#{matrixBundle['matrix.moduleNameTip']}"> <i class="icon-question-sign" />
+										</a>
+									</div>
+								</div>
+								
+								<!-- Entity Bean名称 -->
+
+								<div class="control-group">
+									<h:outputLabel class="control-label" for="entityBeanName" value="#{matrixBundle['matrix.entityBeanName']}" />
+									<div class="controls">
+										<h:inputText id="entityBeanName" placeholder="#{matrixBundle['matrix.entityBeanName']}" value="#{matrixModule.entityBeanName}" required="true" />
+										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
+											title="#{matrixBundle['matrix.entityBeanNameTip']}"> <i class="icon-question-sign" />
+										</a>
+									</div>
+								</div>
+
+								<!-- Selection Bean名称 -->
+
+								<div class="control-group">
+									<h:outputLabel class="control-label" for="selectBeanName" value="#{matrixBundle['matrix.selectionBeanName']}" />
+									<div class="controls">
+										<h:inputText id="selectBeanName" placeholder="#{matrixBundle['matrix.selectionBeanName']}" value="#{matrixModule.selectBeanName}" required="true" />
+										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
+											title="#{matrixBundle['matrix.selectionBeanNameTip']}"> <i class="icon-question-sign" />
+										</a>
+									</div>
+								</div>
+								
 								<!-- 功能选择 -->
 
 								<div class="control-group">
@@ -206,18 +265,6 @@
 									</div>
 								</div>
 
-								<!-- 模块名称 -->
-
-								<div class="control-group">
-									<h:outputLabel class="control-label" for="moduleName" value="#{matrixBundle['matrix.moduleName']}" />
-									<div class="controls">
-										<h:inputText id="moduleName" placeholder="#{matrixBundle['matrix.moduleName']}" value="#{matrixModule.moduleName}" required="true" />
-										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
-											title="#{matrixBundle['matrix.moduleNameTip']}"> <i class="icon-question-sign" />
-										</a>
-									</div>
-								</div>
-
 								<!-- 功能名称 -->
 
 								<div class="control-group">
@@ -226,30 +273,6 @@
 										<h:inputText id="funcName" placeholder="#{matrixBundle['matrix.functionName']}" value="#{matrixFunction.functionName}" required="true" />
 										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
 											title="#{matrixBundle['matrix.functionNameTip']}"><i class="icon-question-sign" /> </a>
-									</div>
-								</div>
-
-								<!-- Entity Bean名称 -->
-
-								<div class="control-group">
-									<h:outputLabel class="control-label" for="entityBeanName" value="#{matrixBundle['matrix.entityBeanName']}" />
-									<div class="controls">
-										<h:inputText id="entityBeanName" placeholder="#{matrixBundle['matrix.entityBeanName']}" value="#{matrixModule.entityBeanName}" required="true" />
-										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
-											title="#{matrixBundle['matrix.entityBeanNameTip']}"> <i class="icon-question-sign" />
-										</a>
-									</div>
-								</div>
-
-								<!-- Selection Bean名称 -->
-
-								<div class="control-group">
-									<h:outputLabel class="control-label" for="selectBeanName" value="#{matrixBundle['matrix.selectionBeanName']}" />
-									<div class="controls">
-										<h:inputText id="selectBeanName" placeholder="#{matrixBundle['matrix.selectionBeanName']}" value="#{matrixModule.selectBeanName}" required="true" />
-										&nbsp; <a href="#" onclick="return false;" data-toggle="tooltip" data-placement="right"
-											title="#{matrixBundle['matrix.selectionBeanNameTip']}"> <i class="icon-question-sign" />
-										</a>
 									</div>
 								</div>
 

@@ -62,7 +62,8 @@ public class MatrixAction implements Serializable {
 	private int selectedFunctionId = -1;
 	
 	public void onMatrixProjectListValueChange(ValueChangeEvent event){
-		
+		selectedProjectId = (Integer)event.getNewValue();
+		matrixQueryEvent.fire(new MatrixQueryEvent(QueryMode.LOAD_SINGLE_PROJECT));
 	}
 	
 	public void onMatrixModuleListValueChange(ValueChangeEvent event){

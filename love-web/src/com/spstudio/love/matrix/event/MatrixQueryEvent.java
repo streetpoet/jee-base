@@ -22,8 +22,8 @@ public class MatrixQueryEvent implements Serializable{
 		this.queryMode = queryMode;
 	}
 
-	public static enum QueryMode{
-		LOAD_ALL_RECORD, LOAD_SINGLE_RECORD, LOAD_SINGLE_MODULE, LOAD_SINGLE_FUNCTION;
+	public static enum QueryMode {
+		LOAD_ALL_RECORD, LOAD_SINGLE_RECORD, LOAD_SINGLE_MODULE, LOAD_SINGLE_FUNCTION, LOAD_SINGLE_PROJECT;
 	}
 
 }

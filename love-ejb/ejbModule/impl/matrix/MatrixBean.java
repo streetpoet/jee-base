@@ -87,6 +87,12 @@ public class MatrixBean implements IMatrix {
 			+"where "
 			+"    id = ? ";
 
+	private static final String loadOneProjectSQL =  "SELECT  "
+			+"    id, project_name, project_code, project_package "
+			+"FROM "
+			+"    lovedb.f4_project "
+			+"where "
+			+"    id = ? ";
 	
 	@Override
 	public boolean createMatrixProject(MatrixProject matrixProject) {
@@ -151,11 +157,14 @@ public class MatrixBean implements IMatrix {
 	@Override
 	public MatrixProject loadMatrixProject(int matrixProjectId) {
 		Object[] params = new Object[]{matrixProjectId};
-		List<Object[]> result = helper.doQuery("", params);
+		List<Object[]> result = helper.doQuery(loadOneProjectSQL, params);
 		if (result != null && result.size() != 0){
 			Object[] row = result.get(0);
 			MatrixProject matrixProject = new MatrixProject();
-//			matrixProject.setId((Integer)row[0]);
+			matrixProject.setId((Integer)row[0]);
+			matrixProject.setProjectName((String)row[1]);
+			matrixProject.setProjectCode((String)row[2]);
+			matrixProject.setPackageString((String)row[3]);
 			return matrixProject;
 		}
 		return null;

@@ -1,4 +1,4 @@
-package ${project.packageString}.system。interfaces;
+package ${project.packageString}.system.interfaces;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.taobao.api.internal.util.WebUtils;
 
-public class NsvOauthManager {
+public class NsvOauthApi {
 	
 	public String login(Setting setting){
 		
@@ -34,7 +34,7 @@ public class NsvOauthManager {
 	}
 	
 	public static void main(String args[]){
-		System.out.println(new NsvOauthManager().login(new Setting() {
+		System.out.println(new NsvOauthApi().login(new Setting() {
 			
 			@Override
 			public String getRedirectUrl() {

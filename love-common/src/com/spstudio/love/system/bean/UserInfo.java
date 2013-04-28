@@ -20,6 +20,7 @@ public class UserInfo implements Serializable, Cloneable{
 	private String description;
 	private String password;
 	private String passwordRetry;
+	private String sessionKey;
 	
 	public UserInfo clone(){
 		UserInfo ui = null;
@@ -88,5 +89,13 @@ public class UserInfo implements Serializable, Cloneable{
 
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
+	}
+
+	public String getSessionKey() {
+		return sessionKey;
+	}
+
+	public void setSessionKey(String sessionKey) {
+		this.sessionKey = sessionKey;
 	}
 }

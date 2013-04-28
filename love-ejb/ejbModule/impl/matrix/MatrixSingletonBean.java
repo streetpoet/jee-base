@@ -34,7 +34,7 @@ public class MatrixSingletonBean implements IMatrixSingleton {
 	@Inject @LoveLogged Logger log;
 	@Inject DatabaseHelper helper;
 	
-	private static final String SQL = "select id, project_name from f4_project order by id";
+	private static final String SQL = "select id, project_name, project_code, project_package from f4_project order by id";
 	private static final String LOAD_CONFIG_SQL =  "select  "
 												+"    sc.key, sc.value "
 												+"from "
@@ -90,6 +90,8 @@ public class MatrixSingletonBean implements IMatrixSingleton {
 			MatrixProject mp = new MatrixProject();
 			mp.setId((Integer)object[0]);
 			mp.setProjectName((String)object[1]);
+			mp.setProjectCode((String)object[2]);
+			mp.setPackageString((String)object[3]);
 			projectList.add(mp);
 		}
 		returnList = projectList;

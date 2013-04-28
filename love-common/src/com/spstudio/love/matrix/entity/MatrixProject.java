@@ -15,7 +15,9 @@ public class MatrixProject implements Cloneable, Serializable{
 	private static final long serialVersionUID = -174859695150398L;
 	
 	private int id = -1;
-	private String projectName;
+	private String projectName; // project label
+	private String projectCode; // english code, generated to whole project. like 'love-web'
+	private String packageString; // like 'com.nsv.tb2013a'
 	
 	public void clear(){
 		id = -1;
@@ -50,6 +52,22 @@ public class MatrixProject implements Cloneable, Serializable{
 
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
+	}
+
+	public String getProjectCode() {
+		return projectCode;
+	}
+
+	public void setProjectCode(String projectCode) {
+		this.projectCode = projectCode;
+	}
+
+	public String getPackageString() {
+		return packageString;
+	}
+
+	public void setPackageString(String packageString) {
+		this.packageString = packageString;
 	}
 	
 }

@@ -43,7 +43,7 @@
 		<link>
 			<name>${project.projectCode}common</name>
 			<type>2</type>
-			<location></location>
+			<location>guard-common</location>
 		</link>
 	</linkedResources>
 </projectDescription>

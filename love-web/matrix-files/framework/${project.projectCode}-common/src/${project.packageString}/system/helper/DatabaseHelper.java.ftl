@@ -12,7 +12,7 @@ import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
-import ${project.projectCode}.system.qualifier.${project.projectCode?cap_first}DataSource;
+import ${project.packageString}.system.qualifier.${project.projectCode?cap_first}DataSource;
 
 @Dependent
 public class DatabaseHelper {

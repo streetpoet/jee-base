@@ -59,6 +59,14 @@ public class MatrixBean implements IMatrix {
 			+"where "
 			+"	id = ? ";
 	
+	private static String projectUpdateSQL = "update "
+			+"  f4_project "
+			+"set "
+			+"  project_code = ? "
+			+"  , project_package = ? "
+			+"where "
+			+"  id = ? ";
+	
 	private static final String projectModuleRefInsertSQL = "insert into f4_project_module_ref(project_id, module_id) values(?, (select id from f4_module where module_label = ?))";
 
 	private static String moduleInsertSQL = "insert into f4_module(module_label, module_name, entity_bean_name, select_bean_name) values(?, '', '', '')";
@@ -220,6 +228,14 @@ public class MatrixBean implements IMatrix {
 			context.setRollbackOnly();
 			return false;
 		}
+		
+		params = new Object[]{project.getProjectCode(), project.getPackageString(), project.getId()};
+		effectRowCount = helper.doDMLOperation(projectUpdateSQL, params);
+		if (effectRowCount != 1){
+			context.setRollbackOnly();
+			return false;
+		}
+		
 		return true;
 	}
 

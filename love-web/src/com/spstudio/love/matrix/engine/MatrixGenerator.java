@@ -44,10 +44,25 @@ public class MatrixGenerator {
 	
 	private void processFolder(File folder){
 		String outputFolderPathWithFtlSymbol = cb.getOutputPath() + folder.getAbsolutePath().replace(cb.getTemplateInputPath().substring(0, cb.getTemplateInputPath().lastIndexOf(File.separator)), "");
-		File outputFolderFile = new File(MatrixFreeMarkerUtil.convertFtlString(cb, outputFolderPathWithFtlSymbol));
+		String destFolderString = MatrixFreeMarkerUtil.convertFtlString(cb, outputFolderPathWithFtlSymbol);
+		if (destFolderString.contains(".")){
+			for (String part: destFolderString.split(File.separator)){
+				if (part.indexOf(".") > 0 && !destFolderString.contains(".settings")){
+					String newPart = part.replaceAll("\\.", File.separator);
+					destFolderString = destFolderString.replaceAll(part, newPart);
+				}
+			}
+			createFolder(destFolderString);
+		}else{
+			createFolder(destFolderString);
+		}
+	}
+	
+	private void createFolder(String path){
+		File outputFolderFile = new File(path);
 		if (!outputFolderFile.exists()){
 			if (!outputFolderFile.mkdirs()){
-				System.err.println("can't create folder --> " + outputFolderPathWithFtlSymbol);
+				System.err.println("can't create folder --> " + path);
 			}
 		}
 	}

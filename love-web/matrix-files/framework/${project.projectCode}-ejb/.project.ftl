@@ -39,11 +39,4 @@
 		<nature>org.jboss.tools.jst.web.kb.kbnature</nature>
 		<nature>org.jboss.tools.cdi.core.cdinature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>${project.projectCode}common</name>
-			<type>2</type>
-			<location>guard-common</location>
-		</link>
-	</linkedResources>
 </projectDescription>

@@ -19,8 +19,8 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
-import com.spstudio.${project.projectCode}.system.helper.DatabaseHelper;
-import com.spstudio.${project.projectCode}.system.qualifier.${project.projectCode?cap_first}Logged;
+import ${project.packageString}.system.helper.DatabaseHelper;
+import ${project.packageString}.system.qualifier.${project.projectCode?cap_first}Logged;
 
 @Singleton
 @Startup

@@ -7,8 +7,8 @@ import javax.ejb.EJBContext;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import com.spstudio.${project.projectCode}.system.bean.UserInfo;
-import com.spstudio.${project.projectCode}.system.helper.DatabaseHelper;
+import ${project.packageString}.system.bean.UserInfo;
+import ${project.packageString}.system.helper.DatabaseHelper;
 
 @Stateless
 public class SystemBean implements ISystem {

@@ -1,12 +1,6 @@
-select 
-    c1.class_name, count(u.id)
-from
-    f3_class_1 c1,
-    f3_user_selection us,
-    users u
+SELECT 
+    id, project_name, project_code, project_package
+FROM
+    lovedb.f4_project
 where
-    u.id = us.user_id
-        and us.selected_flag = 1
-        and c1.id = us.classify_id
-group by c1.class_name
-order by c1.class_name asc
+    id = 27

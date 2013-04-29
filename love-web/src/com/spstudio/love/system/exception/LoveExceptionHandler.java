@@ -52,6 +52,7 @@ public class LoveExceptionHandler extends
 				try {
 					HttpServletResponse response = (HttpServletResponse) fc.getExternalContext().getResponse();
 					String url = fc.getExternalContext().getRequestContextPath();
+					System.out.println("redirect url: " + url);
 					fc.responseComplete();
 					response.sendRedirect(url);
 				} catch (IOException e) {

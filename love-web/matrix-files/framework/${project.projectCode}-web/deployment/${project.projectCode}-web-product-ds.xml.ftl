@@ -57,7 +57,7 @@
 		<connection-property name="characterSetResults">UTF-8</connection-property>
 		<connection-property name="loadBalanceConnectionGroup">web-group</connection-property>
 		<connection-property name="loadBalanceEnableJMX">true</connection-property> 
-		<connection-property name="exceptionInterceptors">${project.packageString}.web.system.${project.projectCode?cap_first}MySQLExceptionInterceptor</connection-property>
+		<connection-property name="exceptionInterceptors">${project.packageString}.system.interceptor.${project.projectCode?cap_first}MySQLExceptionInterceptor</connection-property>
 		
 		<!-- ********************************** -->
 		<!-- Development Purpose, Debug Purpose -->

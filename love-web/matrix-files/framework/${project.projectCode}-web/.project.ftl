@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>love-web</name>
+	<name>${project.projectCode}-web</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -46,11 +46,4 @@
 		<nature>org.jboss.tools.jsf.jsfnature</nature>
 		<nature>org.jboss.tools.cdi.core.cdinature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>lovecommon</name>
-			<type>2</type>
-			<location>/Users/sp/Documents/work/git/jee-base/love-common/src</location>
-		</link>
-	</linkedResources>
 </projectDescription>

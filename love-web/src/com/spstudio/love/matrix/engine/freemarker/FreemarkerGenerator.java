@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.spstudio.love.matrix.engine.ConfigBean;
+import com.spstudio.love.system.tool.StringUtils;
 
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
@@ -26,14 +27,7 @@ public class FreemarkerGenerator {
 		File templatefolder = new File(file.getAbsolutePath().substring(0, file.getAbsolutePath().lastIndexOf(File.separator)));
 		String outputFilePathWithFtlSymbol = cb.getOutputPath() + file.getAbsolutePath().replace(cb.getTemplateInputPath().substring(0, cb.getTemplateInputPath().lastIndexOf(File.separator)), "");
 		String outputFileString = MatrixFreeMarkerUtil.convertFtlString(cb, outputFilePathWithFtlSymbol).replace(".ftl", "");
-		for (String part: outputFileString.split(File.separator)){
-			if (part.indexOf(".") > 0 && !outputFileString.contains(".settings")){
-				if (! (part.indexOf(".") == part.lastIndexOf("."))){
-					String newPart = part.replaceAll("\\.", File.separator);
-					outputFileString = outputFileString.replaceAll(part, newPart);
-				}
-			}
-		}
+		outputFileString = StringUtils.convertFilePath(outputFileString);
 		File outputFile = new File(outputFileString);
 		
 		try {

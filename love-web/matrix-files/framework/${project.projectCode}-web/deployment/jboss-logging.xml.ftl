@@ -38,7 +38,7 @@
    <!-- A size based file rolling appender
 
    <size-rotating-file-handler
-         file-name="${jboss.server.log.dir}/server.log"
+         file-name="${el}{jboss.server.log.dir}/server.log"
          name="FILE"
          autoflush="true"
          append="true"
@@ -203,7 +203,7 @@
    <periodic-rotating-file-handler
          name="AUDIT"
          autoflush="true"
-         file-name="${jboss.server.log.dir}/audit.log"
+         file-name="${el}{jboss.server.log.dir}/audit.log"
          suffix=".yyyy-MM-dd"
          append="true">
 
@@ -630,7 +630,7 @@
       org.jboss.ha categories to a cluster.log file.
 
    <size-rotating-file-handler
-         file-name="${jboss.server.log.dir}/cluster.log"
+         file-name="${el}{jboss.server.log.dir}/cluster.log"
          name="CLUSTER"
          append="false"
          rotate-size="500k"

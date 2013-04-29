@@ -1,9 +1,12 @@
 package com.spstudio.love.matrix.engine;
 
 import java.io.File;
+import java.io.IOException;
 
 import com.spstudio.love.matrix.engine.freemarker.FreemarkerGenerator;
 import com.spstudio.love.matrix.engine.freemarker.MatrixFreeMarkerUtil;
+import com.spstudio.love.system.tool.FileUtils;
+import com.spstudio.love.system.tool.StringUtils;
 
 public class MatrixGenerator {
 
@@ -68,7 +71,18 @@ public class MatrixGenerator {
 	}
 	
 	private void processFile(File file){
-		FreemarkerGenerator fg = new FreemarkerGenerator(cb);
-		fg.generate(file);
+		if (file.getName().contains(".ftl")){
+			FreemarkerGenerator fg = new FreemarkerGenerator(cb);
+			fg.generate(file);
+		}else{
+			// just copy file
+			String outputFileStringWithSymbol = cb.getOutputPath() + file.getAbsolutePath().replace(cb.getTemplateInputPath().substring(0, cb.getTemplateInputPath().lastIndexOf(File.separator)), "");
+			String convertedString = StringUtils.convertFilePath(MatrixFreeMarkerUtil.convertFtlString(cb, outputFileStringWithSymbol));
+			try{
+				FileUtils.copyFile(file, new File(convertedString));
+			}catch(IOException e){
+				e.printStackTrace();
+			}
+		}
 	}
 }

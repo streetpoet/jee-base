@@ -1,0 +1,6 @@
+ "SELECT  "
++"    id, project_name, project_code, project_package "
++"FROM "
++"    lovedb.f4_project "
++"where "
++"    id = 27 "

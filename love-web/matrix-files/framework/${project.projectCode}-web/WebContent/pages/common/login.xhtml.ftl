@@ -3,11 +3,11 @@
       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
-
+	
 <h:head>
 </h:head>
 <h:body>
-
+<#assign el = "#">
 	<ui:composition template="../template/home_template.xhtml">
 		<ui:define name="body">
 
@@ -16,7 +16,7 @@
 				<div class="">
 				<div class="">
 					<h1>
-						<h:outputText value="#{sysBundle['website-name']}" escape="false" />
+						<h:outputText value="${el}sysBundle['website-name']}" escape="false" />
 					</h1>
 					<p>Terminator Of Night Programmers</p>
 					<p>
@@ -44,7 +44,7 @@
 						<div class="control-group">
 							<h:outputLabel value="登陆ID" for="userid" styleClass="control-label" />
 							<div class="controls">
-								<h:inputText value="#{userInfo.loginId}" id="userid" required="true" label="Login ID">
+								<h:inputText value="${el}userInfo.loginId}" id="userid" required="true" label="Login ID">
 									<f:validateLength minimum="6" maximum="20"></f:validateLength>
 								</h:inputText>
 								<br /><h:message for="userid" styleClass="text-error"/>
@@ -53,7 +53,7 @@
 						<div class="control-group">
 							<h:outputLabel value="真实姓名" for="nickname" styleClass="control-label" />
 							<div class="controls">
-								<h:inputText value="#{userInfo.nickName}" id="nickname" required="true" label="Real Name">
+								<h:inputText value="${el}userInfo.nickName}" id="nickname" required="true" label="Real Name">
 									<f:validateLength minimum="2" maximum="4"></f:validateLength>
 								</h:inputText>
 								<br /><h:message for="nickname" styleClass="text-error"/>
@@ -62,7 +62,7 @@
 						<div class="control-group">
 							<h:outputLabel value="密码" for="password" styleClass="control-label" />
 							<div class="controls">
-								<h:inputSecret value="#{userInfo.password}" id="password" required="true" label="Password">
+								<h:inputSecret value="${el}userInfo.password}" id="password" required="true" label="Password">
 									<f:validateLength minimum="6" maximum="12"></f:validateLength>
 								</h:inputSecret>
 								<br /><h:message for="password" styleClass="text-error"/>
@@ -71,7 +71,7 @@
 						<div class="control-group">
 							<h:outputLabel value="确认密码" for="password-retry" styleClass="control-label" />
 							<div class="controls">
-								<h:inputSecret value="#{userInfo.passwordRetry}" id="password-retry" required="true" label="Retry-Password">
+								<h:inputSecret value="${el}userInfo.passwordRetry}" id="password-retry" required="true" label="Retry-Password">
 									<f:validateLength minimum="6" maximum="12"></f:validateLength>
 								</h:inputSecret>
 								<br /><h:message for="password-retry" styleClass="text-error"/>
@@ -82,7 +82,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<h:commandButton value="注册新用户" action="#{sysCore.register()}" styleClass="btn btn-large btn-block btn-primary">
+					<h:commandButton value="注册新用户" action="${el}sysCore.register()}" styleClass="btn btn-large btn-block btn-primary">
 						<f:ajax execute="@form" render="form-content" onevent="onAjaxEvent"></f:ajax>
 					</h:commandButton>
 					<button class="btn btn-large btn-block btn-danger" type="button" onclick="$('#registerModal').modal('hide');">取消</button>

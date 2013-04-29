@@ -5,14 +5,14 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
-
+<#assign el = "#">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<h:outputStylesheet library="css/#{view.locale}" name="/bootstrap-responsive.css" />
-	<h:outputStylesheet library="css/#{view.locale}" name="/bootstrap.min.css" />
-	<h:outputStylesheet library="css/#{view.locale}" name="/docs.css" />
-	<title><h:outputText value="#{sysBundle['website-name']}" escape="false" /></title>
+	<h:outputStylesheet library="css/${el}view.locale}" name="/bootstrap-responsive.css" />
+	<h:outputStylesheet library="css/${el}view.locale}" name="/bootstrap.min.css" />
+	<h:outputStylesheet library="css/${el}view.locale}" name="/docs.css" />
+	<title><h:outputText value="${el}sysBundle['website-name']}" escape="false" /></title>
 </h:head>
 
 <body>
@@ -23,7 +23,7 @@
 			<div class="navbar-inner">
 				<div class="container">
 					<!-- Be sure to leave the brand out there if you want it shown -->
-					<a class="brand strong" href="#"><h:outputText value="#{sysBundle['website-name']}" escape="false" /></a>
+					<a class="brand strong" href="#"><h:outputText value="${el}sysBundle['website-name']}" escape="false" /></a>
 
 					<!-- Everything you want hidden at 940px or less, place within here -->
 					<div class="nav-collapse collapse pull-right">
@@ -57,7 +57,7 @@
 	</div>
 	</footer>
 
-	<h:outputScript library="js/#{view.locale}" name="/jquery.js"></h:outputScript>
-	<h:outputScript library="js/#{view.locale}" name="/bootstrap.min.js"></h:outputScript>
+	<h:outputScript library="js/${el}view.locale}" name="/jquery.js"></h:outputScript>
+	<h:outputScript library="js/${el}view.locale}" name="/bootstrap.min.js"></h:outputScript>
 </body>
 </html>

@@ -1,0 +1,24 @@
+<project name="SourceMatrix" default="dist" basedir=".">
+	<description>
+		convert sql statement to java format, an easy way to paste to java file
+		Written by William.
+	</description>
+	
+	<!-- set global properties for this build -->
+	
+	<property name="input" location="../input" />
+	<property name="output" location="../output" />
+	<property name="build" location="../bin" />
+	<property name="inputFileName" location="${input}/sql-before.txt" />
+	<property name="outputFileName" location="${output}/sql-after.txt" />
+
+	<target name="dist">
+		<java classname="com.spstudio.tool.FormatSQLForJavaUseTool">
+			<arg value="${inputFileName}" />
+			<arg value="${outputFileName}"/>
+			<classpath>
+				<pathelement path="${build}" />
+			</classpath>
+		</java>
+	</target>
+</project>

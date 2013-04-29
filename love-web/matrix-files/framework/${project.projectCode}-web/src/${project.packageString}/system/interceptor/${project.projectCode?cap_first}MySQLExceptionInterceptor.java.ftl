@@ -10,7 +10,7 @@ import com.mysql.jdbc.ExceptionInterceptor;
 
 public class ${project.projectCode?cap_first}MySQLExceptionInterceptor implements ExceptionInterceptor {
 	
-	private Logger log = Logger.getLogger(MySQLExceptionInterceptor.class);
+	private Logger log = Logger.getLogger(${project.projectCode?cap_first}MySQLExceptionInterceptor.class);
 	
 	@Override
 	public SQLException interceptException(SQLException e, Connection conn) {

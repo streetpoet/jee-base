@@ -7,12 +7,12 @@ import javax.enterprise.inject.Produces;
 import javax.naming.NamingException;
 
 import ${project.packageString}.system.qualifier.SystemRemoteBean;
-import ${project.packageString}.system.LoveDaemon;
+import ${project.packageString}.system.${project.projectCode?cap_first}Daemon;
 
 public class SystemRemoteBeanProducer {
 	
 	@EJB
-	@${project.projectCode?cap_first}Daemon ${project.projectCode}Daemon;
+	${project.projectCode?cap_first}Daemon ${project.projectCode}Daemon;
 	
 	@Produces
 	@SystemRemoteBean

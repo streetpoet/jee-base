@@ -10,7 +10,7 @@ import javax.inject.Named;
 @Named
 public class UserInfo implements Serializable, Cloneable{
 	
-	private static final long serialVersionUID = -5386449236793012236L;
+	private static final long serialVersionUID = -${uid()}L;
 	
 	private int userId;
 	private int familyId;

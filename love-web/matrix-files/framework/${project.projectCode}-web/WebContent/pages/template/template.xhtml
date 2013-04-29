@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<h:outputStylesheet library="css/#{view.locale}" name="/bootstrap-responsive.css" />
+	<h:outputStylesheet library="css/#{view.locale}" name="/bootstrap.min.css" />
+	<h:outputStylesheet library="css/#{view.locale}" name="/docs.css" />
+	<ui:insert name="header"></ui:insert>
+	<title><h:outputText value="#{sysBundle['website-name']}" escape="false" /></title>
+</h:head>
+	<body>
+
+		<!-- header navigator -->
+		<div class="container-fluid">
+			<div class="navbar navbar-fixed-top navbar-inverse">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+					<div class="row-fluid">
+					<div class="span8 offset2">
+						<!-- brand -->
+						<a class="brand" href="#">
+							<h:outputText value="#{sysBundle['website-name']}" escape="false" />
+						</a>
+						<!-- logout button -->
+						<div class="nav-collapse collapse pull-right">
+							<h:form class="form-inline navbar-form">
+								<h:commandButton class="btn btn-danger" action="#{sysCore.logout}" value="Sign out"></h:commandButton>
+							</h:form>
+						</div>
+					</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<ui:insert name="body"></ui:insert>
+
+		<!-- Footer -->
+		<footer class="footer">
+		<div class="container">
+			<p>Designed and built all base on open-source technologies, Power by William, NSV Co,Ltd.</p>
+			<p>
+				Code not licensed under
+				<h:link href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</h:link>
+				<ul class="footer-links">
+					<li><h:link href="#" target="_blank">About</h:link></li>
+					<li class="muted">&middot;</li>
+					<li><h:link href="#" target="_blank">Issues</h:link></li>
+					<li class="muted">&middot;</li>
+					<li><h:link href="#">Changelog</h:link></li>
+				</ul>
+			</p>
+		</div>
+		</footer>
+
+		<h:outputScript library="js/#{view.locale}" name="/jquery.js" target="head"></h:outputScript>
+		<h:outputScript library="js/#{view.locale}" name="/bootstrap.min.js" target="head"></h:outputScript>
+		<ui:insert name="footer"></ui:insert>
+	</body>
+	
+</html>

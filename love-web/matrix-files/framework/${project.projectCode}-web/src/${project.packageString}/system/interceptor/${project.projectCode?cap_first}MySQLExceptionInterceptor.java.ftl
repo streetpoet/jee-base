@@ -1,4 +1,4 @@
-package com.spstudio.love.system.interceptor;
+package ${project.packageString}.system.interceptor;
 
 import java.sql.SQLException;
 import java.util.Properties;
@@ -8,7 +8,7 @@ import org.jboss.logging.Logger;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.ExceptionInterceptor;
 
-public class MySQLExceptionInterceptor implements ExceptionInterceptor {
+public class ${project.projectCode?cap_first}MySQLExceptionInterceptor implements ExceptionInterceptor {
 	
 	private Logger log = Logger.getLogger(MySQLExceptionInterceptor.class);
 	

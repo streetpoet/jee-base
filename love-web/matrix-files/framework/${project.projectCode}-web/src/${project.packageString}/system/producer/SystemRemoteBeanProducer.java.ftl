@@ -12,7 +12,7 @@ import ${project.packageString}.system.LoveDaemon;
 public class SystemRemoteBeanProducer {
 	
 	@EJB
-	${project.projectCode?cap_first}Daemon ${project.projectCode}Daemon;
+	@${project.projectCode?cap_first}Daemon ${project.projectCode}Daemon;
 	
 	@Produces
 	@SystemRemoteBean

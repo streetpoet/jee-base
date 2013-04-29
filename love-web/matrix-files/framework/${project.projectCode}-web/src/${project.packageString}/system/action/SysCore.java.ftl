@@ -13,10 +13,10 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import ${project.packageString}.system.LoveDaemon;
+import ${project.packageString}.system.${project.projectCode?cap_first}Daemon;
 import ${project.packageString}.system.bean.UserInfo;
 import ${project.packageString}.system.nav.SystemNav;
-import ${project.packageString}.system.qualifier.LoveTrace;
+import ${project.packageString}.system.qualifier.${project.projectCode?cap_first}Trace;
 import ${project.packageString}.system.qualifier.SystemRemoteBean;
 import ${project.packageString}.system.qualifier.SystemSingleRemoteBean;
 import ${project.packageString}.system.tool.JSecurityCheckHelper;
@@ -28,7 +28,7 @@ public class SysCore {
 	@Inject @SystemRemoteBean ISystem systemRemoteBean;
 	@Inject @SystemSingleRemoteBean ISystemSingleton systemSingleton;
 	@Inject UserInfo userInfo;
-	@EJB LoveDaemon loveDaemon;
+	@EJB ${project.projectCode?cap_first}Daemon ${project.projectCode}Daemon;
 	
 	public Object logout(){
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
@@ -47,7 +47,7 @@ public class SysCore {
 		systemRemoteBean.createUser(user);
 	}
 	
-	@LoveTrace
+	@${project.projectCode?cap_first}Trace
 	public void remoteLogin(){
 		FacesContext context = FacesContext.getCurrentInstance();
 		

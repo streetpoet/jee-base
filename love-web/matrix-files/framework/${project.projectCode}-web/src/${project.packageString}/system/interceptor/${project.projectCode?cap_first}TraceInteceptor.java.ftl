@@ -1,4 +1,4 @@
-package ${project.packageString}.interceptor;
+package ${project.packageString}.system.interceptor;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
@@ -11,7 +11,7 @@ import org.jboss.logging.Logger;
 import ${project.packageString}.system.qualifier.${project.projectCode?cap_first}Trace;
 
 @Interceptor
-@LoveTrace
+@${project.projectCode?cap_first}Trace
 public class ${project.projectCode?cap_first}TraceInteceptor implements Serializable{
 	
 	/**

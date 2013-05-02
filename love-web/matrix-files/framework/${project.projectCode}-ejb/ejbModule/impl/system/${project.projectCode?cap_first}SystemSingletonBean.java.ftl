@@ -61,7 +61,7 @@ public class ${project.projectCode?cap_first}SystemSingletonBean implements I${p
 	
 	@PostConstruct
 	public void postConstruct(){
-		log.info("[[ SystemSingletonBean start. ]]");
+		log.info("[[ ${project.projectCode?cap_first}SystemSingletonBean start. ]]");
 		timer();
 	}
 

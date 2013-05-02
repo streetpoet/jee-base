@@ -9,13 +9,13 @@ import javax.naming.NamingException;
 import ${project.packageString}.system.qualifier.SystemRemoteBean;
 import ${project.packageString}.system.${project.projectCode?cap_first}Daemon;
 
-public class SystemRemoteBeanProducer {
+public class ${project.projectCode?cap_first}SystemRemoteBeanProducer {
 	
 	@EJB
 	${project.projectCode?cap_first}Daemon ${project.projectCode}Daemon;
 	
 	@Produces
-	@SystemRemoteBean
+	@${project.projectCode?cap_first}SystemRemoteBean
 	I${project.projectCode?cap_first}System produce(){
 		I${project.projectCode?cap_first}System systems = null;
  		try {

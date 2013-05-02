@@ -11,11 +11,11 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<h:outputStylesheet library="css/${el}view.locale}" name="/bootstrap-responsive.css" />
-	<h:outputStylesheet library="css/${el}view.locale}" name="/bootstrap.min.css" />
-	<h:outputStylesheet library="css/${el}view.locale}" name="/docs.css" />
+	<h:outputStylesheet library="css/${el}{view.locale}" name="/bootstrap-responsive.css" />
+	<h:outputStylesheet library="css/${el}{view.locale}" name="/bootstrap.min.css" />
+	<h:outputStylesheet library="css/${el}{view.locale}" name="/docs.css" />
 	<ui:insert name="header"></ui:insert>
-	<title><h:outputText value="${el}sysBundle['website-name']}" escape="false" /></title>
+	<title><h:outputText value="${el}{sysBundle['website-name']}" escape="false" /></title>
 </h:head>
 	<body>
 
@@ -28,12 +28,12 @@
 					<div class="span8 offset2">
 						<!-- brand -->
 						<a class="brand" href="#">
-							<h:outputText value="${el}sysBundle['website-name']}" escape="false" />
+							<h:outputText value="${el}{sysBundle['website-name']}" escape="false" />
 						</a>
 						<!-- logout button -->
 						<div class="nav-collapse collapse pull-right">
 							<h:form class="form-inline navbar-form">
-								<h:commandButton class="btn btn-danger" action="${el}sysCore.logout}" value="Sign out"></h:commandButton>
+								<h:commandButton class="btn btn-danger" action="${el}{sysCore.logout}" value="Sign out"></h:commandButton>
 							</h:form>
 						</div>
 					</div>
@@ -63,8 +63,8 @@
 		</div>
 		</footer>
 
-		<h:outputScript library="js/${el}view.locale}" name="/jquery.js" target="head"></h:outputScript>
-		<h:outputScript library="js/${el}view.locale}" name="/bootstrap.min.js" target="head"></h:outputScript>
+		<h:outputScript library="js/${el}{view.locale}" name="/jquery.js" target="head"></h:outputScript>
+		<h:outputScript library="js/${el}{view.locale}" name="/bootstrap.min.js" target="head"></h:outputScript>
 		<ui:insert name="footer"></ui:insert>
 	</body>
 	

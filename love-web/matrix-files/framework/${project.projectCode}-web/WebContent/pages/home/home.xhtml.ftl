@@ -13,7 +13,7 @@
 					<div class="span12">
 						<blockquote class="pull-right text-warning">
 							<p>
-								<h:outputText value="${el}sysBundle['website-name']}" escape="false" />
+								<h:outputText value="${el}{sysBundle['website-name']}" escape="false" />
 								极具智能的权限系统，已为您标记出所有可用模块
 							</p>
 							<small>要使用没有权限的功能，请咨询管理员</small>
@@ -25,7 +25,7 @@
 						<li class="span4">
 							<h:form >
 								<h:commandLink action="HOME" styleClass="thumbnail" >
-									<h:graphicImage value="/resources/img/${el}view.locale}/sample.jpg" styleClass="img-rounded" />
+									<h:graphicImage value="/resources/img/${el}{view.locale}/sample.jpg" styleClass="img-rounded" />
 									<h3>Module A</h3>
 									<p>
 										Description A
@@ -36,7 +36,7 @@
 						<li class="span4">
 							<h:form>
 							<h:commandLink action="HOME" styleClass="thumbnail" >
-								<h:graphicImage value="/resources/img/${el}view.locale}/sample.jpg" styleClass="img-rounded" />
+								<h:graphicImage value="/resources/img/${el}{view.locale}/sample.jpg" styleClass="img-rounded" />
 								<h3>Module B</h3>
 								<p>
 									Description B
@@ -47,7 +47,7 @@
 						<li class="span4">
 							<h:form>
 							<h:commandLink action="HOME" styleClass="thumbnail" >
-								<h:graphicImage value="/resources/img/${el}view.locale}/sample.jpg" styleClass="img-rounded" />
+								<h:graphicImage value="/resources/img/${el}{view.locale}/sample.jpg" styleClass="img-rounded" />
 								<h3>Module C</h3>
 								<p>
 									Description C

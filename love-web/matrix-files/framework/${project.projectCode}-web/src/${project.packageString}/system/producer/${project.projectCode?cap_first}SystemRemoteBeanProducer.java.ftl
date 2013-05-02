@@ -6,7 +6,7 @@ import javax.ejb.EJB;
 import javax.enterprise.inject.Produces;
 import javax.naming.NamingException;
 
-import ${project.packageString}.system.qualifier.SystemRemoteBean;
+import ${project.packageString}.system.qualifier.${project.projectCode?cap_first}SystemRemoteBean;
 import ${project.packageString}.system.${project.projectCode?cap_first}Daemon;
 
 public class ${project.projectCode?cap_first}SystemRemoteBeanProducer {

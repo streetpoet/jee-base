@@ -17,8 +17,8 @@ import ${project.packageString}.system.${project.projectCode?cap_first}Daemon;
 import ${project.packageString}.system.bean.UserInfo;
 import ${project.packageString}.system.nav.SystemNav;
 import ${project.packageString}.system.qualifier.${project.projectCode?cap_first}Trace;
-import ${project.packageString}.system.qualifier.SystemRemoteBean;
-import ${project.packageString}.system.qualifier.SystemSingleRemoteBean;
+import ${project.packageString}.system.qualifier.${project.projectCode?cap_first}SystemRemoteBean;
+import ${project.packageString}.system.qualifier.${project.projectCode?cap_first}SystemSingleRemoteBean;
 import ${project.packageString}.system.tool.JSecurityCheckHelper;
 import ${project.packageString}.system.tool.PasswordGenerator;
 

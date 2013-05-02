@@ -1,12 +1,12 @@
 package ${project.packageString}.system.producer;
 
-import interfaces.system.ISystemSingleton;
+import interfaces.system.I${project.projectCode?cap_first}SystemSingleton;
 
 import javax.ejb.EJB;
 import javax.enterprise.inject.Produces;
 import javax.naming.NamingException;
 
-import ${project.packageString}.system.qualifier.SystemSingleRemoteBean;
+import ${project.packageString}.system.qualifier.${project.projectCode?cap_first}SystemSingleRemoteBean;
 import ${project.packageString}.system.${project.projectCode?cap_first}Daemon;
 
 public class SystemSingleBeanProducer {
@@ -16,10 +16,10 @@ public class SystemSingleBeanProducer {
 	
 	@Produces
 	@SystemSingleRemoteBean
-	ISystemSingleton produce(){
-		ISystemSingleton systems = null;
+	I${project.projectCode?cap_first}SystemSingleton produce(){
+		I${project.projectCode?cap_first}SystemSingleton systems = null;
  		try {
- 			systems = (ISystemSingleton)${project.projectCode}Daemon.getInitialContext().lookup("SystemSingletonBean/remote");
+ 			systems = (I${project.projectCode?cap_first}SystemSingleton)${project.projectCode}Daemon.getInitialContext().lookup("${project.projectCode?cap_first}SystemSingletonBean/remote");
  		} catch (NamingException e) {
 			e.printStackTrace();
 		}

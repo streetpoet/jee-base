@@ -1,6 +1,6 @@
 package ${project.packageString}.system.producer;
 
-import interfaces.system.ISystem;
+import interfaces.system.I${project.projectCode?cap_first}System;
 
 import javax.ejb.EJB;
 import javax.enterprise.inject.Produces;
@@ -16,10 +16,10 @@ public class SystemRemoteBeanProducer {
 	
 	@Produces
 	@SystemRemoteBean
-	ISystem produce(){
-		ISystem systems = null;
+	I${project.projectCode?cap_first}System produce(){
+		I${project.projectCode?cap_first}System systems = null;
  		try {
- 			systems = (ISystem)${project.projectCode}Daemon.getInitialContext().lookup("SystemBean/remote");
+ 			systems = (I${project.projectCode?cap_first}System)${project.projectCode}Daemon.getInitialContext().lookup("${project.projectCode?cap_first}SystemBean/remote");
  		} catch (NamingException e) {
 			e.printStackTrace();
 		}

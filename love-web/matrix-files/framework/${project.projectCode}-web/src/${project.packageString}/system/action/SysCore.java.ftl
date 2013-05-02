@@ -1,7 +1,7 @@
 package ${project.packageString}.system.action;
 
-import interfaces.system.ISystem;
-import interfaces.system.ISystemSingleton;
+import interfaces.system.I${project.projectCode?cap_first}System;
+import interfaces.system.I${project.projectCode?cap_first}SystemSingleton;
 
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -25,8 +25,8 @@ import ${project.packageString}.system.tool.PasswordGenerator;
 @Model
 public class SysCore {
 	
-	@Inject @SystemRemoteBean ISystem systemRemoteBean;
-	@Inject @SystemSingleRemoteBean ISystemSingleton systemSingleton;
+	@Inject @${project.projectCode?cap_first}SystemRemoteBean I${project.projectCode?cap_first}System systemRemoteBean;
+	@Inject @${project.projectCode?cap_first}SystemSingleRemoteBean I${project.projectCode?cap_first}SystemSingleton systemSingleton;
 	@Inject UserInfo userInfo;
 	@EJB ${project.projectCode?cap_first}Daemon ${project.projectCode}Daemon;
 	

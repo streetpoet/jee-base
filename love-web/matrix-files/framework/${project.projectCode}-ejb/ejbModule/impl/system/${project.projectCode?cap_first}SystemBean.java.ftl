@@ -1,6 +1,6 @@
 package impl.system;
 
-import interfaces.system.ISystem;
+import interfaces.system.I${project.projectCode?cap_first}System;
 
 import javax.annotation.Resource;
 import javax.ejb.EJBContext;

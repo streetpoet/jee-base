@@ -1,6 +1,6 @@
 package impl.system;
 
-import interfaces.system.ISystemSingleton;
+import interfaces.system.I${project.projectCode?cap_first}SystemSingleton;
 
 import java.util.ArrayList;
 import java.util.HashMap;

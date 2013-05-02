@@ -6,7 +6,7 @@
 	<display-name>${project.projectCode}-ejb</display-name>
 	<enterprise-beans>
 		<session>
-		    <ejb-name>SystemBean</ejb-name>
+		    <ejb-name>${project.projectCode?cap_first}SystemBean</ejb-name>
 		    <security-role-ref>
 		        <role-name>anonymous</role-name>
 		    </security-role-ref>
@@ -32,14 +32,14 @@
 		<method-permission>
 		    <unchecked />
 		    <method>
-		        <ejb-name>SystemBean</ejb-name>
+		        <ejb-name>${project.projectCode?cap_first}SystemBean</ejb-name>
 		        <method-name>*</method-name>
 		    </method>
 		</method-permission>
 		<method-permission>
 		    <unchecked />
 		    <method>
-		        <ejb-name>SystemSingletonBean</ejb-name>
+		        <ejb-name>${project.projectCode?cap_first}SystemSingletonBean</ejb-name>
 		        <method-name>*</method-name>
 		    </method>
 		</method-permission>

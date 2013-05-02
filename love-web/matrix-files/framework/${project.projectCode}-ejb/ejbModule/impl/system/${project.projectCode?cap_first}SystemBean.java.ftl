@@ -11,7 +11,7 @@ import ${project.packageString}.system.bean.UserInfo;
 import ${project.packageString}.system.helper.DatabaseHelper;
 
 @Stateless
-public class SystemBean implements ISystem {
+public class ${project.projectCode?cap_first}SystemBean implements I${project.projectCode?cap_first}System {
 
 	@Inject DatabaseHelper helper;
 	@Resource EJBContext context;

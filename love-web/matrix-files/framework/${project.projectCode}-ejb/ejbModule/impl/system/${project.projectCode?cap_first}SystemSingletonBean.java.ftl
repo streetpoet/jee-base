@@ -26,7 +26,7 @@ import ${project.packageString}.system.qualifier.${project.projectCode?cap_first
 @Startup
 @ConcurrencyManagement(ConcurrencyManagementType.CONTAINER)
 @AccessTimeout(unit = TimeUnit.SECONDS, value = 5)
-public class SystemSingletonBean implements ISystemSingleton {
+public class ${project.projectCode?cap_first}SystemSingletonBean implements I${project.projectCode?cap_first}SystemSingleton {
 	
 	@Inject @${project.projectCode?cap_first}Logged Logger log;
 	@Inject DatabaseHelper helper;

@@ -24,7 +24,7 @@
 					<ul class="thumbnails">
 						<li class="span4">
 							<h:form >
-								<h:commandLink action="HOME" styleClass="thumbnail" >
+								<h:commandLink action="HOME" styleClass="thumbnail" actionListener="${el}{${module.moduleName}Action.startConversation()}">
 									<h:graphicImage value="/resources/img/${el}{view.locale}/sample.jpg" styleClass="img-rounded" />
 									<h3>Module A</h3>
 									<p>
@@ -35,7 +35,7 @@
 						</li>
 						<li class="span4">
 							<h:form>
-							<h:commandLink action="HOME" styleClass="thumbnail" >
+							<h:commandLink action="HOME" styleClass="thumbnail" actionListener="${el}{${module.moduleName}Action.startConversation()}">
 								<h:graphicImage value="/resources/img/${el}{view.locale}/sample.jpg" styleClass="img-rounded" />
 								<h3>Module B</h3>
 								<p>
@@ -46,7 +46,7 @@
 						</li>
 						<li class="span4">
 							<h:form>
-							<h:commandLink action="HOME" styleClass="thumbnail" >
+							<h:commandLink action="HOME" styleClass="thumbnail" actionListener="${el}{${module.moduleName}Action.startConversation()}">
 								<h:graphicImage value="/resources/img/${el}{view.locale}/sample.jpg" styleClass="img-rounded" />
 								<h3>Module C</h3>
 								<p>

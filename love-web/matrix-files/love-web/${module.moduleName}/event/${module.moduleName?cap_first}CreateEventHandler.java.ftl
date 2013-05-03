@@ -37,6 +37,6 @@ public class ${module.moduleName?cap_first}CreateEventHandler implements Seriali
 		FacesContext.getCurrentInstance().addMessage(
 				FacesMessage.FACES_MESSAGES, 
 				new FacesMessage(FacesMessage.SEVERITY_INFO, result ? "success" : "fail", ""));
-		${module.moduleName}Project.clear();
+		${module.entityBeanName}.clear();
 	}
 }

@@ -1,4 +1,4 @@
-package com.spstudio.love.${module.moduleName}.event;
+package ${project.packageString}.${module.moduleName}.event;
 
 import java.io.Serializable;
 

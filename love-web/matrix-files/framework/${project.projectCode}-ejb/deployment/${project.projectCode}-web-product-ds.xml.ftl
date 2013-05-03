@@ -5,9 +5,9 @@
 	    <!-- JBoss Settings -->
 	    <!-- ************** -->
 	    
-		<jndi-name>LoveDB</jndi-name>
+		<jndi-name>${project.projectCode?cap_first}DB</jndi-name>
 		<use-java-context>true</use-java-context>
-		<connection-url>jdbc:mysql:loadbalance://127.0.0.1:3306/lovedb</connection-url>
+		<connection-url>jdbc:mysql:loadbalance://127.0.0.1:3306/${project.projectCode}db</connection-url>
 		<driver-class>com.mysql.jdbc.Driver</driver-class>
 		<!-- Pooling parameters -->
 		<min-pool-size>5</min-pool-size>
@@ -57,7 +57,7 @@
 		<connection-property name="characterSetResults">UTF-8</connection-property>
 		<connection-property name="loadBalanceConnectionGroup">web-group</connection-property>
 		<connection-property name="loadBalanceEnableJMX">true</connection-property> 
-		<connection-property name="exceptionInterceptors">com.spstudio.love.web.system.MySQLExceptionInterceptor</connection-property>
+		<connection-property name="exceptionInterceptors">${project.packageString}.web.system.MySQLExceptionInterceptor</connection-property>
 		
 		<!-- ********************************** -->
 		<!-- Development Purpose, Debug Purpose -->

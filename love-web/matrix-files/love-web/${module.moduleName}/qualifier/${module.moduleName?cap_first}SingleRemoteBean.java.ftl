@@ -1,4 +1,4 @@
-package com.spstudio.love.${module.moduleName}.qualifier;
+package ${project.packageString}.${module.moduleName}.qualifier;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
@@ -14,6 +14,6 @@ import javax.inject.Qualifier;
 @Qualifier
 @Retention(RUNTIME)
 @Target({TYPE, METHOD, FIELD, PARAMETER})
-public @interface ${module.moduleName?cap_first}RemoteBean{
+public @interface ${module.moduleName?cap_first}SingleRemoteBean{
 
 }

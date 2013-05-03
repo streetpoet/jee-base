@@ -1,8 +1,8 @@
-package com.spstudio.love.${module.moduleName}.entity;
+package ${project.packageString}.${module.moduleName}.entity;
 
 import java.io.Serializable;
 import javax.enterprise.inject.Model;
-import com.spstudio.love.${module.moduleName}.qualifier.${module.entityBeanName?cap_first}Qualifier;
+import ${project.packageString}.${module.moduleName}.qualifier.${module.entityBeanName?cap_first}Qualifier;
 
 @Model
 @${module.entityBeanName?cap_first}Qualifier

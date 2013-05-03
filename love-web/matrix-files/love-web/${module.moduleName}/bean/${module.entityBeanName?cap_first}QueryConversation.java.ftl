@@ -1,4 +1,4 @@
-package com.spstudio.love.${module.moduleName}.bean;
+package ${project.packageString}.${module.moduleName}.bean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,11 +12,11 @@ import javax.inject.Named;
 
 import org.jboss.logging.Logger;
 
-import com.spstudio.love.${module.moduleName}.entity.${module.entityBeanName?cap_first};
-import com.spstudio.love.${module.moduleName}.helper.${module.entityBeanName?cap_first}Condition;
-import com.spstudio.love.system.bean.PageObject;
-import com.spstudio.love.system.constant.Configuration;
-import com.spstudio.love.system.qualifier.LoveLogged;
+import ${project.packageString}.${module.moduleName}.entity.${module.entityBeanName?cap_first};
+import ${project.packageString}.${module.moduleName}.helper.${module.entityBeanName?cap_first}Condition;
+import ${project.packageString}.system.bean.PageObject;
+import ${project.packageString}.system.constant.Configuration;
+import ${project.packageString}.system.qualifier.LoveLogged;
 
 @Named
 @ConversationScoped

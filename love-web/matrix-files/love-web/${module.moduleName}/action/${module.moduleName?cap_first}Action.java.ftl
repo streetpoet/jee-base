@@ -1,4 +1,4 @@
-package com.spstudio.love.${module.moduleName}.action;
+package ${project.packageString}.${module.moduleName}.action;
 
 import interfaces.${module.moduleName}.I${module.moduleName?cap_first}Singleton;
 
@@ -14,21 +14,21 @@ import javax.inject.Named;
 
 import org.jboss.logging.Logger;
 
-import com.spstudio.love.${module.moduleName}.bean.${module.entityBeanName?cap_first}QueryConversation;
-import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}CreateEvent;
-import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}CreateEventQualifier;
-import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}DeleteEvent;
-import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}DeleteEventQualifier;
-import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}QueryEvent;
-import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}QueryEvent.QueryMode;
-import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}QueryEventQualifier;
-import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}UpdateEvent;
-import com.spstudio.love.${module.moduleName}.event.${module.moduleName?cap_first}UpdateEventQualifier;
-import com.spstudio.love.${module.moduleName}.qualifier.${module.moduleName?cap_first}SingleRemoteBean;
+import ${project.packageString}.${module.moduleName}.bean.${module.entityBeanName?cap_first}QueryConversation;
+import ${project.packageString}.${module.moduleName}.event.${module.moduleName?cap_first}CreateEvent;
+import ${project.packageString}.${module.moduleName}.event.${module.moduleName?cap_first}CreateEventQualifier;
+import ${project.packageString}.${module.moduleName}.event.${module.moduleName?cap_first}DeleteEvent;
+import ${project.packageString}.${module.moduleName}.event.${module.moduleName?cap_first}DeleteEventQualifier;
+import ${project.packageString}.${module.moduleName}.event.${module.moduleName?cap_first}QueryEvent;
+import ${project.packageString}.${module.moduleName}.event.${module.moduleName?cap_first}QueryEvent.QueryMode;
+import ${project.packageString}.${module.moduleName}.event.${module.moduleName?cap_first}QueryEventQualifier;
+import ${project.packageString}.${module.moduleName}.event.${module.moduleName?cap_first}UpdateEvent;
+import ${project.packageString}.${module.moduleName}.event.${module.moduleName?cap_first}UpdateEventQualifier;
+import ${project.packageString}.${module.moduleName}.qualifier.${module.moduleName?cap_first}SingleRemoteBean;
 
-import com.spstudio.love.system.bean.PageObject;
-import com.spstudio.love.system.qualifier.LoveLogged;
-import com.spstudio.love.system.qualifier.LoveTrace;
+import ${project.packageString}.system.bean.PageObject;
+import ${project.packageString}.system.qualifier.LoveLogged;
+import ${project.packageString}.system.qualifier.LoveTrace;
 
 @ConversationScoped
 @Named

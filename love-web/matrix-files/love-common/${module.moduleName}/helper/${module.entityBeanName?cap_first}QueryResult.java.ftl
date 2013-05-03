@@ -1,11 +1,11 @@
-package com.spstudio.love.${module.moduleName}.helper;
+package ${project.packageString}.${module.moduleName}.helper;
 
 import java.io.Serializable;
 import java.util.List;
 
-import com.spstudio.love.${module.moduleName}.entity.${module.entityBeanName?cap_first};
-import com.spstudio.love.system.bean.PageObject;
-import com.spstudio.love.system.interfaces.IQueryResult;
+import ${project.packageString}.${module.moduleName}.entity.${module.entityBeanName?cap_first};
+import ${project.packageString}.system.bean.PageObject;
+import ${project.packageString}.system.interfaces.IQueryResult;
 
 public class ${module.entityBeanName?cap_first}QueryResult implements IQueryResult<${module.entityBeanName?cap_first}>, Serializable {
 	/**

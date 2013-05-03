@@ -1,4 +1,4 @@
-package com.spstudio.love.${module.moduleName}.entity;
+package ${project.packageString}.${module.moduleName}.entity;
 
 import java.io.Serializable;
 import javax.enterprise.inject.Model;

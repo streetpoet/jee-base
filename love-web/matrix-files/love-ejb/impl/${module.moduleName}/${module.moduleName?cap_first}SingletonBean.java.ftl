@@ -19,9 +19,9 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
-import com.spstudio.love.${module.moduleName}.entity.${module.selectBeanName?cap_first};
-import com.spstudio.love.system.helper.DatabaseHelper;
-import com.spstudio.love.system.qualifier.LoveLogged;
+import ${project.packageString}.${module.moduleName}.entity.${module.selectBeanName?cap_first};
+import ${project.packageString}.system.helper.DatabaseHelper;
+import ${project.packageString}.system.qualifier.LoveLogged;
 
 @Singleton
 @Startup

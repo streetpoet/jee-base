@@ -10,12 +10,12 @@ import javax.ejb.EJBContext;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import com.spstudio.love.${module.moduleName}.entity.${module.entityBeanName?cap_first};
-import com.spstudio.love.${module.moduleName}.helper.${module.entityBeanName?cap_first}Condition;
-import com.spstudio.love.${module.moduleName}.helper.${module.entityBeanName?cap_first}QueryResult;
-import com.spstudio.love.system.bean.PageObject;
-import com.spstudio.love.system.helper.DatabaseHelper;
-import com.spstudio.love.system.interfaces.IQueryResult;
+import ${project.packageString}.${module.moduleName}.entity.${module.entityBeanName?cap_first};
+import ${project.packageString}.${module.moduleName}.helper.${module.entityBeanName?cap_first}Condition;
+import ${project.packageString}.${module.moduleName}.helper.${module.entityBeanName?cap_first}QueryResult;
+import ${project.packageString}.system.bean.PageObject;
+import ${project.packageString}.system.helper.DatabaseHelper;
+import ${project.packageString}.system.interfaces.IQueryResult;
 
 @Stateless
 public class ${module.moduleName?cap_first}Bean implements I${module.moduleName?cap_first} {

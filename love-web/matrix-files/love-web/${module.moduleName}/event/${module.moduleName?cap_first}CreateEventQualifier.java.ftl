@@ -1,4 +1,4 @@
-package com.spstudio.love.${module.moduleName}.event;
+package ${project.packageString}.${module.moduleName}.event;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;

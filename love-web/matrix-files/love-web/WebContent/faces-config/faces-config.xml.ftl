@@ -6,7 +6,7 @@
 	<application>
 	
 		<system-event-listener>
-			<system-event-listener-class>com.spstudio.love.system.listener.LoveSysEventListener</system-event-listener-class>
+			<system-event-listener-class>${project.packageString}.system.listener.${project.projectCode?cap_first}SysEventListener</system-event-listener-class>
 			<system-event-class>javax.faces.event.PostConstructApplicationEvent</system-event-class>
 		</system-event-listener>
 		
@@ -25,12 +25,12 @@
 		
 	</application>
 	<factory>
-	    <exception-handler-factory>com.spstudio.love.system.exception.LoveExceptionHandlerFactory</exception-handler-factory>
+	    <exception-handler-factory>${project.packageString}.system.exception.${project.projectCode?cap_first}ExceptionHandlerFactory</exception-handler-factory>
 	</factory>
 
 	<!-- 
 	<lifecycle>
-		<phase-listener>com.spstudio.love.system.listener.LoveLifeCycleListener</phase-listener>
+		<phase-listener>${project.packageString}.system.listener.${project.projectCode?cap_first}LifeCycleListener</phase-listener>
 	</lifecycle>
 	 -->
  

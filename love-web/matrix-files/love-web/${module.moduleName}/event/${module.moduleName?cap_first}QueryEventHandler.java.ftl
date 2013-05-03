@@ -1,4 +1,4 @@
-package com.spstudio.love.${module.moduleName}.event;
+package ${project.packageString}.${module.moduleName}.event;
 
 import interfaces.${module.moduleName}.I${module.moduleName?cap_first};
 
@@ -10,17 +10,17 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
-import com.spstudio.love.${module.moduleName}.action.${module.moduleName?cap_first}Action;
-import com.spstudio.love.${module.moduleName}.bean.${module.entityBeanName?cap_first}QueryConversation;
-import com.spstudio.love.${module.moduleName}.entity.${module.entityBeanName?cap_first};
-import com.spstudio.love.${module.moduleName}.helper.${module.entityBeanName?cap_first}Condition;
-import com.spstudio.love.${module.moduleName}.qualifier.${module.entityBeanName?cap_first}Qualifier;
-import com.spstudio.love.${module.moduleName}.qualifier.${module.moduleName?cap_first}RemoteBean;
-import com.spstudio.love.system.bean.PageObject;
-import com.spstudio.love.system.bean.UserInfo;
-import com.spstudio.love.system.interfaces.IQueryResult;
-import com.spstudio.love.system.qualifier.LoveLogged;
-import com.spstudio.love.system.qualifier.UserInfoQualifier;
+import ${project.packageString}.${module.moduleName}.action.${module.moduleName?cap_first}Action;
+import ${project.packageString}.${module.moduleName}.bean.${module.entityBeanName?cap_first}QueryConversation;
+import ${project.packageString}.${module.moduleName}.entity.${module.entityBeanName?cap_first};
+import ${project.packageString}.${module.moduleName}.helper.${module.entityBeanName?cap_first}Condition;
+import ${project.packageString}.${module.moduleName}.qualifier.${module.entityBeanName?cap_first}Qualifier;
+import ${project.packageString}.${module.moduleName}.qualifier.${module.moduleName?cap_first}RemoteBean;
+import ${project.packageString}.system.bean.PageObject;
+import ${project.packageString}.system.bean.UserInfo;
+import ${project.packageString}.system.interfaces.IQueryResult;
+import ${project.packageString}.system.qualifier.LoveLogged;
+import ${project.packageString}.system.qualifier.UserInfoQualifier;
 
 @Dependent
 public class ${module.moduleName?cap_first}QueryEventHandler implements Serializable {

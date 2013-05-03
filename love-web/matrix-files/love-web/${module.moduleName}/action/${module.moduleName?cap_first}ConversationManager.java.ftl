@@ -1,4 +1,4 @@
-package com.spstudio.love.${module.moduleName}.action;
+package ${project.packageString}.${module.moduleName}.action;
 
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;

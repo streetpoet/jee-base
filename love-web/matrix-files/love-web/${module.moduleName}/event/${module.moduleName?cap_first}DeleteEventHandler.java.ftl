@@ -1,4 +1,4 @@
-package com.spstudio.love.${module.moduleName}.event;
+package ${project.packageString}.${module.moduleName}.event;
 
 import interfaces.${module.moduleName}.I${module.moduleName?cap_first};
 
@@ -11,12 +11,12 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-import com.spstudio.love.${module.moduleName}.entity.${module.entityBeanName?cap_first};
-import com.spstudio.love.${module.moduleName}.qualifier.${module.entityBeanName?cap_first}Qualifier;
-import com.spstudio.love.${module.moduleName}.qualifier.${module.moduleName?cap_first}RemoteBean;
-import com.spstudio.love.system.bean.UserInfo;
-import com.spstudio.love.system.qualifier.LoveTrace;
-import com.spstudio.love.system.qualifier.UserInfoQualifier;
+import ${project.packageString}.${module.moduleName}.entity.${module.entityBeanName?cap_first};
+import ${project.packageString}.${module.moduleName}.qualifier.${module.entityBeanName?cap_first}Qualifier;
+import ${project.packageString}.${module.moduleName}.qualifier.${module.moduleName?cap_first}RemoteBean;
+import ${project.packageString}.system.bean.UserInfo;
+import ${project.packageString}.system.qualifier.LoveTrace;
+import ${project.packageString}.system.qualifier.UserInfoQualifier;
 
 @Dependent
 public class ${module.moduleName?cap_first}DeleteEventHandler implements Serializable {

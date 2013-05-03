@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
 encoding//WebContent/pages/interest/messages.xhtml=UTF-8
 encoding//WebContent/pages/interest/navigator.xhtml=UTF-8
+encoding//WebContent/resources/css/zh/docs.css=UTF-8
+encoding//matrix-files/framework/${project.projectCode}-web/WebContent/resources/css/zh/docs.css=UTF-8
 encoding/<project>=UTF-8

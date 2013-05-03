@@ -16,7 +16,7 @@ import ${project.packageString}.${module.moduleName}.entity.${module.entityBeanN
 import ${project.packageString}.${module.moduleName}.helper.${module.entityBeanName?cap_first}Condition;
 import ${project.packageString}.system.bean.PageObject;
 import ${project.packageString}.system.constant.Configuration;
-import ${project.packageString}.system.qualifier.LoveLogged;
+import ${project.packageString}.system.qualifier.${project.projectCode?cap_first}Logged;
 
 @Named
 @ConversationScoped
@@ -27,7 +27,7 @@ public class ${module.entityBeanName?cap_first}QueryConversation implements Seri
 	private static final long serialVersionUID = -${uid()}L;
 	
 	@Inject Conversation conversation;
-	@Inject @LoveLogged Logger log;
+	@Inject @${project.projectCode?cap_first}Logged Logger log;
 	${module.entityBeanName?cap_first}Condition ${module.entityBeanName}Condition;
 	PageObject pageObject;
 	List<${module.entityBeanName?cap_first}> list${module.entityBeanName?cap_first};

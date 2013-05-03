@@ -19,7 +19,7 @@ import ${project.packageString}.${module.moduleName}.qualifier.${module.moduleNa
 import ${project.packageString}.system.bean.PageObject;
 import ${project.packageString}.system.bean.UserInfo;
 import ${project.packageString}.system.interfaces.IQueryResult;
-import ${project.packageString}.system.qualifier.LoveLogged;
+import ${project.packageString}.system.qualifier.${project.projectCode?cap_first}Logged;
 import ${project.packageString}.system.qualifier.UserInfoQualifier;
 
 @Dependent
@@ -33,7 +33,7 @@ public class ${module.moduleName?cap_first}QueryEventHandler implements Serializ
 	@Inject @UserInfoQualifier UserInfo userInfo;
 	@Inject ${module.moduleName?cap_first}Action ${module.moduleName}Action;
 	@Inject @${module.moduleName?cap_first}RemoteBean I${module.moduleName?cap_first} ${module.moduleName}RemoteBean;
-	@Inject @LoveLogged Logger log;
+	@Inject @${project.projectCode?cap_first}Logged Logger log;
 	@Inject @${module.entityBeanName?cap_first}Qualifier ${module.entityBeanName?cap_first} ${module.entityBeanName};
 
 	public void query${module.entityBeanName?cap_first}(@Observes @${module.moduleName?cap_first}QueryEventQualifier ${module.moduleName?cap_first}QueryEvent event){

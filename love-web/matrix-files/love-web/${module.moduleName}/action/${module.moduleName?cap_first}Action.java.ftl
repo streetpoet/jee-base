@@ -27,8 +27,8 @@ import ${project.packageString}.${module.moduleName}.event.${module.moduleName?c
 import ${project.packageString}.${module.moduleName}.qualifier.${module.moduleName?cap_first}SingleRemoteBean;
 
 import ${project.packageString}.system.bean.PageObject;
-import ${project.packageString}.system.qualifier.LoveLogged;
-import ${project.packageString}.system.qualifier.LoveTrace;
+import ${project.packageString}.system.qualifier.${project.projectCode?cap_first}Logged;
+import ${project.packageString}.system.qualifier.${project.projectCode?cap_first}Trace;
 
 @ConversationScoped
 @Named
@@ -45,7 +45,7 @@ public class ${module.moduleName?cap_first}Action implements Serializable {
 	@Inject @${module.moduleName?cap_first}QueryEventQualifier Event<${module.moduleName?cap_first}QueryEvent> ${module.moduleName}QueryEvent;
 	@Inject @${module.moduleName?cap_first}UpdateEventQualifier Event<${module.moduleName?cap_first}UpdateEvent> ${module.moduleName}UpdateEvent;
 	@Inject ${module.entityBeanName?cap_first}QueryConversation ${module.entityBeanName}QueryConversation;
-	@Inject @LoveLogged Logger log;
+	@Inject @${project.projectCode?cap_first}Logged Logger log;
 	
 	public List<SelectItem> get${module.selectBeanName?cap_first}List() {
 		return null;
@@ -68,14 +68,14 @@ public class ${module.moduleName?cap_first}Action implements Serializable {
 		${module.entityBeanName}QueryConversation.beginConversation();
 	}
 	
-	@LoveTrace
+	@${project.projectCode?cap_first}Trace
 	public void startConversation() {
 		if (conversation.isTransient()) {
 			conversation.begin();
 		}
 	}
 	
-	@LoveTrace
+	@${project.projectCode?cap_first}Trace
 	public void endConversation() {
 		if (!(conversation.isTransient())) {
 			conversation.end();

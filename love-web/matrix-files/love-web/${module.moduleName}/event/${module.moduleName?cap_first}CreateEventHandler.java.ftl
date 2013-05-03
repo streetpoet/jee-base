@@ -14,7 +14,7 @@ import ${project.packageString}.${module.moduleName}.entity.${module.entityBeanN
 import ${project.packageString}.${module.moduleName}.qualifier.${module.entityBeanName?cap_first}Qualifier;
 import ${project.packageString}.${module.moduleName}.qualifier.${module.moduleName?cap_first}RemoteBean;
 import ${project.packageString}.system.bean.UserInfo;
-import ${project.packageString}.system.qualifier.LoveTrace;
+import ${project.packageString}.system.qualifier.${project.projectCode?cap_first}Trace;
 import ${project.packageString}.system.qualifier.UserInfoQualifier;
 
 @Dependent
@@ -29,7 +29,7 @@ public class ${module.moduleName?cap_first}CreateEventHandler implements Seriali
 	@Inject @${module.moduleName?cap_first}RemoteBean I${module.moduleName?cap_first} ${module.moduleName}RemoteBean;
 	@Inject @UserInfoQualifier UserInfo userInfo;
 
-	@LoveTrace
+	@${project.projectCode?cap_first}Trace
 	public void create${module.entityBeanName?cap_first}(@Observes @${module.moduleName?cap_first}CreateEventQualifier ${module.moduleName?cap_first}CreateEvent event){
 		
 		${module.entityBeanName?cap_first} temp${module.entityBeanName?cap_first} = ${module.entityBeanName}.clone();

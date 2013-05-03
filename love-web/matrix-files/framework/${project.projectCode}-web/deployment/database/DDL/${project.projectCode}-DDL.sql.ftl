@@ -7,7 +7,7 @@ CREATE  TABLE IF NOT EXISTS `${project.projectCode}db`.`users` (
   `nickName` VARCHAR(40) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = ndbcluster
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 CREATE  TABLE IF NOT EXISTS `${project.projectCode}db`.`family` (
@@ -16,7 +16,7 @@ CREATE  TABLE IF NOT EXISTS `${project.projectCode}db`.`family` (
   `description` VARCHAR(200) NULL DEFAULT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = ndbcluster
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 CREATE  TABLE IF NOT EXISTS `${project.projectCode}db`.`roles` (
@@ -24,7 +24,7 @@ CREATE  TABLE IF NOT EXISTS `${project.projectCode}db`.`roles` (
   `roleName` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = ndbcluster
-AUTO_INCREMENT = 3
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 CREATE  TABLE IF NOT EXISTS `${project.projectCode}db`.`userFamilyRef` (
@@ -33,16 +33,16 @@ CREATE  TABLE IF NOT EXISTS `${project.projectCode}db`.`userFamilyRef` (
   `familyId` INT(11) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = ndbcluster
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
-CREATE  TABLE IF NOT EXISTS `${project.projectCode}db`.`userFamilyRef` (
+CREATE  TABLE IF NOT EXISTS `guarddb`.`userRoleRef` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `userId` INT(11) NOT NULL ,
-  `familyId` INT(11) NOT NULL ,
+  `roleId` INT(11) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = ndbcluster
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 CREATE  TABLE IF NOT EXISTS `${project.projectCode}db`.`roleModuleRef` (

@@ -13,13 +13,13 @@
 
 				<!-- Navigator -->
 
-				<div class="container" style="margin-top: 20px;">
+				<div class="container-fluid" style="margin-top: 20px;">
 					<div class="row-fluid">
-						<div class="span12">
+						<div class="span8 offset2">
 							<h:form>
 								<div class="navbar">
 									<div class="navbar-inner">
-										<h:outputLink class="brand" href="#">当前位置：</h:outputLink>
+										<h:outputLink class="brand" href="#"><small><strong>当前位置</strong></small></h:outputLink>
 										<ul class="nav">
 											<li><h:commandLink action="HOME" value="Home" actionListener="${el}{${module.moduleName}ConversationManager.endTotalConversation()}" /></li>
 											<li><h:commandLink action="${el}{${module.moduleName}Action.startConversation()}" value="XXX" actionListener="${el}{${module.moduleName}ConversationManager.endTotalConversation()}" /></li>

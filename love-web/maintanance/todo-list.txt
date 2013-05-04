@@ -2,3 +2,8 @@
 2，尚没有https的支持
 3，[FIXED]Icons在css中的路径需要调整
 4, 整合工作流
+5，深入研究抽象使用stateful和stateless bean的时机，并自省当前模块设计是否合理。
+6，urlwrite需要重新整合
+7，需要支持jms,优先使用hornetQ
+8，整合webservice， 优先使用Apache CXF
+9，

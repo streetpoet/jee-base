@@ -12,4 +12,5 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	
 </faces-config>

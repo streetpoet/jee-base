@@ -21,7 +21,7 @@ import org.jboss.logging.Logger;
 
 import ${project.packageString}.${module.moduleName}.entity.${module.selectBeanName?cap_first};
 import ${project.packageString}.system.helper.DatabaseHelper;
-import ${project.packageString}.system.qualifier.${project.projectCode}Logged;
+import ${project.packageString}.system.qualifier.${project.projectCode?cap_first}Logged;
 
 @Singleton
 @Startup
@@ -29,7 +29,7 @@ import ${project.packageString}.system.qualifier.${project.projectCode}Logged;
 @AccessTimeout(unit = TimeUnit.SECONDS, value = 5)
 public class ${module.moduleName?cap_first}SingletonBean implements I${module.moduleName?cap_first}Singleton {
 	
-	@Inject @${project.projectCode}Logged Logger log;
+	@Inject @${project.projectCode?cap_first}Logged Logger log;
 	@Inject DatabaseHelper helper;
 	
 	private List<${module.selectBeanName?cap_first}> returnList = null;

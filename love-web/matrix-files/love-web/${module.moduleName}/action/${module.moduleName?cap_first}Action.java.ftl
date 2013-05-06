@@ -14,7 +14,6 @@ import javax.inject.Named;
 
 import org.jboss.logging.Logger;
 
-import ${project.packageString}.${module.moduleName}.bean.${module.entityBeanName?cap_first}QueryConversation;
 import ${project.packageString}.${module.moduleName}.event.${module.moduleName?cap_first}CreateEvent;
 import ${project.packageString}.${module.moduleName}.event.${module.moduleName?cap_first}CreateEventQualifier;
 import ${project.packageString}.${module.moduleName}.event.${module.moduleName?cap_first}DeleteEvent;
@@ -46,6 +45,7 @@ public class ${module.moduleName?cap_first}Action implements Serializable {
 	@Inject @${module.moduleName?cap_first}UpdateEventQualifier Event<${module.moduleName?cap_first}UpdateEvent> ${module.moduleName}UpdateEvent;
 	@Inject ${module.entityBeanName?cap_first}QueryConversation ${module.entityBeanName}QueryConversation;
 	@Inject @${project.projectCode?cap_first}Logged Logger log;
+	private PageObject pageObject;
 	
 	public List<SelectItem> get${module.selectBeanName?cap_first}List() {
 		return null;
@@ -65,7 +65,6 @@ public class ${module.moduleName?cap_first}Action implements Serializable {
 	
 	public void query${module.entityBeanName?cap_first}() {
 		${module.moduleName}QueryEvent.fire(new ${module.moduleName?cap_first}QueryEvent(QueryMode.LOAD_ALL_RECORD));
-		${module.entityBeanName}QueryConversation.beginConversation();
 	}
 	
 	@${project.projectCode?cap_first}Trace
@@ -83,7 +82,6 @@ public class ${module.moduleName?cap_first}Action implements Serializable {
 	}
 
 	public void loadPrePage(){
-		PageObject pageObject = ${module.entityBeanName}QueryConversation.getPageObject();
 		if (pageObject.getCurrentPageNumber() > 1){
 			int offset = pageObject.getOffset() - pageObject.getMaxRecordsPerPage();
 			pageObject.setOffset(offset < 0 ? 0 : offset);
@@ -93,7 +91,6 @@ public class ${module.moduleName?cap_first}Action implements Serializable {
 	}
 	
 	public void loadNextPage(){
-		PageObject pageObject = ${module.entityBeanName}QueryConversation.getPageObject();
 		if (pageObject.getCurrentPageNumber() < pageObject.getMaxPageNumber()){
 			pageObject.setOffset(pageObject.getOffset() + pageObject.getMaxRecordsPerPage());
 			pageObject.setCurrentPageNumber(pageObject.getCurrentPageNumber() + 1);

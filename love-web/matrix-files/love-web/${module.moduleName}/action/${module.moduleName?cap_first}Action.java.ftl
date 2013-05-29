@@ -43,7 +43,6 @@ public class ${module.moduleName?cap_first}Action implements Serializable {
 	@Inject @${module.moduleName?cap_first}DeleteEventQualifier Event<${module.moduleName?cap_first}DeleteEvent> ${module.moduleName}DeleteEvent;
 	@Inject @${module.moduleName?cap_first}QueryEventQualifier Event<${module.moduleName?cap_first}QueryEvent> ${module.moduleName}QueryEvent;
 	@Inject @${module.moduleName?cap_first}UpdateEventQualifier Event<${module.moduleName?cap_first}UpdateEvent> ${module.moduleName}UpdateEvent;
-	@Inject ${module.entityBeanName?cap_first}QueryConversation ${module.entityBeanName}QueryConversation;
 	@Inject @${project.projectCode?cap_first}Logged Logger log;
 	private PageObject pageObject;
 	

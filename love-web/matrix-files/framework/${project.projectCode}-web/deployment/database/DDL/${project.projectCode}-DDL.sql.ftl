@@ -36,7 +36,7 @@ ENGINE = ndbcluster
 AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
-CREATE  TABLE IF NOT EXISTS `guarddb`.`userRoleRef` (
+CREATE  TABLE IF NOT EXISTS `${project.projectCode}db`.`userRoleRef` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `userId` INT(11) NOT NULL ,
   `roleId` INT(11) NOT NULL ,

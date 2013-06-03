@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:body>
+
+	<ui:composition template="../template/template.xhtml">
+		<ui:define name="body">
+			<f:view>
+
+				<!-- Navigator -->
+				<ui:insert>
+					<ui:include src="./navigator.xhtml"></ui:include>
+				</ui:insert>
+
+				<div class="container-fluid">
+
+					<!-- Form Title -->
+
+					<div class="row-fluid">
+						<div class="span8 offset2">
+							<div class="page-header text-left">
+								<h2>
+									账号信息一览 <small>version 1.0</small>
+								</h2>
+							</div>
+						</div>
+					</div>
+
+					<!-- Message Region -->
+
+					<h:panelGroup rendered="#{fn:length(facesContext.messageList) ne 0}">
+						<div class="row-fluid">
+							<div class="span8 offset2 text-left">
+								<h:panelGroup rendered="#{fn:length(facesContext.messageList) ne 0}">
+									<c:forEach items="#{facesContext.messageList}" var="msg">
+										<c:if test="#{msg.severity.ordinal ne 0}">
+											<div class="alert alert-error">
+												<button class="close" data-dismiss="alert" type="button">×</button>
+												<span class="label label-important">Error</span>&nbsp; <strong><h:outputText
+														value="#{msg.summary}" /></strong>
+											</div>
+										</c:if>
+										<c:if test="#{msg.severity.ordinal eq 0}">
+											<div class="alert alert-success">
+												<button class="close" data-dismiss="alert" type="button">×</button>
+												<span class="label label-success">Success</span>&nbsp; <strong><h:outputText
+														value="#{msg.summary}" /></strong>
+											</div>
+										</c:if>
+									</c:forEach>
+								</h:panelGroup>
+							</div>
+						</div>
+					</h:panelGroup>
+				</div>
+
+				<!-- Form -->
+
+				<div class="container-fluid">
+					<div class="row-fluid">
+						<div class="span8 offset2">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>条目名称</th>
+										<th>数量</th>
+										<th>状态</th>
+										<th>可用操作</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="success">
+										<td>当前可用淘宝账号数</td>
+										<td>25</td>
+										<td>已激活</td>
+										<td><button class="btn btn-primary" type="button">下载已激活账号</button></td>
+									</tr>
+									<tr class="error">
+										<td>当前未激活淘宝账号数</td>
+										<td>36</td>
+										<td>未激活</td>
+										<td><button class="btn btn-primary" type="button">激活淘宝账号</button></td>
+									</tr>
+									<tr class="warning">
+										<td>当前可用邮箱数</td>
+										<td>20</td>
+										<td>可用</td>
+										<td><button class="btn btn-primary" type="button">注册新邮箱</button></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

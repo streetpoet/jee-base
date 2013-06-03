@@ -1,0 +1,24 @@
+
+<div class="container-fluid" style="margin-top: 20px;"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<div class="row-fluid">
+		<div class="span8 offset2">
+			<h:form>
+				<div class="navbar">
+					<div class="navbar-inner">
+						<h:outputLink class="brand" href="#">
+							<small><strong>#{matrixBundle['matrix.current']}</strong></small>
+						</h:outputLink>
+						<ul class="nav">
+							<li><h:commandLink action="HOME" value="Home"
+									actionListener="#{tbmarketConversationManager.endTotalConversation()}" /></li>
+							<li><h:commandLink action="#{tbmarketAction.startConversation()}"
+									value="账号信息一览"
+									actionListener="#{tbmarketConversationManager.endTotalConversation()}" /></li>
+						</ul>
+					</div>
+				</div>
+			</h:form>
+		</div>
+	</div>
+</div>

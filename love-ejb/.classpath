@@ -13,5 +13,18 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="ejbModule/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="ejbModule/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="ejbModule/commons-exec-1.1.jar"/>
+	<classpathentry kind="lib" path="ejbModule/commons-io-2.2.jar"/>
+	<classpathentry kind="lib" path="ejbModule/commons-jxpath-1.3.jar"/>
+	<classpathentry kind="lib" path="ejbModule/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="ejbModule/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="ejbModule/guava-14.0.jar"/>
+	<classpathentry kind="lib" path="ejbModule/httpclient-4.2.1.jar"/>
+	<classpathentry kind="lib" path="ejbModule/httpcore-4.2.1.jar"/>
+	<classpathentry kind="lib" path="ejbModule/httpmime-4.2.1.jar"/>
+	<classpathentry kind="lib" path="ejbModule/json-20080701.jar"/>
+	<classpathentry kind="lib" path="ejbModule/selenium-java-2.31.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

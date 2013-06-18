@@ -1,11 +1,14 @@
 package interfaces.tbmarket;
 
+import java.util.List;
+
 import javax.ejb.Remote;
 
-import com.spstudio.love.tbmarket.entity.TbAcountBean;
-import com.spstudio.love.tbmarket.helper.TbAcountBeanCondition;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.interfaces.IQueryResult;
+import com.spstudio.love.tbmarket.entity.TbAcountBean;
+import com.spstudio.love.tbmarket.entity.TrafficInfoBean;
+import com.spstudio.love.tbmarket.helper.TbAcountBeanCondition;
 
 @Remote
 public interface ITbmarket {
@@ -20,4 +23,5 @@ public interface ITbmarket {
 	
 	public TbAcountBean loadTbAcountBean(int tbAcountBeanId);
 
+	public List<TrafficInfoBean> getTrafficRequestInfo();
 }

@@ -39,12 +39,16 @@
 									<p>在这里选择自己感兴趣的技术</p>
 								</h:commandLink>
 							</h:form></li>
-						<li class="span3"><h:link href="#" class="thumbnail muted">
+						<li class="span3">
+							<h:form>
+							<h:commandLink action="#{sendMapAction.sendTrafficMail}" class="thumbnail muted">
 								<h:graphicImage value="/resources/img/#{view.locale}/sample.jpg" styleClass="img-rounded" />
 								<h3>Developing</h3>
 								<p>Coming soon...</p>
 								<img data-src="holder.js/300x200" alt="" />
-							</h:link></li>
+							</h:commandLink>
+							</h:form>
+						</li>
 						<li class="span3"><h:form>
 								<h:commandLink action="TBMARKET_HOME" styleClass="thumbnail" actionListener="#{tbmarketAction.startConversation()}">
 									<h:graphicImage value="/resources/img/#{view.locale}/sample.jpg" styleClass="img-rounded" />

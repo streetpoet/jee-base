@@ -10,12 +10,13 @@ import javax.ejb.EJBContext;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import com.spstudio.love.tbmarket.entity.TbAcountBean;
-import com.spstudio.love.tbmarket.helper.TbAcountBeanCondition;
-import com.spstudio.love.tbmarket.helper.TbAcountBeanQueryResult;
 import com.spstudio.love.system.bean.PageObject;
 import com.spstudio.love.system.helper.DatabaseHelper;
 import com.spstudio.love.system.interfaces.IQueryResult;
+import com.spstudio.love.tbmarket.entity.TbAcountBean;
+import com.spstudio.love.tbmarket.entity.TrafficInfoBean;
+import com.spstudio.love.tbmarket.helper.TbAcountBeanCondition;
+import com.spstudio.love.tbmarket.helper.TbAcountBeanQueryResult;
 
 @Stateless
 public class TbmarketBean implements ITbmarket {
@@ -91,6 +92,24 @@ public class TbmarketBean implements ITbmarket {
 			TbAcountBean tbAcountBean = new TbAcountBean();
 //			tbAcountBean.setId((Integer)row[0]);
 			return tbAcountBean;
+		}
+		return null;
+	}
+
+	@Override
+	public List<TrafficInfoBean> getTrafficRequestInfo() {
+		List<Object[]> result = helper.doQuery("SELECT email_info, from_place, to_place, id FROM lovedb.f6_traffic_reminder where used = 1", null);
+		if (result != null && result.size() != 0){
+			List<TrafficInfoBean> returnList = new ArrayList<TrafficInfoBean>();
+			for (Object[] data: result){
+				TrafficInfoBean bean = new TrafficInfoBean();
+				bean.setEmail((String)data[0]);
+				bean.setFromPlace((String)data[1]);
+				bean.setToPlace((String)data[2]);
+				bean.setId((Integer)data[3]);
+				returnList.add(bean);
+			}
+			return returnList;
 		}
 		return null;
 	}

@@ -37,7 +37,7 @@ public class MailSender {
 	private String mapFolderPath;
 
 	@PostConstruct
-	private void construct() {
+	public void onConstruct() {
 		List<String> listConfigValue = systemSingletonBean
 				.retrieveSystemConfiguration().get("MAP_FOLDER");
 		mapFolderPath = listConfigValue.get(0);

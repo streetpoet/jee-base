@@ -38,10 +38,6 @@
 			<base-name>messages.interest.Message</base-name>
 			<var>interestBundle</var>
 		</resource-bundle>
-		<resource-bundle>
-			<base-name>messages.tbmarket.Message</base-name>
-			<var>tbmarketBundle</var>
-		</resource-bundle>
 		
 		<message-bundle>messages.jsf.Messages</message-bundle>
 	</application>
